@@ -1,0 +1,15 @@
+*.dta
+*.sav
+*.sas7bdat
+*.por
+*.xpt
+*.tgz
+.profile*
+*.tmp
+SIR*
+SIR*
+*.dll
+*.zip
+.Statahistory
+pkzip.cfg
+Thumbs.db
