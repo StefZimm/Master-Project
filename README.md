@@ -7,7 +7,7 @@ and to establish a new culture of using scientific results in other areas of soc
 a platform that allows non-scientists such as journalists or historians to work indirectly with SOEP data without needing direct data access.
 
 The Master Project folder contains the code for a Shiny App, which is intended to provide small descriptive 
-analyses of the [WSOEP (Socio-economic Panel)](https://www.diw.de/en/diw_01.c.678568.en/research_data_center_soep.html).
+analyses of the [SOEP (Socio-economic Panel)](https://www.diw.de/en/diw_01.c.678568.en/research_data_center_soep.html).
 
 **Organization of the Master Project:** 
 
