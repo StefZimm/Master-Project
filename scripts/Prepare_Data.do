@@ -55,33 +55,21 @@ drop if phrf==0
 * Education level
 gen education=pgpsbil
 recode education (3=4) (7 8=6)
-label define education 1 "lower secondary degree" 2 "secondary school degree" 4 "college entrance qualification" 5 "Other degree" 6 "no degree/no degree yet"
-label values education education
 
 * age groups
 gen age= syear-gebjahr if gebjahr>=0
-label variable age "Age"
 * Keep adult observations
 drop if age<=16
 gen age_gr=age
 recode age_gr (16/34=1) (35/65=2) (66/max=3)
-label variable age_gr "Altersgruppen"
-label define age_gr 1 "16-34 y." 2 "35-65 y." 3 "66 and older"
-label values age_gr age_gr
 
 * Party affiliation
 gen party=plh0012_h
 recode party (-5 -4 -1=.) (-2=0) (1 10=2) (2/3 13=1) (4 11 14 22 23=3) (5 9 15=4) (6 16 17 20 24=5) (7 12 18 19 21 25=6) (27 30 31=7) (8 26=8)
-label var party "Party affiliation"
-label define party_lbl 0 "no party" 1 "CDU/CSU" 2 "SPD" 3 "FDP" 4 "Grüne" 5 "PDS/Linke" 6 "NPD Combination" 7 "AfD" 8 "Other"
-label values party party_lbl
 
 * Employment status
 gen erwst=pgemplst
 recode erwst (3 4 = 6) 
-label define erwst_lbl 1 "Full-time" 2 "Part-time" 5 "Non-working" 6 "Other"
-label values erwst erwst_lbl
-lab var erwst "Employment status"
 
 * Federal States
 recode bula_h (10 = 7) // Saarland to Rheinland-Pfalz/Saarland
