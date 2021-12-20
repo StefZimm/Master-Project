@@ -1,1 +1,1 @@
-Categorical and numerical aggregated data tables are stored here, which can be processed into graphics. 
+Metadata of datasets are stored here
