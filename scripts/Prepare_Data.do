@@ -88,11 +88,10 @@ recode bula_h (10 = 7) // Saarland to Rheinland-Pfalz/Saarland
 
 * Delete observations for 1984 to get consistent data:
 * active sports, help with friends, clubs, parties.
-recode pli0092_h (6 7 8 =.) if syear==1984
-recode pli0095_h (6 7 8 =.) if syear==1984
-recode pli0096_h (6 7 8 =.) if syear==1984
-recode pli0097_h (6 7 8 =.) if syear==1984
-recode pli0098_h (6 7 8 =.) if syear==1984
+
+foreach var of varlist  pli0092_h pli0095_h pli0096_h pli0097_h pli0098_h {
+	recode `var' (6 7 8 =.) if syear==1984
+}
  
 *Missings to systemmissings NA
 mvdecode _all, mv(-1/-8)

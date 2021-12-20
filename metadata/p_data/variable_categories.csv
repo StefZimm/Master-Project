@@ -55,16 +55,16 @@ soep-core,p_data,v36,pli0098_h,2,Min 1x per week,Min 1x per week
 soep-core,p_data,v36,pli0098_h,3,Min 1x per month,Min 1x per month
 soep-core,p_data,v36,pli0098_h,4,Rarely,Rarely
 soep-core,p_data,v36,pli0098_h,5,Never,Never
-soep-core,p_data,v36,pgisced97,1,[1] inadequately,[1] inadequately
-soep-core,p_data,v36,pgisced97,2,[2] general elemantary,[2] general elemantary
-soep-core,p_data,v36,pgisced97,3,[3] middle vocational,[3] middle vocational
-soep-core,p_data,v36,pgisced97,4,[4] vocational + Abi,[4] vocational + Abi
-soep-core,p_data,v36,pgisced97,5,[5] higher vocational,[5] higher vocational
-soep-core,p_data,v36,pgisced97,6,[6] higher education,[6] higher education
-soep-core,p_data,v36,migback,1,[1] no migration background,[1] no migration background
-soep-core,p_data,v36,migback,2,[2] direct migration background,[2] direct migration background
-soep-core,p_data,v36,migback,3,[3] indirect migration background,[3] indirect migration background
-soep-core,p_data,v36,migback,4,[4] migration background - n. w. differentiable,[4] migration background - n. w. differentiable
+soep-core,p_data,v36,pgisced97,1,inadequately,inadequately
+soep-core,p_data,v36,pgisced97,2,general elemantary,general elemantary
+soep-core,p_data,v36,pgisced97,3,middle vocational,middle vocational
+soep-core,p_data,v36,pgisced97,4,vocational + Abi,vocational + Abi
+soep-core,p_data,v36,pgisced97,5,higher vocational,higher vocational
+soep-core,p_data,v36,pgisced97,6,higher education,higher education
+soep-core,p_data,v36,migback,1,no migration background,no migration background
+soep-core,p_data,v36,migback,2,direct migration background,direct migration background
+soep-core,p_data,v36,migback,3,indirect migration background,indirect migration background
+soep-core,p_data,v36,migback,4,migration background - n. w. differentiable,migration background - n. w. differentiable
 soep-core,p_data,v36,party,0,no party,no party
 soep-core,p_data,v36,party,1,CDU/CSU,CDU/CSU
 soep-core,p_data,v36,party,2,SPD,SPD
