@@ -266,3 +266,165 @@ soep-core,p_data,v36,plh0038,3,No worries,No worries
 soep-core,p_data,v36,plh0034,1,Big worries,Big worries
 soep-core,p_data,v36,plh0034,2,Some worries,Some worries
 soep-core,p_data,v36,plh0034,3,No worries,No worries
+soep-core,p_data,v36,plj0587,1,Very often,Very often
+soep-core,p_data,v36,plj0587,2,Often,Often
+soep-core,p_data,v36,plj0587,3,Sometimes,Sometimes
+soep-core,p_data,v36,plj0587,4,Rarely ,Rarely 
+soep-core,p_data,v36,plj0587,5,Never,Never
+soep-core,p_data,v36,plj0588,1,Very often,Very often
+soep-core,p_data,v36,plj0588,2,Often,Often
+soep-core,p_data,v36,plj0588,3,Sometimes,Sometimes
+soep-core,p_data,v36,plj0588,4,Rarely ,Rarely 
+soep-core,p_data,v36,plj0588,5,Never,Never
+soep-core,p_data,v36,plj0589,1,Very often,Very often
+soep-core,p_data,v36,plj0589,2,Often,Often
+soep-core,p_data,v36,plj0589,3,Sometimes,Sometimes
+soep-core,p_data,v36,plj0589,4,Rarely ,Rarely 
+soep-core,p_data,v36,plj0589,5,Never,Never
+soep-core,p_data,v36,plh0206i01,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i01,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i01,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i01,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i01,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i01,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i01,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i02,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i02,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i02,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i02,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i02,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i02,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i02,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i03,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i03,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i03,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i03,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i03,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i03,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i03,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i04,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i04,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i04,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i04,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i04,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i04,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i04,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i05,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i05,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i05,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i05,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i05,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i05,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i05,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i06,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i06,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i06,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i06,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i06,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i06,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i06,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0212,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0212,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0212,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0212,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0212,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0212,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0212,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0213,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0213,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0213,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0213,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0213,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0213,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0213,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0214,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0214,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0214,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0214,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0214,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0214,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0214,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0215,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0215,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0215,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0215,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0215,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0215,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0215,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0216,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0216,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0216,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0216,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0216,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0216,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0216,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0217,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0217,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0217,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0217,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0217,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0217,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0217,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0218,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0218,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0218,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0218,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0218,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0218,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0218,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0219,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0219,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0219,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0219,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0219,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0219,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0219,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0220,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0220,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0220,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0220,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0220,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0220,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0220,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0221,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0221,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0221,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0221,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0221,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0221,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0221,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0222,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0222,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0222,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0222,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0222,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0222,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0222,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0223,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0223,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0223,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0223,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0223,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0223,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0223,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0224,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0224,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0224,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0224,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0224,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0224,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0224,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0225,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0225,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0225,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0225,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0225,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0225,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0225,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0226,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0226,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0226,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0226,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0226,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0226,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0226,7,7 Strongly agree,7 Strongly agree

@@ -37,7 +37,10 @@ merge 1:1 pid syear using ${data}\pl.dta, nogen keep (master match) ///
 		  plh0037 plh0038 plh0039 plh0040 plh0042 plj0046 plj0047 pli0092_h pli0095_h /// 
 		  pli0096_h pli0097_h pli0098_h plh0171 plh0164  /// 
 		  plh0166 plh0171 plh0172 plh0173 plh0174 plh0175 plh0176 plh0177 plh0178 /// 
-		  plh0179 plh0180 plh0181 plh0182 plh0183)
+		  plh0179 plh0180 plh0181 plh0182 plh0183 plj0587 plj0588 plj0589 /// 
+		  plh0206i01 plh0206i02 plh0206i03 plh0206i04 plh0206i05 plh0206i06 /// 
+		  plh0212 plh0213 plh0214 plh0215 plh0216 plh0217 plh0218 plh0219 /// 
+		  plh0220 plh0221 plh0222 plh0223 plh0224 plh0225 plh0226)
 
 merge 1:1 pid syear using ${data}\pgen.dta, nogen keep (master match)  keepusing ( ///
           pglabgro pglabnet pgtatzeit pgvebzeit pgisced97 pgpsbil pgoeffd pgemplst) 
@@ -50,6 +53,9 @@ merge m:1 hid syear using ${data}\hbrutto.dta, nogen keep (master match) keepusi
 drop if netto>19
 * Keep Observations with weighting factor
 drop if phrf==0
+
+*Missings to systemmissings NA
+mvdecode _all, mv(-1/-8)
 
 *** Edit variables
 * Education level
@@ -80,9 +86,18 @@ recode bula_h (10 = 7) // Saarland to Rheinland-Pfalz/Saarland
 foreach var of varlist  pli0092_h pli0095_h pli0096_h pli0097_h pli0098_h {
 	recode `var' (6 7 8 =.) if syear==1984
 }
- 
-*Missings to systemmissings NA
-mvdecode _all, mv(-1/-8)
+
+* Big Five Personality Traits
+* Recode negative Traits
+foreach var of varlist  plh0218 plh0223 plh0214 plh0226 {
+	recode `var' (1=7) (2=6) (3=5) (4=4) (5=3) (6=2) (7=1)
+}
+
+egen neur = rowmean(plh0216 plh0221 plh0226)
+egen open = rowmean(plh0215 plh0220 plh0225)
+egen extr = rowmean(plh0213 plh0219 plh0223) 
+egen agre = rowmean(plh0214 plh0217 plh0224)
+egen conc = rowmean(plh0212 plh0218 plh0222)
 
 * drop variables
 drop netto age plh0012_h gebjahr pgpsbil pgemplst
