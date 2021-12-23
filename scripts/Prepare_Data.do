@@ -90,17 +90,18 @@ foreach var of varlist  pli0092_h pli0095_h pli0096_h pli0097_h pli0098_h {
 * Big Five Personality Traits
 * Recode negative Traits
 foreach var of varlist  plh0218 plh0223 plh0214 plh0226 {
-	recode `var' (1=7) (2=6) (3=5) (4=4) (5=3) (6=2) (7=1)
+	gen `var'_new = `var'
+	recode `var'_new (1=7) (2=6) (3=5) (4=4) (5=3) (6=2) (7=1)
 }
 
-egen neur = rowmean(plh0216 plh0221 plh0226)
+egen neur = rowmean(plh0216 plh0221 plh0226_new)
 egen open = rowmean(plh0215 plh0220 plh0225)
-egen extr = rowmean(plh0213 plh0219 plh0223) 
-egen agre = rowmean(plh0214 plh0217 plh0224)
-egen conc = rowmean(plh0212 plh0218 plh0222)
+egen extr = rowmean(plh0213 plh0219 plh0223_new) 
+egen agre = rowmean(plh0214_new plh0217 plh0224)
+egen conc = rowmean(plh0212 plh0218_new plh0222)
 
 * drop variables
-drop netto age plh0012_h gebjahr pgpsbil pgemplst
+drop netto age plh0012_h gebjahr pgpsbil pgemplst plh0226_new plh0223_new plh0214_new plh0218_new
 		 
 * save dataset
 save "${output}\p_data.dta", replace

@@ -26,7 +26,8 @@ weight <- "phrf" # weightingfactor must be defined
 #############################################################################
 
 ## load packages
-loadpackage(c("tidyverse", "readstata13")) 
+loadpackage(c("foreign", "dplyr", "tidyverse", "readstata13", "spatstat",
+              "gsubfn", "rjson", "DescTools"))  
 
 ## load dataset
 # data without labels
@@ -49,3 +50,36 @@ data.file.fac <- data.file.fac %>%
 # read metainformation
 meta <- read.csv(paste0(metapath, "variables.csv") , header = TRUE,
                  colClasses = "character")
+
+
+################################################################################
+# test center #
+test_data <- get_data(datasetnum =  data.file.num, 
+                      datasetfac = data.file.fac,
+                      variable = "plh0218", 
+                      year = "syear", 
+                      weight = "phrf",
+                      diffcount = 2,
+                      diffvars = c("bula_h", "sex"),
+                      vallabel = FALSE)
+
+mean_data <- get_mean_values(dataset = test_data,
+                             year = "year",
+                             diffcount = 2,
+                             diffvar1 = "bula_h",
+                             diffvar2 = "sex",
+                             diffvar3 = "")
+
+test_data2 <- get_data(datasetnum =  data.file.num, 
+                      datasetfac = data.file.fac,
+                      variable = "plh0218", 
+                      year = "syear", 
+                      weight = "phrf",
+                      diffcount = 2,
+                      diffvars = c("bula_h", "sex"),
+                      vallabel = TRUE)
+
+prop_data <- get_prop_values(dataset = test_data2, 
+                             groupvars = c("usedvariable", "year", "bula_h", "sex"), 
+                             alpha = 0.05)
+

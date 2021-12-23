@@ -55,12 +55,6 @@ soep-core,p_data,v36,pli0098_h,2,Min 1x per week,Min 1x per week
 soep-core,p_data,v36,pli0098_h,3,Min 1x per month,Min 1x per month
 soep-core,p_data,v36,pli0098_h,4,Rarely,Rarely
 soep-core,p_data,v36,pli0098_h,5,Never,Never
-soep-core,p_data,v36,pgisced97,1,inadequately,inadequately
-soep-core,p_data,v36,pgisced97,2,general elemantary,general elemantary
-soep-core,p_data,v36,pgisced97,3,middle vocational,middle vocational
-soep-core,p_data,v36,pgisced97,4,vocational + Abi,vocational + Abi
-soep-core,p_data,v36,pgisced97,5,higher vocational,higher vocational
-soep-core,p_data,v36,pgisced97,6,higher education,higher education
 soep-core,p_data,v36,migback,1,no migration background,no migration background
 soep-core,p_data,v36,migback,2,direct migration background,direct migration background
 soep-core,p_data,v36,migback,3,indirect migration background,indirect migration background
@@ -428,3 +422,10 @@ soep-core,p_data,v36,plh0226,4,4 on scale 1-7,4 on scale 1-7
 soep-core,p_data,v36,plh0226,5,5 on scale 1-7,5 on scale 1-7
 soep-core,p_data,v36,plh0226,6,6 on scale 1-7,6 on scale 1-7
 soep-core,p_data,v36,plh0226,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,pgisced97,0,in school,in school
+soep-core,p_data,v36,pgisced97,1,inadequately,inadequately
+soep-core,p_data,v36,pgisced97,2,general elemantary,general elemantary
+soep-core,p_data,v36,pgisced97,3,middle vocational,middle vocational
+soep-core,p_data,v36,pgisced97,4,vocational + Abi,vocational + Abi
+soep-core,p_data,v36,pgisced97,5,higher vocational,higher vocational
+soep-core,p_data,v36,pgisced97,6,higher education,higher education
