@@ -27,7 +27,7 @@ weight <- "phrf" # weightingfactor must be defined
 
 ## load packages
 loadpackage(c("foreign", "dplyr", "tidyverse", "readstata13", "spatstat",
-              "gsubfn", "rjson", "DescTools"))  
+              "gsubfn", "rjson", "DescTools", "Hmisc"))  
 
 ## load dataset
 # data without labels
@@ -83,3 +83,11 @@ prop_data <- get_prop_values(dataset = test_data2,
                              groupvars = c("usedvariable", "year", "bula_h", "sex"), 
                              alpha = 0.05)
 
+mean_data <-  get_protected_values(dataset = mean_data, cell.size = 30)
+
+prop_data <-  create_table_lables(table = mean_data)
+
+data.csv <- get_table_export(table = mean_data, variable = "plh0218", 
+                             metadatapath = paste0(metapath, "variables.csv"),
+                             exportpath = exportpath, diffcount = 2,
+                             tabletype = "prop")

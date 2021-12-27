@@ -262,3 +262,219 @@ get_prop_values <- function(dataset, groupvars, alpha) {
   
   return(data_prop_complete_ci)
 }
+
+################################################################################
+#' @title get_protected_values should remove certain cell contents
+#'
+#' @description get_protected_values should remove cell contents of weighted proportion tables or mean value table 
+#' delete if a minimum population is not reached.
+#' 
+#' @param dataset data.frame from get_prop_values or get_mean_table 
+#' @param cell.size maximum allowed cell size (e.g. 30)
+#' 
+#' @return protected.data (dataset with n, mean/percent, median, n, confidence intervals only with cells >= cell.size)
+#'
+#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
+#' @keywords get_prop_values
+#'  
+#' @examples
+#'       get_prop_values(dataset = data, alpha = 0.05)
+
+get_protected_values <- function(dataset, cell.size) {
+  
+  if(("mean" %in% colnames(dataset))==TRUE){
+    
+    save.data <- as.data.frame(apply(dataset[c("mean", "median", "n", "lowerci_mean", 
+                                               "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90", 
+                                               "lowerci_median", "upperci_median")], 2, 
+                                     function(x) ifelse(dataset["n"] < cell.size, NA, x)))
+    data <- dataset
+    dataset[c("mean", "median", "n", "lowerci_mean", 
+              "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90", 
+              "lowerci_median", "upperci_median")] <- NULL
+    
+  }
+  
+  if(("percent" %in% colnames(dataset))==TRUE){
+    
+    save.data <- as.data.frame(apply(dataset[c("n","percent", 
+                                               "lower_confidence", "upper_confidence")], 2, 
+                                     function(x) ifelse(dataset["n"] < cell.size, NA, x)))
+    data <- dataset
+    dataset[c("n","percent", 
+              "lower_confidence", "upper_confidence")] <- NULL
+    
+  }
+  protected.data <- cbind(dataset, save.data)
+  return(protected.data)
+}
+
+################################################################################
+#' @title create_table_lables data set with vauluelabel
+#'
+#' @description create_table_lables is to provide specific variables of a dataset with vauluelabel
+#' 
+#' @param table data.frame from get_mean_data 
+#' 
+#' @return data_with_label = data set with value labels
+#'
+#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
+#' @keywords data_with_label
+#'  
+#' @examples
+#'       create_table_lables(table = data)
+
+create_table_lables <- function(table) {
+  data_with_label <- table
+  
+  if("sex" %in% colnames(data_with_label)){
+    data_with_label$sex <- gsubfn(".", list("1" = "Male", "2" = "Female"), as.character(data_with_label$sex))
+  }
+  
+  if("bula_h" %in% colnames(data_with_label)){
+    data_with_label$bula_h <-data_with_label$bula_h %>%
+      gsub("11", "Berlin", .) %>%
+      gsub("12", "Brandenburg", .) %>%
+      gsub("13", "Mecklenburg-Western Pomerania", .) %>%
+      gsub("14", "Saxony", .) %>%
+      gsub("15", "Saxony-Anhalt", .) %>%
+      gsub("16", "Thuringia", .) %>% 
+      gsub("1", "Schleswig-Holstein", .) %>%
+      gsub("2", "Hamburg", .) %>%
+      gsub("3", "Lower Saxony", .) %>%
+      gsub("4", "Bremen", .) %>%
+      gsub("5", "North Rhine-Westphalia", .) %>%
+      gsub("6", "Hesse", .) %>%
+      gsub("7", "Rhineland-Palatinate,Saarland", .) %>% 
+      gsub("8", "Baden-Württemberg", .) %>% 
+      gsub("9", "Bavaria", .)
+  }
+  
+  if("sampreg" %in% colnames(data_with_label)){
+    data_with_label$sampreg <- gsubfn(".", list("1" = "Westdeutschland, alte Bundeslaender", 
+                                                "2"  = "Ostdeutschland, neue Bundeslaender"), as.character(data_with_label$sampreg))
+  }
+  
+  if("pgcasmin" %in% colnames(data_with_label)){
+    data_with_label$pgcasmin <- gsubfn(".", list("0" = "(0) in school", "1"  = "(1a) inadequately completed", 
+                                                 "2" = "(1b) general elementary school", "3"  = "(1c) basic vocational qualification", 
+                                                 "4" = "(2b) intermediate general qualification", "5"  = "(2a) intermediate vocational", 
+                                                 "6" = "(2c_gen) general maturity certificate", "7"  = "(2c_voc) vocational maturity certificate",
+                                                 "8" = "(3a) lower tertiary education", "9" = "(3b) higher tertiary education"), as.character(data_with_label$pgcasmin))
+  }
+  
+  if("pgisced97" %in% colnames(data_with_label)){
+    data_with_label$pgcasmin <- gsubfn(".", list("0" = "in school", "1"  = "inadequately", 
+                                                 "2" = "general elemantary", "3"  = "middle vocational", 
+                                                 "4" = "vocational + Abi", "5"  = "higher vocational", 
+                                                 "6" = "higher education"), as.character(data_with_label$pgcasmin))
+  }
+  
+  if("age_gr" %in% colnames(data_with_label)){
+    data_with_label$age_gr <- gsubfn(".", list("1"  = "16-34 y.", 
+                                               "2" = "35-65 y.", "3"  = "66 and older"), as.character(data_with_label$alter_gr))
+  }
+  
+  if("education" %in% colnames(data_with_label)){
+    data_with_label$education <- gsubfn(".", list("1"  = "lower secondary degree", 
+                                                  "2" = "secondary school degree", "3"  = "college entrance qualification",
+                                                  "4" = "Other degree", "5"  = "no degree/no degree yet"), 
+                                        as.character(data_with_label$bildungsniveau))
+  }
+  
+  if("migback" %in% colnames(data_with_label)){
+    data_with_label$migback <- gsubfn(".", list("1"  = "no migration background", 
+                                                "2" = "direct migration background", 
+                                                "3"  = "indirect migration background"), 
+                                      as.character(data_with_label$migback))
+  }
+  
+  return(data_with_label)
+}
+
+
+################################################################################
+#' @title get_table_export Export of mean value or proportion value tables
+#'
+#' @description get_table_export export created mean or proportion tables as csv
+#' 
+#' @param table produced data.frame from get_protected_values (e.g. platform_data)
+#' @param variable name analysis variable from raw data as string ("pglabnet")
+#' @param metadatapath Path to the metadata with variable name and table type in the dataset as string
+#' @param exportpath export folder as string
+#' @param diffcount number of differentiations as numeric (0-3 robbed)
+#' @param tabletype Type of table to be processed ("mean" or "prop")
+#' 
+#' @return data.csv = exportierte Tabelle als csv
+#'
+#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
+#' @keywords data.csv
+#'  
+#' @examples
+#'        get_table_export(table = protected.table, variable = "usedvariable", 
+#'                         metadatapath = paste0(metapath, "varnames.csv"),
+#'                         exportpath = exportpath, diffcount = 2, 
+#'                         tabletype = "mean")
+
+get_table_export <- function(table, variable, metadatapath, exportpath, diffcount, tabletype) {
+  
+  metadata <- read.csv(metadatapath , header = TRUE)
+  variable <- variable
+  
+  if(tabletype=="mean"){
+    path <- file.path(exportpath, "numerical", variable, "/")
+    diffvars <- 1+diffcount
+    filenames  <- names(table)[2:diffvars]
+  }
+  
+  if(tabletype=="prop"){
+    path <- file.path(exportpath, "categorical", variable, "/")
+    diffvars <- 2+diffcount
+    filenames  <- names(table)[3:diffvars]
+  }
+  
+  if (diffcount == 3) {
+    filename <- paste0(variable, "_", "year", "_", metadata$variable[metadata$variable==filenames[1]], "_",
+                       metadata$variable[metadata$variable==filenames[2]], "_", 
+                       metadata$variable[metadata$variable==filenames[3]])
+  }
+  
+  if (diffcount == 2 ) {
+    filename <- paste0(variable, "_", "year", "_", metadata$variable[metadata$variable==filenames[1]], "_",
+                       metadata$variable[metadata$variable==filenames[2]])
+  }
+  
+  if (diffcount == 1) {
+    filename <- paste0(variable, "_", "year", "_", metadata$variable[metadata$variable==filenames[1]])
+  }
+  
+  if (diffcount == 0) {
+    filename <- paste0(variable, "_", "year")
+  }
+  
+  dir.create(path, showWarnings = FALSE)
+  data.csv <- sapply(table, as.character)
+  data.csv[is.na(data.csv)] <- ""
+  data.csv <- as.data.frame(data.csv)
+  
+  data.csv <- as.data.frame(apply(data.csv,2,
+                                  function(x)gsub('^\\[[0-9]*]', '',x)))
+  
+  data.csv <- as.data.frame(apply(data.csv,2,
+                                  function(x)gsub('^\\s+', '',x)))
+  
+  if(tabletype=="mean"){
+    export <- paste0(path, filename, ".csv")
+  }
+  
+  if(tabletype=="prop"){
+    export <- paste0(path, filename, ".csv")
+    colnames(data.csv)[1] <- variable
+  }
+  
+  write.csv(data.csv, export, row.names = FALSE, quote = TRUE, fileEncoding = "UTF-8")
+  return(data.csv)
+}
+
+
+

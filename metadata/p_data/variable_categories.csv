@@ -58,7 +58,6 @@ soep-core,p_data,v36,pli0098_h,5,Never,Never
 soep-core,p_data,v36,migback,1,no migration background,no migration background
 soep-core,p_data,v36,migback,2,direct migration background,direct migration background
 soep-core,p_data,v36,migback,3,indirect migration background,indirect migration background
-soep-core,p_data,v36,migback,4,migration background - n. w. differentiable,migration background - n. w. differentiable
 soep-core,p_data,v36,party,0,no party,no party
 soep-core,p_data,v36,party,1,CDU/CSU,CDU/CSU
 soep-core,p_data,v36,party,2,SPD,SPD
@@ -429,3 +428,13 @@ soep-core,p_data,v36,pgisced97,3,middle vocational,middle vocational
 soep-core,p_data,v36,pgisced97,4,vocational + Abi,vocational + Abi
 soep-core,p_data,v36,pgisced97,5,higher vocational,higher vocational
 soep-core,p_data,v36,pgisced97,6,higher education,higher education
+soep-core,p_data,v36,pgcasmin,0,(0) in school,(0) in school
+soep-core,p_data,v36,pgcasmin,1,(1a) inadequately completed,(1a) inadequately completed
+soep-core,p_data,v36,pgcasmin,2,(1b) general elementary school,(1b) general elementary school
+soep-core,p_data,v36,pgcasmin,3,(1c) basic vocational qualification,(1c) basic vocational qualification
+soep-core,p_data,v36,pgcasmin,4,(2b) intermediate general qualification,(2b) intermediate general qualification
+soep-core,p_data,v36,pgcasmin,5,(2a) intermediate vocational,(2a) intermediate vocational
+soep-core,p_data,v36,pgcasmin,6,(2c_gen) general maturity certificate,(2c_gen) general maturity certificate
+soep-core,p_data,v36,pgcasmin,7,(2c_voc) vocational maturity certificate,(2c_voc) vocational maturity certificate
+soep-core,p_data,v36,pgcasmin,8,(3a) lower tertiary education,(3a) lower tertiary education
+soep-core,p_data,v36,pgcasmin,9,(3b) higher tertiary education,(3b) higher tertiary education

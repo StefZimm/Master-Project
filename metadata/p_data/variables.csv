@@ -19,6 +19,7 @@ pli0098_h,byte,"Going to church, attending religious events",soep-core,p_data,v3
 pli0095_h,byte,Helping Friends and Relatives,soep-core,p_data,v36,No,Yes,,,,,,
 pli0097_h,byte,"Involved. Parties, local politics, citizens' initiative",soep-core,p_data,v36,No,Yes,,,,,,
 pgisced97,double,ISCED-1997-Classification,soep-core,p_data,v36,demo,demo,,,,,,
+pgcasmin,byte,CASMIN-Klassifikation,soep-core,p_data,v36,demo,demo,,,,,,
 migback,byte,Migration background,soep-core,p_data,v36,demo,demo,,,,,,
 party,float,Party affiliation,soep-core,p_data,v36,No,Yes,,,,,,
 sampreg,float,Sample Region,soep-core,p_data,v36,demo,demo,,,,,,

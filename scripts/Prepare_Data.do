@@ -43,7 +43,7 @@ merge 1:1 pid syear using ${data}\pl.dta, nogen keep (master match) ///
 		  plh0220 plh0221 plh0222 plh0223 plh0224 plh0225 plh0226)
 
 merge 1:1 pid syear using ${data}\pgen.dta, nogen keep (master match)  keepusing ( ///
-          pglabgro pglabnet pgtatzeit pgvebzeit pgisced97 pgpsbil pgoeffd pgemplst) 
+          pglabgro pglabnet pgtatzeit pgvebzeit pgisced97 pgpsbil pgoeffd pgemplst pgcasmin) 
 		  
 merge 1:1 pid syear using ${data}\pequiv.dta, nogen keep (master match) keepusing (y11101)
 merge m:1 hid syear using ${data}\hbrutto.dta, nogen keep (master match) keepusing (bula_h)
