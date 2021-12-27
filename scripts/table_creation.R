@@ -52,58 +52,81 @@ meta <- read.csv(paste0(metapath, "variables.csv") , header = TRUE,
                  colClasses = "character")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ################################################################################
 # test center #
-mean_data <- get_data(datasetnum =  data.file.num, 
-                      datasetfac = data.file.fac,
-                      variable = "plh0218", 
-                      year = "syear", 
-                      weight = "phrf",
-                      diffcount = 3,
-                      diffvars = c("migback", "sampreg", "sex"),
-                      vallabel = FALSE)
-
-mean_data <- get_mean_values(dataset = mean_data,
-                             year = "year",
-                             diffcount = 3,
-                             diffvar1 = "migback",
-                             diffvar2 = "sampreg",
-                             diffvar3 = "sex")
-
-prop_data <- get_data(datasetnum =  data.file.num, 
-                      datasetfac = data.file.fac,
-                      variable = "plh0218", 
-                      year = "syear", 
-                      weight = "phrf",
-                      diffcount = 3,
-                      diffvars = c("migback", "sampreg", "sex"),
-                      vallabel = TRUE)
-
-prop_data <- get_prop_values(dataset = prop_data, 
-                             groupvars = c("usedvariable", "year", "migback", "sampreg", "sex"), 
-                             alpha = 0.05)
-
-mean_data <-  get_protected_values(dataset = mean_data, cell.size = 30)
-
-prop_data <-  get_protected_values(dataset = prop_data, cell.size = 30)
-
-mean_data <- expand_table(table = mean_data, diffvar1 = "migback", 
-                          diffvar2 = "sampreg", diffvar3 = "sex",
-                          diffcount = 3, tabletype = "mean")
-
-prop_data <- expand_table(table = prop_data, diffvar1 = "migback", 
-                          diffvar2 = "sampreg", diffvar3 = "sex",
-                          diffcount = 3, tabletype = "prop")
-
-
-mean_data <-  create_table_lables(table = mean_data)
-
-data.csv <- get_table_export(table = mean_data, variable = "plh0218", 
-                             metadatapath = paste0(metapath, "variables.csv"),
-                             exportpath = exportpath, diffcount = 3,
-                             tabletype = "mean")
-
-data.csv <- get_table_export(table = prop_data, variable = "plh0218", 
-                             metadatapath = paste0(metapath, "variables.csv"),
-                             exportpath = exportpath, diffcount = 3,
-                             tabletype = "prop")
+# mean_data <- get_data(datasetnum =  data.file.num, 
+#                       datasetfac = data.file.fac,
+#                       variable = "plh0218", 
+#                       year = "syear", 
+#                       weight = "phrf",
+#                       diffcount = 3,
+#                       diffvars = c("migback", "sampreg", "sex"),
+#                       vallabel = FALSE)
+# 
+# mean_data <- get_mean_values(dataset = mean_data,
+#                              year = "year",
+#                              diffcount = 3,
+#                              diffvar1 = "migback",
+#                              diffvar2 = "sampreg",
+#                              diffvar3 = "sex")
+# 
+# prop_data <- get_data(datasetnum =  data.file.num, 
+#                       datasetfac = data.file.fac,
+#                       variable = "plh0218", 
+#                       year = "syear", 
+#                       weight = "phrf",
+#                       diffcount = 3,
+#                       diffvars = c("migback", "sampreg", "sex"),
+#                       vallabel = TRUE)
+# 
+# prop_data <- get_prop_values(dataset = prop_data, 
+#                              groupvars = c("usedvariable", "year", "migback", "sampreg", "sex"), 
+#                              alpha = 0.05)
+# 
+# mean_data <-  get_protected_values(dataset = mean_data, cell.size = 30)
+# 
+# prop_data <-  get_protected_values(dataset = prop_data, cell.size = 30)
+# 
+# mean_data <- expand_table(table = mean_data, diffvar1 = "migback", 
+#                           diffvar2 = "sampreg", diffvar3 = "sex",
+#                           diffcount = 3, tabletype = "mean")
+# 
+# prop_data <- expand_table(table = prop_data, diffvar1 = "migback", 
+#                           diffvar2 = "sampreg", diffvar3 = "sex",
+#                           diffcount = 3, tabletype = "prop")
+# 
+# 
+# mean_data <-  create_table_lables(table = mean_data)
+# 
+# data.csv <- get_table_export(table = mean_data, variable = "plh0218", 
+#                              metadatapath = paste0(metapath, "variables.csv"),
+#                              exportpath = exportpath, diffcount = 3,
+#                              tabletype = "mean")
+# 
+# data.csv <- get_table_export(table = prop_data, variable = "plh0218", 
+#                              metadatapath = paste0(metapath, "variables.csv"),
+#                              exportpath = exportpath, diffcount = 3,
+#                              tabletype = "prop")
+# 
+# json_create_lite(variable = "plh0218", 
+#                  varlabel = meta$label_de[meta$variable=="plh0218"],
+#                  startyear = as.numeric(unique(data.csv$year)[1]), 
+#                  endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]), 
+#                  tabletype = "mean",
+#                  exportpath = paste0(exportpath, "/categorical/", "plh0218", "/meta.json"))
