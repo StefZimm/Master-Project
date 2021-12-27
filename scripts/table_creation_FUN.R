@@ -476,5 +476,89 @@ get_table_export <- function(table, variable, metadatapath, exportpath, diffcoun
   return(data.csv)
 }
 
+################################################################################
+################################################################################
+# Creation of blank lines when information is empty in a year
+
+#' @title expand_table 
+#'
+#' @description expand_table add empty rows if variable in year is empty. 
+#'
+#' @table data.frame to be filled with empty cells
+#' @diffvar1 differentiation dimension as character
+#' @diffvar2 Differentiation dimension as character
+#' @diffvar3 differentiation dimension as character
+#' @diffcount number of differentiations as numeric
+#' @tabletype Table type ("prop" or "mean")
+#'
+#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
+#'  
+#' @examples expand_table(table = protected.table, diffvar1 = diffvar1, 
+#'                        diffvar2 = diffvar2, diffvar3 = diffvar3,
+#'                        diffcount = diffcount, tabletype = "prop")
+
+expand_table <- function(table, diffvar1, diffvar2, diffvar3, diffcount, tabletype) {
+  
+  start_year <- as.numeric(unique(table$year)[1])
+  end_year <- as.numeric(unique(table$year)[length(unique(table$year))])
+  
+  if (tabletype == "mean") {
+    if(diffcount == 0){
+      expand.table <- expand.grid(year=seq(start_year, end_year))
+    }
+    if(diffcount == 1){
+      expand.table <- expand.grid(year=seq(start_year, end_year), 
+                                  diffvar1=unique(pull(table, diffvar1)))
+      names(expand.table) <- c("year", diffvar1)
+    }
+    
+    if(diffcount == 2){
+      expand.table <- expand.grid(year=seq(start_year, end_year), 
+                                  diffvar1=unique(pull(table, diffvar1)),
+                                  diffvar2=unique(pull(table, diffvar2)))
+      names(expand.table) <- c("year", diffvar1, diffvar2)
+    }
+    
+    if(diffcount == 3){
+      expand.table <- expand.grid(year=seq(start_year, end_year), 
+                                  diffvar1=unique(pull(table, diffvar1)),
+                                  diffvar2=unique(pull(table, diffvar2)),
+                                  diffvar3=unique(pull(table, diffvar3)))
+      names(expand.table) <- c("year", diffvar1, diffvar2, diffvar3)
+    }
+  }
+  if (tabletype == "prop") {
+    if(diffcount == 0){
+      expand.table <- expand.grid(year=seq(start_year, end_year),
+                                  usedvariable=unique(pull(table, usedvariable)))
+    }
+    if(diffcount == 1){
+      expand.table <- expand.grid(year=seq(start_year, end_year), 
+                                  usedvariable=unique(pull(table, usedvariable)),
+                                  diffvar1=unique(pull(table, diffvar1)))
+      names(expand.table) <- c("year", "usedvariable", diffvar1)
+    }
+    
+    if(diffcount == 2){
+      expand.table <- expand.grid(year=seq(start_year, end_year), 
+                                  usedvariable=unique(pull(table, usedvariable)),
+                                  diffvar1=unique(pull(table, diffvar1)),
+                                  diffvar2=unique(pull(table, diffvar2)))
+      names(expand.table) <- c("year", "usedvariable", diffvar1, diffvar2)
+    }
+    
+    if(diffcount == 3){
+      expand.table <- expand.grid(year=seq(start_year, end_year), 
+                                  usedvariable=unique(pull(table, usedvariable)),
+                                  diffvar1=unique(pull(table, diffvar1)),
+                                  diffvar2=unique(pull(table, diffvar2)),
+                                  diffvar3=unique(pull(table, diffvar3)))
+      names(expand.table) <- c("year", "usedvariable", diffvar1, diffvar2, diffvar3)
+    }
+  }
+  final <- merge(table, expand.table, all.y = TRUE)
+  final <- final[with(final, order(year)), ]
+  return(final)
+}  
 
 
