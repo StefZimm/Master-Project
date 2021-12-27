@@ -174,20 +174,21 @@ get_mean_values <- function(dataset, year, diffcount,
               ptile90 = wtd.quantile(usedvariable, weights = weight, 
                                      probs = .90, na.rm = TRUE), .groups = 'drop')
   
-  medianci.value<- dataset[complete.cases(dataset), ] %>% 
-    nest(data = -columns) %>%
-    mutate(ci = map(data, ~ MedianCI(.x$usedvariable, method = "exact")[2:3])) %>% 
-    unnest_wider(ci)
-  
-  medianci.value$data <- NULL
-  colnames(medianci.value) <- c(columns, "lowerci_median", "upperci_median")
-  
+  # Median confidence interval does not work
+  # medianci.value<- dataset[complete.cases(dataset), ] %>% 
+  #   nest(data = -columns) %>%
+  #   mutate(ci = map(data, ~ MedianCI(.x$usedvariable, method = "exact")[2:3])) %>% 
+  #   unnest_wider(ci)
+  # 
+  # medianci.value$data <- NULL
+  # colnames(medianci.value) <- c(columns, "lowerci_median", "upperci_median")
+  # 
   data <- merge(mean.values,percentile.values,by=columns)
-  data <- merge(data,medianci.value,by=columns)
+  
+  #data <- merge(data,medianci.value,by=columns)
   
   selected.values <- c(columns, "mean", "lowerci_mean", "upperci_mean", 
-                       "median", "lowerci_median", "upperci_median", 
-                       "ptile10", "ptile25", "ptile75", "ptile90", "n")
+                       "median", "ptile10", "ptile25", "ptile75", "ptile90", "n")
   
   data <- data[,(names(data) %in% selected.values)]
   data <-  data %>% 
@@ -285,13 +286,11 @@ get_protected_values <- function(dataset, cell.size) {
   if(("mean" %in% colnames(dataset))==TRUE){
     
     save.data <- as.data.frame(apply(dataset[c("mean", "median", "n", "lowerci_mean", 
-                                               "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90", 
-                                               "lowerci_median", "upperci_median")], 2, 
+                                               "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90")], 2, 
                                      function(x) ifelse(dataset["n"] < cell.size, NA, x)))
     data <- dataset
     dataset[c("mean", "median", "n", "lowerci_mean", 
-              "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90", 
-              "lowerci_median", "upperci_median")] <- NULL
+              "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90")] <- NULL
     
   }
   
@@ -377,8 +376,8 @@ create_table_lables <- function(table) {
   
   if("education" %in% colnames(data_with_label)){
     data_with_label$education <- gsubfn(".", list("1"  = "lower secondary degree", 
-                                                  "2" = "secondary school degree", "3"  = "college entrance qualification",
-                                                  "4" = "Other degree", "5"  = "no degree/no degree yet"), 
+                                                  "2" = "secondary school degree", "4"  = "college entrance qualification",
+                                                  "5" = "Other degree", "6"  = "no degree/no degree yet"), 
                                         as.character(data_with_label$education))
   }
   
@@ -587,7 +586,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
         "title" = varlabel,
         "variable" = variable,
         "statistics" = c("mean", "median", "lowerci_mean", "upperci_mean", 
-                         "ptile10", "ptile25", "ptile75", "ptile90", "lowerci_median", "upperci_median"),
+                         "ptile10", "ptile25", "ptile75", "ptile90"),
         "dimensions" = list(
           list("variable" = meta$variable[meta$variable == "age_gr"], 
                "label" = meta$label_de[meta$variable == "age_gr"],
@@ -710,7 +709,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
         "title" = varlabel,
         "variable" = variable,
         "statistics" = c("mean", "median", "lowerci_mean", "upperci_mean", 
-                         "ptile10", "ptile25", "ptile75", "ptile90", "lowerci_median", "upperci_median",
+                         "ptile10", "ptile25", "ptile75", "ptile90",
                          "percent", "lower_confidence" ,"upper_confidence"),
         "dimensions" = list(
           list("variable" = meta$variable[meta$variable == "age_gr"], 
