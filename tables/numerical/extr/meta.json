@@ -1,7 +1,7 @@
 {
   "title": "Big Five Traits: Extraversion Value",
   "variable": "extr",
-  "statistics": ["mean", "median", "lowerci_mean", "upperci_mean", "ptile10", "ptile25", "ptile75", "ptile90"],
+  "statistics": ["mean", "lowerci_mean", "upperci_mean", "median", "lowerci_median", "upperci_median", "ptile10", "ptile25", "ptile75", "ptile90"],
   "dimensions": [
     {
       "variable": "age_gr",
