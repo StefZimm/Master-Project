@@ -24,9 +24,9 @@
 #'                          variable = variable, 
 #'                          statistic = "mean",
 #'                          diffvar = diffvar)
+library(tidyverse)###DB added to create function###
 
 get_map_plot <- function(table, syear, variable, statistic, diffvar){
-  
   title <- paste0(meta$label_de[meta$variable==variable], " nach Bundesland")
   
   dataset <- data  %>%
@@ -101,19 +101,24 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 
 # Test Center
 
-# library(raster)
-# library(sf)
-# library(rgeos)
+# library(raster) ##Geographic data analysis __ DB##
+# library(sf) ##Special features for spatial feature data __ DB##
+# library(rgeos) ##Spacial geometries...will be retired 2023: https://cran.r-project.org/web/packages/rgeos/index.html __ DB##
 # library(dplyr)
 # library(tools)
 # library(stringr)
 # library(ggplot2)
-# library(plotly)
+# library(plotly) ##For interactive graphs __ DB##
 # 
+# 
+# ###PACMAN optional, must install pacman first __ DB###
+# pacman::p_load(raster, sf, regeos, dplyr, tools, stringr, ggplot2, plotyly)
+# # 
 # # plh0182 pglabnet pgvebzeit
 # 
-# metapath <- "C:/git/soep-transfer/meta/p_platform/variables.csv"
-# variable <- "plh0182" 
+# #metapath <- "C:/git/soep-transfer/meta/p_platform/variables.csv"
+# metapath <- "metadata/p_data/variables.csv"
+# variable <- "plh0182"
 # diffvar <- "sex"
 # syear <- "2018"
 # 
@@ -127,12 +132,15 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 #   table <-paste0(variable,"_year_", diffvar, "_bula_h.csv")
 # }
 # 
-# data <- read.csv(file = paste0("C:/git/soep-transfer/numerical/", variable, "/", table), 
+# #data <- read.csv(file = paste0("C:/git/soep-transfer/numerical/", variable, "/", table),
+# #                 encoding = "UTF-8")
+# 
+# data <- read.csv(file = paste0("tables/numerical/", variable, "/", table),
 #                  encoding = "UTF-8")
 # meta <- read.csv(file = metapath, encoding = "UTF-8")
 # 
-# get_map_plot(table = table, 
+# get_map_plot(table = table,
 #              syear = syear,
-#              variable = variable, 
+#              variable = variable,
 #              statistic = "median",
 #              diffvar = diffvar)
