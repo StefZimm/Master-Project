@@ -109,38 +109,38 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 # library(stringr)
 # library(ggplot2)
 # library(plotly) ##For interactive graphs __ DB##
-
-
-###PACMAN optional, must install pacman first __ DB###
-pacman::p_load(raster, sf, regeos, dplyr, tools, stringr, ggplot2, plotyly, ggplotly)
 # 
-# plh0182 pglabnet pgvebzeit
-
-#metapath <- "C:/git/soep-transfer/meta/p_platform/variables.csv"
-metapath <- "metadata/p_data/variables.csv"
-variable <- "plh0182"
-diffvar <- "sex"
-syear <- "2018"
-
-if (diffvar == "") {
-  table <- paste0(variable,"_year_bula_h.csv")
-  }
-if (diffvar != "") {
-  table <-paste0(variable,"_year_bula_h_", diffvar, ".csv")
-}
-if (diffvar == "alter_gr") {
-  table <-paste0(variable,"_year_", diffvar, "_bula_h.csv")
-}
-
-#data <- read.csv(file = paste0("C:/git/soep-transfer/numerical/", variable, "/", table),
-#                 encoding = "UTF-8")
-
-data <- read.csv(file = paste0("tables/numerical/", variable, "/", table),
-                 encoding = "UTF-8")
-meta <- read.csv(file = metapath, encoding = "UTF-8")
-
-get_map_plot(table = table,
-             syear = syear,
-             variable = variable,
-             statistic = "median",
-             diffvar = diffvar)
+# 
+# ###PACMAN optional, must install pacman first __ DB###
+# pacman::p_load(raster, sf, regeos, dplyr, tools, stringr, ggplot2, plotyly)
+# # 
+# # plh0182 pglabnet pgvebzeit
+# 
+# #metapath <- "C:/git/soep-transfer/meta/p_platform/variables.csv"
+# metapath <- "metadata/p_data/variables.csv"
+# variable <- "plh0182"
+# diffvar <- "sex"
+# syear <- "2018"
+# 
+# if (diffvar == "") {
+#   table <- paste0(variable,"_year_bula_h.csv")
+#   }
+# if (diffvar != "") {
+#   table <-paste0(variable,"_year_bula_h_", diffvar, ".csv")
+# }
+# if (diffvar == "alter_gr") {
+#   table <-paste0(variable,"_year_", diffvar, "_bula_h.csv")
+# }
+# 
+# #data <- read.csv(file = paste0("C:/git/soep-transfer/numerical/", variable, "/", table),
+# #                 encoding = "UTF-8")
+# 
+# data <- read.csv(file = paste0("tables/numerical/", variable, "/", table),
+#                  encoding = "UTF-8")
+# meta <- read.csv(file = metapath, encoding = "UTF-8")
+# 
+# get_map_plot(table = table,
+#              syear = syear,
+#              variable = variable,
+#              statistic = "median",
+#              diffvar = diffvar)
