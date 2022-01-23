@@ -161,18 +161,22 @@ get_mean_values <- function(dataset, year, diffcount,
            upper = mean + qt(1 - (0.05 / 2), as.numeric(n) - 1) * sd) %>%
     mutate(lowerci_mean = round((lower),2))  %>%
     mutate(upperci_mean = round((upper),2))  %>%
+    mutate(max = round(max(usedvariable, na.rm = T), 2),
+           min = round(min(usedvariable, na.rm = T), 2))   %>%
     distinct(mean, .keep_all = TRUE)
   
   percentile.values <-  dataset[complete.cases(dataset), ] %>%
     group_by_at(vars(one_of(columns)))  %>% 
-    summarise(ptile10 = wtd.quantile(usedvariable, weights = weight, 
-                                     probs = .1, na.rm = TRUE),
-              ptile25 = wtd.quantile(usedvariable, weights = weight, 
-                                     probs = .25, na.rm = TRUE),
-              ptile75 = wtd.quantile(usedvariable, weights = weight, 
-                                     probs = .75, na.rm = TRUE),
-              ptile90 = wtd.quantile(usedvariable, weights = weight, 
-                                     probs = .90, na.rm = TRUE), .groups = 'drop')
+    summarise(ptile10 = round(wtd.quantile(usedvariable, weights = weight, 
+                                     probs = .1, na.rm = TRUE),2),
+              ptile25 = round(wtd.quantile(usedvariable, weights = weight, 
+                                     probs = .25, na.rm = TRUE),2),
+              ptile75 = round(wtd.quantile(usedvariable, weights = weight, 
+                                     probs = .75, na.rm = TRUE),2),
+              ptile90 = round(wtd.quantile(usedvariable, weights = weight, 
+                                     probs = .90, na.rm = TRUE),2), 
+              ptile99 = round(wtd.quantile(usedvariable, weights = weight, 
+                                           probs = .99, na.rm = TRUE),2), .groups = 'drop')
   
   # Median confidence interval calculation
   median_data <- dataset %>% 
@@ -193,7 +197,7 @@ get_mean_values <- function(dataset, year, diffcount,
   
   selected.values <- c(columns, "mean", "lowerci_mean", "upperci_mean", 
                        "median", "lowerci_median", "upperci_median", 
-                       "ptile10", "ptile25", "ptile75", "ptile90", "n")
+                       "ptile10", "ptile25", "ptile75", "ptile90", "ptile99", "n", "min", "max")
   
   data <- data[,(names(data) %in% selected.values)]
   data <-  data %>% 
@@ -291,14 +295,14 @@ get_protected_values <- function(dataset, cell.size) {
   if(("mean" %in% colnames(dataset))==TRUE){
     
     save.data <- as.data.frame(apply(dataset[c("mean",  "median", "n",  
-                                               "ptile10", "ptile25", "ptile75", "ptile90", 
-                                               "lowerci_mean", "upperci_mean",
+                                               "ptile10", "ptile25", "ptile75", "ptile90", "ptile99", 
+                                               "lowerci_mean", "upperci_mean", "min", "max",
                                                "lowerci_median", "upperci_median")], 2, 
                                      function(x) ifelse(dataset["n"] < cell.size, NA, x)))
     data <- dataset
     dataset[c("mean",  "median", "n",  
-              "ptile10", "ptile25", "ptile75", "ptile90", 
-              "lowerci_mean", "upperci_mean",
+              "ptile10", "ptile25", "ptile75", "ptile90", "ptile99",  
+              "lowerci_mean", "upperci_mean", "min", "max",
               "lowerci_median", "upperci_median")] <- NULL
     
   }
@@ -594,9 +598,9 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
       x = list(
         "title" = varlabel,
         "variable" = variable,
-        "statistics" = c("mean", "lowerci_mean", "upperci_mean", 
+        "statistics" = c("mean", "lowerci_mean", "upperci_mean", "min", "max",
                          "median", "lowerci_median", "upperci_median", 
-                         "ptile10", "ptile25", "ptile75", "ptile90"),
+                         "ptile10", "ptile25", "ptile75", "ptile90", "ptile99"),
         "dimensions" = list(
           list("variable" = meta$variable[meta$variable == "age_gr"], 
                "label" = meta$label_de[meta$variable == "age_gr"],

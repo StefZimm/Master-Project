@@ -1,7 +1,7 @@
 {
   "title": "Big Five Traits (Openness): Appreciate artistic experience",
   "variable": "plh0220",
-  "statistics": ["mean", "lowerci_mean", "upperci_mean", "median", "lowerci_median", "upperci_median", "ptile10", "ptile25", "ptile75", "ptile90"],
+  "statistics": ["mean", "lowerci_mean", "upperci_mean", "min", "max", "median", "lowerci_median", "upperci_median", "ptile10", "ptile25", "ptile75", "ptile90", "ptile99"],
   "dimensions": [
     {
       "variable": "age_gr",
