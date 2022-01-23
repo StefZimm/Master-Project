@@ -363,8 +363,8 @@ create_table_lables <- function(table) {
   }
   
   if("sampreg" %in% colnames(data_with_label)){
-    data_with_label$sampreg <- gsubfn(".", list("1" = "Westdeutschland, alte Bundeslaender", 
-                                                "2"  = "Ostdeutschland, neue Bundeslaender"), as.character(data_with_label$sampreg))
+    data_with_label$sampreg <- gsubfn(".", list("1" = "West Germany", 
+                                                "2"  = "East Germany"), as.character(data_with_label$sampreg))
   }
   
   if("pgcasmin" %in% colnames(data_with_label)){
