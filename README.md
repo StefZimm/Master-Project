@@ -9,7 +9,7 @@ analyses of the [SOEP (Socio-economic Panel)](https://www.diw.de/en/diw_01.c.678
 
 **Organization of the Master Project:** 
 
-The repository of the Master Project is divided into the 3 main folders input and scripts. 
+The repository of the Master Project is divided into the 4 main folders metadata, scripts, tables, report
 
 ### Master-Project Timeline
 
