@@ -40,13 +40,27 @@ merge 1:1 pid syear using ${data}\pl.dta, nogen keep (master match) ///
 		  plh0179 plh0180 plh0181 plh0182 plh0183 plj0587 plj0588 plj0589 /// 
 		  plh0206i01 plh0206i02 plh0206i03 plh0206i04 plh0206i05 plh0206i06 /// 
 		  plh0212 plh0213 plh0214 plh0215 plh0216 plh0217 plh0218 plh0219 /// 
-		  plh0220 plh0221 plh0222 plh0223 plh0224 plh0225 plh0226)
+		  plh0220 plh0221 plh0222 plh0223 plh0224 plh0225 plh0226 plb0158 ///
+		  plb0037_h plb0036_h plb0050 pli0059 plb0219 plb0218 plb0195_h /// 
+		  plb0196_h plb0197 pld0047 ple0128_h ple0004 ple0005 ple0097 ple0098_v5 /// 
+		  ple0160 ple0009 ple0162 ple0006 ple0007 ple0053 ple0055 ple0056 ple0011 ///
+		  ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 /// 
+		  ple0021 ple0022 ple0024 ple0179 ple0180 ple0181 ple0182 ple0040 ple0041 /// 
+		  ple0081_h ple0008 plh0188 plh0189 plh0190 ///
+		  plh0191 plh0188 plh0184 plh0185 plh0186 plh0187 plh0105 plh0106 plh0107 /// 
+		  plh0108 plh0109 plh0110 plh0111 plh0112 plh0105 plh0054 plh0056 plh0058 /// 
+		  plh0061 plh0204_h pld0043 pld0044 pld0045 plh0192 plh0193 plh0194 plh0195 /// 
+		  plh0196 pli0080 pli0081 pli0082 pli0083 pli0089 pli0091_h pli0092_h pli0093_h /// 
+		  pli0098_h pli0165)
 
 merge 1:1 pid syear using ${data}\pgen.dta, nogen keep (master match)  keepusing ( ///
           pglabgro pglabnet pgtatzeit pgvebzeit pgisced97 pgpsbil pgoeffd pgemplst pgcasmin) 
 		  
-merge 1:1 pid syear using ${data}\pequiv.dta, nogen keep (master match) keepusing (y11101)
+merge 1:1 pid syear using ${data}\pequiv.dta, nogen keep (master match) keepusing (y11101 /// 
+		  i11102 i11101 i11106 i11107 d11106 d11107 h11101 y11101 e11102 e11103)
 merge m:1 hid syear using ${data}\hbrutto.dta, nogen keep (master match) keepusing (bula_h)
+merge m:1 hid syear using ${data}\hgen.dta, nogen keep (master match) keepusing (hgtyp1hh hghinc)
+merge m:1 hid syear using ${data}\hl.dta, nogen keep (master match) keepusing (hlf0019_h hlf0021_h hlf0071_h)
 
 * Define Population
 * Keep observations with valid interview
@@ -69,6 +83,15 @@ drop if age<=16
 gen age_gr=age
 recode age_gr (16/34=1) (35/65=2) (66/max=3)
 
+* years in job
+gen years_injob =  syear - plb0036_h if syear >= plb0036_h & (age >= (syear - plb0036_h))
+drop plb0036_h
+
+recode plb0037_h (3 4 = .)
+
+* Change of insurance company in previous year
+recode ple0160 (3=.)
+
 * Party affiliation
 gen party=plh0012_h
 recode party (-5 -4 -1=.) (-2=0) (1 10=2) (2/3 13=1) (4 11 14 22 23=3) (5 9 15=4) (6 16 17 20 24=5) (7 12 18 19 21 25=6) (27 30 31=7) (8 26=8)
@@ -76,6 +99,9 @@ recode party (-5 -4 -1=.) (-2=0) (1 10=2) (2/3 13=1) (4 11 14 22 23=3) (5 9 15=4
 * Employment status
 gen erwst=pgemplst
 recode erwst (3 4 = 6) 
+
+* bmi Index
+gen bmi = round(ple0007/(ple0006/100)^2)
 
 * Federal States
 recode bula_h (10 = 7) // Saarland to Rheinland-Pfalz/Saarland
@@ -100,8 +126,45 @@ egen extr = rowmean(plh0213 plh0219 plh0223_new)
 egen agre = rowmean(plh0214_new plh0217 plh0224)
 egen conc = rowmean(plh0212 plh0218_new plh0222)
 
+*1. equivalent income
+*Why differences in household size?
+
+*OECD person scale for equivalized income?
+* https://de.wikipedia.org/wiki/OECD-Skala
+gen aequiv_weight=1+(d11106-1-h11101)*0.5+h11101*0.3
+gen aequiv_income=i11102/aequiv_weight if i11102>=0
+gen hinceq = hghinc/aequiv_weight if hghinc>=0
+
+// Transfer dependency
+gen transab = (i11107/i11102)*100 
+gen transab_cat = 0 if transab==0
+replace transab_cat = 1 if inrange(transab, 1,25)
+replace transab_cat = 2 if inrange(transab, 26,50)
+replace transab_cat = 3 if inrange(transab, 51,75)
+replace transab_cat = 4 if inrange(transab, 76,99)
+replace transab_cat = 5 if transab==100
+
+gen transab_cat2 = 0 if inrange(transab, 0,25)
+replace transab_cat2 = 1 if inrange(transab, 26,50)
+replace transab_cat2 = 2 if inrange(transab, 51,75)
+replace transab_cat2 = 3 if inrange(transab, 76,100)
+
+label define transab_cat 0 "No transfer dependency" 1 "Very low transfer dependency" ///
+2 "Low transfer dependency" 3 "High transfer dependency" 4 "Very high transfer dependency" /// 
+5 "Complete transfer dependency"
+
+label value transab_cat transab_cat
+
+label define transab_cat2 0 "Very low transfer dependency" ///
+1 "Low transfer dependency" 2 "High transfer dependency" 3 "Very high transfer dependency"
+
+label value transab_cat2 transab_cat2
+recode hgtyp1hh (7 8 = .)
+
 * drop variables
-drop netto age plh0012_h gebjahr pgpsbil pgemplst plh0226_new plh0223_new plh0214_new plh0218_new
+drop netto age plh0012_h gebjahr pgpsbil pgemplst plh0226_new plh0223_new plh0214_new /// 
+     plh0218_new aequiv_weight d11106 d11107 h11101
+
 		 
 * save dataset
 save "${output}\p_data.dta", replace
@@ -119,52 +182,3 @@ qui compress
 save "${output}\p_data.dta", replace
 
 ********************************************************************************
-
-/*
-*** create variables.csv 
-global meanvar pglabgro pglabnet pgtatzeit pgvebzeit y11101 plh0164 plh0166 plh0171 plh0172 plh0173 plh0174 plh0175 plh0176 plh0177 plh0178 plh0179 plh0180 plh0181 plh0182 plh0183
-global probvar party  pli0092_h pli0095_h pli0096_h pli0097_h pli0098_h plh0032 plh0033 plh0034 plh0035 plh0036 plh0037 plh0038 plh0039 plh0040 plh0042 plj0046 plj0047  erwst
-global demo sampreg sex bula education alter_gr migback
-
-label language EN
-
-describe, replace clear
-keep name type varlab
-
-gen study = "soep-core"
-gen dataset = "p_data"
-gen version = "v36"
-rename name variable
-gen meantable = ""
-gen probtable = ""
-gen template_id = ""
-gen label = ""
-rename varlab label_de
-gen concept = ""
-gen description = ""
-gen description_de = ""
-gen minedition = ""
-
-* Variablen als numerische oder kategoriale Variablen definieren
-* meantable 
-foreach var of global meanvar {
-	replace meantable = "Yes" if variable == "`var'"
-	replace probtable = "No" if variable == "`var'" 
-}
-
-* probtable
-foreach var of global probvar {
-replace meantable = "No" if variable == "`var'"
-replace probtable = "Yes" if variable == "`var'" 
-}
-
-* dimensionen
-foreach var of global demo {
-replace meantable = "demo" if variable == "`var'"
-replace probtable = "demo" if variable == "`var'" 
-}
-
-
-save "${meta}\variables_csv.dta", replace
-
-*/

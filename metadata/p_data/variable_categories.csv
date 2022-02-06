@@ -438,3 +438,284 @@ soep-core,p_data,v36,pgcasmin,6,(2c_gen) general maturity certificate,(2c_gen) g
 soep-core,p_data,v36,pgcasmin,7,(2c_voc) vocational maturity certificate,(2c_voc) vocational maturity certificate
 soep-core,p_data,v36,pgcasmin,8,(3a) lower tertiary education,(3a) lower tertiary education
 soep-core,p_data,v36,pgcasmin,9,(3b) higher tertiary education,(3b) higher tertiary education
+soep-core,p_data,v36,plb0037_h,1,Permanent,Permanent
+soep-core,p_data,v36,plb0037_h,2,Limited,Limited
+soep-core,p_data,v36,plb0050,1,Yes,Yes
+soep-core,p_data,v36,plb0050,2,No,No
+soep-core,p_data,v36,plb0195_h,1,Acclaimed,Acclaimed
+soep-core,p_data,v36,plb0195_h,2,"Partly, partly","Partly, partly"
+soep-core,p_data,v36,plb0195_h,3,Paid,Paid
+soep-core,p_data,v36,plb0195_h,4,Not paid,Not paid
+soep-core,p_data,v36,plb0196_h,1,Yes,Yes
+soep-core,p_data,v36,plb0196_h,2,No,No
+soep-core,p_data,v36,plb0218,1,"No, never","No, never"
+soep-core,p_data,v36,plb0218,2,"Yes, every week","Yes, every week"
+soep-core,p_data,v36,plb0218,3,"Yes, every 2 weeks","Yes, every 2 weeks"
+soep-core,p_data,v36,plb0218,4,"Yes, every 3-4 weeks","Yes, every 3-4 weeks"
+soep-core,p_data,v36,plb0218,5,Rarely,Rarely
+soep-core,p_data,v36,plb0219,1,"No, never","No, never"
+soep-core,p_data,v36,plb0219,2,"Yes, every week","Yes, every week"
+soep-core,p_data,v36,plb0219,3,"Yes, every 2 weeks","Yes, every 2 weeks"
+soep-core,p_data,v36,plb0219,4,"Yes, every 3-4 weeks","Yes, every 3-4 weeks"
+soep-core,p_data,v36,plb0219,5,Rarely,Rarely
+soep-core,p_data,v36,pld0043,1,Very often,Very often
+soep-core,p_data,v36,pld0043,2,Often,Often
+soep-core,p_data,v36,pld0043,3,Sometimes,Sometimes
+soep-core,p_data,v36,pld0043,4,Rarely,Rarely
+soep-core,p_data,v36,pld0043,5,Never,Never
+soep-core,p_data,v36,pld0044,1,Very often,Very often
+soep-core,p_data,v36,pld0044,2,Often,Often
+soep-core,p_data,v36,pld0044,3,Sometimes,Sometimes
+soep-core,p_data,v36,pld0044,4,Rarely,Rarely
+soep-core,p_data,v36,pld0044,5,Never,Never
+soep-core,p_data,v36,pld0045,1,Very often,Very often
+soep-core,p_data,v36,pld0045,2,Often,Often
+soep-core,p_data,v36,pld0045,3,Sometimes,Sometimes
+soep-core,p_data,v36,pld0045,4,Rarely,Rarely
+soep-core,p_data,v36,pld0045,5,Never,Never
+soep-core,p_data,v36,ple0004,1,Strong,Strong
+soep-core,p_data,v36,ple0004,2,A little,A little
+soep-core,p_data,v36,ple0004,3,Not at all,Not at all
+soep-core,p_data,v36,ple0005,1,Strong,Strong
+soep-core,p_data,v36,ple0005,2,A little,A little
+soep-core,p_data,v36,ple0005,3,Not at all,Not at all
+soep-core,p_data,v36,ple0008,1,Very good,Very good
+soep-core,p_data,v36,ple0008,2,Good,Good
+soep-core,p_data,v36,ple0008,3,Satisfactory,Satisfactory
+soep-core,p_data,v36,ple0008,4,Less good,Less good
+soep-core,p_data,v36,ple0008,5,Poor,Poor
+soep-core,p_data,v36,ple0009,1,"Yes, strongly limited","Yes, strongly limited"
+soep-core,p_data,v36,ple0009,2,"Yes, somewhat limited","Yes, somewhat limited"
+soep-core,p_data,v36,ple0009,3,"No, not limited","No, not limited"
+soep-core,p_data,v36,ple0011,1,Yes,Yes
+soep-core,p_data,v36,ple0012,1,Yes,Yes
+soep-core,p_data,v36,ple0013,1,Yes,Yes
+soep-core,p_data,v36,ple0014,1,Yes,Yes
+soep-core,p_data,v36,ple0015,1,Yes,Yes
+soep-core,p_data,v36,ple0016,1,Yes,Yes
+soep-core,p_data,v36,ple0017,1,Yes,Yes
+soep-core,p_data,v36,ple0018,1,Yes,Yes
+soep-core,p_data,v36,ple0019,1,Yes,Yes
+soep-core,p_data,v36,ple0020,1,Yes,Yes
+soep-core,p_data,v36,ple0021,1,Yes,Yes
+soep-core,p_data,v36,ple0022,1,Yes,Yes
+soep-core,p_data,v36,ple0024,1,Yes,Yes
+soep-core,p_data,v36,ple0040,1,Yes,Yes
+soep-core,p_data,v36,ple0040,2,No,No
+soep-core,p_data,v36,ple0053,1,Yes,Yes
+soep-core,p_data,v36,ple0053,2,No,No
+soep-core,p_data,v36,ple0081_h,1,Yes,Yes
+soep-core,p_data,v36,ple0081_h,2,No,No
+soep-core,p_data,v36,ple0097,1,Public health insurance,Public health insurance
+soep-core,p_data,v36,ple0097,2,Private health insurance,Private health insurance
+soep-core,p_data,v36,ple0097,3,Neither,Neither
+soep-core,p_data,v36,ple0098_v5,1,Yes,Yes
+soep-core,p_data,v36,ple0098_v5,2,No,No
+soep-core,p_data,v36,ple0160,1,Yes,Yes
+soep-core,p_data,v36,ple0160,2,No,No
+soep-core,p_data,v36,ple0162,1,Yes,Yes
+soep-core,p_data,v36,ple0162,2,No,No
+soep-core,p_data,v36,ple0179,1,Daily,Daily
+soep-core,p_data,v36,ple0179,2,Four to six days a week,Four to six days a week
+soep-core,p_data,v36,ple0179,3,Two to three days a week,Two to three days a week
+soep-core,p_data,v36,ple0179,4,Two to four days a month,Two to four days a month
+soep-core,p_data,v36,ple0179,5,Once a month or less,Once a month or less
+soep-core,p_data,v36,ple0179,6,Never,Never
+soep-core,p_data,v36,ple0180,1,Daily,Daily
+soep-core,p_data,v36,ple0180,2,Four to six days a week,Four to six days a week
+soep-core,p_data,v36,ple0180,3,Two to three days a week,Two to three days a week
+soep-core,p_data,v36,ple0180,4,Two to four days a month,Two to four days a month
+soep-core,p_data,v36,ple0180,5,Once a month or less,Once a month or less
+soep-core,p_data,v36,ple0180,6,Never,Never
+soep-core,p_data,v36,ple0181,1,Daily,Daily
+soep-core,p_data,v36,ple0181,2,Four to six days a week,Four to six days a week
+soep-core,p_data,v36,ple0181,3,Two to three days a week,Two to three days a week
+soep-core,p_data,v36,ple0181,4,Two to four days a month,Two to four days a month
+soep-core,p_data,v36,ple0181,5,Once a month or less,Once a month or less
+soep-core,p_data,v36,ple0181,6,Never,Never
+soep-core,p_data,v36,ple0182,1,"Yes, vegetarian","Yes, vegetarian"
+soep-core,p_data,v36,ple0182,2,"Yes, vegan","Yes, vegan"
+soep-core,p_data,v36,ple0182,3,No,No
+soep-core,p_data,v36,plh0054,1,Importance: in 1st place,Importance: in 1st place
+soep-core,p_data,v36,plh0054,2,Importance: in 2nd place,Importance: in 2nd place
+soep-core,p_data,v36,plh0054,3,Importance: in 3rd place,Importance: in 3rd place
+soep-core,p_data,v36,plh0054,4,Importance: in 4th place,Importance: in 4th place
+soep-core,p_data,v36,plh0056,1,Importance: in 1st place,Importance: in 1st place
+soep-core,p_data,v36,plh0056,2,Importance: in 2nd place,Importance: in 2nd place
+soep-core,p_data,v36,plh0056,3,Importance: in 3rd place,Importance: in 3rd place
+soep-core,p_data,v36,plh0056,4,Importance: in 4th place,Importance: in 4th place
+soep-core,p_data,v36,plh0058,1,Importance: in 1st place,Importance: in 1st place
+soep-core,p_data,v36,plh0058,2,Importance: in 2nd place,Importance: in 2nd place
+soep-core,p_data,v36,plh0058,3,Importance: in 3rd place,Importance: in 3rd place
+soep-core,p_data,v36,plh0058,4,Importance: in 4th place,Importance: in 4th place
+soep-core,p_data,v36,plh0061,1,Importance: in 1st place,Importance: in 1st place
+soep-core,p_data,v36,plh0061,2,Importance: in 2nd place,Importance: in 2nd place
+soep-core,p_data,v36,plh0061,3,Importance: in 3rd place,Importance: in 3rd place
+soep-core,p_data,v36,plh0061,4,Importance: in 4th place,Importance: in 4th place
+soep-core,p_data,v36,plh0105,1,Very important,Very important
+soep-core,p_data,v36,plh0105,2,Important,Important
+soep-core,p_data,v36,plh0105,3,Less important,Less important
+soep-core,p_data,v36,plh0105,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0106,1,Very important,Very important
+soep-core,p_data,v36,plh0106,2,Important,Important
+soep-core,p_data,v36,plh0106,3,Less important,Less important
+soep-core,p_data,v36,plh0106,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0107,1,Very important,Very important
+soep-core,p_data,v36,plh0107,2,Important,Important
+soep-core,p_data,v36,plh0107,3,Less important,Less important
+soep-core,p_data,v36,plh0107,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0108,1,Very important,Very important
+soep-core,p_data,v36,plh0108,2,Important,Important
+soep-core,p_data,v36,plh0108,3,Less important,Less important
+soep-core,p_data,v36,plh0108,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0109,1,Very important,Very important
+soep-core,p_data,v36,plh0109,2,Important,Important
+soep-core,p_data,v36,plh0109,3,Less important,Less important
+soep-core,p_data,v36,plh0109,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0110,1,Very important,Very important
+soep-core,p_data,v36,plh0110,2,Important,Important
+soep-core,p_data,v36,plh0110,3,Less important,Less important
+soep-core,p_data,v36,plh0110,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0111,1,Very important,Very important
+soep-core,p_data,v36,plh0111,2,Important,Important
+soep-core,p_data,v36,plh0111,3,Less important,Less important
+soep-core,p_data,v36,plh0111,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0112,1,Very important,Very important
+soep-core,p_data,v36,plh0112,2,Important,Important
+soep-core,p_data,v36,plh0112,3,Less important,Less important
+soep-core,p_data,v36,plh0112,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0182,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0182,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0184,1,Very rare,Very rare
+soep-core,p_data,v36,plh0184,2,Rarely,Rarely
+soep-core,p_data,v36,plh0184,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0184,4,Often,Often
+soep-core,p_data,v36,plh0184,5,Very often,Very often
+soep-core,p_data,v36,plh0185,1,Very rare,Very rare
+soep-core,p_data,v36,plh0185,2,Rarely,Rarely
+soep-core,p_data,v36,plh0185,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0185,4,Often,Often
+soep-core,p_data,v36,plh0185,5,Very often,Very often
+soep-core,p_data,v36,plh0186,1,Very rare,Very rare
+soep-core,p_data,v36,plh0186,2,Rarely,Rarely
+soep-core,p_data,v36,plh0186,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0186,4,Often,Often
+soep-core,p_data,v36,plh0186,5,Very often,Very often
+soep-core,p_data,v36,plh0187,1,Very rare,Very rare
+soep-core,p_data,v36,plh0187,2,Rarely,Rarely
+soep-core,p_data,v36,plh0187,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0187,4,Often,Often
+soep-core,p_data,v36,plh0187,5,Very often,Very often
+soep-core,p_data,v36,plh0188,1,True entirely,True entirely
+soep-core,p_data,v36,plh0188,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0188,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0188,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0189,1,True entirely,True entirely
+soep-core,p_data,v36,plh0189,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0189,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0189,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0190,1,True entirely,True entirely
+soep-core,p_data,v36,plh0190,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0190,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0190,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0191,1,True entirely,True entirely
+soep-core,p_data,v36,plh0191,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0191,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0191,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0192,1,Fully agree,Fully agree
+soep-core,p_data,v36,plh0192,2,Rather agree,Rather agree
+soep-core,p_data,v36,plh0192,3,Rather disagree,Rather disagree
+soep-core,p_data,v36,plh0192,4,Disagree fully,Disagree fully
+soep-core,p_data,v36,plh0193,1,Fully agree,Fully agree
+soep-core,p_data,v36,plh0193,2,Rather agree,Rather agree
+soep-core,p_data,v36,plh0193,3,Rather disagree,Rather disagree
+soep-core,p_data,v36,plh0193,4,Disagree fully,Disagree fully
+soep-core,p_data,v36,plh0194,1,Fully agree,Fully agree
+soep-core,p_data,v36,plh0194,2,Rather agree,Rather agree
+soep-core,p_data,v36,plh0194,3,Rather disagree,Rather disagree
+soep-core,p_data,v36,plh0194,4,Disagree fully,Disagree fully
+soep-core,p_data,v36,plh0195,1,People exploit,People exploit
+soep-core,p_data,v36,plh0195,2,People are fair,People are fair
+soep-core,p_data,v36,plh0196,1,People are helpful,People are helpful
+soep-core,p_data,v36,plh0196,2,People pursue self-interest,People pursue self-interest
+soep-core,p_data,v36,plh0204_h,0,0 Not at all Willing to take risks,0 Not at all Willing to take risks
+soep-core,p_data,v36,plh0204_h,1,1,1
+soep-core,p_data,v36,plh0204_h,2,2,2
+soep-core,p_data,v36,plh0204_h,3,3,3
+soep-core,p_data,v36,plh0204_h,4,4,4
+soep-core,p_data,v36,plh0204_h,5,5,5
+soep-core,p_data,v36,plh0204_h,6,6,6
+soep-core,p_data,v36,plh0204_h,7,7,7
+soep-core,p_data,v36,plh0204_h,8,8,8
+soep-core,p_data,v36,plh0204_h,9,9,9
+soep-core,p_data,v36,plh0204_h,10,10 Very willing to take risks,10 Very willing to take risks
+soep-core,p_data,v36,pli0080,1,Daily,Daily
+soep-core,p_data,v36,pli0080,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0080,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0080,4,Rarely,Rarely
+soep-core,p_data,v36,pli0080,5,Never,Never
+soep-core,p_data,v36,pli0081,1,Daily,Daily
+soep-core,p_data,v36,pli0081,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0081,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0081,4,Rarely,Rarely
+soep-core,p_data,v36,pli0081,5,Never,Never
+soep-core,p_data,v36,pli0082,1,Daily,Daily
+soep-core,p_data,v36,pli0082,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0082,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0082,4,Rarely,Rarely
+soep-core,p_data,v36,pli0082,5,Never,Never
+soep-core,p_data,v36,pli0083,1,Daily,Daily
+soep-core,p_data,v36,pli0083,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0083,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0083,4,Rarely,Rarely
+soep-core,p_data,v36,pli0083,5,Never,Never
+soep-core,p_data,v36,pli0089,1,Daily,Daily
+soep-core,p_data,v36,pli0089,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0089,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0089,4,Rarely,Rarely
+soep-core,p_data,v36,pli0089,5,Never,Never
+soep-core,p_data,v36,pli0091_h,1,Daily,Daily
+soep-core,p_data,v36,pli0091_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0091_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0091_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0091_h,5,Never,Never
+soep-core,p_data,v36,pli0093_h,1,Daily,Daily
+soep-core,p_data,v36,pli0093_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0093_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0093_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0093_h,5,Never,Never
+soep-core,p_data,v36,pli0165,1,Daily,Daily
+soep-core,p_data,v36,pli0165,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0165,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0165,4,Rarely,Rarely
+soep-core,p_data,v36,pli0165,5,Never,Never
+soep-core,p_data,v36,e11102,0,Not Employed,Not Employed
+soep-core,p_data,v36,e11102,1,Employed,Employed
+soep-core,p_data,v36,e11103,1,Full Time,Full Time
+soep-core,p_data,v36,e11103,2,Part Time,Part Time
+soep-core,p_data,v36,e11103,3,Not Working,Not Working
+soep-core,p_data,v36,hgtyp1hh,1,1-pers.-HH,1-pers.-HH
+soep-core,p_data,v36,hgtyp1hh,2,(Married) couple without C. ,(Married) couple without C. 
+soep-core,p_data,v36,hgtyp1hh,3,Single parent ,Single parent 
+soep-core,p_data,v36,hgtyp1hh,4,Couple + C. LE 16 ,Couple + C. LE 16 
+soep-core,p_data,v36,hgtyp1hh,5,Couple + C. GT 16 ,Couple + C. GT 16 
+soep-core,p_data,v36,hgtyp1hh,6,Couple + C. LE and GT 16,Couple + C. LE and GT 16
+soep-core,p_data,v36,transab_cat2,0,Very low transfer dependency,Very low transfer dependency
+soep-core,p_data,v36,transab_cat2,1,Low transfer dependency,Low transfer dependency
+soep-core,p_data,v36,transab_cat2,2,High transfer dependency,High transfer dependency
+soep-core,p_data,v36,transab_cat2,3,Very high transfer dependency,Very high transfer dependency
+soep-core,p_data,v36,transab_cat,0,No transfer dependency,No transfer dependency
+soep-core,p_data,v36,transab_cat,1,Very low transfer dependency,Very low transfer dependency
+soep-core,p_data,v36,transab_cat,2,Low transfer dependency,Low transfer dependency
+soep-core,p_data,v36,transab_cat,3,High transfer dependency,High transfer dependency
+soep-core,p_data,v36,transab_cat,4,Very high transfer dependency,Very high transfer dependency
+soep-core,p_data,v36,transab_cat,5,Complete transfer dependency,Complete transfer dependency

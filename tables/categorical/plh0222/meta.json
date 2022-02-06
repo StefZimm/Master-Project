@@ -90,6 +90,35 @@
       ]
     },
     {
+      "variable": "e11102",
+      "label": "Employment Status of Individual",
+      "values": [
+        "Not Employed",
+        "Employed"
+      ]
+    },
+    {
+      "variable": "e11103",
+      "label": "Employment Level of Individual",
+      "values": [
+        "Full Time",
+        "Part Time",
+        "Not Working"
+      ]
+    },
+    {
+      "variable": "hgtyp1hh",
+      "label": "Household typology (1-digit)",
+      "values": [
+        "1-pers.-HH",
+        "(Married) couple without C.",
+        "Single parent",
+        "Couple + C. LE 16",
+        "Couple + C. GT 16",
+        "Couple + C. LE and GT 16"
+      ]
+    },
+    {
       "variable": "migback",
       "label": "Migration background",
       "values": [

@@ -1,0 +1,137 @@
+{
+  "title": "HH Post-Government Income",
+  "variable": "i11102",
+  "statistics": ["mean", "lowerci_mean", "upperci_mean", "min", "max", "median", "lowerci_median", "upperci_median", "ptile10", "ptile25", "ptile75", "ptile90", "ptile99"],
+  "dimensions": [
+    {
+      "variable": "age_gr",
+      "label": "Age Group",
+      "values": [
+        "16-34 y.",
+        "35-65 y.",
+        "66 and older"
+      ]
+    },
+    {
+      "variable": "sex",
+      "label": "Gender",
+      "values": [
+        "Male",
+        "Female"
+      ]
+    },
+    {
+      "variable": "bula_h",
+      "label": "Federal States",
+      "values": [
+        "Schleswig-Holstei",
+        "Hamburg",
+        "Lower Saxony",
+        "Bremen",
+        "North Rhine-Westphalia",
+        "Hesse",
+        "Rhineland-Palatinate,Saarland",
+        "Baden-Württemberg",
+        "Bavaria",
+        "Berlin",
+        "Brandenburg",
+        "Mecklenburg-Western Pomerania",
+        "Saxony",
+        "Saxony-Anhalt",
+        "Thuringia"
+      ]
+    },
+    {
+      "variable": "education",
+      "label": "Education Level",
+      "values": [
+        "lower secondary degree",
+        "secondary school degree",
+        "college entrance qualification",
+        "Other degree",
+        "no degree/no degree yet"
+      ]
+    },
+    {
+      "variable": "pgcasmin",
+      "label": "CASMIN-Klassifikation",
+      "values": [
+        "(0) in school",
+        "(1a) inadequately completed",
+        "(1b) general elementary school",
+        "(1c) basic vocational qualification",
+        "(2b) intermediate general qualification",
+        "(2a) intermediate vocational",
+        "(2c_gen) general maturity certificate",
+        "(2c_voc) vocational maturity certificate",
+        "(3a) lower tertiary education",
+        "(3b) higher tertiary education"
+      ]
+    },
+    {
+      "variable": "pgisced97",
+      "label": "ISCED-1997-Classification",
+      "values": [
+        "in school",
+        "inadequately",
+        "general elemantary",
+        "middle vocational",
+        "vocational + Abi",
+        "higher vocational",
+        "higher education"
+      ]
+    },
+    {
+      "variable": "sampreg",
+      "label": "Sample Region",
+      "values": [
+        "West Germany",
+        "East Germany"
+      ]
+    },
+    {
+      "variable": "e11102",
+      "label": "Employment Status of Individual",
+      "values": [
+        "Not Employed",
+        "Employed"
+      ]
+    },
+    {
+      "variable": "e11103",
+      "label": "Employment Level of Individual",
+      "values": [
+        "Full Time",
+        "Part Time",
+        "Not Working"
+      ]
+    },
+    {
+      "variable": "hgtyp1hh",
+      "label": "Household typology (1-digit)",
+      "values": [
+        "1-pers.-HH",
+        "(Married) couple without C.",
+        "Single parent",
+        "Couple + C. LE 16",
+        "Couple + C. GT 16",
+        "Couple + C. LE and GT 16"
+      ]
+    },
+    {
+      "variable": "migback",
+      "label": "Migration background",
+      "values": [
+        "no migration background",
+        "direct migration background",
+        "indirect migration background"
+      ]
+    }
+  ],
+  "description_de": "",
+  "start_year": 1984,
+  "end_year": 2019,
+  "types": [
+    "numerical"
+  ]
+}
