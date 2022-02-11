@@ -187,64 +187,79 @@ for (var in 1:length(meta$variable)){
 
 ###############################################################################
 # test center #
-# mean_data <- get_data(datasetnum =  data.file.num,
-#                       datasetfac = data.file.fac,
-#                       variable = "pglabgro",
-#                       year = "syear",
-#                       weight = "phrf",
-#                       diffcount = 2,
-#                       diffvars = c("pgcasmin", "sex"),
-#                       vallabel = FALSE)
-# 
-# mean_data <- get_mean_values(dataset = mean_data,
-#                              year = "year",
-#                              diffcount = 2,
-#                              diffvar1 = "pgcasmin",
-#                              diffvar2 = "sex",
-#                              diffvar3 = "")
-# 
-# prop_data <- get_data(datasetnum =  data.file.num,
-#                       datasetfac = data.file.fac,
-#                       variable = "pgoeffd",
-#                       year = "syear",
-#                       weight = "phrf",
-#                       diffcount = 3,
-#                       diffvars = c("migback", "sampreg", "sex"),
-#                       vallabel = TRUE)
-# 
-# prop_data <- get_prop_values(dataset = prop_data,
-#                              groupvars = c("usedvariable", "year", "migback", "sampreg", "sex"),
-#                              alpha = 0.05)
-# 
-# mean_data <-  get_protected_values(dataset = mean_data, cell.size = 30)
-# 
-# prop_data <-  get_protected_values(dataset = prop_data, cell.size = 30)
-# 
-# mean_data <- expand_table(table = mean_data, diffvar1 = "pgcasmin",
-#                           diffvar2 = "sex", diffvar3 = "",
-#                           diffcount = 2, tabletype = "mean")
-# 
-# prop_data <- expand_table(table = prop_data, diffvar1 = "migback",
-#                           diffvar2 = "sampreg", diffvar3 = "sex",
-#                           diffcount = 3, tabletype = "prop")
-# 
-# 
-# mean_data <-  create_table_lables(table = mean_data)
-# 
-# data.csv <- get_table_export(table = mean_data, variable = "plh0218",
-#                              metadatapath = paste0(metapath, "variables.csv"),
-#                              exportpath = exportpath, diffcount = 3,
-#                              tabletype = "mean")
-# 
-# data.csv <- get_table_export(table = prop_data, variable = "plh0218",
-#                              metadatapath = paste0(metapath, "variables.csv"),
-#                              exportpath = exportpath, diffcount = 3,
-#                              tabletype = "prop")
-# 
-# json_create_lite(variable = "plh0218",
-#                  varlabel = meta$label_de[meta$variable=="plh0218"],
-#                  startyear = as.numeric(unique(data.csv$year)[1]),
-#                  endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]),
-#                  tabletype = "mean",
-#                  exportpath = paste0(exportpath, "/categorical/", "plh0218", "/meta.json"))
-######################################################################################################
+# numerical variables: pglabnet pgtatzeit bmi ple0007
+# categorical variables: plh0182 plj0587
+
+# for numeric variables
+mean_data <- get_data(datasetnum =  data.file.num,
+                      datasetfac = data.file.fac,
+                      variable = "ple0007",
+                      year = "syear",
+                      weight = "phrf",
+                      diffcount = 1,
+                      diffvars = c( "sex"),
+                      vallabel = FALSE)
+
+mean_data <- get_mean_values(dataset = mean_data,
+                             year = "year",
+                             diffcount = 1,
+                             diffvar1 = "sex",
+                             diffvar2 = "",
+                             diffvar3 = "")
+
+mean_data <-  get_protected_values(dataset = mean_data, cell.size = 30)
+
+mean_data <- expand_table(table = mean_data, diffvar1 = "sex",
+                          diffvar2 = "", diffvar3 = "",
+                          diffcount = 1, tabletype = "mean")
+
+mean_data <-  create_table_lables(table = mean_data)
+
+data.csv <- get_table_export(table = mean_data, variable = "ple0007",
+                             metadatapath = paste0(metapath, "variables.csv"),
+                             exportpath = exportpath, diffcount = 3,
+                             tabletype = "mean")
+
+json_create_lite(variable = "ple0007", 
+                 varlabel = meta$label_de[meta$variable=="ple0007"],
+                 startyear = as.numeric(unique(data.csv$year)[1]), 
+                 endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]), 
+                 tabletype = "mean",
+                 exportpath = paste0(exportpath, "/numerical/", "ple0007", "/meta.json"))
+
+
+################################################################################
+# for categorical variables
+prop_data <- get_data(datasetnum =  data.file.num,
+                      datasetfac = data.file.fac,
+                      variable = "plj0587",
+                      year = "syear",
+                      weight = "phrf",
+                      diffcount = 2,
+                      diffvars = c("sampreg", "sex"),
+                      vallabel = TRUE)
+
+prop_data <- get_prop_values(dataset = prop_data,
+                             groupvars = c("usedvariable", "year", "sampreg", "sex"),
+                             alpha = 0.05)
+
+prop_data <-  get_protected_values(dataset = prop_data, cell.size = 30)
+
+
+prop_data <- expand_table(table = prop_data, diffvar1 = "sampreg",
+                          diffvar2 = "sex", diffcount = 2, tabletype = "prop")
+
+
+data.csv <- get_table_export(table = prop_data, variable = "plj0587",
+                             metadatapath = paste0(metapath, "variables.csv"),
+                             exportpath = exportpath, diffcount = 3,
+                             tabletype = "prop")
+
+json_create_lite(variable = "plj0587",
+                 varlabel = meta$label_de[meta$variable=="plj0587"],
+                 startyear = as.numeric(unique(data.csv$year)[1]),
+                 endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]),
+                 tabletype = "prop",
+                 exportpath = paste0(exportpath, "/categorical/", "plh0218", "/meta.json"))
+
+#####################################################################################################
