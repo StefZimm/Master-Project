@@ -138,8 +138,8 @@ for (var in 1:length(meta$variable)){
                          tabletype = "mean",
                          exportpath = paste0(exportpath, "/numerical/", variable, "/meta.json"))
         
-        print(paste("Die Variable", variable, "wird verarbeitet mit Differenzierung", 
-                    paste(difflist[[i]],collapse=","), "als Mittelwert-Tabelle"))
+        print(paste("The variable", variable, "is processed with grouping year,", 
+                    paste(difflist[[i]],collapse=","), "as numeric mean table"))
       }
       
       if (meta$probtable[var] == "Yes") {
@@ -178,8 +178,8 @@ for (var in 1:length(meta$variable)){
                          tabletype = "prop",
                          exportpath = paste0(exportpath, "/categorical/", variable, "/meta.json"))
         
-        print(paste("Die Variable", variable, "wird verarbeitet mit Differenzierung", 
-                    paste(difflist[[i]],collapse=","), "als Prozentwert-Tabelle"))
+        print(paste("The variable", variable, "is processed with grouping year", 
+                    paste(difflist[[i]],collapse=","), "as a categorical percentage table"))
       }
     } 
   }

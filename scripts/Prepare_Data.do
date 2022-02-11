@@ -12,7 +12,7 @@ net install soeptools, from(http://ddionrails.github.io/soeptools/)
 * Stefans Paths
 if c(username)=="stefz" & c(os) == "Windows"{ // Stefan DIW-PC
 	* Data path to soepdata
-	 global data "C:\datasets\soepdata" 
+	 global data "C:\datasets\soepdata\v36\" 
 	 * meta path to variables.csv and variable_categories.csv
 	 global meta "C:\git\Master-Project\metadata\p_data\"
 	  * output path for dataset

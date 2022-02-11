@@ -719,3 +719,8 @@ soep-core,p_data,v36,transab_cat,2,Low transfer dependency,Low transfer dependen
 soep-core,p_data,v36,transab_cat,3,High transfer dependency,High transfer dependency
 soep-core,p_data,v36,transab_cat,4,Very high transfer dependency,Very high transfer dependency
 soep-core,p_data,v36,transab_cat,5,Complete transfer dependency,Complete transfer dependency
+soep-core,p_data,v36,hlf0071_h,1,Much too small,Much too small
+soep-core,p_data,v36,hlf0071_h,2,A little too small,A little too small
+soep-core,p_data,v36,hlf0071_h,3,Just right,Just right
+soep-core,p_data,v36,hlf0071_h,4,A little too big,A little too big
+soep-core,p_data,v36,hlf0071_h,5,Much too big,Much too big
