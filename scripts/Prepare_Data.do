@@ -22,45 +22,45 @@ if c(username)=="stefz" & c(os) == "Windows"{ // Stefan DIW-PC
 * Deliverance Paths
 if c(username)=="Deliverance" & c(os) == "Windows"{ // Stefan DIW-PC
 	* Data path to soepdata
-	 global data "" 
+	 global data "D:\Education\Thesis\cs-transfer\Stata" 
 	 * meta path to variables.csv and variable_categories.csv
-	 global meta ""
+	 global meta "D:\Education\Thesis\Master-Project\metadata\p_data\"
 	  * output path for dataset
-	 global output ""
+	 global output "D:\Education\Thesis\Output\"
 } 
 
 *** Load and merge datasets
-use pid hid syear netto phrf sex migback syear sampreg gebjahr migback using ${data}\ppathl.dta, clear
+use pid hid syear netto corigin phrf sex migback syear sampreg gebjahr germborn migback using ${data}\ppathl.dta, clear
 
 merge 1:1 pid syear using ${data}\pl.dta, nogen keep (master match) /// 
-          keepusing (plh0012_h plh0182 plh0032 plh0033 plh0034 plh0035 plh0036 /// 
-		  plh0037 plh0038 plh0039 plh0040 plh0042 plj0046 plj0047 pli0092_h pli0095_h /// 
-		  pli0096_h pli0097_h pli0098_h plh0171 plh0164  /// 
-		  plh0166 plh0171 plh0172 plh0173 plh0174 plh0175 plh0176 plh0177 plh0178 /// 
-		  plh0179 plh0180 plh0181 plh0182 plh0183 plj0587 plj0588 plj0589 /// 
-		  plh0206i01 plh0206i02 plh0206i03 plh0206i04 plh0206i05 plh0206i06 /// 
-		  plh0212 plh0213 plh0214 plh0215 plh0216 plh0217 plh0218 plh0219 /// 
-		  plh0220 plh0221 plh0222 plh0223 plh0224 plh0225 plh0226 plb0158 ///
-		  plb0037_h plb0036_h plb0050 pli0059 plb0219 plb0218 plb0195_h /// 
-		  plb0196_h plb0197 pld0047 ple0128_h ple0004 ple0005 ple0097 ple0098_v5 /// 
-		  ple0160 ple0009 ple0162 ple0006 ple0007 ple0053 ple0055 ple0056 ple0011 ///
-		  ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 /// 
-		  ple0021 ple0022 ple0024 ple0179 ple0180 ple0181 ple0182 ple0040 ple0041 /// 
-		  ple0081_h ple0008 plh0188 plh0189 plh0190 ///
-		  plh0191 plh0188 plh0184 plh0185 plh0186 plh0187 plh0105 plh0106 plh0107 /// 
-		  plh0108 plh0109 plh0110 plh0111 plh0112 plh0105 plh0054 plh0056 plh0058 /// 
-		  plh0061 plh0204_h pld0043 pld0044 pld0045 plh0192 plh0193 plh0194 plh0195 /// 
-		  plh0196 pli0080 pli0081 pli0082 pli0083 pli0089 pli0091_h pli0092_h pli0093_h /// 
-		  pli0098_h pli0165)
+          keepusing (plb0036_h plb0037_h plb0050 plb0195_h plb0196_h plb0197 plb0218 plb0219 pld0043 /// 
+		pld0044 pld0045 pld0047 ple0004 ple0005 ple0006 ple0007 ple0008 ple0009 ple0011  /// 
+		ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 ple0021  /// 
+		ple0022 ple0024 ple0040 ple0041 ple0044_h ple0053 ple0055 ple0056 ple0081_h  /// 
+		ple0097 ple0098_v5 ple0128_h ple0160ple0162 plh0012_h plh0032 plh0033 plh0034  /// 
+		plh0035 plh0036 plh0037 plh0038 plh0039 plh0040 plh0042 plh0054 plh0056 plh0058 /// 
+		plh0061 plh0105 plh0106 plh0107 plh0108 plh0109 plh0110 plh0111 plh0112 plh0162  /// 
+		plh0164 plh0166 plh0171 plh0172 plh0173 plh0174 plh0175 plh0176 plh0177 plh0178   ///
+		plh0179 plh0180 plh0181 plh0182 plh0183 plh0184 plh0185 plh0186 plh0187 plh0188  /// 
+		plh0189 plh0190 plh0191 plh0192 plh0193 plh0194 plh0195 plh0196 plh0204_h   /// 
+		plh0206i01 plh0206i02 plh0206i03 plh0206i04 plh0206i05 plh0206i06 plh0212 plh0213 /// 
+		plh0214 plh0215 plh0216 plh0217 plh0218 plh0219 plh0220 plh0221 plh0222 plh0223  ///
+		plh0224 plh0225 plh0226 pli0059 pli0080 pli0081 pli0082 pli0083 pli0089 pli0091_h   /// 
+		pli0092_h pli0093_h pli0095_h pli0096_h pli0097_h pli0098_h pli0165  /// 
+		plj0014_v3 plj0046 plj0047 plj0587 plj0588 plj0589  ///
+		  )
 
 merge 1:1 pid syear using ${data}\pgen.dta, nogen keep (master match)  keepusing ( ///
-          pglabgro pglabnet pgtatzeit pgvebzeit pgisced97 pgpsbil pgoeffd pgemplst pgcasmin) 
+		pgcasmin pgemplst  pgfamstd pgisced97 pglabgro pglabnet pgnation pgoeffd pgtatzeit ///
+		pgvebzeit pgpsbil ) 
 		  
-merge 1:1 pid syear using ${data}\pequiv.dta, nogen keep (master match) keepusing (y11101 /// 
-		  i11102 i11101 i11106 i11107 d11106 d11107 h11101 y11101 e11102 e11103)
+merge 1:1 pid syear using ${data}\pequiv.dta, nogen keep (master match) keepusing (d11101 /// 
+		d11106 d11107 d11109 e11102 e11103 h11101 i11101 i11102 i11103 i11106 ///
+		i11107 m11104 m11124 m11125 m11126)
 merge m:1 hid syear using ${data}\hbrutto.dta, nogen keep (master match) keepusing (bula_h)
-merge m:1 hid syear using ${data}\hgen.dta, nogen keep (master match) keepusing (hgtyp1hh hghinc)
-merge m:1 hid syear using ${data}\hl.dta, nogen keep (master match) keepusing (hlf0019_h hlf0021_h hlf0071_h)
+merge m:1 hid syear using ${data}\hgen.dta, nogen keep (master match) keepusing (hgtyp1hh hghinc hgowner)
+merge m:1 hid syear using ${data}\hl.dta, nogen keep (master match) keepusing (hlf0001_h hlf0019_h ///
+		  hlf0021_h hlf0071_h hlf0094)
 
 * Define Population
 * Keep observations with valid interview
