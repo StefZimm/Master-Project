@@ -1,86 +1,54 @@
 variable,type,label_de,study,dataset,version,meantable,probtable,template_id,label,concept,description,description_de,minedition,topic
-hid,long,Household ID,soep-core,p_data,v36,,,,,,,,,
-pid,long,Individual ID,soep-core,p_data,v36,,,,,,,,,
-syear,double,Survey Year,soep-core,p_data,v36,,,,,,,,,
-phrf,double,Weighting factor,soep-core,p_data,v36,,,,,,,,,
-pgtatzeit,float,Actual Work Time Per Week,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
+aequiv_income,byte,Equivalent household income per year,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
 age_gr,float,Age Group,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-pgvebzeit,float,Agreed Upon Work Time Per Week,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
-pgoeffd,float,Civil Service,soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
-y11101,double,Consumer Price Index,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-pglabgro,double,Current Gross Labor Income in Euro,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-plh0182,byte,Current Life Satisfaction,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-pglabnet,double,Current Net Labor Income in Euro,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+agre,byte,Big Five Traits: Agreeableness Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+bmi,float,Body Mass Index,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
+bula_h,byte,Federal States,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+conc,byte,Big Five Traits: Conscientiousness Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+corigin,int,Country Born In,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+d11101,int,Age of Individual,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+d11109,float,Number of Years of Education,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+e11102,byte,Employment Status of Individual,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+e11103,byte,Employment Level of Individual,soep-core,p_data,v36,demo,demo,,,,,,,Demography
 education,float,Education Level,soep-core,p_data,v36,demo,demo,,,,,,,Demography
 erwst,float,Employment status,soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
-bula_h,byte,Federal States,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-sex,byte,Gender,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-pli0098_h,byte,"Going to church, attending religious events",soep-core,p_data,v36,No,Yes,,,,,,,Time Use and Environmental Behavior
-pli0095_h,byte,Helping Friends and Relatives,soep-core,p_data,v36,No,Yes,,,,,,,Time Use and Environmental Behavior
-pli0097_h,byte,"Involved. Parties, local politics, citizens' initiative",soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-pgisced97,double,ISCED-1997-Classification,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-pgcasmin,byte,CASMIN-Klassifikation,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+extr,byte,Big Five Traits: Extraversion Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+gebjahr,,Birth Year,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+germborn,byte,German Born,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+hghinc,byte,Monthly household net income (EUR),soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+hgowner,byte,Tenant or Owner of Dwelling,soep-core,p_data,v36,No,Yes,,,,,,,"Home, Amenities, and Contributions of Private HH"
+hgtyp1hh,byte,Household typology (1-digit),soep-core,p_data,v36,demo,demo,,,,,,,Demography
+hid,long,Household ID,soep-core,p_data,v36,,,,,,,,,
+hinceq,byte,Equivalent household income monthly,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+hlf0001_h,byte,"Main Tenant, Sub-Tenant, Owner",soep-core,p_data,v36,No,Yes,,,,,,,"Home, Amenities, and Contributions of Private HH"
+hlf0019_h,byte,Total living space in sqm,soep-core,p_data,v36,Yes,No,,,,,,,"Home, Amenities, and Contributions of Private HH"
+hlf0021_h,byte,Number of rooms in Apartment,soep-core,p_data,v36,Yes,No,,,,,,,"Home, Amenities, and Contributions of Private HH"
+hlf0071_h,byte,Assessment of dwelling size,soep-core,p_data,v36,No,Yes,,,,,,,"Home, Amenities, and Contributions of Private HH"
+hlf0094,byte,Houseing Costs vs Comparable Dwellings,soep-core,p_data,v36,No,Yes,,,,,,,"Home, Amenities, and Contributions of Private HH"
+i11101,byte,HH Pre-Government Income,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+i11102,byte,HH Post-Government Income,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+i11103,long,HH Labor Income,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+i11106,byte,HH Private Transfers,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+i11107,byte,HH Public Transfers,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+m11104,byte,Frequency of Sport or Exercise,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+m11124,byte,Disability Status of Individual,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+m11125,byte,Satisfaction with Health,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+m11126,byte,Current Self-Rated Health Status,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 migback,byte,Migration background,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-party,float,Party affiliation,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-sampreg,float,Sample Region,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-plj0587,byte,Loneliness: Lacking the company of others,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
-plj0588,byte,Loneliness: Feeling of being left out,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
-plj0589,byte,Loneliness: Feeling of being socially isolated,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
-plh0206i01,byte,Reciprocity: Willingness to return favors,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0206i02,byte,Reciprocity: Revenge in case of grave injustice,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0206i03,byte,Reciprocity: Paying back: putting someone in a difficult position,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0206i04,byte,Reciprocity: Special effort to return help,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0206i05,byte,Reciprocity: Offensive behavior in case of insults,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0206i06,byte,Reciprocity: Willingness to incur costs to return help,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
 neur,byte,Big Five Traits: Neuroticism Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
 open,byte,Big Five Traits: Openness Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-extr,byte,Big Five Traits: Extraversion Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-agre,byte,Big Five Traits: Agreeableness Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-conc,byte,Big Five Traits: Conscientiousness Value,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0212,byte,Big Five Traits (Conscientiousness): Work diligently,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0213,byte,Big Five Traits (Extraversion): I am communicative,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0214,byte,Big Five Traits (Agreeableness): I am sometimes too rough with others,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0215,byte,Big Five Traits (Openness): I am original,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0216,byte,Big Five Traits (Neuroticism): Often worry about things,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0217,byte,Big Five Traits (Agreeableness): Can forgive,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0218,byte,Big Five Traits (Conscientiousness): I am rather lazy,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0219,byte,Big Five Traits (Extraversion): I am sociable,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0220,byte,Big Five Traits (Openness): Appreciate artistic experience,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0221,byte,Big Five Traits (Neuroticism): I am easily nervous,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0222,byte,"Big Five Traits (Conscientiousness): Perform tasks effectively, efficiently",soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0223,byte,Big Five Traits (Extraversion): I am reserved,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0224,byte,Big Five Traits (Agreeableness): Be friendly with others,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0225,byte,Big Five Traits (Openness): Have vivid imagination,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0226,byte,Big Five Traits (Neuroticism): Handle stress well,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0183,byte,Satisfaction With Life in Five Years,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0178,byte,Satisfaction: Amount Of Leisure Time,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0179,byte,Satisfaction: Child Care,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0177,byte,Satisfaction: Dwelling,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0180,byte,Satisfaction: Family Life,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0171,byte,Satisfaction: Health,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0175,byte,Satisfaction: Household Income,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0174,byte,Satisfaction: Housework,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0166,byte,Satisfaction: Life A Year From Now,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0176,byte,Satisfaction: Personal Income,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0164,byte,Satisfaction: School Education and Vocational Retraining,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0172,byte,Satisfaction: Sleep,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0181,byte,Satisfaction: Social Life,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-plh0173,byte,Satisfaction: Work,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
-pli0092_h,byte,Sport activity,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
-pli0096_h,byte,Voluntary work,soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
-plh0037,byte,Worries: Consequences from climate change,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0040,byte,Worries: Crime in Germany,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0032,byte,Worries: Economic development,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0036,byte,Worries: Environment,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0033,byte,Worries: Finances,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0039,byte,Worries: Global terrorism,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0042,byte,Worries: Job Security,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plj0047,byte,Worries: Job Security Hostility To Foreigners,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plj0046,byte,Worries: Job Security Immigration To Germany,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0035,byte,Worries: Own health,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0038,byte,Worries: Peace,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-plh0034,byte,Worries: Stability of financial markets,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
-years_injob,byte,Employed by current employer in years,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
+party,float,Party affiliation,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+pgcasmin,byte,CASMIN-Klassifikation,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+pgfamstd,byte,Marital Status in Survey Year,soep-core,p_data,v36,No,Yes,,,,,,,"Home, Amenities, and Contributions of Private HH"
+pgisced97,double,ISCED-1997-Classification,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+pglabgro,double,Current Gross Labor Income in Euro,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+pglabnet,double,Current Net Labor Income in Euro,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+pgnation,int,Nationality,soep-core,p_data,v36,No,Yes,,,,,,,Demography
+pgoeffd,float,Civil Service,soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
+pgtatzeit,float,Actual Work Time Per Week,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
+pgvebzeit,float,Agreed Upon Work Time Per Week,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
+phrf,double,Weighting factor,soep-core,p_data,v36,,,,,,,,,
+pid,long,Individual ID,soep-core,p_data,v36,,,,,,,,,
 plb0037_h,byte,Employment relationship Limited/Unlimited,soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
 plb0050,byte,"Works council, staff council in company (""Betriebsrat"")",soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
 plb0158,float,Distance from home to work in km,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
@@ -95,7 +63,6 @@ pld0045,byte,Hfk. Door unlocked,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, V
 pld0047,float,Number of close friends,soep-core,p_data,v36,Yes,No,,,,,,,Time Use and Environmental Behavior
 ple0004,byte,Health condition impaired Climbing stairs,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 ple0005,byte,Health condition impair. exert. Activities,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
-bmi,float,Body Mass Index,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
 ple0006,float,Body height in cm,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
 ple0007,float,Body weight in kg,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
 ple0008,byte,Current state of health,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
@@ -115,6 +82,7 @@ ple0022,byte,Chronic back problems,soep-core,p_data,v36,No,Yes,,,,,,,Health and 
 ple0024,byte,No disease detected,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 ple0040,byte,"Disability, severe disability",soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 ple0041,byte,Degree of disability in percent,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
+ple0044_h,byte,Didn't Work Last Year Due to Illness,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 ple0053,byte,Hospitalization previous year,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 ple0055,float,Hospitalization previous year Number,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
 ple0056,float,Hospitalization previous year Nights,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
@@ -124,10 +92,16 @@ ple0098_v5,byte,Private supplementary health insurance (yes/no),soep-core,p_data
 ple0128_h,float,Contribution for private supplementary health insurance,soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
 ple0160,byte,Change of insurance company in previous year,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 ple0162,byte,Health problems longer than half a year,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
-ple0179,byte,How often meat,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
-ple0180,byte,How often fish,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
-ple0181,byte,How often poultry,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
-ple0182,byte,Vegetarian or vegan diet,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+plh0032,byte,Worries: Economic development,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0033,byte,Worries: Finances,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0034,byte,Worries: Stability of financial markets,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0035,byte,Worries: Own health,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0036,byte,Worries: Environment,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0037,byte,Worries: Consequences from climate change,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0038,byte,Worries: Peace,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0039,byte,Worries: Global terrorism,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0040,byte,Worries: Crime in Germany,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0042,byte,Worries: Job Security,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
 plh0054,byte,Goal Inglehart Index: peace and order,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
 plh0056,byte,Goal Inglehart Index: more citizen influence,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
 plh0058,byte,Goal Inglehart Index: Price stability,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
@@ -140,6 +114,22 @@ plh0109,byte,"Importance: To have a happy marriage, partnership",soep-core,p_dat
 plh0110,byte,Importance: To have children,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
 plh0111,byte,"Importance: To be politically, socially active",soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
 plh0112,byte,"Importance: See the world, travel a lot",soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0162,byte,Satisfaction: Standard of Living,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0164,byte,Satisfaction: School Education and Vocational Retraining,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0166,byte,Satisfaction: Life A Year From Now,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0171,byte,Satisfaction: Health,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0172,byte,Satisfaction: Sleep,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0173,byte,Satisfaction: Work,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0174,byte,Satisfaction: Housework,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0175,byte,Satisfaction: Household Income,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0176,byte,Satisfaction: Personal Income,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0177,byte,Satisfaction: Dwelling,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0178,byte,Satisfaction: Amount Of Leisure Time,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0179,byte,Satisfaction: Child Care,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0180,byte,Satisfaction: Family Life,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0181,byte,Satisfaction: Social Life,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0182,byte,Satisfaction: Current Life,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
+plh0183,byte,Satisfaction: Life in Five Years,soep-core,p_data,v36,Yes,No,,,,,,,"Attitudes, Values, and Personality"
 plh0184,byte,Frequency angry last 4 weeks,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
 plh0185,byte,Frequency anxious last 4 weeks,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
 plh0186,byte,Frequency happy last 4 weeks,soep-core,p_data,v36,Yes,Yes,,,,,,,Health and Care
@@ -154,6 +144,27 @@ plh0194,byte,Caution towards strangers,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attit
 plh0195,byte,"People take advantage, are fair",soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
 plh0196,byte,"People helpful, self-interest",soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
 plh0204_h,byte,Risk-taking,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0206i01,byte,Reciprocity: Willingness to return favors,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0206i02,byte,Reciprocity: Revenge in case of grave injustice,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0206i03,byte,Reciprocity: Paying back: putting someone in a difficult position,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0206i04,byte,Reciprocity: Special effort to return help,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0206i05,byte,Reciprocity: Offensive behavior in case of insults,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0206i06,byte,Reciprocity: Willingness to incur costs to return help,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0212,byte,Big Five Traits (Conscientiousness): Work diligently,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0213,byte,Big Five Traits (Extraversion): I am communicative,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0214,byte,Big Five Traits (Agreeableness): I am sometimes too rough with others,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0215,byte,Big Five Traits (Openness): I am original,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0216,byte,Big Five Traits (Neuroticism): Often worry about things,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0217,byte,Big Five Traits (Agreeableness): Can forgive,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0218,byte,Big Five Traits (Conscientiousness): I am rather lazy,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0219,byte,Big Five Traits (Extraversion): I am sociable,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0220,byte,Big Five Traits (Openness): Appreciate artistic experience,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0221,byte,Big Five Traits (Neuroticism): I am easily nervous,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0222,byte,"Big Five Traits (Conscientiousness): Perform tasks effectively, efficiently",soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0223,byte,Big Five Traits (Extraversion): I am reserved,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0224,byte,Big Five Traits (Agreeableness): Be friendly with others,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0225,byte,Big Five Traits (Openness): Have vivid imagination,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
+plh0226,byte,Big Five Traits (Neuroticism): Handle stress well,soep-core,p_data,v36,Yes,Yes,,,,,,,"Attitudes, Values, and Personality"
 pli0059,byte,"Hours of sleep, normal working day",soep-core,p_data,v36,Yes,No,,,,,,,Health and Care
 pli0080,byte,"Visits neighbors,friends",soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
 pli0081,byte,"Visits family,relatives",soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
@@ -161,21 +172,23 @@ pli0082,byte,"Trips, short trips",soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use an
 pli0083,byte,"Television, video",soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
 pli0089,byte,Visits to sporting events,soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
 pli0091_h,byte,"Visits to cinema,pop,jazz concerts,disco",soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
+pli0092_h,byte,Sport activity,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
 pli0093_h,byte,Artistic and musical activities,soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
+pli0095_h,byte,Helping Friends and Relatives,soep-core,p_data,v36,No,Yes,,,,,,,Time Use and Environmental Behavior
+pli0096_h,byte,Voluntary work,soep-core,p_data,v36,No,Yes,,,,,,,Work and Employment
+pli0097_h,byte,"Involved. Parties, local politics, citizens' initiative",soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+pli0098_h,byte,"Going to church, attending religious events",soep-core,p_data,v36,No,Yes,,,,,,,Time Use and Environmental Behavior
 pli0165,byte,Use of online social networks,soep-core,p_data,v36,Yes,Yes,,,,,,,Time Use and Environmental Behavior
-e11102,byte,Employment Status of Individual,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-e11103,byte,Employment Level of Individual,soep-core,p_data,v36,demo,demo,,,,,,,Demography
-i11101,byte,HH Pre-Government Income,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-i11102,byte,HH Post-Government Income,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-i11106,byte,HH Private Transfers,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-i11107,byte,HH Public Transfers,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-hghinc,byte,Monthly household net income (EUR),soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-hgtyp1hh,byte,Household typology (1-digit),soep-core,p_data,v36,demo,demo,,,,,,,Demography
-hlf0019_h,byte,Total living space in sqm,soep-core,p_data,v36,Yes,No,,,,,,,"Home, Amenities, and Contributions of Private HH"
-hlf0021_h,byte,Number of living rooms,soep-core,p_data,v36,Yes,No,,,,,,,"Home, Amenities, and Contributions of Private HH"
-hlf0071_h,byte,Assessment of dwelling size,soep-core,p_data,v36,No,Yes,,,,,,,"Home, Amenities, and Contributions of Private HH"
-aequiv_income,byte,Equivalent household income per year,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
-hinceq,byte,Equivalent household income monthly,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
+plj0014_v3,byte,German Citizenship,soep-core,p_data,v36,No,Yes,,,,,,,Demography
+plj0046,byte,Worries: Job Security Immigration To Germany,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plj0047,byte,Worries: Job Security Hostility To Foreigners,soep-core,p_data,v36,No,Yes,,,,,,,"Attitudes, Values, and Personality"
+plj0587,byte,Loneliness: Lacking the company of others,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+plj0588,byte,Loneliness: Feeling of being left out,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+plj0589,byte,Loneliness: Feeling of being socially isolated,soep-core,p_data,v36,No,Yes,,,,,,,Health and Care
+sampreg,float,Sample Region,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+sex,byte,Gender,soep-core,p_data,v36,demo,demo,,,,,,,Demography
+syear,double,Survey Year,soep-core,p_data,v36,,,,,,,,,
 transab,byte,Transfer dependency,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxes, and Social Security"
 transab_cat,byte,Transfer dependency grouped 1,soep-core,p_data,v36,No,Yes,,,,,,,"Income, Taxes, and Social Security"
 transab_cat2,byte,Transfer dependency grouped 2,soep-core,p_data,v36,No,Yes,,,,,,,"Income, Taxes, and Social Security"
+years_injob,byte,Employed by current employer in years,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
