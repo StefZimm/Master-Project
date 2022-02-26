@@ -219,22 +219,6 @@ soep-core,p_data,v36,plh0040,3,No worries,No worries
 soep-core,p_data,v36,plh0042,1,Big worries,Big worries
 soep-core,p_data,v36,plh0042,2,Some worries,Some worries
 soep-core,p_data,v36,plh0042,3,No worries,No worries
-soep-core,p_data,v36,plh0054,1,Importance: in 1st place,Importance: in 1st place
-soep-core,p_data,v36,plh0054,2,Importance: in 2nd place,Importance: in 2nd place
-soep-core,p_data,v36,plh0054,3,Importance: in 3rd place,Importance: in 3rd place
-soep-core,p_data,v36,plh0054,4,Importance: in 4th place,Importance: in 4th place
-soep-core,p_data,v36,plh0056,1,Importance: in 1st place,Importance: in 1st place
-soep-core,p_data,v36,plh0056,2,Importance: in 2nd place,Importance: in 2nd place
-soep-core,p_data,v36,plh0056,3,Importance: in 3rd place,Importance: in 3rd place
-soep-core,p_data,v36,plh0056,4,Importance: in 4th place,Importance: in 4th place
-soep-core,p_data,v36,plh0058,1,Importance: in 1st place,Importance: in 1st place
-soep-core,p_data,v36,plh0058,2,Importance: in 2nd place,Importance: in 2nd place
-soep-core,p_data,v36,plh0058,3,Importance: in 3rd place,Importance: in 3rd place
-soep-core,p_data,v36,plh0058,4,Importance: in 4th place,Importance: in 4th place
-soep-core,p_data,v36,plh0061,1,Importance: in 1st place,Importance: in 1st place
-soep-core,p_data,v36,plh0061,2,Importance: in 2nd place,Importance: in 2nd place
-soep-core,p_data,v36,plh0061,3,Importance: in 3rd place,Importance: in 3rd place
-soep-core,p_data,v36,plh0061,4,Importance: in 4th place,Importance: in 4th place
 soep-core,p_data,v36,plh0105,1,Very important,Very important
 soep-core,p_data,v36,plh0105,2,Important,Important
 soep-core,p_data,v36,plh0105,3,Less important,Less important
@@ -289,17 +273,6 @@ soep-core,p_data,v36,plh0164,7,7 on Scale 1 to 10,7 on Scale 1 to 10
 soep-core,p_data,v36,plh0164,8,8 on Scale 1 to 10,8 on Scale 1 to 10
 soep-core,p_data,v36,plh0164,9,9 on Scale 1 to 10,9 on Scale 1 to 10
 soep-core,p_data,v36,plh0164,10,10 Completely satisfied,10 Completely satisfied
-soep-core,p_data,v36,plh0166,0,0 Completely dissatisfied,0 Completely dissatisfied
-soep-core,p_data,v36,plh0166,1,1 on Scale 1 to 10,1 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,2,2 on Scale 1 to 10,2 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,3,3 on Scale 1 to 10,3 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,4,4 on Scale 1 to 10,4 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,5,5 on Scale 1 to 10,5 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,6,6 on Scale 1 to 10,6 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,7,7 on Scale 1 to 10,7 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,8,8 on Scale 1 to 10,8 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,9,9 on Scale 1 to 10,9 on Scale 1 to 10
-soep-core,p_data,v36,plh0166,10,10 Completely satisfied,10 Completely satisfied
 soep-core,p_data,v36,plh0171,0,0 Completely dissatisfied,0 Completely dissatisfied
 soep-core,p_data,v36,plh0171,1,1 on Scale 1 to 10,1 on Scale 1 to 10
 soep-core,p_data,v36,plh0171,2,2 on Scale 1 to 10,2 on Scale 1 to 10
@@ -410,17 +383,6 @@ soep-core,p_data,v36,plh0180,7,7 on Scale 1 to 10,7 on Scale 1 to 10
 soep-core,p_data,v36,plh0180,8,8 on Scale 1 to 10,8 on Scale 1 to 10
 soep-core,p_data,v36,plh0180,9,9 on Scale 1 to 10,9 on Scale 1 to 10
 soep-core,p_data,v36,plh0180,10,10 Completely satisfied,10 Completely satisfied
-soep-core,p_data,v36,plh0181,0,0 Completely dissatisfied,0 Completely dissatisfied
-soep-core,p_data,v36,plh0181,1,1 on Scale 1 to 10,1 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,2,2 on Scale 1 to 10,2 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,3,3 on Scale 1 to 10,3 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,4,4 on Scale 1 to 10,4 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,5,5 on Scale 1 to 10,5 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,6,6 on Scale 1 to 10,6 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,7,7 on Scale 1 to 10,7 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,8,8 on Scale 1 to 10,8 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,9,9 on Scale 1 to 10,9 on Scale 1 to 10
-soep-core,p_data,v36,plh0181,10,10 Completely satisfied,10 Completely satisfied
 soep-core,p_data,v36,plh0182,0,0 Completely dissatisfied,0 Completely dissatisfied
 soep-core,p_data,v36,plh0182,1,1 on Scale 1 to 10,1 on Scale 1 to 10
 soep-core,p_data,v36,plh0182,2,2 on Scale 1 to 10,2 on Scale 1 to 10

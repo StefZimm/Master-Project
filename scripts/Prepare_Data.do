@@ -37,11 +37,11 @@ merge 1:1 pid syear using ${data}\pl.dta, nogen keep (master match) ///
 		pld0044 pld0045 pld0047 ple0004 ple0005 ple0006 ple0007 ple0008 ple0009 ple0011  /// 
 		ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 ple0021  /// 
 		ple0022 ple0024 ple0040 ple0041 ple0044_h ple0053 ple0055 ple0056 ple0081_h  /// 
-		ple0097 ple0098_v5 ple0128_h ple0160ple0162 plh0012_h plh0032 plh0033 plh0034  /// 
-		plh0035 plh0036 plh0037 plh0038 plh0039 plh0040 plh0042 plh0054 plh0056 plh0058 /// 
-		plh0061 plh0105 plh0106 plh0107 plh0108 plh0109 plh0110 plh0111 plh0112 plh0162  /// 
-		plh0164 plh0166 plh0171 plh0172 plh0173 plh0174 plh0175 plh0176 plh0177 plh0178   ///
-		plh0179 plh0180 plh0181 plh0182 plh0183 plh0184 plh0185 plh0186 plh0187 plh0188  /// 
+		ple0097 ple0098_v5 ple0128_h ple0160 ple0162 plh0012_h plh0032 plh0033 plh0034  /// 
+		plh0035 plh0036 plh0037 plh0038 plh0039 plh0040 plh0042 /// 
+		plh0105 plh0106 plh0107 plh0108 plh0109 plh0110 plh0111 plh0112 plh0162  /// 
+		plh0164 plh0171 plh0172 plh0173 plh0174 plh0175 plh0176 plh0177 plh0178   ///
+		plh0179 plh0180 plh0182 plh0183 plh0184 plh0185 plh0186 plh0187 plh0188  /// 
 		plh0189 plh0190 plh0191 plh0192 plh0193 plh0194 plh0195 plh0196 plh0204_h   /// 
 		plh0206i01 plh0206i02 plh0206i03 plh0206i04 plh0206i05 plh0206i06 plh0212 plh0213 /// 
 		plh0214 plh0215 plh0216 plh0217 plh0218 plh0219 plh0220 plh0221 plh0222 plh0223  ///
