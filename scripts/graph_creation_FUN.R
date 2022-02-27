@@ -419,6 +419,111 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
 }
 
 ################################################################################
+
+get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount, 
+                                 start, end, ci){
+  
+  title <- meta$label_de[meta$variable==variable]
+  
+  if (diffcount == 1) {  
+    
+    data <- data %>%
+      mutate(sd = percent - lower_confidence)
+    colnames(data)[which(names(data) == variable)] <- "combined_group"
+    
+  } 
+  
+  if (diffcount == 2) {  
+    
+    data <- data %>%
+      unite(combined_group, variable, diffvar1, sep="; ") %>%
+      mutate(sd = percent - lower_confidence) %>%
+      filter(is.na(sd)!=1) 
+    
+  } 
+  
+  if (diffcount == 3) {  
+    
+    data <- data %>%
+      unite(combined_group, variable, diffvar1, diffvar2, sep=", ") %>%
+      mutate(sd = percent - lower_confidence) %>%
+      filter(is.na(sd)!=1) 
+    
+  } 
+  
+  if (ci == FALSE) {  
+    
+    plot <-  plot_ly(
+      data = data,
+      x = ~year, 
+      y = ~percent,
+      color = ~combined_group,
+      type = "scatter",
+      mode = "lines+markers",
+      line = list(width = 4, dash = "dot")) %>% 
+      layout(title = title, 
+             xaxis = list(title = 'year', range = list(start,end), 
+                          tickvals = as.list(seq(1984,2019)),
+                          tickangle=90, tickfont = list(family='Rockwell', 
+                                                        size=14)),
+             hovermode = "x unified") %>%
+      rangeslider(start, end)
+    
+  }
+  
+  if (ci == TRUE) {  
+    
+    data$sd[is.na(data$sd)] <- 0
+    data %>%
+      group_by(year, combined_group) %>%
+      ungroup()
+    
+    data2 <- data[c("year", "combined_group", "percent", "sd")] %>%
+      gather(key, value, -c(year, combined_group)) %>%
+      mutate(ref = paste0(combined_group, ifelse(key == 'sd', '_sd', ''))) %>%
+      dplyr::select(-combined_group, -key) %>%
+      spread(ref, value)
+    
+    # set layout
+    plot <- plot_ly(data2, type = 'scatter', 
+                    mode = "lines+markers") %>%
+      layout(title = title, 
+             xaxis = list(title = 'year', range = list(start,end), 
+                          tickvals = as.list(seq(1984,2019)),
+                          tickangle=90, tickfont = list(family='Rockwell', 
+                                                        size=14)),
+             hovermode = "x unified") %>%
+      rangeslider(start, end)
+    
+    # create plot
+    for (g in unique(data$combined_group)) {
+      print(g)
+      print(is.na(data2[[g]]))
+      
+      if (is.na(data2[[g]]) == FALSE) {
+        plot <- add_trace(plot, x = data2[['year']], 
+                          y = data2[[g]], 
+                          name = g, 
+                          error_y = list(array = data2[[paste0(g, '_sd')]]))
+      }
+      
+      print(head(data2))
+      if (is.na(data2[[g]]) == TRUE) {
+        data2 <- data2 %>%
+          filter(is.na(data2[[g]])!=1) 
+        
+        plot <- add_trace(plot, x = data2[['year']], 
+                          y = data2[[g]], 
+                          name = g, 
+                          error_y = list(array = data2[[paste0(g, '_sd')]]))
+      }
+    }
+  }
+  return(plot)
+}  
+
+
+################################################################################
 # testcenter
 # 
 # library(raster) ##Geographic data analysis __ DB##
@@ -477,6 +582,14 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
 #              variable = variable,
 #              statistic = "mean",
 #              diffvar = "age_gr")
-
-
+#
+# get_percent_lineplot(table = data, 
+#                      meta = meta, 
+#                      variable = variable, 
+#                      diffvar1 = "sampreg", 
+#                      diffvar2 = "sex", 
+#                      diffcount = 3, 
+#                      start = 2005, 
+#                      end = 2015, 
+#                      ci = FALSE)
 
