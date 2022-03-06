@@ -507,7 +507,6 @@ get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diff
                           error_y = list(array = data2[[paste0(g, '_sd')]]))
       }
       
-      print(head(data2))
       if (is.na(data2[[g]]) == TRUE) {
         data2 <- data2 %>%
           filter(is.na(data2[[g]])!=1) 
@@ -523,27 +522,147 @@ get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diff
 }  
 
 
+get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
+  
+  var_vector <- c(variable, "year")
+  
+  if (heatmap == FALSE) {  
+    diffvar_vector<- c(diffvar1[diffvar1 != ""], diffvar2[diffvar2 != ""])
+    vector <- c(var_vector, diffvar_vector[diffvar_vector != ""])
+    vector <- paste(vector, collapse = "_")  
+    table_csv <- paste0(vector, ".csv")
+  }
+  
+  if (heatmap == TRUE) {
+    diffvar_vector <- sort(c("bula_h", diffvar1[diffvar1 != ""]))
+    vector <- c(var_vector, diffvar_vector[diffvar_vector != ""])
+    vector <- paste(vector, collapse = "_")  
+    table_csv <- paste0(vector, ".csv")
+  }
+  
+  return(table_csv)
+}
+
+
+get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
+                        start, end){
+  
+  title <- meta$label_de[meta$variable==variable]
+  
+  groupdata <- data %>%
+    unite(combined_group, variable, diffvar1,  diffvar2, sep=", ") %>%
+    mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
+    mutate(percent = round(percent*100, digits = 2)) %>%
+    mutate(lower_confidence = round(percent-sd, digits = 2)) %>%
+    mutate(upper_confidence = round(percent+sd, digits = 2)) %>%
+    filter(is.na(sd)!=1) 
+  
+  groupdata2 <- data %>%
+    unite(combined_group2, diffvar1,  diffvar2, sep=", ") %>%
+    mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
+    filter(is.na(sd)!=1) 
+  
+  data <- cbind(groupdata, groupdata2[c(variable, "combined_group2")])
+  
+  if (plottype == "dodge") { 
+    # dodged barplot
+    plot <- plot_ly(data, 
+                    x = ~year, 
+                    y = ~percent, 
+                    color = ~combined_group,
+                    type = 'bar') %>% 
+      layout(title = title, 
+             xaxis = list(title = 'year', range = list(start,end), 
+                          tickvals = as.list(seq(1984,2019)),
+                          tickangle=90, tickfont = list(family='Rockwell', 
+                                                        size=14)),
+             hovermode = "x unified") %>%
+      rangeslider(start, end)
+    
+    if (ci == TRUE) { 
+      data$sd[is.na(data$sd)] <- 0
+      data %>%
+        group_by(year, combined_group) %>%
+        ungroup()
+      
+      data2 <- data[c("year", "combined_group", "percent", "sd")] %>%
+        gather(key, value, -c(year, combined_group)) %>%
+        mutate(ref = paste0(combined_group, ifelse(key == 'sd', '_sd', ''))) %>%
+        dplyr::select(-combined_group, -key) %>%
+        spread(ref, value)
+      
+      # set layout
+      plot <- plot_ly(data2, type = 'bar') %>%
+        layout(title = title, 
+               xaxis = list(title = 'year', range = list(start,end), 
+                            tickvals = as.list(seq(1984,2019)),
+                            tickangle=90, tickfont = list(family='Rockwell', 
+                                                          size=14)),
+               hovermode = "x unified") %>%
+        rangeslider(start, end)
+      
+      
+      for (g in unique(data$combined_group)) {
+        
+        if (is.na(data2[[g]]) == FALSE) {
+          plot <- add_trace(plot, x = data2[['year']], 
+                            y = data2[[g]], 
+                            name = g, 
+                            error_y = list(array = data2[[paste0(g, '_sd')]]))
+        }
+        
+        if (is.na(data2[[g]]) == TRUE) {
+          data2 <- data2 %>%
+            filter(is.na(data2[[g]])!=1) 
+          
+          plot <- add_trace(plot, x = data2[['year']], 
+                            y = data2[[g]], 
+                            name = g, 
+                            error_y = list(array = data2[[paste0(g, '_sd')]]))
+        }
+      }
+    }
+  }  
+  
+  if (plottype == "stack") { 
+    # stacked barplot
+    plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+                             y=percent, x=as.character(year))) + 
+      geom_bar(position="fill", stat="identity")+
+      facet_wrap(~combined_group2) + 
+      scale_y_continuous(labels=scales::percent) +
+      theme(legend.title=element_blank()) +
+      theme(strip.background = element_blank(), axis.title.x=element_blank(),
+            axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
+      labs(title = title, 
+           caption = "Data: SOEP-Core v.36")
+    
+    plot <-  ggplotly(plot)
+  }
+  return(plot)
+}
+
 ################################################################################
 # testcenter
-# 
-# library(raster) ##Geographic data analysis __ DB##
-# library(sf) ##Special features for spatial feature data __ DB##
-# library(rgeos) ##Spacial geometries...will be retired 2023: https://cran.r-project.org/web/packages/rgeos/index.html __ DB##
-# library(dplyr)
-# library(tools)
-# library(stringr)
-# library(ggplot2)
-# library(plotly) ##For interactive graphs __ DB##
-# 
-# 
+
+library(raster) ##Geographic data analysis __ DB##
+library(sf) ##Special features for spatial feature data __ DB##
+library(rgeos) ##Spacial geometries...will be retired 2023: https://cran.r-project.org/web/packages/rgeos/index.html __ DB##
+library(dplyr)
+library(tools)
+library(stringr)
+library(ggplot2)
+library(plotly) ##For interactive graphs __ DB##
+
+
 # metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
 # tables <- "C:/git/Master-Project/tables/"
 # tabletype <- "numerical"
 # variable <- "pgtatzeit"
 # 
-# table <- "pgtatzeit_year.csv"
-# table <- "pgtatzeit_year_sampreg.csv"
-# table <- "pgtatzeit_year_sampreg_sex.csv"
+# table <-  get_user_table(meta = meta, variable = variable, 
+#                          diffvar1 = "sampreg", diffvar2 = "sex",
+#                          heatmap = FALSE)
 # 
 # 
 # data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
@@ -551,45 +670,60 @@ get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diff
 # 
 # meta <- read.csv(file = metapath, encoding = "UTF-8")
 # 
-# get_lineplot(table = data, 
-#              meta = meta, 
-#              variable = variable, 
+# get_lineplot(table = data,
+#              meta = meta,
+#              variable = variable,
 #              diffvar1 = "sampreg",
 #              diffvar2 = "sex",
 #              diffcount = 3,
 #              start = 1992,
 #              end = 2000,
-#              ci = FALSE)   
+#              ci = TRUE)
 # 
 # 
-# get_boxplot(table = data, variable = variable, diffcount = 3,
-#             diffvar2 = "sampreg", diffvar3 = "sex")
+#  get_boxplot(table = data, variable = variable, diffcount = 3,
+#              diffvar2 = "sampreg", diffvar3 = "sex")
 # 
-# metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
-# tables <- "C:/git/Master-Project/tables/"
-# tabletype <- "numerical"
-# variable <- "pgtatzeit"
 # 
-# table <- "pgtatzeit_year_bula_h.csv"
-# table <- "pgtatzeit_year_bula_h_sex.csv"
-# table <- "pgtatzeit_year_age_gr_bula_h.csv"
-# 
+#  table <- get_user_table(meta = meta, variable = variable, 
+#                          diffvar1 = "sex", diffvar2 = "",
+#                          heatmap = TRUE)
+  
 # data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
 #                  encoding = "UTF-8")
-# 
-# get_map_plot(table = data,
-#              syear = "2017",
-#              variable = variable,
-#              statistic = "mean",
-#              diffvar = "age_gr")
-#
-# get_percent_lineplot(table = data, 
-#                      meta = meta, 
-#                      variable = variable, 
-#                      diffvar1 = "sampreg", 
-#                      diffvar2 = "sex", 
-#                      diffcount = 3, 
-#                      start = 2005, 
-#                      end = 2015, 
-#                      ci = FALSE)
 
+#  get_map_plot(table = data,
+#               syear = "2017",
+#               variable = variable,
+#               statistic = "mean",
+#               diffvar = "sex")
+# 
+# get_percent_lineplot(table = data,
+#                      meta = meta,
+#                      variable = variable,
+#                      diffvar1 = "sex",
+#                      diffvar2 = "",
+#                      diffcount = 2,
+#                      start = 2007,
+#                      end = 2015,
+#                      ci = TRUE)
+
+ tables <- "C:/git/Master-Project/tables/"
+ tabletype <- "categorical"
+ variable <- "plb0219"
+
+
+table <-  get_user_table(meta = meta, variable = "plb0219",
+                         diffvar1 = "sampreg", diffvar2 = "sex",
+                         heatmap = FALSE)
+
+data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
+                 encoding = "UTF-8")
+
+
+title <- meta$label_de[meta$variable=="plb0219"]
+
+
+get_barplot(data = data, meta = meta, 
+            variable = "plb0219", diffvar1 = "sampreg", diffvar2 = "sex", 
+            plottype = "dodge", ci = TRUE, start = 2014, end = 2017)

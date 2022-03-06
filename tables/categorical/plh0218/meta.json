@@ -1,6 +1,6 @@
 {
-  "title": "Big Five Traits (Conscientiousness): I am rather lazy",
-  "variable": "plh0218",
+  "title": "Loneliness: Lacking the company of others",
+  "variable": "plj0587",
   "statistics": ["percent", "lower_confidence", "upper_confidence"],
   "dimensions": [
     {
@@ -129,7 +129,7 @@
     }
   ],
   "description_de": "",
-  "start_year": 2005,
+  "start_year": 2013,
   "end_year": 2019,
   "types": "categorical"
 }
