@@ -549,21 +549,43 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   
   title <- meta$label_de[meta$variable==variable]
   
-  groupdata <- data %>%
-    unite(combined_group, variable, diffvar1,  diffvar2, sep=", ") %>%
+  if (diffvar1 != "" & diffvar2 != "") { 
+    groupdata <- data %>%
+      unite(combined_group, variable, diffvar1,  diffvar2, sep=", ")
+    
+    groupdata2 <- data %>%
+      unite(combined_group2, diffvar1,  diffvar2, sep=", ")
+  }
+  
+  if (diffvar1 != "" & diffvar2 == "") { 
+    groupdata <- data %>%
+      unite(combined_group, variable, diffvar1, sep=", ")
+    
+    groupdata2 <- data %>%
+      unite(combined_group2, diffvar1,  sep=", ")
+  }
+  
+  if (diffvar1 == "" & diffvar2 == "") { 
+    groupdata <- data %>%
+      unite(combined_group, variable,  sep=", ")
+    
+    groupdata2 <- data %>% 
+      mutate(combined_group2 = variable)
+  }
+
+  groupdata <- groupdata %>%
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     mutate(percent = round(percent*100, digits = 2)) %>%
     mutate(lower_confidence = round(percent-sd, digits = 2)) %>%
     mutate(upper_confidence = round(percent+sd, digits = 2)) %>%
     filter(is.na(sd)!=1) 
   
-  groupdata2 <- data %>%
-    unite(combined_group2, diffvar1,  diffvar2, sep=", ") %>%
+  groupdata2 <- groupdata2 %>%
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     filter(is.na(sd)!=1) 
-  
+
   data <- cbind(groupdata, groupdata2[c(variable, "combined_group2")])
-  
+
   if (plottype == "dodge") { 
     # dodged barplot
     plot <- plot_ly(data, 
@@ -625,8 +647,23 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   }  
   
   if (plottype == "stack") { 
+    
+    if (diffvar1 == "" & diffvar2 == "") { 
+      # stacked barplot
+      plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+                               y=percent, x=as.character(year))) + 
+        geom_bar(position="fill", stat="identity")+
+        scale_y_continuous(labels=scales::percent) +
+        theme(legend.title=element_blank()) +
+        theme(strip.background = element_blank(), axis.title.x=element_blank(),
+              axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
+        labs(title = title, 
+             caption = "Data: SOEP-Core v.36")
+    }
+    
     # stacked barplot
-    plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+   else { 
+     plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
                              y=percent, x=as.character(year))) + 
       geom_bar(position="fill", stat="identity")+
       facet_wrap(~combined_group2) + 
@@ -636,6 +673,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
             axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
       labs(title = title, 
            caption = "Data: SOEP-Core v.36")
+   }
     
     plot <-  ggplotly(plot)
   }
@@ -710,20 +748,20 @@ library(plotly) ##For interactive graphs __ DB##
 
  tables <- "C:/git/Master-Project/tables/"
  tabletype <- "categorical"
- variable <- "plb0219"
+ variable <- "plh0042"
 
 
-table <-  get_user_table(meta = meta, variable = "plb0219",
-                         diffvar1 = "sampreg", diffvar2 = "sex",
+table <-  get_user_table(meta = meta, variable = "plh0042",
+                         diffvar1 = "sampreg", diffvar2 = "",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
                  encoding = "UTF-8")
 
 
-title <- meta$label_de[meta$variable=="plb0219"]
+title <- meta$label_de[meta$variable=="plh0042"]
 
 
 get_barplot(data = data, meta = meta, 
-            variable = "plb0219", diffvar1 = "sampreg", diffvar2 = "sex", 
+            variable = "plh0042", diffvar1 = "sampreg", diffvar2 = "", 
             plottype = "dodge", ci = TRUE, start = 2014, end = 2017)
