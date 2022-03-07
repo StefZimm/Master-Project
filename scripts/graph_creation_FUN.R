@@ -647,8 +647,23 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   }  
   
   if (plottype == "stack") { 
+    
+    if (diffvar1 == "" & diffvar2 == "") { 
+      # stacked barplot
+      plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+                               y=percent, x=as.character(year))) + 
+        geom_bar(position="fill", stat="identity")+
+        scale_y_continuous(labels=scales::percent) +
+        theme(legend.title=element_blank()) +
+        theme(strip.background = element_blank(), axis.title.x=element_blank(),
+              axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
+        labs(title = title, 
+             caption = "Data: SOEP-Core v.36")
+    }
+    
     # stacked barplot
-    plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+   else { 
+     plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
                              y=percent, x=as.character(year))) + 
       geom_bar(position="fill", stat="identity")+
       facet_wrap(~combined_group2) + 
@@ -658,6 +673,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
             axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
       labs(title = title, 
            caption = "Data: SOEP-Core v.36")
+   }
     
     plot <-  ggplotly(plot)
   }
@@ -732,20 +748,20 @@ library(plotly) ##For interactive graphs __ DB##
 
  tables <- "C:/git/Master-Project/tables/"
  tabletype <- "categorical"
- variable <- "plb0219"
+ variable <- "plh0042"
 
 
-table <-  get_user_table(meta = meta, variable = "plb0219",
-                         diffvar1 = "", diffvar2 = "",
+table <-  get_user_table(meta = meta, variable = "plh0042",
+                         diffvar1 = "sampreg", diffvar2 = "",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
                  encoding = "UTF-8")
 
 
-title <- meta$label_de[meta$variable=="plb0219"]
+title <- meta$label_de[meta$variable=="plh0042"]
 
 
 get_barplot(data = data, meta = meta, 
-            variable = "plb0219", diffvar1 = "", diffvar2 = "", 
-            plottype = "stack", ci = FALSE, start = 2014, end = 2017)
+            variable = "plh0042", diffvar1 = "sampreg", diffvar2 = "", 
+            plottype = "dodge", ci = TRUE, start = 2014, end = 2017)
