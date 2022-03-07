@@ -549,21 +549,43 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   
   title <- meta$label_de[meta$variable==variable]
   
-  groupdata <- data %>%
-    unite(combined_group, variable, diffvar1,  diffvar2, sep=", ") %>%
+  if (diffvar1 != "" & diffvar2 != "") { 
+    groupdata <- data %>%
+      unite(combined_group, variable, diffvar1,  diffvar2, sep=", ")
+    
+    groupdata2 <- data %>%
+      unite(combined_group2, diffvar1,  diffvar2, sep=", ")
+  }
+  
+  if (diffvar1 != "" & diffvar2 == "") { 
+    groupdata <- data %>%
+      unite(combined_group, variable, diffvar1, sep=", ")
+    
+    groupdata2 <- data %>%
+      unite(combined_group2, diffvar1,  sep=", ")
+  }
+  
+  if (diffvar1 == "" & diffvar2 == "") { 
+    groupdata <- data %>%
+      unite(combined_group, variable,  sep=", ")
+    
+    groupdata2 <- data %>% 
+      mutate(combined_group2 = variable)
+  }
+
+  groupdata <- groupdata %>%
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     mutate(percent = round(percent*100, digits = 2)) %>%
     mutate(lower_confidence = round(percent-sd, digits = 2)) %>%
     mutate(upper_confidence = round(percent+sd, digits = 2)) %>%
     filter(is.na(sd)!=1) 
   
-  groupdata2 <- data %>%
-    unite(combined_group2, diffvar1,  diffvar2, sep=", ") %>%
+  groupdata2 <- groupdata2 %>%
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     filter(is.na(sd)!=1) 
-  
+
   data <- cbind(groupdata, groupdata2[c(variable, "combined_group2")])
-  
+
   if (plottype == "dodge") { 
     # dodged barplot
     plot <- plot_ly(data, 
@@ -714,7 +736,7 @@ library(plotly) ##For interactive graphs __ DB##
 
 
 table <-  get_user_table(meta = meta, variable = "plb0219",
-                         diffvar1 = "sampreg", diffvar2 = "sex",
+                         diffvar1 = "", diffvar2 = "",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
@@ -725,5 +747,5 @@ title <- meta$label_de[meta$variable=="plb0219"]
 
 
 get_barplot(data = data, meta = meta, 
-            variable = "plb0219", diffvar1 = "sampreg", diffvar2 = "sex", 
-            plottype = "dodge", ci = TRUE, start = 2014, end = 2017)
+            variable = "plb0219", diffvar1 = "", diffvar2 = "", 
+            plottype = "stack", ci = FALSE, start = 2014, end = 2017)
