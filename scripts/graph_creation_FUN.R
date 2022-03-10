@@ -241,6 +241,10 @@ get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
                    stat = "identity") +
       theme(strip.background = element_blank(), axis.title.x=element_blank(),
             axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
+<<<<<<< HEAD
+      coord_flip()+
+=======
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
       labs(title = title, 
            caption = "Data: SOEP-Core v.36")
   }
@@ -257,6 +261,10 @@ get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
       theme(strip.background = element_blank(), axis.title.x=element_blank(),
             axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
             legend.title=element_blank())+
+<<<<<<< HEAD
+      coord_flip()+
+=======
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
       labs(title = title, 
            caption = "Data: SOEP-Core v.36")
   }
@@ -274,6 +282,10 @@ get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
       theme(strip.background = element_blank(), axis.title.x=element_blank(),
             axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
             legend.title=element_blank())+
+<<<<<<< HEAD
+      coord_flip()+
+=======
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
       labs(title = title, 
            caption = "Data: SOEP-Core v.36")+
       facet_wrap(~eval(parse(text = diffvar3)))
@@ -507,6 +519,10 @@ get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diff
                           error_y = list(array = data2[[paste0(g, '_sd')]]))
       }
       
+<<<<<<< HEAD
+      print(head(data2))
+=======
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
       if (is.na(data2[[g]]) == TRUE) {
         data2 <- data2 %>%
           filter(is.na(data2[[g]])!=1) 
@@ -522,6 +538,10 @@ get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diff
 }  
 
 
+<<<<<<< HEAD
+################################################################################
+testcenter
+=======
 get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
   var_vector <- c(variable, "year")
@@ -682,6 +702,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
 
 ################################################################################
 # testcenter
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
 
 library(raster) ##Geographic data analysis __ DB##
 library(sf) ##Special features for spatial feature data __ DB##
@@ -691,6 +712,49 @@ library(tools)
 library(stringr)
 library(ggplot2)
 library(plotly) ##For interactive graphs __ DB##
+<<<<<<< HEAD
+library(tidyr) ##need for get_line_plot __ DB##
+
+#metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
+#tables <- "C:/git/Master-Project/tables/"
+metapath <- "D:/Education/Thesis/Master-Project/metadata/p_data/variables.csv"
+tables <- "D:/Education/Thesis/Master-Project/tables/"
+tabletype <- "numerical"
+variable <- "pgtatzeit"
+
+table <- "pgtatzeit_year.csv"
+table <- "pgtatzeit_year_sampreg.csv"
+table <- "pgtatzeit_year_sampreg_sex.csv"
+
+
+data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
+                 encoding = "UTF-8")
+
+meta <- read.csv(file = metapath, encoding = "UTF-8")
+
+get_lineplot(table = data,
+             meta = meta,
+             variable = variable,
+             diffvar1 = "sampreg",
+             diffvar2 = "sex",
+             diffcount = 3,
+             start = 1992,
+             end = 2000,
+             ci = FALSE)
+
+
+get_boxplot(table = data, variable = variable, diffcount = 3,
+            diffvar2 = "sampreg", diffvar3 = "sex")
+
+#metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
+#tables <- "C:/git/Master-Project/tables/"
+tabletype <- "numerical"
+variable <- "pgtatzeit"
+
+table <- "pgtatzeit_year_bula_h.csv"
+table <- "pgtatzeit_year_bula_h_sex.csv"
+table <- "pgtatzeit_year_age_gr_bula_h.csv"
+=======
 
 
 # metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
@@ -754,10 +818,29 @@ library(plotly) ##For interactive graphs __ DB##
 table <-  get_user_table(meta = meta, variable = "plh0042",
                          diffvar1 = "sampreg", diffvar2 = "",
                          heatmap = FALSE)
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
                  encoding = "UTF-8")
 
+<<<<<<< HEAD
+get_map_plot(table = data,
+             syear = "2017",
+             variable = variable,
+             statistic = "mean",
+             diffvar = "age_gr")
+
+get_percent_lineplot(table = data,
+                     meta = meta,
+                     variable = variable,
+                     diffvar1 = "sampreg",
+                     diffvar2 = "sex",
+                     diffcount = 3,
+                     start = 2005,
+                     end = 2015,
+                     ci = FALSE)
+
+=======
 
 title <- meta$label_de[meta$variable=="plh0042"]
 
@@ -765,3 +848,4 @@ title <- meta$label_de[meta$variable=="plh0042"]
 get_barplot(data = data, meta = meta, 
             variable = "plh0042", diffvar1 = "sampreg", diffvar2 = "", 
             plottype = "dodge", ci = TRUE, start = 2014, end = 2017)
+>>>>>>> 20ceb3d9042ed530a80a37c8b066d122a0e3d028
