@@ -161,18 +161,31 @@ soep-core,p_data,v36,ple0009,1,"Yes, strongly limited","Yes, strongly limited"
 soep-core,p_data,v36,ple0009,2,"Yes, somewhat limited","Yes, somewhat limited"
 soep-core,p_data,v36,ple0009,3,"No, not limited","No, not limited"
 soep-core,p_data,v36,ple0011,1,Yes,Yes
+soep-core,p_data,v36,ple0011,2,No,No
 soep-core,p_data,v36,ple0012,1,Yes,Yes
+soep-core,p_data,v36,ple0012,2,No,No
 soep-core,p_data,v36,ple0013,1,Yes,Yes
+soep-core,p_data,v36,ple0013,2,No,No
 soep-core,p_data,v36,ple0014,1,Yes,Yes
+soep-core,p_data,v36,ple0014,2,No,No
 soep-core,p_data,v36,ple0015,1,Yes,Yes
+soep-core,p_data,v36,ple0015,2,No,No
 soep-core,p_data,v36,ple0016,1,Yes,Yes
+soep-core,p_data,v36,ple0016,2,No,No
 soep-core,p_data,v36,ple0017,1,Yes,Yes
+soep-core,p_data,v36,ple0017,2,No,No
 soep-core,p_data,v36,ple0018,1,Yes,Yes
+soep-core,p_data,v36,ple0018,2,No,No
 soep-core,p_data,v36,ple0019,1,Yes,Yes
+soep-core,p_data,v36,ple0019,2,No,No
 soep-core,p_data,v36,ple0020,1,Yes,Yes
+soep-core,p_data,v36,ple0020,2,No,No
 soep-core,p_data,v36,ple0021,1,Yes,Yes
+soep-core,p_data,v36,ple0021,2,No,No
 soep-core,p_data,v36,ple0022,1,Yes,Yes
+soep-core,p_data,v36,ple0022,2,No,No
 soep-core,p_data,v36,ple0024,1,Yes,Yes
+soep-core,p_data,v36,ple0024,2,No,No
 soep-core,p_data,v36,ple0040,1,Yes,Yes
 soep-core,p_data,v36,ple0040,2,No,No
 soep-core,p_data,v36,ple0044_h,1,Not a day,Not a day

@@ -68,6 +68,9 @@ drop if netto>19
 * Keep Observations with weighting factor
 drop if phrf==0
 
+* recode health variables
+recode ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 ple0021 ple0022 ple0024 (-2 = 2)
+
 *Missings to systemmissings NA
 mvdecode _all, mv(-1/-8)
 

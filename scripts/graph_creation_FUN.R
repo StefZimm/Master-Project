@@ -203,86 +203,6 @@ get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
 
 ################################################################################
 
-#' @title get_boxplot creates boxplot
-#' 
-#' @description get_boxplot creates boxplot with a maximum of three grouping 
-#'              variables
-#'
-#' @param table aggregated table name (e.g. "pglabnet_year_bula_h.csv") as character
-#' @param variable variable for output as character
-#' @param diffcount number of grouping variables as numeric
-#' @param diffvar2 group variable (e.g. "bula_h")
-#' @param diffvar3 group variable (e.g. "sex")
-#' 
-#' @return plot = boxplot with grouping
-#'
-#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
-#' @keywords get_boxplot
-#'  
-#' @examples
-#'       get_boxplot(table = data, 
-#'                   variable = "year", 
-#'                   diffcount = 2,
-#'                   diffvar2 = "alter_gr",
-#'                   diffvar3 = "")
-
-get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
-  
-  title <- meta$label_de[meta$variable==variable]
-  
-  if (diffcount == 1) {
-    data <- subset(table, select=c(year, min, max, median, 
-                                   ptile10, ptile25, ptile75, ptile90, ptile99))
-    
-    plot <- ggplot(data, aes(factor(year))) +  
-      geom_boxplot(data = data,
-                   aes(ymin = min, lower = ptile25 , 
-                       middle = median, upper = ptile90, ymax = ptile99),
-                   stat = "identity") +
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")
-  }
-  
-  if (diffcount == 2) {
-    data <- subset(table, select=c(year, eval(parse(text = diffvar2)), min, max, median, 
-                                   ptile10, ptile25, ptile75, ptile90, ptile99)) 
-    
-    plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
-      geom_boxplot(data = data,
-                   aes(ymin = min, lower = ptile25 , 
-                       middle = median, upper = ptile90, ymax = ptile99),
-                   stat = "identity") + 
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
-            legend.title=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")
-  }
-  
-  if (diffcount == 3) {
-    data <- subset(table, select=c(year, eval(parse(text = diffvar2)), 
-                                   eval(parse(text = diffvar3)), min, max, median, 
-                                   ptile10, ptile25, ptile75, ptile90, ptile99)) 
-    
-    plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
-      geom_boxplot(data = data,
-                   aes(ymin = min, lower = ptile25 , 
-                       middle = median, upper = ptile90, ymax = ptile99),
-                   stat = "identity") +
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
-            legend.title=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")+
-      facet_wrap(~eval(parse(text = diffvar3)))
-  }
-  
-  return(plot)
-}
-################################################################################
-
 get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount, 
                          start, end, ci){
   
@@ -651,20 +571,28 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     if (diffvar1 == "" & diffvar2 == "") { 
       # stacked barplot
       plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
-                               y=percent, x=as.character(year))) + 
+                               y=percent, x=as.character(year),
+                               text = paste('Year: ', year,
+                                            '<br>Percent:', percent, 
+                                            '<br>Variable:',eval(parse(text = variable))))) + 
         geom_bar(position="fill", stat="identity")+
         scale_y_continuous(labels=scales::percent) +
         theme(legend.title=element_blank()) +
         theme(strip.background = element_blank(), axis.title.x=element_blank(),
               axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
         labs(title = title, 
-             caption = "Data: SOEP-Core v.36")
+             caption = "Data: SOEP-Core v.36")+
+        guides(fill=guide_legend(title=""))
+      
     }
     
     # stacked barplot
    else { 
      plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
-                             y=percent, x=as.character(year))) + 
+                             y=percent, x=as.character(year),
+                             text = paste('Year: ', year,
+                                          '<br>Percent:', percent, 
+                                          '<br>Variable', eval(parse(text = variable))))) + 
       geom_bar(position="fill", stat="identity")+
       facet_wrap(~combined_group2) + 
       scale_y_continuous(labels=scales::percent) +
@@ -672,10 +600,11 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
       theme(strip.background = element_blank(), axis.title.x=element_blank(),
             axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
       labs(title = title, 
-           caption = "Data: SOEP-Core v.36")
+           caption = "Data: SOEP-Core v.36")+
+       guides(fill=guide_legend(title=""))
    }
     
-    plot <-  ggplotly(plot)
+    plot <-  ggplotly(plot, tooltip = "text" )
   }
   return(plot)
 }
@@ -745,23 +674,38 @@ library(plotly) ##For interactive graphs __ DB##
 #                      start = 2007,
 #                      end = 2015,
 #                      ci = TRUE)
-
+ 
+metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
  tables <- "C:/git/Master-Project/tables/"
- tabletype <- "categorical"
- variable <- "plh0042"
+ tabletype <- "numerical"
+ variable <- "plh0182"
+ #  variable <- "pglabgro"
+ #  variable <- "plh0035"
+ #  tabletype <- "categorical"
+ 
+ meta <- read.csv(file = metapath, encoding = "UTF-8")
 
 
-table <-  get_user_table(meta = meta, variable = "plh0042",
-                         diffvar1 = "sampreg", diffvar2 = "",
+table <-  get_user_table(meta = meta, variable = variable,
+                         diffvar1 = "sex", diffvar2 = "",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
                  encoding = "UTF-8")
 
 
-title <- meta$label_de[meta$variable=="plh0042"]
+title <- meta$label_de[meta$variable==variable]
 
 
-get_barplot(data = data, meta = meta, 
-            variable = "plh0042", diffvar1 = "sampreg", diffvar2 = "", 
-            plottype = "dodge", ci = TRUE, start = 2014, end = 2017)
+fig <- get_barplot(data = data, meta = meta, 
+            variable = variable, diffvar1 = "sex", diffvar2 = "", 
+            plottype = "stack", ci = TRUE, start = 1999, end = 2003)
+
+ get_map_plot(table = data,
+              syear = "2018",
+              variable = variable,
+              statistic = "median",
+              diffvar = "sex")
+ 
+
+
