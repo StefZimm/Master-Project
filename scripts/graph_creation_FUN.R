@@ -197,8 +197,71 @@ get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
            caption = "Data: SOEP-Core v.36")+
       facet_wrap(~eval(parse(text = diffvar3)))
   }
-  
+  plot <- plot + coord_flip()
   return(plot)
+}
+
+################################################################################
+
+#' @title get_boxplot creates boxplot
+#' 
+#' @description get_boxplot creates boxplot with a maximum of three grouping 
+#'              variables
+#'
+#' @param table aggregated table name (e.g. "pglabnet_year_bula_h.csv") as character
+#' @param variable variable for output as character
+#' @param diffcount number of grouping variables as numeric
+#' @param diffvar2 group variable (e.g. "bula_h")
+#' @param diffvar3 group variable (e.g. "sex")
+#' 
+#' @return plot = boxplot with grouping
+#'
+#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
+#' @keywords get_boxplot
+#'  
+#' @examples
+#'       get_boxplot(table = data, 
+#'                   variable = "year", 
+#'                   diffvar2 = "alter_gr",
+#'                   diffvar3 = "")
+
+get_boxplot <- function(table, variable, diffvar2, diffvar3){
+  
+  title <- meta$label_de[meta$variable==variable]
+  
+  if (diffvar2 != "" & diffvar3 != "") { 
+    groupdata <- table %>%
+      unite(combined_group, diffvar2,  diffvar3, sep=", ")
+  }
+  
+  if (diffvar2 != "" & diffvar3 == "") { 
+    groupdata <- table %>%
+      unite(combined_group, diffvar2, sep=", ")
+  }
+  
+  if (diffvar2 == "" & diffvar3 == "") { 
+    groupdata <- table 
+    
+    plot <- plot_ly(data = groupdata,
+                    x = as.factor(groupdata$year)) %>% 
+      add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
+                q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
+      layout(boxmode = "group", title = title,
+             xaxis = list(tickangle=90),
+             yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
+      rangeslider()
+  }
+    plot <- plot_ly(data = groupdata, 
+            color = ~combined_group,
+            x = as.factor(groupdata$year)) %>% 
+      add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
+                q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
+      layout(boxmode = "group", title = title,
+             xaxis = list(tickangle=90),
+             yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
+      rangeslider()
+    
+ return(plot)
 }
 
 ################################################################################
@@ -687,7 +750,7 @@ metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
 
 
 table <-  get_user_table(meta = meta, variable = variable,
-                         diffvar1 = "sex", diffvar2 = "",
+                         diffvar1 = "sampreg", diffvar2 = "sex",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
@@ -707,5 +770,10 @@ fig <- get_barplot(data = data, meta = meta,
               statistic = "median",
               diffvar = "sex")
  
+ fig <-  get_boxplot(table = data, variable = variable,
+               diffvar2 = "sex", diffvar3 = "sampreg")
+ 
+ 
+ 
 
-
+ 
