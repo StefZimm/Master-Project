@@ -57,7 +57,7 @@ merge 1:1 pid syear using ${data}\pgen.dta, nogen keep (master match)  keepusing
 merge 1:1 pid syear using ${data}\pequiv.dta, nogen keep (master match) keepusing (d11101 /// 
 		d11106 d11107 d11109 e11102 e11103 h11101 i11101 i11102 i11103 i11106 ///
 		i11107 m11104 m11124 m11125 m11126)
-merge m:1 hid syear using ${data}\hbrutto.dta, nogen keep (master match) keepusing (bula_h)
+merge m:1 hid syear using ${data}\hbrutto.dta, nogen keep (master match) keepusing (bula_h regtyp)
 merge m:1 hid syear using ${data}\hgen.dta, nogen keep (master match) keepusing (hgtyp1hh hghinc hgowner)
 merge m:1 hid syear using ${data}\hl.dta, nogen keep (master match) keepusing (hlf0001_h hlf0019_h ///
 		  hlf0021_h hlf0071_h hlf0094)

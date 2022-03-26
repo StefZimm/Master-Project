@@ -186,3 +186,4 @@ transab,byte,Transfer dependency,soep-core,p_data,v36,Yes,No,,,,,,,"Income, Taxe
 transab_cat,byte,Transfer dependency grouped 1,soep-core,p_data,v36,No,Yes,,,,,,,"Income, Taxes, and Social Security"
 transab_cat2,byte,Transfer dependency grouped 2,soep-core,p_data,v36,No,Yes,,,,,,,"Income, Taxes, and Social Security"
 years_injob,byte,Employed by current employer in years,soep-core,p_data,v36,Yes,No,,,,,,,Work and Employment
+regtyp,byte,Region type according to BBSR,soep-core,p_data,v36,demo,demo,,,,,,,Demography
