@@ -1,6 +1,13 @@
 ################################################################################
 # Functions #
 ################################################################################
+# Color Definition
+color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"), 
+                          wes_palette("Moonrise1"), wes_palette("Moonrise2"),
+                          wes_palette("GrandBudapest2"), wes_palette("Cavalcanti1"), 
+                          wes_palette("Royal1"), wes_palette("Royal2"),
+                          # 2000 random colors
+                          distinctColorPalette(1999)))
 
 #' @title get_map_plot creates median or mean maps of germany and federal states
 #'
@@ -120,86 +127,86 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
   ggplotly(germanmedianplot)      
 }
 
-################################################################################
-
-#' @title get_boxplot creates boxplot
+#' ################################################################################
 #' 
-#' @description get_boxplot creates boxplot with a maximum of three grouping 
-#'              variables
-#'
-#' @param table aggregated table name (e.g. "pglabnet_year_bula_h.csv") as character
-#' @param variable variable for output as character
-#' @param diffcount number of grouping variables as numeric
-#' @param diffvar2 group variable (e.g. "bula_h")
-#' @param diffvar3 group variable (e.g. "sex")
+#' #' @title get_boxplot creates boxplot
+#' #' 
+#' #' @description get_boxplot creates boxplot with a maximum of three grouping 
+#' #'              variables
+#' #'
+#' #' @param table aggregated table name (e.g. "pglabnet_year_bula_h.csv") as character
+#' #' @param variable variable for output as character
+#' #' @param diffcount number of grouping variables as numeric
+#' #' @param diffvar2 group variable (e.g. "bula_h")
+#' #' @param diffvar3 group variable (e.g. "sex")
+#' #' 
+#' #' @return plot = boxplot with grouping
+#' #'
+#' #' @author Stefan Zimmermann, \email{szimmermann@diw.de}
+#' #' @keywords get_boxplot
+#' #'  
+#' #' @examples
+#' #'       get_boxplot(table = data, 
+#' #'                   variable = "year", 
+#' #'                   diffcount = 2,
+#' #'                   diffvar2 = "alter_gr",
+#' #'                   diffvar3 = "")
 #' 
-#' @return plot = boxplot with grouping
-#'
-#' @author Stefan Zimmermann, \email{szimmermann@diw.de}
-#' @keywords get_boxplot
-#'  
-#' @examples
-#'       get_boxplot(table = data, 
-#'                   variable = "year", 
-#'                   diffcount = 2,
-#'                   diffvar2 = "alter_gr",
-#'                   diffvar3 = "")
-
-get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
-  
-  title <- meta$label_de[meta$variable==variable]
-  
-  if (diffcount == 1) {
-    data <- subset(table, select=c(year, min, max, median, 
-                                   ptile10, ptile25, ptile75, ptile90, ptile99))
-    
-    plot <- ggplot(data, aes(factor(year))) +  
-      geom_boxplot(data = data,
-                   aes(ymin = min, lower = ptile25 , 
-                       middle = median, upper = ptile90, ymax = ptile99),
-                   stat = "identity") +
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")
-  }
-  
-  if (diffcount == 2) {
-    data <- subset(table, select=c(year, eval(parse(text = diffvar2)), min, max, median, 
-                                   ptile10, ptile25, ptile75, ptile90, ptile99)) 
-    
-    plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
-      geom_boxplot(data = data,
-                   aes(ymin = min, lower = ptile25 , 
-                       middle = median, upper = ptile90, ymax = ptile99),
-                   stat = "identity") + 
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
-            legend.title=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")
-  }
-  
-  if (diffcount == 3) {
-    data <- subset(table, select=c(year, eval(parse(text = diffvar2)), 
-                                   eval(parse(text = diffvar3)), min, max, median, 
-                                   ptile10, ptile25, ptile75, ptile90, ptile99)) 
-    
-    plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
-      geom_boxplot(data = data,
-                   aes(ymin = min, lower = ptile25 , 
-                       middle = median, upper = ptile90, ymax = ptile99),
-                   stat = "identity") +
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
-            legend.title=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")+
-      facet_wrap(~eval(parse(text = diffvar3)))
-  }
-  plot <- plot + coord_flip()
-  return(plot)
-}
+#' get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
+#'   
+#'   title <- meta$label_de[meta$variable==variable]
+#'   
+#'   if (diffcount == 1) {
+#'     data <- subset(table, select=c(year, min, max, median, 
+#'                                    ptile10, ptile25, ptile75, ptile90, ptile99))
+#'     
+#'     plot <- ggplot(data, aes(factor(year))) +  
+#'       geom_boxplot(data = data,
+#'                    aes(ymin = min, lower = ptile25 , 
+#'                        middle = median, upper = ptile90, ymax = ptile99),
+#'                    stat = "identity") +
+#'       theme(strip.background = element_blank(), axis.title.x=element_blank(),
+#'             axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
+#'       labs(title = title, 
+#'            caption = "Data: SOEP-Core v.36")
+#'   }
+#'   
+#'   if (diffcount == 2) {
+#'     data <- subset(table, select=c(year, eval(parse(text = diffvar2)), min, max, median, 
+#'                                    ptile10, ptile25, ptile75, ptile90, ptile99)) 
+#'     
+#'     plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
+#'       geom_boxplot(data = data,
+#'                    aes(ymin = min, lower = ptile25 , 
+#'                        middle = median, upper = ptile90, ymax = ptile99),
+#'                    stat = "identity") + 
+#'       theme(strip.background = element_blank(), axis.title.x=element_blank(),
+#'             axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
+#'             legend.title=element_blank())+
+#'       labs(title = title, 
+#'            caption = "Data: SOEP-Core v.36")
+#'   }
+#'   
+#'   if (diffcount == 3) {
+#'     data <- subset(table, select=c(year, eval(parse(text = diffvar2)), 
+#'                                    eval(parse(text = diffvar3)), min, max, median, 
+#'                                    ptile10, ptile25, ptile75, ptile90, ptile99)) 
+#'     
+#'     plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
+#'       geom_boxplot(data = data,
+#'                    aes(ymin = min, lower = ptile25 , 
+#'                        middle = median, upper = ptile90, ymax = ptile99),
+#'                    stat = "identity") +
+#'       theme(strip.background = element_blank(), axis.title.x=element_blank(),
+#'             axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
+#'             legend.title=element_blank())+
+#'       labs(title = title, 
+#'            caption = "Data: SOEP-Core v.36")+
+#'       facet_wrap(~eval(parse(text = diffvar3)))
+#'   }
+#'   plot <- plot + coord_flip()
+#'   return(plot)
+#' }
 
 ################################################################################
 
@@ -243,7 +250,8 @@ get_boxplot <- function(table, variable, diffvar2, diffvar3){
     groupdata <- table 
     
     plot <- plot_ly(data = groupdata,
-                    x = as.factor(groupdata$year)) %>% 
+                    x = as.factor(groupdata$year),
+                    colors = color.palette) %>% 
       add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
                 q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
       layout(boxmode = "group", title = title,
@@ -251,15 +259,17 @@ get_boxplot <- function(table, variable, diffvar2, diffvar3){
              yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
       rangeslider()
   }
-    plot <- plot_ly(data = groupdata, 
+  else{  plot <- plot_ly(data = groupdata, 
             color = ~combined_group,
-            x = as.factor(groupdata$year)) %>% 
+            x = as.factor(groupdata$year),
+            colors = color.palette) %>% 
       add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
                 q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
       layout(boxmode = "group", title = title,
              xaxis = list(tickangle=90),
              yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
       rangeslider()
+  }
     
  return(plot)
 }
@@ -282,6 +292,7 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
       data = data,
       x = ~year, 
       y = ~mean,
+      colors = color.palette,
       type = "scatter",
       mode = "lines+markers",
       line = list(width = 4, dash = "dot"),
@@ -302,6 +313,7 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
         data = data,
         x = ~year, 
         y = ~mean,
+        colors = color.palette,
         type = "scatter",
         mode = "lines+markers",
         line = list(width = 4, dash = "dot")) %>% 
@@ -336,6 +348,7 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
       x = ~year, 
       y = ~mean,
       color = ~combined_group,
+      colors = color.palette,
       type = "scatter",
       mode = "lines+markers",
       line = list(width = 4, dash = "dot")) %>% 
@@ -441,6 +454,7 @@ get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diff
       x = ~year, 
       y = ~percent,
       color = ~combined_group,
+      colors = color.palette,
       type = "scatter",
       mode = "lines+markers",
       line = list(width = 4, dash = "dot")) %>% 
@@ -575,6 +589,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
                     x = ~year, 
                     y = ~percent, 
                     color = ~combined_group,
+                    colors = color.palette,
                     type = 'bar') %>% 
       layout(title = title, 
              xaxis = list(title = 'year', range = list(start,end), 
@@ -597,7 +612,8 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
         spread(ref, value)
       
       # set layout
-      plot <- plot_ly(data2, type = 'bar') %>%
+      plot <- plot_ly(data2, type = 'bar',
+                      colors = color.palette) %>%
         layout(title = title, 
                xaxis = list(title = 'year', range = list(start,end), 
                             tickvals = as.list(seq(1984,2019)),
@@ -683,6 +699,10 @@ library(tools)
 library(stringr)
 library(ggplot2)
 library(plotly) ##For interactive graphs __ DB##
+library(wesanderson) 
+library(randomcoloR) 
+library(tidyverse) 
+
 
 
 # metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
@@ -746,11 +766,14 @@ metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
  #  variable <- "plh0035"
  #  tabletype <- "categorical"
  
+
+ 
+
  meta <- read.csv(file = metapath, encoding = "UTF-8")
 
 
 table <-  get_user_table(meta = meta, variable = variable,
-                         diffvar1 = "sampreg", diffvar2 = "sex",
+                         diffvar1 = "sex", diffvar2 = "",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
@@ -771,7 +794,17 @@ fig <- get_barplot(data = data, meta = meta,
               diffvar = "sex")
  
  fig <-  get_boxplot(table = data, variable = variable,
-               diffvar2 = "sex", diffvar3 = "sampreg")
+               diffvar2 = "sex", diffvar3 = "")
+ 
+ get_lineplot(table = data,
+              meta = meta,
+              variable = variable,
+              diffvar1 = "sex",
+              diffvar2 = "",
+              diffcount = 2,
+              start = 1992,
+              end = 2000,
+              ci = FALSE)
  
  
  
