@@ -20,11 +20,11 @@ if c(username)=="stefz" & c(os) == "Windows"{ // Stefan DIW-PC
 } 
 
 * Deliverance Paths
-if c(username)=="Deliverance" & c(os) == "Windows"{ // Stefan DIW-PC
+if c(username)=="jdbou" & c(os) == "Windows"{ // Stefan DIW-PC
 	* Data path to soepdata
 	 global data "D:\Education\Thesis\cs-transfer\Stata" 
 	 * meta path to variables.csv and variable_categories.csv
-	 global meta "D:\Education\Thesis\Master-Project\metadata\p_data\"
+	 global meta "C:\Users\jdbou\Documents\GitHub\Master-Project\metadata\p_data\"
 	  * output path for dataset
 	 global output "D:\Education\Thesis\Output\"
 } 
