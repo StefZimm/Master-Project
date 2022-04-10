@@ -1,0 +1,734 @@
+study,dataset,version,variable,value,label,label_de
+soep-core,p_data,v36,age_gr,1,16-34 y.,16-34 y.
+soep-core,p_data,v36,age_gr,2,35-65 y.,35-65 y.
+soep-core,p_data,v36,age_gr,3,66 and older,66 and older
+soep-core,p_data,v36,bula_h,1,Schleswig-Holstein,Schleswig-Holstein
+soep-core,p_data,v36,bula_h,2,Hamburg,Hamburg
+soep-core,p_data,v36,bula_h,3,Lower Saxony,Lower Saxony
+soep-core,p_data,v36,bula_h,4,Bremen,Bremen
+soep-core,p_data,v36,bula_h,5,North Rhine-Westphalia,North Rhine-Westphalia
+soep-core,p_data,v36,bula_h,6,Hesse,Hesse
+soep-core,p_data,v36,bula_h,7,"Rhineland-Palatinate,Saarland","Rhineland-Palatinate,Saarland"
+soep-core,p_data,v36,bula_h,8,Baden-Württemberg,Baden-Württemberg
+soep-core,p_data,v36,bula_h,9,Bavaria,Bavaria
+soep-core,p_data,v36,bula_h,11,Berlin,Berlin
+soep-core,p_data,v36,bula_h,12,Brandenburg,Brandenburg
+soep-core,p_data,v36,bula_h,13,Mecklenburg-Western Pomerania,Mecklenburg-Western Pomerania
+soep-core,p_data,v36,bula_h,14,Saxony,Saxony
+soep-core,p_data,v36,bula_h,15,Saxony-Anhalt,Saxony-Anhalt
+soep-core,p_data,v36,bula_h,16,Thuringia,Thuringia
+soep-core,p_data,v36,e11102,0,Not Employed,Not Employed
+soep-core,p_data,v36,e11102,1,Employed,Employed
+soep-core,p_data,v36,e11103,1,Full Time,Full Time
+soep-core,p_data,v36,e11103,2,Part Time,Part Time
+soep-core,p_data,v36,e11103,3,Not Working,Not Working
+soep-core,p_data,v36,education,1,lower secondary degree,lower secondary degree
+soep-core,p_data,v36,education,2,secondary school degree,secondary school degree
+soep-core,p_data,v36,education,4,college entrance qualification,college entrance qualification
+soep-core,p_data,v36,education,5,Other degree,Other degree
+soep-core,p_data,v36,education,6,no degree/no degree yet,no degree/no degree yet
+soep-core,p_data,v36,erwst,1,Full-time,Full-time
+soep-core,p_data,v36,erwst,2,Part-time,Part-time
+soep-core,p_data,v36,erwst,5,Non-working,Non-working
+soep-core,p_data,v36,erwst,6,Other,Other
+soep-core,p_data,v36,germborn,1,Born in Germany,Born in Germany
+soep-core,p_data,v36,germborn,2,Not Born in Germany,Not Born in Germany
+soep-core,p_data,v36,hgtyp1hh,1,1-pers.-HH,1-pers.-HH
+soep-core,p_data,v36,hgtyp1hh,2,(Married) couple without C. ,(Married) couple without C. 
+soep-core,p_data,v36,hgtyp1hh,3,Single parent ,Single parent 
+soep-core,p_data,v36,hgtyp1hh,4,Couple + C. LE 16 ,Couple + C. LE 16 
+soep-core,p_data,v36,hgtyp1hh,5,Couple + C. GT 16 ,Couple + C. GT 16 
+soep-core,p_data,v36,hgtyp1hh,6,Couple + C. LE and GT 16,Couple + C. LE and GT 16
+soep-core,p_data,v36,hlf0001_h,1,Main Tenant,Main Tenant
+soep-core,p_data,v36,hlf0001_h,2,Sub-Tenant,Sub-Tenant
+soep-core,p_data,v36,hlf0001_h,3,Owner,Owner
+soep-core,p_data,v36,hlf0001_h,4,Nursing Home/Retirement Community,Nursing Home/Retirement Community
+soep-core,p_data,v36,hlf0001_h,5,Tenant,Tenant
+soep-core,p_data,v36,hlf0071_h,1,Much too small,Much too small
+soep-core,p_data,v36,hlf0071_h,2,A little too small,A little too small
+soep-core,p_data,v36,hlf0071_h,3,Just right,Just right
+soep-core,p_data,v36,hlf0071_h,4,A little too big,A little too big
+soep-core,p_data,v36,hlf0071_h,5,Much too big,Much too big
+soep-core,p_data,v36,hlf0094,1,Very Inexpensive,Very Inexpensive
+soep-core,p_data,v36,hlf0094,2,Inexpensive,Inexpensive
+soep-core,p_data,v36,hlf0094,3,Reasonable,Reasonable
+soep-core,p_data,v36,hlf0094,4,Slightly Expensive,Slightly Expensive
+soep-core,p_data,v36,hlf0094,5,Too Expensive,Too Expensive
+soep-core,p_data,v36,m11104,1,Almost never or never,Almost never or never
+soep-core,p_data,v36,m11104,2,Several times a year,Several times a year
+soep-core,p_data,v36,m11104,3,At least once a month,At least once a month
+soep-core,p_data,v36,m11104,4,At lease once a week,At lease once a week
+soep-core,p_data,v36,m11124,0,Not disabled,Not disabled
+soep-core,p_data,v36,m11124,1,Disabled,Disabled
+soep-core,p_data,v36,m11125,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,m11125,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,m11125,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,m11125,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,m11125,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,m11125,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,m11125,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,m11125,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,m11125,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,m11125,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,m11125,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,m11126,1,Very good,Very good
+soep-core,p_data,v36,m11126,2,Good,Good
+soep-core,p_data,v36,m11126,3,Satisfactory,Satisfactory
+soep-core,p_data,v36,m11126,4,Poor,Poor
+soep-core,p_data,v36,m11126,5,Bad ,Bad 
+soep-core,p_data,v36,migback,1,no migration background,no migration background
+soep-core,p_data,v36,migback,2,direct migration background,direct migration background
+soep-core,p_data,v36,migback,3,indirect migration background,indirect migration background
+soep-core,p_data,v36,party,0,no party,no party
+soep-core,p_data,v36,party,1,CDU/CSU,CDU/CSU
+soep-core,p_data,v36,party,2,SPD,SPD
+soep-core,p_data,v36,party,3,FDP,FDP
+soep-core,p_data,v36,party,4,Grüne,Grüne
+soep-core,p_data,v36,party,5,PDS/Linke,PDS/Linke
+soep-core,p_data,v36,party,6,NPD Combination,NPD Combination
+soep-core,p_data,v36,party,7,AfD,AfD
+soep-core,p_data,v36,party,8,Other,Other
+soep-core,p_data,v36,pgcasmin,0,(0) in school,(0) in school
+soep-core,p_data,v36,pgcasmin,1,(1a) inadequately completed,(1a) inadequately completed
+soep-core,p_data,v36,pgcasmin,2,(1b) general elementary school,(1b) general elementary school
+soep-core,p_data,v36,pgcasmin,3,(1c) basic vocational qualification,(1c) basic vocational qualification
+soep-core,p_data,v36,pgcasmin,4,(2b) intermediate general qualification,(2b) intermediate general qualification
+soep-core,p_data,v36,pgcasmin,5,(2a) intermediate vocational,(2a) intermediate vocational
+soep-core,p_data,v36,pgcasmin,6,(2c_gen) general maturity certificate,(2c_gen) general maturity certificate
+soep-core,p_data,v36,pgcasmin,7,(2c_voc) vocational maturity certificate,(2c_voc) vocational maturity certificate
+soep-core,p_data,v36,pgcasmin,8,(3a) lower tertiary education,(3a) lower tertiary education
+soep-core,p_data,v36,pgcasmin,9,(3b) higher tertiary education,(3b) higher tertiary education
+soep-core,p_data,v36,pgfamstd,1,Married,Married
+soep-core,p_data,v36,pgfamstd,2,"Married, but separated","Married, but separated"
+soep-core,p_data,v36,pgfamstd,3,Single,Single
+soep-core,p_data,v36,pgfamstd,4,Divorced,Divorced
+soep-core,p_data,v36,pgisced97,0,in school,in school
+soep-core,p_data,v36,pgisced97,1,inadequately,inadequately
+soep-core,p_data,v36,pgisced97,2,general elemantary,general elemantary
+soep-core,p_data,v36,pgisced97,3,middle vocational,middle vocational
+soep-core,p_data,v36,pgisced97,4,vocational + Abi,vocational + Abi
+soep-core,p_data,v36,pgisced97,5,higher vocational,higher vocational
+soep-core,p_data,v36,pgisced97,6,higher education,higher education
+soep-core,p_data,v36,pgoeffd,1,Yes,Yes
+soep-core,p_data,v36,pgoeffd,2,No,No
+soep-core,p_data,v36,plb0037_h,1,Permanent,Permanent
+soep-core,p_data,v36,plb0037_h,2,Limited,Limited
+soep-core,p_data,v36,plb0050,1,Yes,Yes
+soep-core,p_data,v36,plb0050,2,No,No
+soep-core,p_data,v36,plb0195_h,1,Acclaimed,Acclaimed
+soep-core,p_data,v36,plb0195_h,2,"Partly, partly","Partly, partly"
+soep-core,p_data,v36,plb0195_h,3,Paid,Paid
+soep-core,p_data,v36,plb0195_h,4,Not paid,Not paid
+soep-core,p_data,v36,plb0196_h,1,Yes,Yes
+soep-core,p_data,v36,plb0196_h,2,No,No
+soep-core,p_data,v36,plb0218,1,"No, never","No, never"
+soep-core,p_data,v36,plb0218,2,"Yes, every week","Yes, every week"
+soep-core,p_data,v36,plb0218,3,"Yes, every 2 weeks","Yes, every 2 weeks"
+soep-core,p_data,v36,plb0218,4,"Yes, every 3-4 weeks","Yes, every 3-4 weeks"
+soep-core,p_data,v36,plb0218,5,Rarely,Rarely
+soep-core,p_data,v36,plb0219,1,"No, never","No, never"
+soep-core,p_data,v36,plb0219,2,"Yes, every week","Yes, every week"
+soep-core,p_data,v36,plb0219,3,"Yes, every 2 weeks","Yes, every 2 weeks"
+soep-core,p_data,v36,plb0219,4,"Yes, every 3-4 weeks","Yes, every 3-4 weeks"
+soep-core,p_data,v36,plb0219,5,Rarely,Rarely
+soep-core,p_data,v36,pld0043,1,Very often,Very often
+soep-core,p_data,v36,pld0043,2,Often,Often
+soep-core,p_data,v36,pld0043,3,Sometimes,Sometimes
+soep-core,p_data,v36,pld0043,4,Rarely,Rarely
+soep-core,p_data,v36,pld0043,5,Never,Never
+soep-core,p_data,v36,pld0044,1,Very often,Very often
+soep-core,p_data,v36,pld0044,2,Often,Often
+soep-core,p_data,v36,pld0044,3,Sometimes,Sometimes
+soep-core,p_data,v36,pld0044,4,Rarely,Rarely
+soep-core,p_data,v36,pld0044,5,Never,Never
+soep-core,p_data,v36,pld0045,1,Very often,Very often
+soep-core,p_data,v36,pld0045,2,Often,Often
+soep-core,p_data,v36,pld0045,3,Sometimes,Sometimes
+soep-core,p_data,v36,pld0045,4,Rarely,Rarely
+soep-core,p_data,v36,pld0045,5,Never,Never
+soep-core,p_data,v36,ple0004,1,Strong,Strong
+soep-core,p_data,v36,ple0004,2,A little,A little
+soep-core,p_data,v36,ple0004,3,Not at all,Not at all
+soep-core,p_data,v36,ple0005,1,Strong,Strong
+soep-core,p_data,v36,ple0005,2,A little,A little
+soep-core,p_data,v36,ple0005,3,Not at all,Not at all
+soep-core,p_data,v36,ple0008,1,Very good,Very good
+soep-core,p_data,v36,ple0008,2,Good,Good
+soep-core,p_data,v36,ple0008,3,Satisfactory,Satisfactory
+soep-core,p_data,v36,ple0008,4,Less good,Less good
+soep-core,p_data,v36,ple0008,5,Poor,Poor
+soep-core,p_data,v36,ple0009,1,"Yes, strongly limited","Yes, strongly limited"
+soep-core,p_data,v36,ple0009,2,"Yes, somewhat limited","Yes, somewhat limited"
+soep-core,p_data,v36,ple0009,3,"No, not limited","No, not limited"
+soep-core,p_data,v36,ple0011,1,Yes,Yes
+soep-core,p_data,v36,ple0011,2,No,No
+soep-core,p_data,v36,ple0012,1,Yes,Yes
+soep-core,p_data,v36,ple0012,2,No,No
+soep-core,p_data,v36,ple0013,1,Yes,Yes
+soep-core,p_data,v36,ple0013,2,No,No
+soep-core,p_data,v36,ple0014,1,Yes,Yes
+soep-core,p_data,v36,ple0014,2,No,No
+soep-core,p_data,v36,ple0015,1,Yes,Yes
+soep-core,p_data,v36,ple0015,2,No,No
+soep-core,p_data,v36,ple0016,1,Yes,Yes
+soep-core,p_data,v36,ple0016,2,No,No
+soep-core,p_data,v36,ple0017,1,Yes,Yes
+soep-core,p_data,v36,ple0017,2,No,No
+soep-core,p_data,v36,ple0018,1,Yes,Yes
+soep-core,p_data,v36,ple0018,2,No,No
+soep-core,p_data,v36,ple0019,1,Yes,Yes
+soep-core,p_data,v36,ple0019,2,No,No
+soep-core,p_data,v36,ple0020,1,Yes,Yes
+soep-core,p_data,v36,ple0020,2,No,No
+soep-core,p_data,v36,ple0021,1,Yes,Yes
+soep-core,p_data,v36,ple0021,2,No,No
+soep-core,p_data,v36,ple0022,1,Yes,Yes
+soep-core,p_data,v36,ple0022,2,No,No
+soep-core,p_data,v36,ple0024,1,Yes,Yes
+soep-core,p_data,v36,ple0024,2,No,No
+soep-core,p_data,v36,ple0040,1,Yes,Yes
+soep-core,p_data,v36,ple0040,2,No,No
+soep-core,p_data,v36,ple0044_h,1,Not a day,Not a day
+soep-core,p_data,v36,ple0053,1,Yes,Yes
+soep-core,p_data,v36,ple0053,2,No,No
+soep-core,p_data,v36,ple0081_h,1,Yes,Yes
+soep-core,p_data,v36,ple0081_h,2,No,No
+soep-core,p_data,v36,ple0097,1,Public health insurance,Public health insurance
+soep-core,p_data,v36,ple0097,2,Private health insurance,Private health insurance
+soep-core,p_data,v36,ple0097,3,Neither,Neither
+soep-core,p_data,v36,ple0098_v5,1,Yes,Yes
+soep-core,p_data,v36,ple0098_v5,2,No,No
+soep-core,p_data,v36,ple0160,1,Yes,Yes
+soep-core,p_data,v36,ple0160,2,No,No
+soep-core,p_data,v36,ple0162,1,Yes,Yes
+soep-core,p_data,v36,ple0162,2,No,No
+soep-core,p_data,v36,plh0032,1,Big worries,Big worries
+soep-core,p_data,v36,plh0032,2,Some worries,Some worries
+soep-core,p_data,v36,plh0032,3,No worries,No worries
+soep-core,p_data,v36,plh0033,1,Big worries,Big worries
+soep-core,p_data,v36,plh0033,2,Some worries,Some worries
+soep-core,p_data,v36,plh0033,3,No worries,No worries
+soep-core,p_data,v36,plh0034,1,Big worries,Big worries
+soep-core,p_data,v36,plh0034,2,Some worries,Some worries
+soep-core,p_data,v36,plh0034,3,No worries,No worries
+soep-core,p_data,v36,plh0035,1,Big worries,Big worries
+soep-core,p_data,v36,plh0035,2,Some worries,Some worries
+soep-core,p_data,v36,plh0035,3,No worries,No worries
+soep-core,p_data,v36,plh0036,1,Big worries,Big worries
+soep-core,p_data,v36,plh0036,2,Some worries,Some worries
+soep-core,p_data,v36,plh0036,3,No worries,No worries
+soep-core,p_data,v36,plh0037,1,Big worries,Big worries
+soep-core,p_data,v36,plh0037,2,Some worries,Some worries
+soep-core,p_data,v36,plh0037,3,No worries,No worries
+soep-core,p_data,v36,plh0038,1,Big worries,Big worries
+soep-core,p_data,v36,plh0038,2,Some worries,Some worries
+soep-core,p_data,v36,plh0038,3,No worries,No worries
+soep-core,p_data,v36,plh0039,1,Big worries,Big worries
+soep-core,p_data,v36,plh0039,2,Some worries,Some worries
+soep-core,p_data,v36,plh0039,3,No worries,No worries
+soep-core,p_data,v36,plh0040,1,Big worries,Big worries
+soep-core,p_data,v36,plh0040,2,Some worries,Some worries
+soep-core,p_data,v36,plh0040,3,No worries,No worries
+soep-core,p_data,v36,plh0042,1,Big worries,Big worries
+soep-core,p_data,v36,plh0042,2,Some worries,Some worries
+soep-core,p_data,v36,plh0042,3,No worries,No worries
+soep-core,p_data,v36,plh0105,1,Very important,Very important
+soep-core,p_data,v36,plh0105,2,Important,Important
+soep-core,p_data,v36,plh0105,3,Less important,Less important
+soep-core,p_data,v36,plh0105,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0106,1,Very important,Very important
+soep-core,p_data,v36,plh0106,2,Important,Important
+soep-core,p_data,v36,plh0106,3,Less important,Less important
+soep-core,p_data,v36,plh0106,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0107,1,Very important,Very important
+soep-core,p_data,v36,plh0107,2,Important,Important
+soep-core,p_data,v36,plh0107,3,Less important,Less important
+soep-core,p_data,v36,plh0107,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0108,1,Very important,Very important
+soep-core,p_data,v36,plh0108,2,Important,Important
+soep-core,p_data,v36,plh0108,3,Less important,Less important
+soep-core,p_data,v36,plh0108,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0109,1,Very important,Very important
+soep-core,p_data,v36,plh0109,2,Important,Important
+soep-core,p_data,v36,plh0109,3,Less important,Less important
+soep-core,p_data,v36,plh0109,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0110,1,Very important,Very important
+soep-core,p_data,v36,plh0110,2,Important,Important
+soep-core,p_data,v36,plh0110,3,Less important,Less important
+soep-core,p_data,v36,plh0110,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0111,1,Very important,Very important
+soep-core,p_data,v36,plh0111,2,Important,Important
+soep-core,p_data,v36,plh0111,3,Less important,Less important
+soep-core,p_data,v36,plh0111,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0112,1,Very important,Very important
+soep-core,p_data,v36,plh0112,2,Important,Important
+soep-core,p_data,v36,plh0112,3,Less important,Less important
+soep-core,p_data,v36,plh0112,4,Quite unimportant,Quite unimportant
+soep-core,p_data,v36,plh0162,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0162,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0162,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0164,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0164,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0164,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0171,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0171,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0171,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0172,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0172,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0172,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0173,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0173,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0173,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0174,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0174,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0174,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0175,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0175,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0175,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0176,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0176,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0176,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0177,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0177,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0177,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0178,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0178,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0178,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0179,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0179,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0179,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0180,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0180,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0180,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0182,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0182,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0182,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0183,0,0 Completely dissatisfied,0 Completely dissatisfied
+soep-core,p_data,v36,plh0183,1,1 on Scale 1 to 10,1 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,2,2 on Scale 1 to 10,2 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,3,3 on Scale 1 to 10,3 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,4,4 on Scale 1 to 10,4 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,5,5 on Scale 1 to 10,5 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,6,6 on Scale 1 to 10,6 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,7,7 on Scale 1 to 10,7 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,8,8 on Scale 1 to 10,8 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,9,9 on Scale 1 to 10,9 on Scale 1 to 10
+soep-core,p_data,v36,plh0183,10,10 Completely satisfied,10 Completely satisfied
+soep-core,p_data,v36,plh0184,1,Very rare,Very rare
+soep-core,p_data,v36,plh0184,2,Rarely,Rarely
+soep-core,p_data,v36,plh0184,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0184,4,Often,Often
+soep-core,p_data,v36,plh0184,5,Very often,Very often
+soep-core,p_data,v36,plh0185,1,Very rare,Very rare
+soep-core,p_data,v36,plh0185,2,Rarely,Rarely
+soep-core,p_data,v36,plh0185,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0185,4,Often,Often
+soep-core,p_data,v36,plh0185,5,Very often,Very often
+soep-core,p_data,v36,plh0186,1,Very rare,Very rare
+soep-core,p_data,v36,plh0186,2,Rarely,Rarely
+soep-core,p_data,v36,plh0186,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0186,4,Often,Often
+soep-core,p_data,v36,plh0186,5,Very often,Very often
+soep-core,p_data,v36,plh0187,1,Very rare,Very rare
+soep-core,p_data,v36,plh0187,2,Rarely,Rarely
+soep-core,p_data,v36,plh0187,3,Sometimes,Sometimes
+soep-core,p_data,v36,plh0187,4,Often,Often
+soep-core,p_data,v36,plh0187,5,Very often,Very often
+soep-core,p_data,v36,plh0188,1,True entirely,True entirely
+soep-core,p_data,v36,plh0188,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0188,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0188,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0189,1,True entirely,True entirely
+soep-core,p_data,v36,plh0189,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0189,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0189,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0190,1,True entirely,True entirely
+soep-core,p_data,v36,plh0190,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0190,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0190,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0191,1,True entirely,True entirely
+soep-core,p_data,v36,plh0191,2,Tends to agree,Tends to agree
+soep-core,p_data,v36,plh0191,3,Rather not true,Rather not true
+soep-core,p_data,v36,plh0191,4,Totally disagree,Totally disagree
+soep-core,p_data,v36,plh0192,1,Fully agree,Fully agree
+soep-core,p_data,v36,plh0192,2,Rather agree,Rather agree
+soep-core,p_data,v36,plh0192,3,Rather disagree,Rather disagree
+soep-core,p_data,v36,plh0192,4,Disagree fully,Disagree fully
+soep-core,p_data,v36,plh0193,1,Fully agree,Fully agree
+soep-core,p_data,v36,plh0193,2,Rather agree,Rather agree
+soep-core,p_data,v36,plh0193,3,Rather disagree,Rather disagree
+soep-core,p_data,v36,plh0193,4,Disagree fully,Disagree fully
+soep-core,p_data,v36,plh0194,1,Fully agree,Fully agree
+soep-core,p_data,v36,plh0194,2,Rather agree,Rather agree
+soep-core,p_data,v36,plh0194,3,Rather disagree,Rather disagree
+soep-core,p_data,v36,plh0194,4,Disagree fully,Disagree fully
+soep-core,p_data,v36,plh0195,1,People exploit,People exploit
+soep-core,p_data,v36,plh0195,2,People are fair,People are fair
+soep-core,p_data,v36,plh0196,1,People are helpful,People are helpful
+soep-core,p_data,v36,plh0196,2,People pursue self-interest,People pursue self-interest
+soep-core,p_data,v36,plh0204_h,0,0 Not at all Willing to take risks,0 Not at all Willing to take risks
+soep-core,p_data,v36,plh0204_h,1,1,1
+soep-core,p_data,v36,plh0204_h,2,2,2
+soep-core,p_data,v36,plh0204_h,3,3,3
+soep-core,p_data,v36,plh0204_h,4,4,4
+soep-core,p_data,v36,plh0204_h,5,5,5
+soep-core,p_data,v36,plh0204_h,6,6,6
+soep-core,p_data,v36,plh0204_h,7,7,7
+soep-core,p_data,v36,plh0204_h,8,8,8
+soep-core,p_data,v36,plh0204_h,9,9,9
+soep-core,p_data,v36,plh0204_h,10,10 Very willing to take risks,10 Very willing to take risks
+soep-core,p_data,v36,plh0206i01,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i01,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i01,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i01,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i01,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i01,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i01,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i02,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i02,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i02,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i02,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i02,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i02,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i02,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i03,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i03,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i03,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i03,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i03,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i03,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i03,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i04,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i04,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i04,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i04,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i04,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i04,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i04,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i05,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i05,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i05,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i05,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i05,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i05,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i05,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0206i06,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0206i06,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0206i06,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0206i06,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0206i06,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0206i06,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0206i06,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0212,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0212,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0212,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0212,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0212,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0212,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0212,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0213,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0213,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0213,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0213,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0213,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0213,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0213,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0214,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0214,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0214,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0214,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0214,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0214,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0214,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0215,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0215,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0215,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0215,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0215,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0215,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0215,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0216,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0216,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0216,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0216,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0216,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0216,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0216,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0217,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0217,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0217,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0217,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0217,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0217,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0217,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0218,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0218,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0218,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0218,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0218,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0218,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0218,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0219,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0219,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0219,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0219,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0219,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0219,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0219,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0220,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0220,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0220,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0220,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0220,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0220,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0220,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0221,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0221,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0221,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0221,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0221,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0221,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0221,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0222,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0222,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0222,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0222,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0222,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0222,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0222,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0223,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0223,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0223,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0223,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0223,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0223,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0223,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0224,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0224,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0224,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0224,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0224,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0224,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0224,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0225,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0225,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0225,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0225,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0225,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0225,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0225,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,plh0226,1,1 Strongly disagree,1 Strongly disagree
+soep-core,p_data,v36,plh0226,2,2 on scale 1-7 ,2 on scale 1-7 
+soep-core,p_data,v36,plh0226,3,3 on scale 1-7 ,3 on scale 1-7 
+soep-core,p_data,v36,plh0226,4,4 on scale 1-7,4 on scale 1-7
+soep-core,p_data,v36,plh0226,5,5 on scale 1-7,5 on scale 1-7
+soep-core,p_data,v36,plh0226,6,6 on scale 1-7,6 on scale 1-7
+soep-core,p_data,v36,plh0226,7,7 Strongly agree,7 Strongly agree
+soep-core,p_data,v36,pli0080,1,Daily,Daily
+soep-core,p_data,v36,pli0080,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0080,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0080,4,Rarely,Rarely
+soep-core,p_data,v36,pli0080,5,Never,Never
+soep-core,p_data,v36,pli0081,1,Daily,Daily
+soep-core,p_data,v36,pli0081,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0081,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0081,4,Rarely,Rarely
+soep-core,p_data,v36,pli0081,5,Never,Never
+soep-core,p_data,v36,pli0082,1,Daily,Daily
+soep-core,p_data,v36,pli0082,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0082,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0082,4,Rarely,Rarely
+soep-core,p_data,v36,pli0082,5,Never,Never
+soep-core,p_data,v36,pli0083,1,Daily,Daily
+soep-core,p_data,v36,pli0083,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0083,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0083,4,Rarely,Rarely
+soep-core,p_data,v36,pli0083,5,Never,Never
+soep-core,p_data,v36,pli0089,1,Daily,Daily
+soep-core,p_data,v36,pli0089,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0089,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0089,4,Rarely,Rarely
+soep-core,p_data,v36,pli0089,5,Never,Never
+soep-core,p_data,v36,pli0091_h,1,Daily,Daily
+soep-core,p_data,v36,pli0091_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0091_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0091_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0091_h,5,Never,Never
+soep-core,p_data,v36,pli0092_h,1,Daily,Daily
+soep-core,p_data,v36,pli0092_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0092_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0092_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0092_h,5,Never,Never
+soep-core,p_data,v36,pli0093_h,1,Daily,Daily
+soep-core,p_data,v36,pli0093_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0093_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0093_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0093_h,5,Never,Never
+soep-core,p_data,v36,pli0095_h,1,Daily,Daily
+soep-core,p_data,v36,pli0095_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0095_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0095_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0095_h,5,Never,Never
+soep-core,p_data,v36,pli0096_h,1,Daily,Daily
+soep-core,p_data,v36,pli0096_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0096_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0096_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0096_h,5,Never,Never
+soep-core,p_data,v36,pli0097_h,1,Daily,Daily
+soep-core,p_data,v36,pli0097_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0097_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0097_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0097_h,5,Never,Never
+soep-core,p_data,v36,pli0098_h,1,Daily,Daily
+soep-core,p_data,v36,pli0098_h,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0098_h,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0098_h,4,Rarely,Rarely
+soep-core,p_data,v36,pli0098_h,5,Never,Never
+soep-core,p_data,v36,pli0165,1,Daily,Daily
+soep-core,p_data,v36,pli0165,2,Min 1x per week,Min 1x per week
+soep-core,p_data,v36,pli0165,3,Min 1x per month,Min 1x per month
+soep-core,p_data,v36,pli0165,4,Rarely,Rarely
+soep-core,p_data,v36,pli0165,5,Never,Never
+soep-core,p_data,v36,plj0014_v3,1,Yes,Yes
+soep-core,p_data,v36,plj0014_v3,2,No,No
+soep-core,p_data,v36,plj0046,1,Big worries,Big worries
+soep-core,p_data,v36,plj0046,2,Some worries,Some worries
+soep-core,p_data,v36,plj0046,3,No worries,No worries
+soep-core,p_data,v36,plj0047,1,Big worries,Big worries
+soep-core,p_data,v36,plj0047,2,Some worries,Some worries
+soep-core,p_data,v36,plj0047,3,No worries,No worries
+soep-core,p_data,v36,plj0587,1,Very often,Very often
+soep-core,p_data,v36,plj0587,2,Often,Often
+soep-core,p_data,v36,plj0587,3,Sometimes,Sometimes
+soep-core,p_data,v36,plj0587,4,Rarely ,Rarely 
+soep-core,p_data,v36,plj0587,5,Never,Never
+soep-core,p_data,v36,plj0588,1,Very often,Very often
+soep-core,p_data,v36,plj0588,2,Often,Often
+soep-core,p_data,v36,plj0588,3,Sometimes,Sometimes
+soep-core,p_data,v36,plj0588,4,Rarely ,Rarely 
+soep-core,p_data,v36,plj0588,5,Never,Never
+soep-core,p_data,v36,plj0589,1,Very often,Very often
+soep-core,p_data,v36,plj0589,2,Often,Often
+soep-core,p_data,v36,plj0589,3,Sometimes,Sometimes
+soep-core,p_data,v36,plj0589,4,Rarely ,Rarely 
+soep-core,p_data,v36,plj0589,5,Never,Never
+soep-core,p_data,v36,sampreg,1,[1] West Germany,[1] West Germany
+soep-core,p_data,v36,sampreg,2,[2] East Germany,[2] East Germany
+soep-core,p_data,v36,sex,1,Male,Male
+soep-core,p_data,v36,sex,2,Female,Female
+soep-core,p_data,v36,transab_cat,0,No transfer dependency,No transfer dependency
+soep-core,p_data,v36,transab_cat,1,Very low transfer dependency,Very low transfer dependency
+soep-core,p_data,v36,transab_cat,2,Low transfer dependency,Low transfer dependency
+soep-core,p_data,v36,transab_cat,3,High transfer dependency,High transfer dependency
+soep-core,p_data,v36,transab_cat,4,Very high transfer dependency,Very high transfer dependency
+soep-core,p_data,v36,transab_cat,5,Complete transfer dependency,Complete transfer dependency
+soep-core,p_data,v36,transab_cat2,0,Very low transfer dependency,Very low transfer dependency
+soep-core,p_data,v36,transab_cat2,1,Low transfer dependency,Low transfer dependency
+soep-core,p_data,v36,transab_cat2,2,High transfer dependency,High transfer dependency
+soep-core,p_data,v36,transab_cat2,3,Very high transfer dependency,Very high transfer dependency
+soep-core,p_data,v36,regtyp,1,Urban Area,Urban Area
+soep-core,p_data,v36,regtyp,2,Rural Area,Rural Area
