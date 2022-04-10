@@ -36,7 +36,7 @@ color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"),
 get_map_plot <- function(table, syear, variable, statistic, diffvar){
   
   
-  title <- paste0(meta$label_de[meta$variable==variable], " in federal states")
+  title <- paste0(meta$label_de[meta$variable==variable], " in federal states", " in ", syear)
   
   dataset <- data  %>%
     filter(year == syear)
@@ -761,7 +761,7 @@ library(tidyverse)
 metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
  tables <- "C:/git/Master-Project/tables/"
  tabletype <- "numerical"
- variable <- "plh0182"
+ variable <- "aequiv_income"
  #  variable <- "pglabgro"
  #  variable <- "plh0035"
  #  tabletype <- "categorical"
@@ -773,7 +773,7 @@ metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
 
 
 table <-  get_user_table(meta = meta, variable = variable,
-                         diffvar1 = "sex", diffvar2 = "",
+                         diffvar1 = "education", diffvar2 = "sex",
                          heatmap = FALSE)
 
 data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
@@ -784,29 +784,32 @@ title <- meta$label_de[meta$variable==variable]
 
 
 fig <- get_barplot(data = data, meta = meta, 
-            variable = variable, diffvar1 = "sex", diffvar2 = "", 
-            plottype = "stack", ci = TRUE, start = 1999, end = 2003)
+            variable = variable, diffvar1 = "education", diffvar2 = "sex", 
+            plottype = "dodge", ci = TRUE, start = 2016, end = 2019)
 
  get_map_plot(table = data,
               syear = "2018",
               variable = variable,
               statistic = "median",
-              diffvar = "sex")
+              diffvar = "age_gr")
  
  fig <-  get_boxplot(table = data, variable = variable,
-               diffvar2 = "sex", diffvar3 = "")
+               diffvar2 = "education", diffvar3 = "sex")
  
  get_lineplot(table = data,
               meta = meta,
               variable = variable,
-              diffvar1 = "sex",
-              diffvar2 = "",
+              diffvar1 = "education",
+              diffvar2 = "sex",
               diffcount = 2,
               start = 1992,
               end = 2000,
               ci = FALSE)
  
  
+ get_lineplot(table = data, meta = meta, variable = variable,
+              diffvar1 = "education", diffvar2 = "sex", diffcount = 3,
+              start = 1989, end = 2008, ci = TRUE)
  
 
  
