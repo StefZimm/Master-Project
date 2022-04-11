@@ -58,8 +58,8 @@ library(shinythemes)
 # labels should be read as var name
 # variables should fall into topic categories
 
-variables <- read.csv("metadata/p_data/variables.csv")
-var_cat <- read.csv("variable_categories.csv")
+variables <- read.csv("../metadata/p_data/variables.csv")
+var_cat <- read.csv("../metadata/p_data/variable_categories.csv")
 
 # path for tables, not sure how to load in only certain tables or if it can even be done this way. It seems like all tables will need to be loaded
 tables <- "tables/"
@@ -71,7 +71,9 @@ top_health  <- variables %>% filter(topic == "Health and Care") %>% select(label
 top_home    <- variables %>% filter(topic == "Home, Amenities, and Contributions of Private HH") %>% select(label_de)
 top_time    <- variables %>% filter(topic == "Time Use and Environmental Behavior") %>% select(label_de)
 top_emp     <- variables %>% filter(topic == "Work and Employment") %>% select(label_de)
-top_demo    <- variables %>% filter(topic == "Demography") %>% select(label_de)
+
+top_demo <- variables %>%
+  filter(meantable == "demo") 
 
 
 
@@ -631,7 +633,7 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   var_vector <- c(variable, "year")
   
   if (heatmap == FALSE) {  
-    diffvar_vector<- c(diffvar1[diffvar1 != ""], diffvar2[diffvar2 != ""])
+    diffvar_vector<- sort(c(diffvar1[diffvar1 != ""], diffvar2[diffvar2 != ""]))
     vector <- c(var_vector, diffvar_vector[diffvar_vector != ""])
     vector <- paste(vector, collapse = "_")  
     table_csv <- paste0(vector, ".csv")

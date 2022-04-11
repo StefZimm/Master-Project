@@ -524,7 +524,7 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   var_vector <- c(variable, "year")
   
   if (heatmap == FALSE) {  
-    diffvar_vector<- c(diffvar1[diffvar1 != ""], diffvar2[diffvar2 != ""])
+    diffvar_vector<- sort(c(diffvar1[diffvar1 != ""], diffvar2[diffvar2 != ""]))
     vector <- c(var_vector, diffvar_vector[diffvar_vector != ""])
     vector <- paste(vector, collapse = "_")  
     table_csv <- paste0(vector, ".csv")
@@ -539,7 +539,6 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
   return(table_csv)
 }
-
 
 get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
                         start, end){

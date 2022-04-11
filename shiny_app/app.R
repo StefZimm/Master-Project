@@ -65,7 +65,7 @@ ui <-
     useShinyjs(),  # Include shinyjs
     introjsUI(),   # Required to enable introjs scripts
     navbarPage(id = "intabset", #needed for landing page
-               title = div(tags$a(img(src="soep_icon.png", height=40), href= "http://www.scotpho.org.uk/"),
+               title = div(tags$a(img(src="soep_icon.png", height=40), href= "https://www.diw.de/en/diw_01.c.678568.en/research_data_center_soep.html"),
                            style = "position: relative; top: -5px;"), # Navigation bar
                windowTitle = "ScotPHO profiles", #title for browser tab
                theme = shinytheme("lumen"), #Theme of the app (blue navbar)
@@ -180,10 +180,15 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group", "Click in the box to select up to three grouping variables",
+                                         selectizeInput("group1", "Click in the box to one grouping variables",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 3))),
+                                                        options = list(maxItems = 1))),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                                        choices = top_demo$label_de,
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select an income variable",
                                                      choices = unique(as.character(top_inc$label_de)))),
@@ -206,7 +211,12 @@ ui <-
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger"))
-                                     ),
+                                     ), 
+                        verbatimTextOutput("text"),
+                        verbatimTextOutput("diffvar1"),
+                        verbatimTextOutput("diffvar2"),
+                        verbatimTextOutput("table_text"),
+                        tableOutput("table")
                         
                         ), #tabpanel close
 
@@ -216,10 +226,15 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group", "Click in the box to select up to three grouping variables",
+                                         selectizeInput("group1", "Click in the box to one grouping variables",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 3))),
+                                                        options = list(maxItems = 1))),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                                        choices = top_demo$label_de,
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select a variable",
                                                      choices = unique(as.character(top_health$label_de)))),
@@ -249,10 +264,15 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group", "Click in the box to select up to three grouping variables",
+                                         selectizeInput("group1", "Click in the box to one grouping variables",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 3))),
+                                                        options = list(maxItems = 1))),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                                        choices = top_demo$label_de,
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select a variable",
                                                      choices = unique(as.character(top_att$label_de)))),
@@ -282,10 +302,15 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group", "Click in the box to select up to three grouping variables",
+                                         selectizeInput("group1", "Click in the box to one grouping variables",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 3))),
+                                                        options = list(maxItems = 1))),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                                        choices = top_demo$label_de,
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select a variable",
                                                      choices = unique(as.character(top_home$label_de)))),
@@ -315,10 +340,15 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group", "Click in the box to select up to three grouping variables",
+                                         selectizeInput("group1", "Click in the box to one grouping variables",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 3))),
+                                                        options = list(maxItems = 1))),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                                        choices = top_demo$label_de,
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select a variable",
                                                      choices = unique(as.character(top_time$label_de)))),
@@ -348,10 +378,15 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group", "Click in the box to select up to three grouping variables",
+                                         selectizeInput("group1", "Click in the box to one grouping variables",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 3))),
+                                                        options = list(maxItems = 1))),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                                        choices = top_demo$label_de,
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select a variable",
                                                      choices = unique(as.character(top_emp$label_de)))),
@@ -452,8 +487,53 @@ server <- function(input, output, session) {
     updateTabsetPanel(session, "intabset", selected = "emp")
   })
   
-
+  ######## Attention: New Code from Stefan ##################
+  # Variable
+  variable <- reactive({ 
+    variables$variable[variables$label_de==input$variable]
+  })
   
+  # grouping1
+  diffvar1 <- reactive({ 
+    variables$variable[variables$label_de==input$group1]
+  })
+  
+  # grouping2
+  
+  diffvar2 <- reactive({ 
+    variables$variable[variables$label_de==input$group2]
+  })
+  
+  # Select Table Name
+  table <- reactive({ 
+    get_user_table(meta = variables, variable = variable(),
+                   diffvar1 = diffvar1(), diffvar2 = diffvar2(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  mydata <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , variable(), "/", table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+  
+  output$text <- renderText(paste0("selected variable: ", variable()))
+  output$diffvar1 <- renderText(paste0("selected grouping 1: ", diffvar1()))
+  output$diffvar2 <- renderText(paste0("selected grouping 2: ", diffvar2()))
+  output$table_text <- renderText(paste0("selected table: ", table()))
+  
+  # create rendered outputtable
+  output$table <- renderTable(
+    mydata())
 }
 
 # Run the application 
