@@ -177,27 +177,31 @@ ui <-
               # INCOME
 
                tabPanel("Income", icon = icon("euro-sign"), value = "income",
+
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Click in the box to one grouping variables",
+                                         selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
-                                                        multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        multiple = FALSE,
+                                                        #options = list(maxItems = 1)
+                                                        )),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                         selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("variable", label = "Select an income variable",
                                                      choices = unique(as.character(top_inc$label_de)))),
+                                     br(),
+                                     p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
                                        inputId = "yearInput",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
-                                       min = min(1984, na.rm = TRUE),
-                                       max = max(2019, na.rm = TRUE),
+                                       min = 1984,
+                                       max = 2019,
                                        step = 1L,
                                        sep = ""
                                       
@@ -211,12 +215,24 @@ ui <-
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger"))
-                                     ), 
-                        verbatimTextOutput("text"),
-                        verbatimTextOutput("diffvar1"),
-                        verbatimTextOutput("diffvar2"),
-                        verbatimTextOutput("table_text"),
-                        tableOutput("table")
+                                     ),
+                        sidebarPanel(width = 4,
+                                     h2("Plots"),
+                                     plotlyOutput('lineplot'),
+                                     div(style = "margin-top: 30px",
+                                         verbatimTextOutput("text"),
+                                         verbatimTextOutput("diffvar1"),
+                                         verbatimTextOutput("diffvar2"),
+                                         verbatimTextOutput("table_text")),
+                                         #tableOutput("table")
+                                         #dataTableOutput prints 10 rows on screen, user can select more rows and search
+                                         #uncomment tableOutput and renderTable to use prior table format
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("table"))
+                                         
+                                         )
+                        
                         
                         ), #tabpanel close
 
@@ -226,12 +242,12 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Click in the box to one grouping variables",
+                                         selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                         selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
@@ -264,12 +280,12 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Click in the box to one grouping variables",
+                                         selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                         selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
@@ -302,12 +318,12 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Click in the box to one grouping variables",
+                                         selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                         selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
@@ -340,12 +356,12 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Click in the box to one grouping variables",
+                                         selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                         selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
@@ -378,12 +394,12 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Click in the box to one grouping variables",
+                                         selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Click in the box to one grouping variables",
+                                         selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
@@ -532,8 +548,26 @@ server <- function(input, output, session) {
   output$table_text <- renderText(paste0("selected table: ", table()))
   
   # create rendered outputtable
-  output$table <- renderTable(
-    mydata())
+  # output$table <- renderTable(
+  #   mydata())
+  
+  # renderDataTable prints 10 rows on screen, user can select more rows if needed
+  # uncomment tableOutput and renderTable to use prior table format
+  output$table <- renderDataTable(
+    mydata(), options = list(searching = FALSE))
+  
+  
+##################
+  # plots
+#################
+  
+  output$lineplot <- renderPlotly({
+      get_lineplot(table = mydata, meta = variables, variable = variable(),
+                   diffvar1 = diffvar1(), diffvar2 = diffvar2(), diffcount = diffcount(),
+                   start = 1984, end = 2019, ci = FALSE)
+    })
+  
+  
 }
 
 # Run the application 
