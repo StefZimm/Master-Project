@@ -39,8 +39,11 @@ library(shinydashboard)
 library(shinyWidgets)
 library(shinyjs)
 library(rintrojs)
+library(tidyr)
 library(shinyBS)
 library(shinythemes)
+library(DT)
+library(shinycssloaders)
 #library(shinyLP) #use if customizing theme with HTML
 #library(bslib) #use if customizing theme
 
@@ -75,7 +78,7 @@ top_emp     <- variables %>% filter(topic == "Work and Employment") %>% select(l
 top_demo <- variables %>%
   filter(meantable == "demo") 
 
-
+ 
 
 ################################################################################
 # Functions #
@@ -796,3 +799,5 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   }
   return(plot)
 }
+
+
