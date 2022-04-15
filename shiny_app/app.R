@@ -214,7 +214,8 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_income', 'Download Income Data', class = "down")
                                      ),
                         sidebarPanel(width = 4,
                                      h2("Plots"),
@@ -242,17 +243,18 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group3", "Select your first grouping variable",
+                                                        choices = top_demo$label_de,
+                                                        multiple = FALSE,
+                                                        #options = list(maxItems = 1)
+                                         )),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group4", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
-                                                        choices = top_demo$label_de,
-                                                        multiple = TRUE,
-                                                        options = list(maxItems = 1))),
-                                     div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select a variable",
+                                         selectInput("health_variable", label = "Select a variable",
                                                      choices = unique(as.character(top_health$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
@@ -270,8 +272,18 @@ ui <-
                                                     choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                     selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_health_data', 'Download Health Data', class = "down")
                                      ),
+                        sidebarPanel(width = 4,
+                               
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("health_table"))
+                                     
+                        )
+                        
+                        
                         ), #tabpanel close
 
               # ATTITUDES
@@ -308,7 +320,8 @@ ui <-
                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                            selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_att_data', 'Download Attitudes Data', class = "down")
                                      )
                         ), #tabpanel close
                
@@ -346,7 +359,8 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_home_data', 'Download Home Data', class = "down")
                                      )
                         ), #tabpanel close
 
@@ -384,7 +398,8 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_time_data', 'Download Time Data', class = "down")
                                      )
                         ), #tabpanel close
 
@@ -422,7 +437,8 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_emp_data', 'Download Employment Data', class = "down")
                                      )
                         ), #tabpanel close
 
@@ -504,7 +520,13 @@ server <- function(input, output, session) {
   })
   
   ######## Attention: New Code from Stefan ##################
-  # Variable
+ 
+  ##################################
+  ## Income Panel
+  #################################
+  
+  
+   # Variable
   variable <- reactive({ 
     variables$variable[variables$label_de==input$variable]
   })
@@ -515,10 +537,10 @@ server <- function(input, output, session) {
   })
   
   # grouping2
-  
   diffvar2 <- reactive({ 
     variables$variable[variables$label_de==input$group2]
   })
+  
   
   # Select Table Name
   table <- reactive({ 
@@ -541,21 +563,62 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
+  output$table <- renderDataTable(
+    mydata(), options = list(searching = FALSE))
+  
   
   output$text <- renderText(paste0("selected variable: ", variable()))
   output$diffvar1 <- renderText(paste0("selected grouping 1: ", diffvar1()))
   output$diffvar2 <- renderText(paste0("selected grouping 2: ", diffvar2()))
   output$table_text <- renderText(paste0("selected table: ", table()))
   
+ ################################### 
+ #### health panel
+ ################################### 
+  health_variable <- reactive({ 
+    variables$variable[variables$label_de==input$health_variable]
+  })
+  # grouping3
+  diffvar3 <- reactive({ 
+    variables$variable[variables$label_de==input$group3]
+  })
+  
+  # grouping4
+  diffvar4 <- reactive({ 
+    variables$variable[variables$label_de==input$group4]
+  })
+  
+  health_table <- reactive({ 
+    get_user_table(meta = variables, variable = health_variable(),
+                   diffvar1 = diffvar3(), diffvar2 = diffvar4(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  health_data <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$health_variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$health_variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , health_variable(), "/", health_table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+
+
   # create rendered outputtable
   # output$table <- renderTable(
   #   mydata())
   
   # renderDataTable prints 10 rows on screen, user can select more rows if needed
   # uncomment tableOutput and renderTable to use prior table format
-  output$table <- renderDataTable(
-    mydata(), options = list(searching = FALSE))
-  
+
+  output$health_table <- renderDataTable(
+    health_data(), options = list(searching = FALSE))
   
 ##################
   # plots
@@ -566,7 +629,35 @@ server <- function(input, output, session) {
                    diffvar1 = diffvar1(), diffvar2 = diffvar2(), diffcount = diffcount(),
                    start = 1984, end = 2019, ci = FALSE)
     })
+
   
+#################
+  # Downloads
+################
+  
+  income_csv <- reactive({ format_csv(mydata())})
+  output$download_income_data <- downloadHandler(filename = 'income_data.csv',
+                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
+  
+  health_csv <- reactive({ format_csv(health_data())})
+  output$download_health_data <- downloadHandler(filename = 'health_data.csv',
+                                            content = function(file) {write.csv(health_csv(), file, row.names = TRUE)})
+  
+  att_csv <- reactive({ format_csv(mydata())})
+  output$download_att_data <- downloadHandler(filename = 'attitudes_data.csv',
+                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
+  
+  home_csv <- reactive({ format_csv(mydata())})
+  output$download_home_data <- downloadHandler(filename = 'home_data.csv',
+                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
+  
+  time_csv <- reactive({ format_csv(mydata())})
+  output$download_time_data <- downloadHandler(filename = 'timee_data.csv',
+                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
+  
+  emp_csv <- reactive({ format_csv(mydata())})
+  output$download_emp_data <- downloadHandler(filename = 'emp_data.csv',
+                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
   
 }
 
