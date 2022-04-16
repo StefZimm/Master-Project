@@ -358,7 +358,7 @@ create_table_lables <- function(table) {
       gsub("5", "North Rhine-Westphalia", .) %>%
       gsub("6", "Hesse", .) %>%
       gsub("7", "Rhineland-Palatinate,Saarland", .) %>% 
-      gsub("8", "Baden-Württemberg", .) %>% 
+      gsub("8", "Baden-W?rttemberg", .) %>% 
       gsub("9", "Bavaria", .)
   }
   
@@ -412,6 +412,11 @@ create_table_lables <- function(table) {
                                                 "2" = "Part Time",
                                                 "3"  = "Not Working"), 
                                       as.character(data_with_label$e11103))
+  }
+  
+  if("regtyp" %in% colnames(data_with_label)){
+    data_with_label$regtyp <- gsubfn(".", list("1" = "Urban Area", "2" = "Rural Area"), 
+                                     as.character(data_with_label$regtyp))
   }
   
   if("hgtyp1hh" %in% colnames(data_with_label)){
@@ -636,7 +641,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "bula_h"],
                "values" = list("Schleswig-Holstei", "Hamburg",
                                "Lower Saxony", "Bremen", "North Rhine-Westphalia",
-                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-Württemberg", 
+                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-W?rttemberg", 
                                "Bavaria", "Berlin", "Brandenburg", "Mecklenburg-Western Pomerania", "Saxony",
                                "Saxony-Anhalt", "Thuringia")),
           list("variable" = meta$variable[meta$variable == "education"], 
@@ -682,7 +687,11 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "migback"],
                "values" = list("no migration background", 
                                "direct migration background",
-                               "indirect migration background"))
+                               "indirect migration background")),
+          list("variable" = meta$variable[meta$variable == "regtyp"], 
+               "label" = meta$label_de[meta$variable == "regtyp"],
+               "values" = list(as.list(str_trim(gsub("[[0-9]+]", "", levels(factor(data.file.fac$regtyp)))))))
+
         ),
         "description_de" = meta$description[meta$variable==variable],
         "start_year" = startyear,
@@ -714,7 +723,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "bula_h"],
                "values" = list("Schleswig-Holstei", "Hamburg",
                                "Lower Saxony", "Bremen", "North Rhine-Westphalia",
-                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-Württemberg", 
+                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-W?rttemberg", 
                                "Bavaria", "Berlin", "Brandenburg", "Mecklenburg-Western Pomerania", "Saxony",
                                "Saxony-Anhalt", "Thuringia")),
           list("variable" = meta$variable[meta$variable == "education"], 
@@ -760,7 +769,10 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "migback"],
                "values" = list("no migration background", 
                                "direct migration background",
-                               "indirect migration background"))
+                               "indirect migration background")),
+          list("variable" = meta$variable[meta$variable == "regtyp"], 
+               "label" = meta$label_de[meta$variable == "regtyp"],
+               "values" = list(as.list(str_trim(gsub("[[0-9]+]", "", levels(factor(data.file.fac$regtyp)))))))
         ),
         "description_de" = meta$description[meta$variable==variable],
         "start_year" = startyear,
@@ -795,7 +807,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "bula_h"],
                "values" = list("Schleswig-Holstei", "Hamburg",
                                "Lower Saxony", "Bremen", "North Rhine-Westphalia",
-                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-Württemberg", 
+                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-W?rttemberg", 
                                "Bavaria", "Berlin", "Brandenburg", "Mecklenburg-Western Pomerania", "Saxony",
                                "Saxony-Anhalt", "Thuringia")),
           list("variable" = meta$variable[meta$variable == "education"], 
@@ -841,7 +853,10 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "migback"],
                "values" = list("no migration background", 
                                "direct migration background",
-                               "indirect migration background"))
+                               "indirect migration background")),
+          list("variable" = meta$variable[meta$variable == "regtyp"], 
+               "label" = meta$label_de[meta$variable == "regtyp"],
+               "values" = list(as.list(str_trim(gsub("[[0-9]+]", "", levels(factor(data.file.fac$regtyp)))))))
         ),
         "description_de" = meta$description[meta$variable==variable],
         "start_year" = startyear,

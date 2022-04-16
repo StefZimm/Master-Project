@@ -33,7 +33,7 @@ if c(username)=="jdbou" & c(os) == "Windows"{ // Stefan DIW-PC
 use pid hid syear netto corigin phrf sex migback syear sampreg gebjahr germborn migback using ${data}\ppathl.dta, clear
 
 merge 1:1 pid syear using ${data}\pl.dta, nogen keep (master match) /// 
-          keepusing (plb0036_h plb0037_h plb0050 plb0195_h plb0196_h plb0197 plb0218 plb0219 pld0043 /// 
+          keepusing (plb0036_h plb0037_h plb0050 plb0195_h plb0196_h plb0197 plb0218 plb0219 plb0158 pld0043 /// 
 		pld0044 pld0045 pld0047 ple0004 ple0005 ple0006 ple0007 ple0008 ple0009 ple0011  /// 
 		ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 ple0021  /// 
 		ple0022 ple0024 ple0040 ple0041 ple0044_h ple0053 ple0055 ple0056 ple0081_h  /// 

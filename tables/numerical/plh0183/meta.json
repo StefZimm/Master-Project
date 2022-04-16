@@ -1,5 +1,5 @@
 {
-  "title": "Satisfaction With Life in Five Years",
+  "title": "Satisfaction: Life in Five Years",
   "variable": "plh0183",
   "statistics": ["mean", "lowerci_mean", "upperci_mean", "min", "max", "median", "lowerci_median", "upperci_median", "ptile10", "ptile25", "ptile75", "ptile90", "ptile99"],
   "dimensions": [
@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-Württemberg",
+        "Baden-W?rttemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -126,9 +126,19 @@
         "direct migration background",
         "indirect migration background"
       ]
+    },
+    {
+      "variable": "regtyp",
+      "label": "Region type according to BBSR",
+      "values": [
+        [
+          "Urban Area",
+          "Rural Area"
+        ]
+      ]
     }
   ],
-  "description_de": "",
+  "description_de": "For 1990, 2011-2013, 2018, question not asked for all samples.",
   "start_year": 1990,
   "end_year": 2018,
   "types": [

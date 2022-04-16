@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-Württemberg",
+        "Baden-W?rttemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -126,9 +126,19 @@
         "direct migration background",
         "indirect migration background"
       ]
+    },
+    {
+      "variable": "regtyp",
+      "label": "Region type according to BBSR",
+      "values": [
+        [
+          "Urban Area",
+          "Rural Area"
+        ]
+      ]
     }
   ],
-  "description_de": "",
+  "description_de": "For 2011-2013, 2015-2019, question not asked for all samples.",
   "start_year": 2009,
   "end_year": 2019,
   "types": "categorical"
