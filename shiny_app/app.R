@@ -192,7 +192,7 @@ ui <-
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select an income variable",
+                                         selectInput("inc_variable", label = "Select an income variable",
                                                      choices = unique(as.character(top_inc$label_de)))),
                                      br(),
                                      p("Use the slider to select years", style = "font-weight: bold; color: black;"),
@@ -214,22 +214,23 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_income_data', 'Download Income Data', class = "down")
                                      ),
                         sidebarPanel(width = 4,
                                      h2("Plots"),
-                                     plotlyOutput('lineplot'),
+                                     plotlyOutput('inc_lineplot'),
                                      div(style = "margin-top: 30px",
-                                         verbatimTextOutput("text"),
+                                         verbatimTextOutput("inc_text"),
                                          verbatimTextOutput("diffvar1"),
                                          verbatimTextOutput("diffvar2"),
-                                         verbatimTextOutput("table_text")),
+                                         verbatimTextOutput("inc_table_text")),
                                          #tableOutput("table")
                                          #dataTableOutput prints 10 rows on screen, user can select more rows and search
                                          #uncomment tableOutput and renderTable to use prior table format
                                      div(style = "margin-top: 30px",
                                          h2("Data"),
-                                         DT::dataTableOutput("table"))
+                                         DT::dataTableOutput("inc_table"))
                                          
                                          )
                         
@@ -242,17 +243,18 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group3", "Select your first grouping variable",
+                                                        choices = top_demo$label_de,
+                                                        multiple = FALSE,
+                                                        #options = list(maxItems = 1)
+                                         )),
+                                     div(style = "margin-top: 30px",
+                                         selectizeInput("group4", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
-                                                        choices = top_demo$label_de,
-                                                        multiple = TRUE,
-                                                        options = list(maxItems = 1))),
-                                     div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select a variable",
+                                         selectInput("health_variable", label = "Select a variable",
                                                      choices = unique(as.character(top_health$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
@@ -270,8 +272,19 @@ ui <-
                                                     choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                     selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger"))
+                                         awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_health_data', 'Download Health Data', class = "down")
                                      ),
+                        sidebarPanel(width = 4,
+                                     h2("Plots"),
+                                     plotlyOutput('health_lineplot'),
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("health_table"))
+                                     
+                        )
+                        
+                        
                         ), #tabpanel close
 
               # ATTITUDES
@@ -280,17 +293,17 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group5", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
+                                         selectizeInput("group6", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select a variable",
+                                         selectInput("att_variable", label = "Select a variable",
                                                      choices = unique(as.character(top_att$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
@@ -308,8 +321,16 @@ ui <-
                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                            selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger"))
-                                     )
+                                         awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_att_data', 'Download Attitudes Data', class = "down")
+                                     ),
+                        sidebarPanel(width = 4,
+                                     h2("Plots"),
+                                     plotlyOutput('att_lineplot'),
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("att_table"))
+                        )
                         ), #tabpanel close
                
               # HOME
@@ -318,17 +339,17 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group7", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
+                                         selectizeInput("group8", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select a variable",
+                                         selectInput("home_variable", label = "Select a variable",
                                                      choices = unique(as.character(top_home$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
@@ -346,8 +367,15 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger"))
-                                     )
+                                         awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_home_data', 'Download Home Data', class = "down")
+                                     ),
+                        sidebarPanel(width = 4,
+                                     h2("Plots"),
+                                     plotlyOutput('home_lineplot'),
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("home_table")))
                         ), #tabpanel close
 
               # TIME
@@ -356,17 +384,17 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group9", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
+                                         selectizeInput("group10", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select a variable",
+                                         selectInput("time_variable", label = "Select a variable",
                                                      choices = unique(as.character(top_time$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
@@ -384,8 +412,15 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger"))
-                                     )
+                                         awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_time_data', 'Download Time Data', class = "down")
+                                     ),
+                        sidebarPanel(width = 4,
+                                     h2("Plots"),
+                                     plotlyOutput('time_lineplot'),
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("time_table")))
                         ), #tabpanel close
 
               # EMPLOYMENT
@@ -394,17 +429,17 @@ ui <-
                         sidebarPanel(width = 4,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group11", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
+                                         selectizeInput("group12", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("variable", label = "Select a variable",
+                                         selectInput("emp_variable", label = "Select a variable",
                                                      choices = unique(as.character(top_emp$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
@@ -422,8 +457,15 @@ ui <-
                                                             choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
                                                             selected = "Line")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger"))
-                                     )
+                                         awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     downloadButton('download_emp_data', 'Download Employment Data', class = "down")
+                                     ),
+                        sidebarPanel(width = 4,
+                                     h2("Plots"),
+                                     plotlyOutput('emp_lineplot'),
+                                     div(style = "margin-top: 30px",
+                                         h2("Data"),
+                                         DT::dataTableOutput("emp_table")))
                         ), #tabpanel close
 
 
@@ -504,9 +546,15 @@ server <- function(input, output, session) {
   })
   
   ######## Attention: New Code from Stefan ##################
-  # Variable
-  variable <- reactive({ 
-    variables$variable[variables$label_de==input$variable]
+ 
+  ##################################
+  ## Income Panel
+  #################################
+  
+  
+   # Variable
+  inc_variable <- reactive({ 
+    variables$variable[variables$label_de==input$inc_variable]
   })
   
   # grouping1
@@ -515,58 +563,321 @@ server <- function(input, output, session) {
   })
   
   # grouping2
-  
   diffvar2 <- reactive({ 
     variables$variable[variables$label_de==input$group2]
   })
   
+  
   # Select Table Name
-  table <- reactive({ 
-    get_user_table(meta = variables, variable = variable(),
+  inc_table <- reactive({ 
+    get_user_table(meta = variables, variable = inc_variable(),
                    diffvar1 = diffvar1(), diffvar2 = diffvar2(),
                    heatmap = FALSE)
   })
   
   # Load selected Variable
-  mydata <- reactive({
+  inc_data <- reactive({
     
-    if (variables$meantable[variables$label_de==input$variable] == "Yes") { 
+    if (variables$meantable[variables$label_de==input$inc_variable] == "Yes") { 
       type <- "numerical"}
     
-    if (variables$meantable[variables$label_de==input$variable] == "No") { 
+    if (variables$meantable[variables$label_de==input$inc_variable] == "No") { 
       type <- "categorical"}
     
-    tbl <- read.csv(paste0("../tables/", type, "/" , variable(), "/", table()), 
+    tbl <- read.csv(paste0("../tables/", type, "/" , inc_variable(), "/", inc_table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+  output$inc_table <- renderDataTable(
+    inc_data(), options = list(searching = FALSE))
+  
+  
+  output$inc_text <- renderText(paste0("selected variable: ", inc_variable()))
+  output$diffvar1 <- renderText(paste0("selected grouping 1: ", diffvar1()))
+  output$diffvar2 <- renderText(paste0("selected grouping 2: ", diffvar2()))
+  output$inc_table_text <- renderText(paste0("selected table: ", table()))
+  
+
+
+  
+ ################################### 
+ #### health panel
+ ################################### 
+  health_variable <- reactive({ 
+    variables$variable[variables$label_de==input$health_variable]
+  })
+  # grouping3
+  diffvar3 <- reactive({ 
+    variables$variable[variables$label_de==input$group3]
+  })
+  
+  # grouping4
+  diffvar4 <- reactive({ 
+    variables$variable[variables$label_de==input$group4]
+  })
+  
+  health_table <- reactive({ 
+    get_user_table(meta = variables, variable = health_variable(),
+                   diffvar1 = diffvar3(), diffvar2 = diffvar4(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  health_data <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$health_variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$health_variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , health_variable(), "/", health_table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+
+  output$health_table <- renderDataTable(
+    health_data(), options = list(searching = FALSE))
+  
+######################################
+  # attitudes panel
+#####################################
+  
+  att_variable <- reactive({ 
+    variables$variable[variables$label_de==input$att_variable]
+  })
+  # grouping3
+  diffvar5 <- reactive({ 
+    variables$variable[variables$label_de==input$group5]
+  })
+  
+  # grouping4
+  diffvar6 <- reactive({ 
+    variables$variable[variables$label_de==input$group6]
+  })
+  
+  att_table <- reactive({ 
+    get_user_table(meta = variables, variable = att_variable(),
+                   diffvar1 = diffvar5(), diffvar2 = diffvar6(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  att_data <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$att_variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$att_variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , att_variable(), "/", att_table()), 
                     encoding = "UTF-8")
     return(tbl)
   })
   
   
-  output$text <- renderText(paste0("selected variable: ", variable()))
-  output$diffvar1 <- renderText(paste0("selected grouping 1: ", diffvar1()))
-  output$diffvar2 <- renderText(paste0("selected grouping 2: ", diffvar2()))
-  output$table_text <- renderText(paste0("selected table: ", table()))
+  output$att_table <- renderDataTable(
+    att_data(), options = list(searching = FALSE))
   
-  # create rendered outputtable
-  # output$table <- renderTable(
-  #   mydata())
+###################################
+  # home panel
+###################################
   
-  # renderDataTable prints 10 rows on screen, user can select more rows if needed
-  # uncomment tableOutput and renderTable to use prior table format
-  output$table <- renderDataTable(
-    mydata(), options = list(searching = FALSE))
+  home_variable <- reactive({ 
+    variables$variable[variables$label_de==input$home_variable]
+  })
+  # grouping3
+  diffvar7 <- reactive({ 
+    variables$variable[variables$label_de==input$group7]
+  })
   
+  # grouping4
+  diffvar8 <- reactive({ 
+    variables$variable[variables$label_de==input$group8]
+  })
+  
+  home_table <- reactive({ 
+    get_user_table(meta = variables, variable = home_variable(),
+                   diffvar1 = diffvar7(), diffvar2 = diffvar8(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  home_data <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$home_variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$home_variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , home_variable(), "/", home_table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+  
+  output$home_table <- renderDataTable(
+    home_data(), options = list(searching = FALSE)) 
+  
+
+##############################################
+  # Time
+#############################################
+  
+  
+  time_variable <- reactive({ 
+    variables$variable[variables$label_de==input$time_variable]
+  })
+  # grouping3
+  diffvar9 <- reactive({ 
+    variables$variable[variables$label_de==input$group9]
+  })
+  
+  # grouping4
+  diffvar10 <- reactive({ 
+    variables$variable[variables$label_de==input$group10]
+  })
+  
+  time_table <- reactive({ 
+    get_user_table(meta = variables, variable = time_variable(),
+                   diffvar1 = diffvar9(), diffvar2 = diffvar10(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  time_data <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$time_variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$time_variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , time_variable(), "/", time_table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+  
+  output$time_table <- renderDataTable(
+    time_data(), options = list(searching = FALSE)) 
+  
+  
+#############################
+  # employment panel
+#############################
+  
+  
+  emp_variable <- reactive({ 
+    variables$variable[variables$label_de==input$emp_variable]
+  })
+  # grouping3
+  diffvar11 <- reactive({ 
+    variables$variable[variables$label_de==input$group11]
+  })
+  
+  # grouping4
+  diffvar12 <- reactive({ 
+    variables$variable[variables$label_de==input$group12]
+  })
+  
+  emp_table <- reactive({ 
+    get_user_table(meta = variables, variable = emp_variable(),
+                   diffvar1 = diffvar11(), diffvar2 = diffvar12(),
+                   heatmap = FALSE)
+  })
+  
+  # Load selected Variable
+  emp_data <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$emp_variable] == "Yes") { 
+      type <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$emp_variable] == "No") { 
+      type <- "categorical"}
+    
+    tbl <- read.csv(paste0("../tables/", type, "/" , emp_variable(), "/", emp_table()), 
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+  
+  
+  output$emp_table <- renderDataTable(
+    emp_data(), options = list(searching = FALSE)) 
   
 ##################
   # plots
 #################
-  
-  output$lineplot <- renderPlotly({
-      get_lineplot(table = mydata, meta = variables, variable = variable(),
+ # line
+################
+  output$inc_lineplot <- renderPlotly({
+      get_lineplot(table = inc_data, meta = variables, variable = inc_variable(),
                    diffvar1 = diffvar1(), diffvar2 = diffvar2(), diffcount = diffcount(),
                    start = 1984, end = 2019, ci = FALSE)
     })
   
+  output$health_lineplot <- renderPlotly({
+    get_lineplot(table = health_data, meta = variables, variable = health_variable(),
+                 diffvar1 = diffvar3(), diffvar2 = diffvar4(), diffcount = diffcount(),
+                 start = 1984, end = 2019, ci = FALSE)
+  })
+  
+  output$att_lineplot <- renderPlotly({
+    get_lineplot(table = att_data, meta = variables, variable = att_variable(),
+                 diffvar1 = diffvar5(), diffvar2 = diffvar6(), diffcount = diffcount(),
+                 start = 1984, end = 2019, ci = FALSE)
+  })
+  
+  output$home_lineplot <- renderPlotly({
+    get_lineplot(table = home_data, meta = variables, variable = home_variable(),
+                 diffvar1 = diffvar7(), diffvar2 = diffvar8(), diffcount = diffcount(),
+                 start = 1984, end = 2019, ci = FALSE)
+  })
+  
+  output$time_lineplot <- renderPlotly({
+    get_lineplot(table = time_data, meta = variables, variable = time_variable(),
+                 diffvar1 = diffvar9(), diffvar2 = diffvar10(), diffcount = diffcount(),
+                 start = 1984, end = 2019, ci = FALSE)
+  })
+  
+  output$emp_lineplot <- renderPlotly({
+    get_lineplot(table = emp_data, meta = variables, variable = emp_variable(),
+                 diffvar1 = diffvar11(), diffvar2 = diffvar12(), diffcount = diffcount(),
+                 start = 1984, end = 2019, ci = FALSE)
+  })
+
+  
+#################
+  # Downloads
+################
+  
+  income_csv <- reactive({ format_csv(inc_data())})
+  output$download_income_data <- downloadHandler(filename = 'income_data.csv',
+                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
+  
+  health_csv <- reactive({ format_csv(health_data())})
+  output$download_health_data <- downloadHandler(filename = 'health_data.csv',
+                                            content = function(file) {write.csv(health_csv(), file, row.names = TRUE)})
+  
+  att_csv <- reactive({ format_csv(att_data())})
+  output$download_att_data <- downloadHandler(filename = 'attitudes_data.csv',
+                                            content = function(file) {write.csv(att_csv(), file, row.names = TRUE)})
+  
+  home_csv <- reactive({ format_csv(home_data())})
+  output$download_home_data <- downloadHandler(filename = 'home_data.csv',
+                                            content = function(file) {write.csv(home_csv(), file, row.names = TRUE)})
+  
+  time_csv <- reactive({ format_csv(time_data())})
+  output$download_time_data <- downloadHandler(filename = 'timee_data.csv',
+                                            content = function(file) {write.csv(time_csv(), file, row.names = TRUE)})
+  
+  emp_csv <- reactive({ format_csv(emp_data())})
+  output$download_emp_data <- downloadHandler(filename = 'emp_data.csv',
+                                            content = function(file) {write.csv(emp_csv(), file, row.names = TRUE)})
   
 }
 
