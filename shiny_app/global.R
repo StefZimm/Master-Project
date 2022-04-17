@@ -64,6 +64,15 @@ library(shinycssloaders)
 variables <- read.csv("../metadata/p_data/variables.csv")
 var_cat <- read.csv("../metadata/p_data/variable_categories.csv")
 
+var_links <- variables %>%
+  select(label_de, topic, variable, var_link, paper_link) %>%
+  arrange((topic), label_de) %>%
+  rename(Variable_Label = label_de,
+         Study_Topic = topic,
+         Variable_Name = variable,
+         Variable_Information = var_link,
+         Variable_Paper = paper_link)
+
 # path for tables, not sure how to load in only certain tables or if it can even be done this way. It seems like all tables will need to be loaded
 tables <- "tables/"
 
