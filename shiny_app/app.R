@@ -82,7 +82,7 @@ ui <-
                
                tabPanel(
                  setSliderColor(c("red", "red", "red", "red", "red", "red"), c(1,2,3,4,5,6)),
-                 title = " Home", icon = icon("home"),
+                 title = " Home", icon = icon("home"), value = 'home_page',
                  mainPanel(width = 11, style="margin-left:4%; margin-right:4%",
                            introBox(
                              fluidRow(column(7,(h3("Welcome to the SOEP data tool", style="margin-top:0px;"))),
@@ -169,10 +169,11 @@ ui <-
               # SUMMARY
 
                tabPanel("Summary", icon = icon("list-ul"), value = "summary",
-                        sidebarPanel(width = 4,
-                                     p("This is a placeholder for an optional summary page")
-                                     )
-                        ), #tabpanel close
+                        sidebarPanel(width = 12,
+                                     h2("Data"),
+                                     div(style = "margin-top: 30px",
+                                         DT::dataTableOutput("var_link_table")))
+                                     ), #tabpanel close
                
               # INCOME
 
@@ -217,11 +218,18 @@ ui <-
                                                             )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_income_data', 'Download Income Data', class = "down")
+                                     downloadButton('download_income_data', 'Download Income Data', class = "down"),
+                                     br(),
+                                     br(),
+                                     div(lp_main_box(image_name= 'back_arrow',
+                                                     button_name = 'jump_to_home_page', 
+                                                     title_box = "Go to home page",
+                                                     description = 'You are currently on the Income page. Go back to the home page'))
                                      ),
-                        sidebarPanel(width = 8,
-                                     h2("Plots"),
-                                     plotlyOutput('inc_lineplot', width='100%', height='100%'),
+                        fluidRow(
+                          column(9, style = "padding-left: 0px; padding-right: 0px;",
+                                 column(3,
+                                     h2("Selections"),
                                      div(style = "margin-top: 30px",
                                          verbatimTextOutput("inc_text"),
                                          verbatimTextOutput("diffvar1"),
@@ -232,18 +240,18 @@ ui <-
                                          verbatimTextOutput("type"),
                                          verbatimTextOutput("vartype"),
                                          verbatimTextOutput("ci")
-                                         ),
-                                         #tableOutput("table")
-                                         #dataTableOutput prints 10 rows on screen, user can select more rows and search
-                                         #uncomment tableOutput and renderTable to use prior table format
+                                         )),
+                                 column(9,
+                                        div(style = "margin-top: 30px",
+                                         h2("Plots"),
+                                         plotlyOutput("inc_plot", width = "100%")),
                                      div(style = "margin-top: 30px",
                                          h2("Data"),
-                                         DT::dataTableOutput("inc_table"),
-                                         plotlyOutput("inc_plot", width = "100%"))
-                                         )
+                                         DT::dataTableOutput("inc_table"))
+                                         ))
                         
                         
-                        ), #tabpanel close
+                        )), #tabpanel close
 
               # HEALTH
 
@@ -520,6 +528,11 @@ server <- function(input, output, session) {
   # Creating events that take you to different tabs
   # activated when pressing buttons from the landing page
   
+  observeEvent(input$jump_to_home_page, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
+  
+
   observeEvent(input$jump_to_summary, {
     updateTabsetPanel(session, "intabset", selected = "summary")
   })
@@ -554,6 +567,15 @@ server <- function(input, output, session) {
   })
   
   ######## Attention: New Code from Stefan ##################
+  
+  ################################
+  ## Summary Panel
+  ################################
+  
+  
+  output$var_link_table <- DT::renderDataTable({
+    DT::datatable(var_links, escape = 4, options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25), filter = "top")
+  })
  
   ##################################
   ## Income Panel
