@@ -120,6 +120,16 @@ color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"),
                           wes_palette("Royal1"), wes_palette("Royal2"),
                           # 2000 random colors
                           distinctColorPalette(1999)))
+################################################################################
+# Functions #
+################################################################################
+# Color Definition
+color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"), 
+                          wes_palette("Moonrise1"), wes_palette("Moonrise2"),
+                          wes_palette("GrandBudapest2"), wes_palette("Cavalcanti1"), 
+                          wes_palette("Royal1"), wes_palette("Royal2"),
+                          # 2000 random colors
+                          distinctColorPalette(1999)))
 
 #' @title get_map_plot creates median or mean maps of germany and federal states
 #'
@@ -148,7 +158,7 @@ color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"),
 get_map_plot <- function(table, syear, variable, statistic, diffvar){
   
   
-  title <- paste0(meta$label_de[meta$variable==variable], " in federal states")
+  title <- paste0(meta$label_de[meta$variable==variable], " in federal states", " in ", syear)
   
   dataset <- data  %>%
     filter(year == syear)
@@ -344,7 +354,7 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 #'                   diffvar2 = "alter_gr",
 #'                   diffvar3 = "")
 
-get_boxplot <- function(table, variable, diffvar2, diffvar3){
+get_boxplot <- function(table, meta, variable, diffvar2, diffvar3){
   
   title <- meta$label_de[meta$variable==variable]
   
@@ -388,7 +398,7 @@ get_boxplot <- function(table, variable, diffvar2, diffvar3){
 
 ################################################################################
 
-get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount, 
+get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                          start, end, ci){
   
   title <- meta$label_de[meta$variable==variable]
@@ -528,7 +538,7 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
 
 ################################################################################
 
-get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount, 
+get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                                  start, end, ci){
   
   title <- meta$label_de[meta$variable==variable]
@@ -651,7 +661,6 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
   return(table_csv)
 }
-
 
 get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
                         start, end){
@@ -799,5 +808,3 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   }
   return(plot)
 }
-
-

@@ -232,7 +232,7 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 #'                   diffvar2 = "alter_gr",
 #'                   diffvar3 = "")
 
-get_boxplot <- function(table, variable, diffvar2, diffvar3){
+get_boxplot <- function(table, meta, variable, diffvar2, diffvar3){
   
   title <- meta$label_de[meta$variable==variable]
   
@@ -276,7 +276,7 @@ get_boxplot <- function(table, variable, diffvar2, diffvar3){
 
 ################################################################################
 
-get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount, 
+get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                          start, end, ci){
   
   title <- meta$label_de[meta$variable==variable]
@@ -416,7 +416,7 @@ get_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount,
 
 ################################################################################
 
-get_percent_lineplot <- function(table, meta, variable, diffvar1, diffvar2, diffcount, 
+get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                                  start, end, ci){
   
   title <- meta$label_de[meta$variable==variable]
@@ -704,30 +704,30 @@ library(tidyverse)
 
 
 
-# metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
-# tables <- "C:/git/Master-Project/tables/"
-# tabletype <- "numerical"
-# variable <- "pgtatzeit"
-# 
-# table <-  get_user_table(meta = meta, variable = variable, 
-#                          diffvar1 = "sampreg", diffvar2 = "sex",
-#                          heatmap = FALSE)
-# 
-# 
-# data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
-#                  encoding = "UTF-8")
-# 
-# meta <- read.csv(file = metapath, encoding = "UTF-8")
-# 
-# get_lineplot(table = data,
-#              meta = meta,
-#              variable = variable,
-#              diffvar1 = "sampreg",
-#              diffvar2 = "sex",
-#              diffcount = 3,
-#              start = 1992,
-#              end = 2000,
-#              ci = TRUE)
+metapath <- "C:/git/Master-Project/metadata/p_data/variables.csv"
+tables <- "C:/git/Master-Project/tables/"
+tabletype <- "numerical"
+variable <- "pglabgro"
+
+table <-  get_user_table(meta = meta, variable = variable,
+                         diffvar1 = "", diffvar2 = "",
+                         heatmap = FALSE)
+
+
+data <- read.csv(file = paste0(tables, tabletype, "/", variable, "/", table),
+                 encoding = "UTF-8")
+
+meta <- read.csv(file = metapath, encoding = "UTF-8")
+
+get_lineplot(table = data,
+             meta = meta,
+             variable = variable,
+             diffvar1 = "",
+             diffvar2 = "",
+             diffcount = 1,
+             start = 1992,
+             end = 2000,
+             ci = FALSE)
 # 
 # 
 #  get_boxplot(table = data, variable = variable, diffcount = 3,

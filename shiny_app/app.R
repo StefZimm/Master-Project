@@ -178,13 +178,13 @@ ui <-
 
                tabPanel("Income", icon = icon("euro-sign"), value = "income",
 
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
                                          selectizeInput("group1", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
-                                                        multiple = FALSE,
-                                                        #options = list(maxItems = 1)
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1)
                                                         )),
                                      div(style = "margin-top: 30px",
                                          selectizeInput("group2", "Select an optional second grouping variable",
@@ -209,29 +209,37 @@ ui <-
                                      
                                      div(title="Select what plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         checkboxGroupInput("plot_select",
+                                         selectizeInput("plot_select",
                                                             label = "Select the plot you want to see",
-                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
-                                                            selected = "Line")),
+                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"),
+                                                            multiple = TRUE,
+                                                            options = list(maxItems = 1)
+                                                            )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
                                      downloadButton('download_income_data', 'Download Income Data', class = "down")
                                      ),
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 8,
                                      h2("Plots"),
-                                     plotlyOutput('inc_lineplot'),
+                                     plotlyOutput('inc_lineplot', width='100%', height='100%'),
                                      div(style = "margin-top: 30px",
                                          verbatimTextOutput("inc_text"),
                                          verbatimTextOutput("diffvar1"),
                                          verbatimTextOutput("diffvar2"),
-                                         verbatimTextOutput("inc_table_text")),
+                                         verbatimTextOutput("inc_table_text"),
+                                         verbatimTextOutput("min"),
+                                         verbatimTextOutput("max"),
+                                         verbatimTextOutput("type"),
+                                         verbatimTextOutput("vartype"),
+                                         verbatimTextOutput("ci")
+                                         ),
                                          #tableOutput("table")
                                          #dataTableOutput prints 10 rows on screen, user can select more rows and search
                                          #uncomment tableOutput and renderTable to use prior table format
                                      div(style = "margin-top: 30px",
                                          h2("Data"),
-                                         DT::dataTableOutput("inc_table"))
-                                         
+                                         DT::dataTableOutput("inc_table"),
+                                         plotlyOutput("inc_plot", width = "100%"))
                                          )
                         
                         
@@ -551,7 +559,6 @@ server <- function(input, output, session) {
   ## Income Panel
   #################################
   
-  
    # Variable
   inc_variable <- reactive({ 
     variables$variable[variables$label_de==input$inc_variable]
@@ -589,18 +596,254 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
+  # Confirm vartype
+  vartype <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$inc_variable] == "Yes") { 
+      vartype <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$inc_variable] == "No") { 
+      vartype <- "categorical"}
+    
+    return(vartype)
+  })
+  
+  # load startyear
+  min <-  reactive({ 
+    input$yearInput[1]
+  })
+  
+  # load endyear
+  max <-  reactive({ 
+    input$yearInput[2]
+  })
+  
+  # load plottype
+  type <-  reactive({ 
+    input$plot_select
+  })
+  
+  # load plottype
+  ci <-  reactive({ 
+    input$ci_income
+  })
+  
+  
+  # load graphic
+  # 1.1 boxplot
+  boxplot <-
+    reactive({
+    req(input$plot_select)
+    req(input$inc_variable)
+    req(inc_data())
+
+   # boxplot
+    if (input$plot_select == 'Box Plot') {
+    if(!isTruthy(input$group1)){
+         get_boxplot(table = inc_data(), meta = variables, variable = inc_variable(),
+                     diffvar2 = "", diffvar3 = "")
+      }
+
+    else if (isTruthy(input$group1) & (!isTruthy(input$group2))){
+      get_boxplot(table = inc_data(), meta = variables, variable = inc_variable(),
+                  diffvar2 = diffvar1(), diffvar3 = "")
+      }
+
+    else if (isTruthy(input$group2) & (isTruthy(input$group2))){
+        get_boxplot(table = inc_data(), meta = variables, variable = inc_variable(),
+                    diffvar2 = diffvar1(), diffvar3 = diffvar2())
+      }
+    }
+
+  })
+  
+  # 1.2 lineplot
+  lineplot <-
+    reactive({
+      req(input$plot_select)
+      req(input$inc_variable)
+      req(inc_data())
+      
+      # lineplot
+      if (input$plot_select == 'Line') {
+      if (vartype() == "numerical") {
+          if(!isTruthy(input$group1)){
+             get_lineplot(data = inc_data(),
+                       meta = variables,
+                       variable = inc_variable(),
+                       diffvar1 = "",
+                       diffvar2 = "",
+                       diffcount = 1,
+                       start = min(),
+                       end = max(),
+                       ci = ci())
+        }
+         else if (isTruthy(input$group1) & (!isTruthy(input$group2))){
+                  get_lineplot(data = inc_data(),
+                               meta = variables,
+                               variable = inc_variable(),
+                               diffvar1 = diffvar1(),
+                               diffvar2 = "",
+                               diffcount = 2,
+                               start = min(),
+                               end = max(),
+                               ci = ci())
+        }
+         else if (isTruthy(input$group2) & (isTruthy(input$group2))){
+                  get_lineplot(data = inc_data(),
+                               meta = variables,
+                               variable = inc_variable(),
+                               diffvar1 = diffvar1(),
+                               diffvar2 = diffvar2(),
+                               diffcount = 3,
+                               start = min(),
+                               end = max(),
+                               ci = ci())
+        }
+      }
+      else if (vartype() == "categorical") {
+          if(!isTruthy(input$group1)){
+            get_percent_lineplot(data = inc_data(),
+                                 meta = variables,
+                                 variable = inc_variable(),
+                                 diffvar1 = "",
+                                 diffvar2 = "",
+                                 diffcount = 1,
+                                 start = min(),
+                                 end = max(),
+                                 ci = ci())
+          }
+          else if (isTruthy(input$group1) & (!isTruthy(input$group2))){
+            get_percent_lineplot(data = inc_data(),
+                                 meta = variables,
+                                 variable = inc_variable(),
+                                 diffvar1 = diffvar1(),
+                                 diffvar2 = "",
+                                 diffcount = 2,
+                                 start = min(),
+                                 end = max(),
+                                 ci = ci())
+          }
+          else if (isTruthy(input$group2) & (isTruthy(input$group2))){
+            get_percent_lineplot(data = inc_data(),
+                                 meta = variables,
+                                 variable = inc_variable(),
+                                 diffvar1 = diffvar1(),
+                                 diffvar2 = diffvar2(),
+                                 diffcount = 3,
+                                 start = min(),
+                                 end = max(),
+                                 ci = ci())
+          }
+      }
+      }  
+    })
+  
+  # 1.3 Stacked Bar
+  stackbarplot <-
+    reactive({
+      req(input$plot_select)
+      req(input$inc_variable)
+      req(inc_data())
+      
+      # Stacked Bar
+      if (input$plot_select == 'Stacked Bar') {
+        if(!isTruthy(input$group1)){
+          get_barplot(data = inc_data(), meta = variables, 
+                      variable = inc_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "stack", ci = ci(), 
+                      start = min(), end = max())
+        }
+        else if (isTruthy(input$group1) & (!isTruthy(input$group2))){
+          get_barplot(data = inc_data(), meta = variables, 
+                      variable = inc_variable(), 
+                      diffvar1 = diffvar1(), diffvar2 = "", 
+                      plottype = "stack", ci = ci(), 
+                      start = min(), end = max())
+        }
+        else if (isTruthy(input$group2) & (isTruthy(input$group2))){
+          get_barplot(data = inc_data(), meta = variables, 
+                      variable = inc_variable(), 
+                      diffvar1 = diffvar1(), diffvar2 = diffvar2(), 
+                      plottype = "stack", ci = ci(), 
+                      start = min(), end = max())
+        }
+      }
+    })
+  
+  # 1.4 Side by Side
+  dodgebarplot <-
+    reactive({
+      req(input$plot_select)
+      req(input$inc_variable)
+      req(inc_data())
+      
+      # Stacked Bar
+      if (input$plot_select == 'Side by Side Bar') {
+        if(!isTruthy(input$group1)){
+          get_barplot(data = inc_data(), meta = variables, 
+                      variable = inc_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "dodge", ci = ci(), 
+                      start = min(), end = max())
+        }
+        else if (isTruthy(input$group1) & (!isTruthy(input$group2))){
+          get_barplot(data = inc_data(), meta = variables, 
+                      variable = inc_variable(), 
+                      diffvar1 = diffvar1(), diffvar2 = "", 
+                      plottype = "dodge", ci = ci(), 
+                      start = min(), end = max())
+        }
+        else if (isTruthy(input$group2) & (isTruthy(input$group2))){
+          get_barplot(data = inc_data(), meta = variables, 
+                      variable = inc_variable(), 
+                      diffvar1 = diffvar1(), diffvar2 = diffvar2(), 
+                      plottype = "dodge", ci = ci(), 
+                      start = min(), end = max())
+        }
+      }
+    })
+  
+  
+  
+  output$inc_plot <- renderPlotly({
+    
+    if (input$plot_select == 'Box Plot') {
+        boxplot()
+    }
+    
+    else if (input$plot_select == 'Line') {
+      lineplot()
+    }
+    
+    else if (input$plot_select == 'Stacked Bar') {
+      stackbarplot()
+    }
+    
+    else if (input$plot_select == 'Side by Side Bar') {
+      dodgebarplot()
+    }
+  })
+  
+  # load data
   output$inc_table <- renderDataTable(
     inc_data(), options = list(searching = FALSE))
   
-  
+  # create outputs
   output$inc_text <- renderText(paste0("selected variable: ", inc_variable()))
   output$diffvar1 <- renderText(paste0("selected grouping 1: ", diffvar1()))
   output$diffvar2 <- renderText(paste0("selected grouping 2: ", diffvar2()))
   output$inc_table_text <- renderText(paste0("selected table: ", table()))
   
-
+  output$min <- renderText(min())
+  output$max <- renderText(max())
+  output$type <- renderText(type())
+  output$vartype <- renderText(vartype())
+  output$ci <- renderText(ci())
 
   
+
  ################################### 
  #### health panel
  ################################### 
@@ -814,41 +1057,41 @@ server <- function(input, output, session) {
 #################
  # line
 ################
-  output$inc_lineplot <- renderPlotly({
-      get_lineplot(table = inc_data, meta = variables, variable = inc_variable(),
-                   diffvar1 = diffvar1(), diffvar2 = diffvar2(), diffcount = diffcount(),
-                   start = 1984, end = 2019, ci = FALSE)
-    })
-  
-  output$health_lineplot <- renderPlotly({
-    get_lineplot(table = health_data, meta = variables, variable = health_variable(),
-                 diffvar1 = diffvar3(), diffvar2 = diffvar4(), diffcount = diffcount(),
-                 start = 1984, end = 2019, ci = FALSE)
-  })
-  
-  output$att_lineplot <- renderPlotly({
-    get_lineplot(table = att_data, meta = variables, variable = att_variable(),
-                 diffvar1 = diffvar5(), diffvar2 = diffvar6(), diffcount = diffcount(),
-                 start = 1984, end = 2019, ci = FALSE)
-  })
-  
-  output$home_lineplot <- renderPlotly({
-    get_lineplot(table = home_data, meta = variables, variable = home_variable(),
-                 diffvar1 = diffvar7(), diffvar2 = diffvar8(), diffcount = diffcount(),
-                 start = 1984, end = 2019, ci = FALSE)
-  })
-  
-  output$time_lineplot <- renderPlotly({
-    get_lineplot(table = time_data, meta = variables, variable = time_variable(),
-                 diffvar1 = diffvar9(), diffvar2 = diffvar10(), diffcount = diffcount(),
-                 start = 1984, end = 2019, ci = FALSE)
-  })
-  
-  output$emp_lineplot <- renderPlotly({
-    get_lineplot(table = emp_data, meta = variables, variable = emp_variable(),
-                 diffvar1 = diffvar11(), diffvar2 = diffvar12(), diffcount = diffcount(),
-                 start = 1984, end = 2019, ci = FALSE)
-  })
+  # output$inc_lineplot <- renderPlotly({
+  #     get_lineplot(table = inc_data, meta = variables, variable = inc_variable(),
+  #                  diffvar1 = diffvar1(), diffvar2 = diffvar2(), diffcount = diffcount(),
+  #                  start = 1984, end = 2019, ci = FALSE)
+  #   })
+  # 
+  # output$health_lineplot <- renderPlotly({
+  #   get_lineplot(table = health_data, meta = variables, variable = health_variable(),
+  #                diffvar1 = diffvar3(), diffvar2 = diffvar4(), diffcount = diffcount(),
+  #                start = 1984, end = 2019, ci = FALSE)
+  # })
+  # 
+  # output$att_lineplot <- renderPlotly({
+  #   get_lineplot(table = att_data, meta = variables, variable = att_variable(),
+  #                diffvar1 = diffvar5(), diffvar2 = diffvar6(), diffcount = diffcount(),
+  #                start = 1984, end = 2019, ci = FALSE)
+  # })
+  # 
+  # output$home_lineplot <- renderPlotly({
+  #   get_lineplot(table = home_data, meta = variables, variable = home_variable(),
+  #                diffvar1 = diffvar7(), diffvar2 = diffvar8(), diffcount = diffcount(),
+  #                start = 1984, end = 2019, ci = FALSE)
+  # })
+  # 
+  # output$time_lineplot <- renderPlotly({
+  #   get_lineplot(table = time_data, meta = variables, variable = time_variable(),
+  #                diffvar1 = diffvar9(), diffvar2 = diffvar10(), diffcount = diffcount(),
+  #                start = 1984, end = 2019, ci = FALSE)
+  # })
+  # 
+  # output$emp_lineplot <- renderPlotly({
+  #   get_lineplot(table = emp_data, meta = variables, variable = emp_variable(),
+  #                diffvar1 = diffvar11(), diffvar2 = diffvar12(), diffcount = diffcount(),
+  #                start = 1984, end = 2019, ci = FALSE)
+  # })
 
   
 #################
