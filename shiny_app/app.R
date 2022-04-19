@@ -186,7 +186,7 @@ ui <-
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1)
-                                                        )),
+                                         )),
                                      div(style = "margin-top: 30px",
                                          selectizeInput("group2", "Select an optional second grouping variable",
                                                         choices = top_demo$label_de,
@@ -194,7 +194,8 @@ ui <-
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("inc_variable", label = "Select an income variable",
-                                                     choices = unique(as.character(top_inc$label_de)))),
+                                                     choices = list(`Categorical Variable` = as.list(top_inc_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_inc_num$label_de)))),
                                      br(),
                                      p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
@@ -228,19 +229,6 @@ ui <-
                                      ),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
-                                 column(3,
-                                     h2("Selections"),
-                                     div(style = "margin-top: 30px",
-                                         verbatimTextOutput("inc_text"),
-                                         verbatimTextOutput("diffvar1"),
-                                         verbatimTextOutput("diffvar2"),
-                                         verbatimTextOutput("inc_table_text"),
-                                         verbatimTextOutput("min"),
-                                         verbatimTextOutput("max"),
-                                         verbatimTextOutput("type"),
-                                         verbatimTextOutput("vartype"),
-                                         verbatimTextOutput("ci")
-                                         )),
                                  column(9,
                                         div(style = "margin-top: 30px",
                                          h2("Plots"),
@@ -256,13 +244,13 @@ ui <-
               # HEALTH
 
                tabPanel("Health", icon = icon("hospital"), value = "health",
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
                                          selectizeInput("group3", "Select your first grouping variable",
                                                         choices = top_demo$label_de,
-                                                        multiple = FALSE,
-                                                        #options = list(maxItems = 1)
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1)
                                          )),
                                      div(style = "margin-top: 30px",
                                          selectizeInput("group4", "Select an optional second grouping variable",
@@ -270,38 +258,48 @@ ui <-
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("health_variable", label = "Select a variable",
-                                                     choices = unique(as.character(top_health$label_de)))),
+                                         selectInput("health_variable", label = "Select an income variable",
+                                                     choices = list(`Categorical Variable` = as.list(top_health_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_health_num$label_de)))),
+                                     br(),
+                                     p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
-                                       inputId = "yearInput",
+                                       inputId = "yearInput_health",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
-                                       min = min(1984, na.rm = TRUE),
-                                       max = max(2019, na.rm = TRUE),
+                                       min = 1984,
+                                       max = 2019,
                                        step = 1L,
                                        sep = ""
+                                       
                                      ),
                                      div(title="Select what plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         checkboxGroupInput("plot_select",
-                                                    label = "Select the plot you want to see",
-                                                    choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
-                                                    selected = "Line")),
+                                         selectizeInput("plot_select_health",
+                                                        label = "Select the plot you want to see",
+                                                        choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"),
+                                                        multiple = TRUE,
+                                                        options = list(maxItems = 1)
+                                         )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_health_data', 'Download Health Data', class = "down")
+                                     downloadButton('download_health_data', 'Download Income Data', class = "down"),
+                                     br(),
+                                     br()
                                      ),
-                        sidebarPanel(width = 4,
-                                     h2("Plots"),
-                                     plotlyOutput('health_lineplot'),
-                                     div(style = "margin-top: 30px",
-                                         h2("Data"),
-                                         DT::dataTableOutput("health_table"))
-                                     
-                        )
-                        
-                        
-                        ), #tabpanel close
+                        fluidRow(
+                          column(9, style = "padding-left: 0px; padding-right: 0px;",
+                                 column(9,
+                                        div(style = "margin-top: 30px",
+                                            h2("Plots"),
+                                            plotlyOutput("health_plot", width = "100%")),
+                                        div(style = "margin-top: 30px",
+                                            h2("Data"),
+                                            DT::dataTableOutput("health_table"))
+                                 ))
+                          
+                          
+                        )), #tabpanel close
 
               # ATTITUDES
 
@@ -852,36 +850,27 @@ server <- function(input, output, session) {
   output$inc_table <- renderDataTable(
     inc_data(), options = list(searching = FALSE))
   
-  # create outputs
-  output$inc_text <- renderText(paste0("selected variable: ", inc_variable()))
-  output$diffvar1 <- renderText(paste0("selected grouping 1: ", diffvar1()))
-  output$diffvar2 <- renderText(paste0("selected grouping 2: ", diffvar2()))
-  output$inc_table_text <- renderText(paste0("selected table: ", table()))
-  
-  output$min <- renderText(min())
-  output$max <- renderText(max())
-  output$type <- renderText(type())
-  output$vartype <- renderText(vartype())
-  output$ci <- renderText(ci())
-
-  
 
  ################################### 
  #### health panel
  ################################### 
+  # Variable
   health_variable <- reactive({ 
     variables$variable[variables$label_de==input$health_variable]
   })
-  # grouping3
+  
+  # grouping1
   diffvar3 <- reactive({ 
     variables$variable[variables$label_de==input$group3]
   })
   
-  # grouping4
+  # grouping2
   diffvar4 <- reactive({ 
     variables$variable[variables$label_de==input$group4]
   })
   
+  
+  # Select Table Name
   health_table <- reactive({ 
     get_user_table(meta = variables, variable = health_variable(),
                    diffvar1 = diffvar3(), diffvar2 = diffvar4(),
@@ -902,7 +891,237 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
-
+  # Confirm vartype
+  health_vartype <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$health_variable] == "Yes") { 
+      health_vartype <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$health_variable] == "No") { 
+      health_vartype <- "categorical"}
+    
+    return(health_vartype)
+  })
+  
+  # load startyear
+  health_min <-  reactive({ 
+    input$yearInput_health[1]
+  })
+  
+  # load endyear
+  health_max <-  reactive({ 
+    input$yearInput_health[2]
+  })
+  
+  # load plottype
+  health_type <-  reactive({ 
+    input$plot_select_health
+  })
+  
+  # load plottype
+  health_ci <-  reactive({ 
+    input$ci_health
+  })
+  
+  
+  # load graphic
+  # 1.1 boxplot
+  boxplot_health <-
+    reactive({
+      req(input$plot_select_health)
+      req(input$health_variable)
+      req(health_data())
+      
+      # boxplot
+      if (input$plot_select_health == 'Box Plot') {
+        if(!isTruthy(input$group3)){
+          get_boxplot(table = health_data(), meta = variables, variable = health_variable(),
+                      diffvar2 = "", diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group3) & (!isTruthy(input$group4))){
+          get_boxplot(table = health_data(), meta = variables, variable = health_variable(),
+                      diffvar2 = diffvar3(), diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group4) & (isTruthy(input$group4))){
+          get_boxplot(table = health_data(), meta = variables, variable = health_variable(),
+                      diffvar2 = diffvar3(), diffvar3 = diffvar4())
+        }
+      }
+      
+    })
+  
+  # 1.2 lineplot
+  lineplot_health <-
+    reactive({
+      req(input$plot_select_health)
+      req(input$health_variable)
+      req(health_data())
+      
+      # lineplot
+      if (input$plot_select_health == 'Line') {
+        if (health_vartype() == "numerical") {
+          if(!isTruthy(input$group3)){
+            get_lineplot(data = health_data(),
+                         meta = variables,
+                         variable = health_variable(),
+                         diffvar1 = "",
+                         diffvar2 = "",
+                         diffcount = 1,
+                         start = health_min(),
+                         end = health_max(),
+                         ci = health_ci())
+          }
+          else if (isTruthy(input$group3) & (!isTruthy(input$group4))){
+            get_lineplot(data = health_data(),
+                         meta = variables,
+                         variable = health_variable(),
+                         diffvar1 = diffvar3(),
+                         diffvar2 = "",
+                         diffcount = 2,
+                         start = health_min(),
+                         end = health_max(),
+                         ci = health_ci())
+          }
+          else if (isTruthy(input$group4) & (isTruthy(input$group4))){
+            get_lineplot(data = health_data(),
+                         meta = variables,
+                         variable = health_variable(),
+                         diffvar1 = diffvar3(),
+                         diffvar2 = diffvar4(),
+                         diffcount = 3,
+                         start = health_min(),
+                         end = health_max(),
+                         ci = health_ci())
+          }
+        }
+        else if (health_vartype() == "categorical") {
+          if(!isTruthy(input$group3)){
+            get_percent_lineplot(data = health_data(),
+                                 meta = variables,
+                                 variable = health_variable(),
+                                 diffvar1 = "",
+                                 diffvar2 = "",
+                                 diffcount = 1,
+                                 start = health_min(),
+                                 end = health_max(),
+                                 ci = health_ci())
+          }
+          else if (isTruthy(input$group3) & (!isTruthy(input$group4))){
+            get_percent_lineplot(data = health_data(),
+                                 meta = variables,
+                                 variable = health_variable(),
+                                 diffvar1 = diffvar3(),
+                                 diffvar2 = "",
+                                 diffcount = 2,
+                                 start = health_min(),
+                                 end = health_max(),
+                                 ci = health_ci())
+          }
+          else if (isTruthy(input$group4) & (isTruthy(input$group4))){
+            get_percent_lineplot(data = health_data(),
+                                 meta = variables,
+                                 variable = health_variable(),
+                                 diffvar1 = diffvar3(),
+                                 diffvar2 = diffvar4(),
+                                 diffcount = 3,
+                                 start = health_min(),
+                                 end = health_max(),
+                                 ci = health_ci())
+          }
+        }
+      }  
+    })
+  
+  # 1.3 Stacked Bar
+  stackbarplot_health <-
+    reactive({
+      req(input$plot_select_health)
+      req(input$health_variable)
+      req(health_data())
+      
+      # Stacked Bar
+      if (input$plot_select_health == 'Stacked Bar') {
+        if(!isTruthy(input$group3)){
+          get_barplot(data = health_data(), meta = variables, 
+                      variable = health_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "stack", ci = health_ci(), 
+                      start = health_min(), end = health_max())
+        }
+        else if (isTruthy(input$group3) & (!isTruthy(input$group4))){
+          get_barplot(data = health_data(), meta = variables, 
+                      variable = health_variable(), 
+                      diffvar1 = diffvar3(), diffvar2 = "", 
+                      plottype = "stack", ci = health_ci(), 
+                      start = health_min(), end = health_max())
+        }
+        else if (isTruthy(input$group4) & (isTruthy(input$group4))){
+          get_barplot(data = health_data(), meta = variables, 
+                      variable = health_variable(), 
+                      diffvar1 = diffvar3(), diffvar2 = diffvar4(), 
+                      plottype = "stack", ci = health_ci(), 
+                      start = health_min(), end = health_max())
+        }
+      }
+    })
+  
+  # 1.4 Side by Side
+  dodgebarplot_health <-
+    reactive({
+      req(input$plot_select_health)
+      req(input$health_variable)
+      req(health_data())
+      
+      # Stacked Bar
+      if (input$plot_select_health == 'Side by Side Bar') {
+        if(!isTruthy(input$group3)){
+          get_barplot(data = health_data(), meta = variables, 
+                      variable = health_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "dodge", ci = health_ci(), 
+                      start = health_min(), end = health_max())
+        }
+        else if (isTruthy(input$group3) & (!isTruthy(input$group4))){
+          get_barplot(data = health_data(), meta = variables, 
+                      variable = health_variable(), 
+                      diffvar1 = diffvar3(), diffvar2 = "", 
+                      plottype = "dodge", ci = health_ci(), 
+                      start = health_min(), end = health_max())
+        }
+        else if (isTruthy(input$group4) & (isTruthy(input$group4))){
+          get_barplot(data = health_data(), meta = variables, 
+                      variable = health_variable(), 
+                      diffvar1 = diffvar3(), diffvar2 = diffvar4(), 
+                      plottype = "dodge", ci = health_ci(), 
+                      start = health_min(), end = health_max())
+        }
+      }
+    })
+  
+  
+  
+  output$health_plot <- renderPlotly({
+    
+    if (input$plot_select_health == 'Box Plot') {
+      boxplot_health()
+    }
+    
+    else if (input$plot_select_health == 'Line') {
+      lineplot_health()
+    }
+    
+    else if (input$plot_select_health == 'Stacked Bar') {
+      stackbarplot_health()
+    }
+    
+    else if (input$plot_select_health == 'Side by Side Bar') {
+      dodgebarplot_health()
+    }
+  })
+  
+  # load data
   output$health_table <- renderDataTable(
     health_data(), options = list(searching = FALSE))
   
