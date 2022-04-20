@@ -58,6 +58,8 @@
 
 
 # Define UI for application 
+######## start ##################
+
 
 
 ui <- 
@@ -76,9 +78,7 @@ ui <-
                                   HTML("<base target= '_blank'>")),
                
                
- ##################################################
- # landing page
- ##################################################
+######## landing page ##################
                
                tabPanel(
                  setSliderColor(c("red", "red", "red", "red", "red", "red"), c(1,2,3,4,5,6)),
@@ -161,12 +161,9 @@ ui <-
                          ) #main panel bracket
                ), #tab panel bracket
                
-#################################################
-# topic panels
-################################################
+######## topic panels ##################
 
-
-              # SUMMARY
+######## summary panel ##################
 
                tabPanel("Summary", icon = icon("list-ul"), value = "summary",
                         sidebarPanel(width = 12,
@@ -175,23 +172,23 @@ ui <-
                                          DT::dataTableOutput("var_link_table")))
                                      ), #tabpanel close
                
-              # INCOME
+######## income panel ##################
 
                tabPanel("Income", icon = icon("euro-sign"), value = "income",
 
                         sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group1", "Select your first grouping variable",
+                                         selectizeInput("group1", "Grouping variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1)
+                                                        options = list(maxItems = 1, placeholder = 'Select a grouping variable')
                                          )),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group2", "Select an optional second grouping variable",
+                                         selectizeInput("group2", "Grouping variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
                                      div(style = "margin-top: 30px",
                                          selectInput("inc_variable", label = "Select an income variable",
                                                      choices = list(`Categorical Variable` = as.list(top_inc_cat$label_de),
@@ -209,13 +206,14 @@ ui <-
                                       
                                      ),
                                      
-                                     div(title="Select what plot you want to see.",
+                                     div(title="Select the plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         selectizeInput("plot_select",
-                                                            label = "Select the plot you want to see",
-                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"),
-                                                            multiple = TRUE,
-                                                            options = list(maxItems = 1)
+                                         awesomeRadio("plot_select",
+                                                      label = "Select the plot you want to see",
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", 
+                                                                  "Heatmap", "Box Plot"),
+                                                      selected = "Line",
+                                                      status = "danger"
                                                             )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
@@ -241,24 +239,24 @@ ui <-
                         
                         )), #tabpanel close
 
-              # HEALTH
+######## health panel ##################
 
                tabPanel("Health", icon = icon("hospital"), value = "health",
                         sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group3", "Select your first grouping variable",
+                                         selectizeInput("group3", "Grouping variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1)
+                                                        options = list(maxItems = 1, placeholder = 'Select a grouping variable')
                                          )),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group4", "Select an optional second grouping variable",
+                                         selectizeInput("group4", "Grouping variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("health_variable", label = "Select an income variable",
+                                         selectInput("health_variable", label = "Select a health variable",
                                                      choices = list(`Categorical Variable` = as.list(top_health_cat$label_de),
                                                                     `Numerical Variable` = as.list(top_health_num$label_de)))),
                                      br(),
@@ -275,18 +273,21 @@ ui <-
                                      ),
                                      div(title="Select what plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         selectizeInput("plot_select_health",
-                                                        label = "Select the plot you want to see",
-                                                        choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"),
-                                                        multiple = TRUE,
-                                                        options = list(maxItems = 1)
+                                         awesomeRadio("plot_select_health",
+                                                      label = "Select the plot you want to see",
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"),
+                                                      selected = "Line",
+                                                      status = "danger"
                                          )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_health_data', 'Download Income Data', class = "down"),
+                                     downloadButton('download_health_data', 'Download Health Data', class = "down"),
                                      br(),
-                                     br()
-                                     ),
+                                     br(),
+                                     div(lp_main_box(image_name= 'back_arrow',
+                                                     button_name = 'jump_to_home_page2', 
+                                                     title_box = "Go to home page",
+                                                     description = 'You are currently on the Health page. Go back to the home page'))),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
                                  column(9,
@@ -301,143 +302,177 @@ ui <-
                           
                         )), #tabpanel close
 
-              # ATTITUDES
+######## attitudes panel ##################
 
                tabPanel("Attitudes", icon = icon("smile"), value = "att",
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group5", "Select your first grouping variable",
+                                         selectizeInput("group5", "Grouping Variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select a grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group6", "Select an optional second grouping variable",
+                                         selectizeInput("group6", "Grouping Variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
                                      div(style = "margin-top: 30px",
                                          selectInput("att_variable", label = "Select a variable",
-                                                     choices = unique(as.character(top_att$label_de)))),
+                                                     choices = list(`Categorical Variable` = as.list(top_att_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_att_num$label_de)))),
                                      sliderInput(
-                                       inputId = "yearInput",
+                                       inputId = "yearInput_att",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
-                                       min = min(1984, na.rm = TRUE),
-                                       max = max(2019, na.rm = TRUE),
+                                       min = 1984,
+                                       max = 2019,
                                        step = 1L,
                                        sep = ""
                                      ),
                                      div(title="Select what plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         checkboxGroupInput("plot_select",
-                                                           label = "Click in the box to select the plot you want to see",
-                                                           choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
-                                                           selected = "Line")),
+                                         awesomeRadio("plot_select_att",
+                                                      label = "Select the plot you want to see",
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
+                                                      selected = "Line",
+                                                      status = "danger")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_att_data', 'Download Attitudes Data', class = "down")
+                                     downloadButton('download_att_data', 'Download Attitudes Data', class = "down"),
+                                     br(),
+                                     br()
                                      ),
-                        sidebarPanel(width = 4,
-                                     h2("Plots"),
-                                     plotlyOutput('att_lineplot'),
-                                     div(style = "margin-top: 30px",
-                                         h2("Data"),
-                                         DT::dataTableOutput("att_table"))
-                        )
-                        ), #tabpanel close
+                        fluidRow(
+                          column(9, style = "padding-left: 0px; padding-right: 0px;",
+                                 column(9,
+                                        div(style = "margin-top: 30px",
+                                            h2("Plots"),
+                                            plotlyOutput("att_plot", width = "100%")),
+                                        div(style = "margin-top: 30px",
+                                            h2("Data"),
+                                            DT::dataTableOutput("att_table"))
+                                 ))
+                          
+                          
+                        )), #tabpanel close
                
-              # HOME
+######## home panel ##################
 
                tabPanel("Home", icon = icon("door-open"), value = "home",
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group7", "Select your first grouping variable",
+                                         selectizeInput("group7", "Grouping Variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select a grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group8", "Select an optional second grouping variable",
+                                         selectizeInput("group8", "Grouping Variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("home_variable", label = "Select a variable",
-                                                     choices = unique(as.character(top_home$label_de)))),
+                                         selectInput("home_variable", label = "Select a home variable",
+                                                     choices = list(`Categorical Variable` = as.list(top_home_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_home_num$label_de)))),
+                                     br(),
+                                     p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
-                                       inputId = "yearInput",
+                                       inputId = "yearInput_home",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
-                                       min = min(1984, na.rm = TRUE),
-                                       max = max(2019, na.rm = TRUE),
+                                       min = 1984,
+                                       max = 2019,
                                        step = 1L,
                                        sep = ""
                                      ),
                                      div(title="Select what plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         checkboxGroupInput("plot_select",
-                                                            label = "Select the plot you want to see",
-                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
-                                                            selected = "Line")),
+                                         awesomeRadio("plot_select_home",
+                                                      label = "Select the plot you want to see",
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
+                                                      selected = "Line",
+                                                      status = "danger")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_home_data', 'Download Home Data', class = "down")
+                                     downloadButton('download_home_data', 'Download Home Data', class = "down"),
+                                     br(),
+                                     br(),
                                      ),
-                        sidebarPanel(width = 4,
-                                     h2("Plots"),
-                                     plotlyOutput('home_lineplot'),
-                                     div(style = "margin-top: 30px",
-                                         h2("Data"),
-                                         DT::dataTableOutput("home_table")))
-                        ), #tabpanel close
+                        fluidRow(
+                          column(9, style = "padding-left: 0px; padding-right: 0px;",
+                                 column(9,
+                                        div(style = "margin-top: 30px",
+                                            h2("Plots"),
+                                            plotlyOutput("home_plot", width = "100%")),
+                                        div(style = "margin-top: 30px",
+                                            h2("Data"),
+                                            DT::dataTableOutput("home_table"))
+                                 ))
+                          
+                          
+                        )), #tabpanel close
 
-              # TIME
+######## time panel ##################
 
                tabPanel("Time", icon = icon("clock"), value = "time",
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group9", "Select your first grouping variable",
+                                         selectizeInput("group9", "Grouping Variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select a grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group10", "Select an optional second grouping variable",
+                                         selectizeInput("group10", "Grouping Variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectInput("time_variable", label = "Select a variable",
-                                                     choices = unique(as.character(top_time$label_de)))),
+                                         selectInput("time_variable", label = "Select a time variable",
+                                                     choices = list(`Categorical Variable` = as.list(top_health_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_health_num$label_de)))),
+                                     br(),
+                                     p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
-                                       inputId = "yearInput",
+                                       inputId = "yearInput_time",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
-                                       min = min(1984, na.rm = TRUE),
-                                       max = max(2019, na.rm = TRUE),
+                                       min = 1984, 
+                                       max = 2019, 
                                        step = 1L,
                                        sep = ""
                                      ),
                                      div(title="Select what plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         checkboxGroupInput("plot_select",
-                                                            label = "Select the plot you want to see",
-                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
-                                                            selected = "Line")),
+                                         awesomeRadio("plot_select_time",
+                                                        label = "Select the plot you want to see",
+                                                        choices = c("Line", "Stacked Bar", "Heatmap", "Box Plot"),
+                                                        selected = "Line",
+                                                        status = "danger"
+                                         )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_time_data', 'Download Time Data', class = "down")
+                                     downloadButton('download_time_data', 'Download Time Data', class = "down"),
+                                     br(),
+                                     br(),
                                      ),
-                        sidebarPanel(width = 4,
-                                     h2("Plots"),
-                                     plotlyOutput('time_lineplot'),
-                                     div(style = "margin-top: 30px",
-                                         h2("Data"),
-                                         DT::dataTableOutput("time_table")))
-                        ), #tabpanel close
+                        fluidRow(
+                          column(9, style = "padding-left: 0px; padding-right: 0px;",
+                                 column(9,
+                                        div(style = "margin-top: 30px",
+                                            h2("Plots"),
+                                            plotlyOutput("time_plot", width = "100%")),
+                                        div(style = "margin-top: 30px",
+                                            h2("Data"),
+                                            DT::dataTableOutput("time_table"))
+                                 ))
+                          
+                          
+                        )), #tabpanel close
 
-              # EMPLOYMENT
+######## employment panel ##################
 
                tabPanel("Employment", icon = icon("briefcase"), value = "emp",
                         sidebarPanel(width = 4,
@@ -454,7 +489,8 @@ ui <-
                                                         options = list(maxItems = 1))),
                                      div(style = "margin-top: 30px",
                                          selectInput("emp_variable", label = "Select a variable",
-                                                     choices = unique(as.character(top_emp$label_de)))),
+                                                     choices = list(`Categorical Variable` = as.list(top_emp_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_emp_num$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
                                        label = "Year",
@@ -481,7 +517,7 @@ ui <-
                                          h2("Data"),
                                          DT::dataTableOutput("emp_table")))
                         ), #tabpanel close
-
+######## report panel ##################
 
 tabPanel("Report", icon = icon("table"), value = "report",
           #Sidepanel for filtering data
@@ -493,6 +529,7 @@ tabPanel("Report", icon = icon("table"), value = "report",
                 style = "font-weight: bold; color: black;")))
          ),
 
+######## navbar ##################
 
 navbarMenu("Info", icon = icon("info-circle"),
            
@@ -518,18 +555,20 @@ navbarMenu("Info", icon = icon("info-circle"),
 ) #final ui break
 
 
+
+
 # Define server logic 
 server <- function(input, output, session) {
   
-  ## Landing page ----
-  ###############################################.
-  # Creating events that take you to different tabs
-  # activated when pressing buttons from the landing page
+  ######## jump to tabs ##################
   
   observeEvent(input$jump_to_home_page, {
     updateTabsetPanel(session, "intabset", selected = "home_page")
   })
   
+  observeEvent(input$jump_to_home_page2, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
 
   observeEvent(input$jump_to_summary, {
     updateTabsetPanel(session, "intabset", selected = "summary")
@@ -565,19 +604,14 @@ server <- function(input, output, session) {
   })
   
   ######## Attention: New Code from Stefan ##################
-  
-  ################################
-  ## Summary Panel
-  ################################
-  
+
+  ######## summary panel ##################
   
   output$var_link_table <- DT::renderDataTable({
     DT::datatable(var_links, escape = 4, options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25), filter = "top")
   })
  
-  ##################################
-  ## Income Panel
-  #################################
+  ## Income Panel ###########
   
    # Variable
   inc_variable <- reactive({ 
@@ -648,7 +682,7 @@ server <- function(input, output, session) {
     input$ci_income
   })
   
-  
+  ######## income box plot ##################
   # load graphic
   # 1.1 boxplot
   boxplot <-
@@ -676,7 +710,7 @@ server <- function(input, output, session) {
     }
 
   })
-  
+  ######## income line plot ##################
   # 1.2 lineplot
   lineplot <-
     reactive({
@@ -758,7 +792,7 @@ server <- function(input, output, session) {
       }
       }  
     })
-  
+  ######## income stacked bar plot ##################
   # 1.3 Stacked Bar
   stackbarplot <-
     reactive({
@@ -791,6 +825,7 @@ server <- function(input, output, session) {
         }
       }
     })
+  ######## income side by side plot ##################
   
   # 1.4 Side by Side
   dodgebarplot <-
@@ -826,7 +861,7 @@ server <- function(input, output, session) {
     })
   
   
-  
+  ######## income render plotly ##################
   output$inc_plot <- renderPlotly({
     
     if (input$plot_select == 'Box Plot') {
@@ -850,10 +885,9 @@ server <- function(input, output, session) {
   output$inc_table <- renderDataTable(
     inc_data(), options = list(searching = FALSE))
   
+ 
+ #### health panel ##############
 
- ################################### 
- #### health panel
- ################################### 
   # Variable
   health_variable <- reactive({ 
     variables$variable[variables$label_de==input$health_variable]
@@ -923,7 +957,7 @@ server <- function(input, output, session) {
     input$ci_health
   })
   
-  
+  ######## health box plot ##################
   # load graphic
   # 1.1 boxplot
   boxplot_health <-
@@ -951,7 +985,7 @@ server <- function(input, output, session) {
       }
       
     })
-  
+  ######## health line plot ##################
   # 1.2 lineplot
   lineplot_health <-
     reactive({
@@ -1033,7 +1067,7 @@ server <- function(input, output, session) {
         }
       }  
     })
-  
+  ######## health stacked bar plot ##################
   # 1.3 Stacked Bar
   stackbarplot_health <-
     reactive({
@@ -1066,7 +1100,7 @@ server <- function(input, output, session) {
         }
       }
     })
-  
+  ######## health side by side plot ##################
   # 1.4 Side by Side
   dodgebarplot_health <-
     reactive({
@@ -1100,7 +1134,7 @@ server <- function(input, output, session) {
       }
     })
   
-  
+  ######## health render plotly ##################
   
   output$health_plot <- renderPlotly({
     
@@ -1125,23 +1159,23 @@ server <- function(input, output, session) {
   output$health_table <- renderDataTable(
     health_data(), options = list(searching = FALSE))
   
-######################################
-  # attitudes panel
-#####################################
-  
+
+  ## attitudes panel #####
+
+    # variable
   att_variable <- reactive({ 
     variables$variable[variables$label_de==input$att_variable]
   })
-  # grouping3
+  # grouping1
   diffvar5 <- reactive({ 
     variables$variable[variables$label_de==input$group5]
   })
   
-  # grouping4
+  # grouping2
   diffvar6 <- reactive({ 
     variables$variable[variables$label_de==input$group6]
   })
-  
+  # Select table name
   att_table <- reactive({ 
     get_user_table(meta = variables, variable = att_variable(),
                    diffvar1 = diffvar5(), diffvar2 = diffvar6(),
@@ -1162,23 +1196,254 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
+  # Confirm vartype
+  att_vartype <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$att_variable] == "Yes") { 
+      att_vartype <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$att_variable] == "No") { 
+      att_vartype <- "categorical"}
+    
+    return(att_vartype)
+  })
+  
+  # load startyear
+  att_min <-  reactive({ 
+    input$yearInput_att[1]
+  })
+  
+  # load endyear
+  att_max <-  reactive({ 
+    input$yearInput_att[2]
+  })
+  
+  # load plottype
+  att_type <-  reactive({ 
+    input$plot_select_att
+  })
+  
+  # load plottype
+  att_ci <-  reactive({ 
+    input$ci_att
+  })
+  
+  ######## attituded box plot ##################
+  # load graphic
+  # 1.1 boxplot
+  boxplot_att <-
+    reactive({
+      req(input$plot_select_att)
+      req(input$att_variable)
+      req(att_data())
+      
+      # boxplot
+      if (input$plot_select_att == 'Box Plot') {
+        if(!isTruthy(input$group5)){
+          get_boxplot(table = att_data(), meta = variables, variable = att_variable(),
+                      diffvar2 = "", diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group5) & (!isTruthy(input$group6))){
+          get_boxplot(table = att_data(), meta = variables, variable = att_variable(),
+                      diffvar2 = diffvar5(), diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group6) & (isTruthy(input$group6))){
+          get_boxplot(table = att_data(), meta = variables, variable = att_variable(),
+                      diffvar2 = diffvar5(), diffvar3 = diffvar6())
+        }
+      }
+      
+    })
+  ######## attitudes line plot ##################
+  # 1.2 lineplot
+  lineplot_att <-
+    reactive({
+      req(input$plot_select_att)
+      req(input$att_variable)
+      req(att_data())
+      
+      # lineplot
+      if (input$plot_select_att == 'Line') {
+        if (att_vartype() == "numerical") {
+          if(!isTruthy(input$group5)){
+            get_lineplot(data = att_data(),
+                         meta = variables,
+                         variable = att_variable(),
+                         diffvar1 = "",
+                         diffvar2 = "",
+                         diffcount = 1,
+                         start = att_min(),
+                         end = att_max(),
+                         ci = att_ci())
+          }
+          else if (isTruthy(input$group5) & (!isTruthy(input$group6))){
+            get_lineplot(data = att_data(),
+                         meta = variables,
+                         variable = att_variable(),
+                         diffvar1 = diffvar5(),
+                         diffvar2 = "",
+                         diffcount = 2,
+                         start = att_min(),
+                         end = att_max(),
+                         ci = att_ci())
+          }
+          else if (isTruthy(input$group6) & (isTruthy(input$group6))){
+            get_lineplot(data = att_data(),
+                         meta = variables,
+                         variable = att_variable(),
+                         diffvar1 = diffvar5(),
+                         diffvar2 = diffvar6(),
+                         diffcount = 3,
+                         start = att_min(),
+                         end = att_max(),
+                         ci = att_ci())
+          }
+        }
+        else if (att_vartype() == "categorical") {
+          if(!isTruthy(input$group5)){
+            get_percent_lineplot(data = att_data(),
+                                 meta = variables,
+                                 variable = att_variable(),
+                                 diffvar1 = "",
+                                 diffvar2 = "",
+                                 diffcount = 1,
+                                 start = att_min(),
+                                 end = att_max(),
+                                 ci = att_ci())
+          }
+          else if (isTruthy(input$group5) & (!isTruthy(input$group6))){
+            get_percent_lineplot(data = att_data(),
+                                 meta = variables,
+                                 variable = att_variable(),
+                                 diffvar1 = diffvar5(),
+                                 diffvar2 = "",
+                                 diffcount = 2,
+                                 start = att_min(),
+                                 end = att_max(),
+                                 ci = att_ci())
+          }
+          else if (isTruthy(input$group6) & (isTruthy(input$group6))){
+            get_percent_lineplot(data = att_data(),
+                                 meta = variables,
+                                 variable = att_variable(),
+                                 diffvar1 = diffvar5(),
+                                 diffvar2 = diffvar6(),
+                                 diffcount = 3,
+                                 start = att_min(),
+                                 end = att_max(),
+                                 ci = att_ci())
+          }
+        }
+      }  
+    })
+  ######## attitudes stacked bar plot ##################
+  # 1.3 Stacked Bar
+  stackbarplot_att <-
+    reactive({
+      req(input$plot_select_att)
+      req(input$att_variable)
+      req(att_data())
+      
+      # Stacked Bar
+      if (input$plot_select_att == 'Stacked Bar') {
+        if(!isTruthy(input$group5)){
+          get_barplot(data = att_data(), meta = variables, 
+                      variable = att_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "stack", ci = att_ci(), 
+                      start = att_min(), end = att_max())
+        }
+        else if (isTruthy(input$group5) & (!isTruthy(input$group6))){
+          get_barplot(data = att_data(), meta = variables, 
+                      variable = att_variable(), 
+                      diffvar1 = diffvar5(), diffvar2 = "", 
+                      plottype = "stack", ci = att_ci(), 
+                      start = att_min(), end = att_max())
+        }
+        else if (isTruthy(input$group6) & (isTruthy(input$group6))){
+          get_barplot(data = att_data(), meta = variables, 
+                      variable = att_variable(), 
+                      diffvar1 = diffvar5(), diffvar2 = diffvar6(), 
+                      plottype = "stack", ci = att_ci(), 
+                      start = att_min(), end = att_max())
+        }
+      }
+    })
+  ######## attitudes side by side plot ##################
+  # 1.4 Side by Side
+  dodgebarplot_att <-
+    reactive({
+      req(input$plot_select_att)
+      req(input$att_variable)
+      req(att_data())
+      
+      # Stacked Bar
+      if (input$plot_select_att == 'Side by Side Bar') {
+        if(!isTruthy(input$group5)){
+          get_barplot(data = att_data(), meta = variables, 
+                      variable = att_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "dodge", ci = att_ci(), 
+                      start = att_min(), end = att_max())
+        }
+        else if (isTruthy(input$group5) & (!isTruthy(input$group6))){
+          get_barplot(data = att_data(), meta = variables, 
+                      variable = att_variable(), 
+                      diffvar1 = diffvar5(), diffvar2 = "", 
+                      plottype = "dodge", ci = att_ci(), 
+                      start = att_min(), end = att_max())
+        }
+        else if (isTruthy(input$group6) & (isTruthy(input$group6))){
+          get_barplot(data = att_data(), meta = variables, 
+                      variable = att_variable(), 
+                      diffvar1 = diffvar5(), diffvar2 = diffvar6(), 
+                      plottype = "dodge", ci = att_ci(), 
+                      start = att_min(), end = att_max())
+        }
+      }
+    })
+  ######## attitudes render plotly ##################
+  
+  output$att_plot <- renderPlotly({
+    
+    if (input$plot_select_att == 'Box Plot') {
+      boxplot_att()
+    }
+    
+    else if (input$plot_select_att == 'Line') {
+      lineplot_att()
+    }
+    
+    else if (input$plot_select_att == 'Stacked Bar') {
+      stackbarplot_att()
+    }
+    
+    else if (input$plot_select_att == 'Side by Side Bar') {
+      dodgebarplot_att()
+    }
+  })
+  
+  # load data
+  
   
   output$att_table <- renderDataTable(
     att_data(), options = list(searching = FALSE))
   
-###################################
-  # home panel
-###################################
+
+  ### home panel ####
+
   
   home_variable <- reactive({ 
     variables$variable[variables$label_de==input$home_variable]
   })
-  # grouping3
+  # grouping1
   diffvar7 <- reactive({ 
     variables$variable[variables$label_de==input$group7]
   })
   
-  # grouping4
+  # grouping2
   diffvar8 <- reactive({ 
     variables$variable[variables$label_de==input$group8]
   })
@@ -1203,15 +1468,243 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
+  # Confirm vartype
+  home_vartype <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$home_variable] == "Yes") { 
+      home_vartype <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$home_variable] == "No") { 
+      home_vartype <- "categorical"}
+    
+    return(home_vartype)
+  })
+  
+  # load startyear
+  home_min <-  reactive({ 
+    input$yearInput_home[1]
+  })
+  
+  # load endyear
+  home_max <-  reactive({ 
+    input$yearInput_home[2]
+  })
+  
+  # load plottype
+  home_type <-  reactive({ 
+    input$plot_select_home
+  })
+  
+  # load plottype
+  home_ci <-  reactive({ 
+    input$ci_home
+  })
+  
+  ######## home box plot ##################
+  # load graphic
+  # 1.1 boxplot
+  boxplot_home <-
+    reactive({
+      req(input$plot_select_home)
+      req(input$home_variable)
+      req(home_data())
+      
+      # boxplot
+      if (input$plot_select_home == 'Box Plot') {
+        if(!isTruthy(input$group7)){
+          get_boxplot(table = home_data(), meta = variables, variable = home_variable(),
+                      diffvar2 = "", diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group7) & (!isTruthy(input$group8))){
+          get_boxplot(table = home_data(), meta = variables, variable = home_variable(),
+                      diffvar2 = diffvar7(), diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group8) & (isTruthy(input$group8))){
+          get_boxplot(table = home_data(), meta = variables, variable = home_variable(),
+                      diffvar2 = diffvar7(), diffvar3 = diffvar8())
+        }
+      }
+      
+    })
+  ######## home line plot ##################
+  # 1.2 lineplot
+  lineplot_home <-
+    reactive({
+      req(input$plot_select_home)
+      req(input$home_variable)
+      req(home_data())
+      
+      # lineplot
+      if (input$plot_select_home == 'Line') {
+        if (home_vartype() == "numerical") {
+          if(!isTruthy(input$group7)){
+            get_lineplot(data = home_data(),
+                         meta = variables,
+                         variable = home_variable(),
+                         diffvar1 = "",
+                         diffvar2 = "",
+                         diffcount = 1,
+                         start = home_min(),
+                         end = home_max(),
+                         ci = home_ci())
+          }
+          else if (isTruthy(input$group7) & (!isTruthy(input$group8))){
+            get_lineplot(data = home_data(),
+                         meta = variables,
+                         variable = home_variable(),
+                         diffvar1 = diffvar7(),
+                         diffvar2 = "",
+                         diffcount = 2,
+                         start = home_min(),
+                         end = home_max(),
+                         ci = home_ci())
+          }
+          else if (isTruthy(input$group8) & (isTruthy(input$group8))){
+            get_lineplot(data = home_data(),
+                         meta = variables,
+                         variable = home_variable(),
+                         diffvar1 = diffvar7(),
+                         diffvar2 = diffvar8(),
+                         diffcount = 3,
+                         start = home_min(),
+                         end = home_max(),
+                         ci = home_ci())
+          }
+        }
+        else if (home_vartype() == "categorical") {
+          if(!isTruthy(input$group7)){
+            get_percent_lineplot(data = home_data(),
+                                 meta = variables,
+                                 variable = home_variable(),
+                                 diffvar1 = "",
+                                 diffvar2 = "",
+                                 diffcount = 1,
+                                 start = home_min(),
+                                 end = home_max(),
+                                 ci = home_ci())
+          }
+          else if (isTruthy(input$group7) & (!isTruthy(input$group8))){
+            get_percent_lineplot(data = home_data(),
+                                 meta = variables,
+                                 variable = home_variable(),
+                                 diffvar1 = diffvar7(),
+                                 diffvar2 = "",
+                                 diffcount = 2,
+                                 start = home_min(),
+                                 end = home_max(),
+                                 ci = home_ci())
+          }
+          else if (isTruthy(input$group8) & (isTruthy(input$group8))){
+            get_percent_lineplot(data = home_data(),
+                                 meta = variables,
+                                 variable = home_variable(),
+                                 diffvar1 = diffvar7(),
+                                 diffvar2 = diffvar8(),
+                                 diffcount = 3,
+                                 start = home_min(),
+                                 end = home_max(),
+                                 ci = home_ci())
+          }
+        }
+      }  
+    })
+  ######## home stacked bar plot ##################
+  
+  # 1.3 Stacked Bar
+  stackbarplot_home <-
+    reactive({
+      req(input$plot_select_home)
+      req(input$home_variable)
+      req(home_data())
+      
+      # Stacked Bar
+      if (input$plot_select_home == 'Stacked Bar') {
+        if(!isTruthy(input$group7)){
+          get_barplot(data = home_data(), meta = variables, 
+                      variable = home_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "stack", ci = home_ci(), 
+                      start = home_min(), end = home_max())
+        }
+        else if (isTruthy(input$group7) & (!isTruthy(input$group8))){
+          get_barplot(data = home_data(), meta = variables, 
+                      variable = home_variable(), 
+                      diffvar1 = diffvar7(), diffvar2 = "", 
+                      plottype = "stack", ci = home_ci(), 
+                      start = home_min(), end = home_max())
+        }
+        else if (isTruthy(input$group8) & (isTruthy(input$group8))){
+          get_barplot(data = home_data(), meta = variables, 
+                      variable = home_variable(), 
+                      diffvar1 = diffvar7(), diffvar2 = diffvar8(), 
+                      plottype = "stack", ci = home_ci(), 
+                      start = home_min(), end = home_max())
+        }
+      }
+    })
+  ######## home side by side plot ##################
+  
+  # 1.4 Side by Side
+  dodgebarplot_home <-
+    reactive({
+      req(input$plot_select_home)
+      req(input$home_variable)
+      req(home_data())
+      
+      # Stacked Bar
+      if (input$plot_select_home == 'Side by Side Bar') {
+        if(!isTruthy(input$group7)){
+          get_barplot(data = home_data(), meta = variables, 
+                      variable = home_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "dodge", ci = home_ci(), 
+                      start = home_min(), end = home_max())
+        }
+        else if (isTruthy(input$group7) & (!isTruthy(input$group8))){
+          get_barplot(data = home_data(), meta = variables, 
+                      variable = home_variable(), 
+                      diffvar1 = diffvar7(), diffvar2 = "", 
+                      plottype = "dodge", ci = home_ci(), 
+                      start = home_min(), end = home_max())
+        }
+        else if (isTruthy(input$group8) & (isTruthy(input$group8))){
+          get_barplot(data = home_data(), meta = variables, 
+                      variable = home_variable(), 
+                      diffvar1 = diffvar7(), diffvar2 = diffvar8(), 
+                      plottype = "dodge", ci = home_ci(), 
+                      start = home_min(), end = home_max())
+        }
+      }
+    })
+  
+  ######## home render plotly ##################
+  
+  output$home_plot <- renderPlotly({
+    
+    if (input$plot_select_home == 'Box Plot') {
+      boxplot_home()
+    }
+    
+    else if (input$plot_select_home == 'Line') {
+      lineplot_home()
+    }
+    
+    else if (input$plot_select_home == 'Stacked Bar') {
+      stackbarplot_home()
+    }
+    
+    else if (input$plot_select_home == 'Side by Side Bar') {
+      dodgebarplot_home()
+    }
+  })
   
   output$home_table <- renderDataTable(
     home_data(), options = list(searching = FALSE)) 
   
 
-##############################################
-  # Time
-#############################################
-  
+  ### Time ####
   
   time_variable <- reactive({ 
     variables$variable[variables$label_de==input$time_variable]
@@ -1246,14 +1739,246 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
+  # Confirm vartype
+  time_vartype <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$time_variable] == "Yes") { 
+      time_vartype <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$time_variable] == "No") { 
+      time_vartype <- "categorical"}
+    
+    return(time_vartype)
+  })
+  
+  # load startyear
+  time_min <-  reactive({ 
+    input$yearInput_time[1]
+  })
+  
+  # load endyear
+  time_max <-  reactive({ 
+    input$yearInput_time[2]
+  })
+  
+  # load plottype
+  time_type <-  reactive({ 
+    input$plot_select_time
+  })
+  
+  # load plottype
+  time_ci <-  reactive({ 
+    input$ci_time
+  })
+  
+  ######## time box plot ##################
+  
+  # load graphic
+  # 1.1 boxplot
+  boxplot_time <-
+    reactive({
+      req(input$plot_select_time)
+      req(input$time_variable)
+      req(time_data())
+      
+      # boxplot
+      if (input$plot_select_time == 'Box Plot') {
+        if(!isTruthy(input$group9)){
+          get_boxplot(table = time_data(), meta = variables, variable = time_variable(),
+                      diffvar2 = "", diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group9) & (!isTruthy(input$group10))){
+          get_boxplot(table = time_data(), meta = variables, variable = time_variable(),
+                      diffvar2 = diffvar9(), diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group10) & (isTruthy(input$group10))){
+          get_boxplot(table = time_data(), meta = variables, variable = time_variable(),
+                      diffvar2 = diffvar9(), diffvar3 = diffvar10())
+        }
+      }
+      
+    })
+  ######## time line plot ##################
+  
+  # 1.2 lineplot
+  lineplot_time <-
+    reactive({
+      req(input$plot_select_time)
+      req(input$time_variable)
+      req(time_data())
+      
+      # lineplot
+      if (input$plot_select_time == 'Line') {
+        if (time_vartype() == "numerical") {
+          if(!isTruthy(input$group9)){
+            get_lineplot(data = time_data(),
+                         meta = variables,
+                         variable = time_variable(),
+                         diffvar1 = "",
+                         diffvar2 = "",
+                         diffcount = 1,
+                         start = time_min(),
+                         end = time_max(),
+                         ci = time_ci())
+          }
+          else if (isTruthy(input$group9) & (!isTruthy(input$group10))){
+            get_lineplot(data = time_data(),
+                         meta = variables,
+                         variable = time_variable(),
+                         diffvar1 = diffvar9(),
+                         diffvar2 = "",
+                         diffcount = 2,
+                         start = time_min(),
+                         end = time_max(),
+                         ci = time_ci())
+          }
+          else if (isTruthy(input$group10) & (isTruthy(input$group10))){
+            get_lineplot(data = time_data(),
+                         meta = variables,
+                         variable = time_variable(),
+                         diffvar1 = diffvar9(),
+                         diffvar2 = diffvar10(),
+                         diffcount = 3,
+                         start = time_min(),
+                         end = time_max(),
+                         ci = time_ci())
+          }
+        }
+        else if (time_vartype() == "categorical") {
+          if(!isTruthy(input$group9)){
+            get_percent_lineplot(data = time_data(),
+                                 meta = variables,
+                                 variable = time_variable(),
+                                 diffvar1 = "",
+                                 diffvar2 = "",
+                                 diffcount = 1,
+                                 start = time_min(),
+                                 end = time_max(),
+                                 ci = time_ci())
+          }
+          else if (isTruthy(input$group9) & (!isTruthy(input$group10))){
+            get_percent_lineplot(data = time_data(),
+                                 meta = variables,
+                                 variable = time_variable(),
+                                 diffvar1 = diffvar9(),
+                                 diffvar2 = "",
+                                 diffcount = 2,
+                                 start = time_min(),
+                                 end = time_max(),
+                                 ci = time_ci())
+          }
+          else if (isTruthy(input$group10) & (isTruthy(input$group10))){
+            get_percent_lineplot(data = time_data(),
+                                 meta = variables,
+                                 variable = time_variable(),
+                                 diffvar1 = diffvar9(),
+                                 diffvar2 = diffvar10(),
+                                 diffcount = 3,
+                                 start = time_min(),
+                                 end = time_max(),
+                                 ci = time_ci())
+          }
+        }
+      }  
+    })
+  ######## time stacked bar plot ##################
+  
+  # 1.3 Stacked Bar
+  stackbarplot_time <-
+    reactive({
+      req(input$plot_select_time)
+      req(input$time_variable)
+      req(time_data())
+      
+      # Stacked Bar
+      if (input$plot_select_time == 'Stacked Bar') {
+        if(!isTruthy(input$group9)){
+          get_barplot(data = time_data(), meta = variables, 
+                      variable = time_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "stack", ci = time_ci(), 
+                      start = time_min(), end = time_max())
+        }
+        else if (isTruthy(input$group9) & (!isTruthy(input$group10))){
+          get_barplot(data = time_data(), meta = variables, 
+                      variable = time_variable(), 
+                      diffvar1 = diffvar9(), diffvar2 = "", 
+                      plottype = "stack", ci = time_ci(), 
+                      start = time_min(), end = time_max())
+        }
+        else if (isTruthy(input$group10) & (isTruthy(input$group10))){
+          get_barplot(data = time_data(), meta = variables, 
+                      variable = time_variable(), 
+                      diffvar1 = diffvar9(), diffvar2 = diffvar10(), 
+                      plottype = "stack", ci = time_ci(), 
+                      start = time_min(), end = time_max())
+        }
+      }
+    })
+  ######## time side by side plot ##################
+  
+  # 1.4 Side by Side
+  dodgebarplot_time <-
+    reactive({
+      req(input$plot_select_time)
+      req(input$time_variable)
+      req(time_data())
+      
+      # Stacked Bar
+      if (input$plot_select_time == 'Side by Side Bar') {
+        if(!isTruthy(input$group9)){
+          get_barplot(data = time_data(), meta = variables, 
+                      variable = time_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "dodge", ci = time_ci(), 
+                      start = time_min(), end = time_max())
+        }
+        else if (isTruthy(input$group9) & (!isTruthy(input$group10))){
+          get_barplot(data = time_data(), meta = variables, 
+                      variable = time_variable(), 
+                      diffvar1 = diffvar9(), diffvar2 = "", 
+                      plottype = "dodge", ci = time_ci(), 
+                      start = time_min(), end = time_max())
+        }
+        else if (isTruthy(input$group10) & (isTruthy(input$group10))){
+          get_barplot(data = time_data(), meta = variables, 
+                      variable = time_variable(), 
+                      diffvar1 = diffvar9(), diffvar2 = diffvar10(), 
+                      plottype = "dodge", ci = time_ci(), 
+                      start = time_min(), end = time_max())
+        }
+      }
+    })
+  
+  ######## time render plotly ##################
+  
+  output$time_plot <- renderPlotly({
+    
+    if (input$plot_select_time == 'Box Plot') {
+      boxplot_time()
+    }
+    
+    else if (input$plot_select_time == 'Line') {
+      lineplot_time()
+    }
+    
+    else if (input$plot_select_time == 'Stacked Bar') {
+      stackbarplot_time()
+    }
+    
+    else if (input$plot_select_time == 'Side by Side Bar') {
+      dodgebarplot_time()
+    }
+  })
   
   output$time_table <- renderDataTable(
     time_data(), options = list(searching = FALSE)) 
   
   
-#############################
-  # employment panel
-#############################
+
+  ### employment panel ###
   
   
   emp_variable <- reactive({ 

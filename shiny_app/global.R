@@ -81,13 +81,20 @@ top_inc     <- variables %>% filter(topic == "Income, Taxes, and Social Security
 top_inc_cat <- variables %>% filter(topic == "Income, Taxes, and Social Security" & meantable == "No") %>% select(label_de)
 top_inc_num <- variables %>% filter(topic == "Income, Taxes, and Social Security" & meantable == "Yes") %>% select(label_de)
 top_att     <- variables %>% filter(topic == "Attitudes, Values, and Personality") %>% select(label_de)
+top_att_cat <- variables %>% filter(topic == "Attitudes, Values, and Personality" & meantable == "No") %>% select(label_de)
+top_att_num <- variables %>% filter(topic == "Attitudes, Values, and Personality" & meantable == "Yes") %>% select(label_de)
 top_health  <- variables %>% filter(topic == "Health and Care") %>% select(label_de)
 top_health_cat <- variables %>% filter(topic == "Health and Care" & meantable == "No") %>% select(label_de)
 top_health_num <- variables %>% filter(topic == "Health and Care" & meantable == "Yes") %>% select(label_de)
 top_home    <- variables %>% filter(topic == "Home, Amenities, and Contributions of Private HH") %>% select(label_de)
+top_home_cat <- variables %>% filter(topic == "Home, Amenities, and Contributions of Private HH" & meantable == "No") %>% select(label_de)
+top_home_num <- variables %>% filter(topic == "Home, Amenities, and Contributions of Private HH" & meantable == "Yes") %>% select(label_de)
 top_time    <- variables %>% filter(topic == "Time Use and Environmental Behavior") %>% select(label_de)
+top_time_cat <- variables %>% filter(topic == "Time Use and Environmental Behavior" & meantable == "No") %>% select(label_de)
+top_time_num <- variables %>% filter(topic == "Time Use and Environmental Behavior" & meantable == "Yes") %>% select(label_de)
 top_emp     <- variables %>% filter(topic == "Work and Employment") %>% select(label_de)
-
+top_emp_cat <- variables %>% filter(topic == "Work and Employment" & meantable == "No") %>% select(label_de)
+top_emp_num <- variables %>% filter(topic == "Work and Employment" & meantable == "Yes") %>% select(label_de)
 top_demo <- variables %>%
   filter(meantable == "demo") 
 
