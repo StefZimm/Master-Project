@@ -178,17 +178,21 @@ ui <-
 
                         sidebarPanel(width = 2,
                                      h2("Variable Selection"),
-                                     div(style = "margin-top: 30px",
+                                     div(title = "Select from the list of grouping variables.",
+                                       style = "margin-top: 30px",
                                          selectizeInput("group1", "Grouping variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1, placeholder = 'Select a grouping variable')
                                          )),
-                                     div(style = "margin-top: 30px",
+                                     div(title = "You may select a second grouping variable from the list. Leave blank if you only wish to see one grouping variable. ",
+                                       style = "margin-top: 30px",
                                          selectizeInput("group2", "Grouping variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
+                                     actionButton("reset_inc_var", "Clear second variable", icon("rotate-right"),
+                                                  style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
                                          selectInput("inc_variable", label = "Select an income variable",
                                                      choices = list(`Categorical Variable` = as.list(top_inc_cat$label_de),
@@ -205,8 +209,8 @@ ui <-
                                        sep = ""
                                       
                                      ),
-                                     
-                                     div(title="Select the plot you want to see.",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a side by side bar plot or box plot if you selected a numerical variables.",
+                                         p(tags$b("Select the plot you want to see.")),
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select",
                                                       label = "Select the plot you want to see",
@@ -215,7 +219,8 @@ ui <-
                                                       selected = "Line",
                                                       status = "danger"
                                                             )),
-                                     div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
+                                     div(title="Include explanation of CI here?",
+                                           p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
                                      downloadButton('download_income_data', 'Download Income Data', class = "down"),
                                      br(),
@@ -255,6 +260,8 @@ ui <-
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
+                                     actionButton("reset_health_var", "Clear second variable", icon("rotate-right"),
+                                                  style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
                                          selectInput("health_variable", label = "Select a health variable",
                                                      choices = list(`Categorical Variable` = as.list(top_health_cat$label_de),
@@ -317,6 +324,8 @@ ui <-
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
+                                     actionButton("reset_att_var", "Clear second variable", icon("rotate-right"),
+                                                  style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
                                          selectInput("att_variable", label = "Select a variable",
                                                      choices = list(`Categorical Variable` = as.list(top_att_cat$label_de),
@@ -357,9 +366,9 @@ ui <-
                           
                         )), #tabpanel close
                
-######## home panel ##################
+######## household panel ##################
 
-               tabPanel("Home", icon = icon("door-open"), value = "home",
+               tabPanel("Household", icon = icon("door-open"), value = "home",
                         sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
@@ -372,6 +381,8 @@ ui <-
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
+                                     actionButton("reset_home_var", "Clear second variable", icon("rotate-right"),
+                                                  style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
                                          selectInput("home_variable", label = "Select a home variable",
                                                      choices = list(`Categorical Variable` = as.list(top_home_cat$label_de),
@@ -429,6 +440,8 @@ ui <-
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
                                                         options = list(maxItems = 1, placeholder = 'Select an optional second grouping variable'))),
+                                     actionButton("reset_time_var", "Clear second variable", icon("rotate-right"),
+                                                  style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
                                          selectInput("time_variable", label = "Select a time variable",
                                                      choices = list(`Categorical Variable` = as.list(top_health_cat$label_de),
@@ -475,48 +488,59 @@ ui <-
 ######## employment panel ##################
 
                tabPanel("Employment", icon = icon("briefcase"), value = "emp",
-                        sidebarPanel(width = 4,
+                        sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group11", "Select your first grouping variable",
+                                         selectizeInput("group11", "Grouping Variable 1",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Select a grouping variable'))),
                                      div(style = "margin-top: 30px",
-                                         selectizeInput("group12", "Select an optional second grouping variable",
+                                         selectizeInput("group12", "Grouping Variable 2",
                                                         choices = top_demo$label_de,
                                                         multiple = TRUE,
-                                                        options = list(maxItems = 1))),
+                                                        options = list(maxItems = 1, placeholder = 'Selected an optional second grouping variable'))),
+                                     actionButton("reset_emp_var", "Clear second variable", icon("rotate-right"),
+                                                  style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
-                                         selectInput("emp_variable", label = "Select a variable",
+                                         selectInput("emp_variable", label = "Select an employment variable",
                                                      choices = list(`Categorical Variable` = as.list(top_emp_cat$label_de),
                                                                     `Numerical Variable` = as.list(top_emp_num$label_de)))),
                                      sliderInput(
                                        inputId = "yearInput",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
-                                       min = min(1984, na.rm = TRUE),
-                                       max = max(2019, na.rm = TRUE),
+                                       min = 1984, 
+                                       max = 2019,
                                        step = 1L,
                                        sep = ""
                                      ),
-                                     div(title="Select what plot you want to see.",
+                                     div(title="Select a plot you want to see.",
                                          style = "margin-top: 10px; margin-bottom: 20px;",
-                                         checkboxGroupInput("plot_select",
-                                                            label = "Select the plot you want to see",
-                                                            choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
-                                                            selected = "Line")),
+                                         awesomeRadio("plot_select_emp",
+                                                      label = "Select the plot you want to see",
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
+                                                      selected = "Line",
+                                                      status = "danger")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_emp_data', 'Download Employment Data', class = "down")
-                                     ),
-                        sidebarPanel(width = 4,
-                                     h2("Plots"),
-                                     plotlyOutput('emp_lineplot'),
-                                     div(style = "margin-top: 30px",
-                                         h2("Data"),
-                                         DT::dataTableOutput("emp_table")))
-                        ), #tabpanel close
+                                     downloadButton('download_emp_data', 'Download Employment Data', class = "down"),
+                                     br(),
+                                     br()),
+                        fluidRow(
+                          column(9, style = "padding-left: 0px; padding-right: 0px;",
+                                 column(9,
+                                        div(style = "margin-top: 30px",
+                                            h2("Plots"),
+                                            plotlyOutput("emp_plot", width = "100%")),
+                                        div(style = "margin-top: 30px",
+                                            h2("Data"),
+                                            DT::dataTableOutput("emp_table"))
+                                 ))
+                          
+                          
+                        )), #tabpanel close
+                        
 ######## report panel ##################
 
 tabPanel("Report", icon = icon("table"), value = "report",
@@ -591,7 +615,7 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$jump_to_home, {
-    updateTabsetPanel(session, "intabset", selected = "home")
+    updateTabsetPanel(session, "intabset", selected = "household")
   })
   
   observeEvent(input$jump_to_time, {
@@ -602,6 +626,15 @@ server <- function(input, output, session) {
   observeEvent(input$jump_to_employment, {
     updateTabsetPanel(session, "intabset", selected = "emp")
   })
+  
+  ######## reset buttons ##################
+  
+  observeEvent(input$reset_inc_var, {reset("group2")})
+  observeEvent(input$reset_health_var, {reset("group4")})
+  observeEvent(input$reset_att_var, {reset("group6")})
+  observeEvent(input$reset_home_var, {reset("group8")})
+  observeEvent(input$reset_time_var, {reset("group10")})
+  observeEvent(input$reset_emp_var, {reset("group12")})
   
   ######## Attention: New Code from Stefan ##################
 
@@ -881,11 +914,13 @@ server <- function(input, output, session) {
     }
   })
   
+
   # load data
   output$inc_table <- renderDataTable(
     inc_data(), options = list(searching = FALSE))
   
  
+  
  #### health panel ##############
 
   # Variable
@@ -1978,18 +2013,18 @@ server <- function(input, output, session) {
   
   
 
-  ### employment panel ###
+  ######## employment panel ##################
   
   
   emp_variable <- reactive({ 
     variables$variable[variables$label_de==input$emp_variable]
   })
-  # grouping3
+  # grouping1
   diffvar11 <- reactive({ 
     variables$variable[variables$label_de==input$group11]
   })
   
-  # grouping4
+  # grouping2
   diffvar12 <- reactive({ 
     variables$variable[variables$label_de==input$group12]
   })
@@ -2014,6 +2049,239 @@ server <- function(input, output, session) {
     return(tbl)
   })
   
+  # Confirm vartype
+  emp_vartype <- reactive({
+    
+    if (variables$meantable[variables$label_de==input$emp_variable] == "Yes") { 
+      emp_vartype <- "numerical"}
+    
+    if (variables$meantable[variables$label_de==input$emp_variable] == "No") { 
+      emp_vartype <- "categorical"}
+    
+    return(emp_vartype)
+  })
+  
+  # load startyear
+  emp_min <-  reactive({ 
+    input$yearInput_emp[1]
+  })
+  
+  # load endyear
+  emp_max <-  reactive({ 
+    input$yearInput_emp[2]
+  })
+  
+  # load plottype
+  emp_type <-  reactive({ 
+    input$plot_select_emp
+  })
+  
+  # load plottype
+  emp_ci <-  reactive({ 
+    input$ci_emp
+  })
+  
+  ######## employment boxplot ##################
+  
+  # load graphic
+  # 1.1 boxplot
+  boxplot_emp <-
+    reactive({
+      req(input$plot_select_emp)
+      req(input$emp_variable)
+      req(emp_data())
+      
+      # boxplot
+      if (input$plot_select_emp == 'Box Plot') {
+        if(!isTruthy(input$group11)){
+          get_boxplot(table = emp_data(), meta = variables, variable = emp_variable(),
+                      diffvar2 = "", diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group11) & (!isTruthy(input$group12))){
+          get_boxplot(table = emp_data(), meta = variables, variable = emp_variable(),
+                      diffvar2 = diffvar11(), diffvar3 = "")
+        }
+        
+        else if (isTruthy(input$group12) & (isTruthy(input$group12))){
+          get_boxplot(table = emp_data(), meta = variables, variable = emp_variable(),
+                      diffvar2 = diffvar11(), diffvar3 = diffvar12())
+        }
+      }
+      
+    })
+  ######## employment line plot ##################
+  
+  # 1.2 lineplot
+  lineplot_emp <-
+    reactive({
+      req(input$plot_select_emp)
+      req(input$emp_variable)
+      req(emp_data())
+      
+      # lineplot
+      if (input$plot_select_emp == 'Line') {
+        if (emp_vartype() == "numerical") {
+          if(!isTruthy(input$group11)){
+            get_lineplot(data = emp_data(),
+                         meta = variables,
+                         variable = emp_variable(),
+                         diffvar1 = "",
+                         diffvar2 = "",
+                         diffcount = 1,
+                         start = emp_min(),
+                         end = emp_max(),
+                         ci = emp_ci())
+          }
+          else if (isTruthy(input$group11) & (!isTruthy(input$group12))){
+            get_lineplot(data = emp_data(),
+                         meta = variables,
+                         variable = emp_variable(),
+                         diffvar1 = diffvar11(),
+                         diffvar2 = "",
+                         diffcount = 2,
+                         start = emp_min(),
+                         end = emp_max(),
+                         ci = emp_ci())
+          }
+          else if (isTruthy(input$group12) & (isTruthy(input$group12))){
+            get_lineplot(data = emp_data(),
+                         meta = variables,
+                         variable = emp_variable(),
+                         diffvar1 = diffvar11(),
+                         diffvar2 = diffvar12(),
+                         diffcount = 3,
+                         start = emp_min(),
+                         end = emp_max(),
+                         ci = emp_ci())
+          }
+        }
+        else if (emp_vartype() == "categorical") {
+          if(!isTruthy(input$group11)){
+            get_percent_lineplot(data = emp_data(),
+                                 meta = variables,
+                                 variable = emp_variable(),
+                                 diffvar1 = "",
+                                 diffvar2 = "",
+                                 diffcount = 1,
+                                 start = emp_min(),
+                                 end = emp_max(),
+                                 ci = emp_ci())
+          }
+          else if (isTruthy(input$group11) & (!isTruthy(input$group12))){
+            get_percent_lineplot(data = emp_data(),
+                                 meta = variables,
+                                 variable = emp_variable(),
+                                 diffvar1 = diffvar11(),
+                                 diffvar2 = "",
+                                 diffcount = 2,
+                                 start = emp_min(),
+                                 end = emp_max(),
+                                 ci = emp_ci())
+          }
+          else if (isTruthy(input$group12) & (isTruthy(input$group12))){
+            get_percent_lineplot(data = emp_data(),
+                                 meta = variables,
+                                 variable = emp_variable(),
+                                 diffvar1 = diffvar11(),
+                                 diffvar2 = diffvar12(),
+                                 diffcount = 3,
+                                 start = emp_min(),
+                                 end = emp_max(),
+                                 ci = emp_ci())
+          }
+        }
+      }  
+    })
+  ######## employment stacked bar plot ##################
+  
+  # 1.3 Stacked Bar
+  stackbarplot_emp <-
+    reactive({
+      req(input$plot_select_emp)
+      req(input$emp_variable)
+      req(emp_data())
+      
+      # Stacked Bar
+      if (input$plot_select_emp == 'Stacked Bar') {
+        if(!isTruthy(input$group11)){
+          get_barplot(data = emp_data(), meta = variables, 
+                      variable = emp_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "stack", ci = emp_ci(), 
+                      start = emp_min(), end = emp_max())
+        }
+        else if (isTruthy(input$group11) & (!isTruthy(input$group12))){
+          get_barplot(data = emp_data(), meta = variables, 
+                      variable = emp_variable(), 
+                      diffvar1 = diffvar11(), diffvar2 = "", 
+                      plottype = "stack", ci = emp_ci(), 
+                      start = emp_min(), end = emp_max())
+        }
+        else if (isTruthy(input$group12) & (isTruthy(input$group12))){
+          get_barplot(data = emp_data(), meta = variables, 
+                      variable = emp_variable(), 
+                      diffvar1 = diffvar11(), diffvar2 = diffvar12(), 
+                      plottype = "stack", ci = emp_ci(), 
+                      start = emp_min(), end = emp_max())
+        }
+      }
+    })
+  
+  ######## employment side by side plot ##################
+  # 1.4 Side by Side
+  dodgebarplot_emp <-
+    reactive({
+      req(input$plot_select_emp)
+      req(input$emp_variable)
+      req(emp_data())
+      
+      # Stacked Bar
+      if (input$plot_select_emp == 'Side by Side Bar') {
+        if(!isTruthy(input$group11)){
+          get_barplot(data = emp_data(), meta = variables, 
+                      variable = emp_variable(), 
+                      diffvar1 = "", diffvar2 = "", 
+                      plottype = "dodge", ci = emp_ci(), 
+                      start = emp_min(), end = emp_max())
+        }
+        else if (isTruthy(input$group11) & (!isTruthy(input$group12))){
+          get_barplot(data = emp_data(), meta = variables, 
+                      variable = emp_variable(), 
+                      diffvar1 = diffvar11(), diffvar2 = "", 
+                      plottype = "dodge", ci =emp_ci(), 
+                      start = emp_min(), end = emp_max())
+        }
+        else if (isTruthy(input$group12) & (isTruthy(input$group12))){
+          get_barplot(data = emp_data(), meta = variables, 
+                      variable = emp_variable(), 
+                      diffvar1 = diffvar11(), diffvar2 = diffvar12(), 
+                      plottype = "dodge", ci = emp_ci(), 
+                      start = emp_min(), end = emp_max())
+        }
+      }
+    })
+  
+  
+  
+  output$emp_plot <- renderPlotly({
+    
+    if (input$plot_select_emp == 'Box Plot') {
+      boxplot_emp()
+    }
+    
+    else if (input$plot_select_emp == 'Line') {
+      lineplot_emp()
+    }
+    
+    else if (input$plot_select_emp == 'Stacked Bar') {
+      stackbarplot_emp()
+    }
+    
+    else if (input$plot_select_emp == 'Side by Side Bar') {
+      dodgebarplot_emp()
+    }
+  })
   
   output$emp_table <- renderDataTable(
     emp_data(), options = list(searching = FALSE)) 
