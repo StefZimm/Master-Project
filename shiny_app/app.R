@@ -235,6 +235,7 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                          h2("Plots"),
+                                         bsButton("info_income", label = "", icon = icon("info-circle"), style = "", size = "extra-small"),
                                          plotlyOutput("inc_plot", width = "100%")),
                                      div(style = "margin-top: 30px",
                                          h2("Data"),
@@ -715,6 +716,7 @@ server <- function(input, output, session) {
     input$ci_income
   })
   
+  
   ######## income box plot ##################
   # load graphic
   # 1.1 boxplot
@@ -914,12 +916,61 @@ server <- function(input, output, session) {
     }
   })
   
-
+  # Var Information Button   
+  observeEvent(input$inc_variable, {
+    
+    removePopover(session, "info_income")
+    Sys.sleep(0.2)
+    
+    if(variables$description[variables$label_de==input$inc_variable] != "" & 
+       variables$documentation_link[variables$label_de==input$inc_variable] != "" & 
+       variables$documentation_paper[variables$label_de==input$inc_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$inc_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$inc_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$inc_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$inc_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$inc_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$inc_variable] == ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$inc_variable],
+                             "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$inc_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$inc_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$inc_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$inc_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$inc_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+  })
+  
   # load data
   output$inc_table <- renderDataTable(
     inc_data(), options = list(searching = FALSE))
   
- 
+
   
  #### health panel ##############
 
@@ -2285,49 +2336,7 @@ server <- function(input, output, session) {
   
   output$emp_table <- renderDataTable(
     emp_data(), options = list(searching = FALSE)) 
-  
-##################
-  # plots
-#################
- # line
-################
-  # output$inc_lineplot <- renderPlotly({
-  #     get_lineplot(table = inc_data, meta = variables, variable = inc_variable(),
-  #                  diffvar1 = diffvar1(), diffvar2 = diffvar2(), diffcount = diffcount(),
-  #                  start = 1984, end = 2019, ci = FALSE)
-  #   })
-  # 
-  # output$health_lineplot <- renderPlotly({
-  #   get_lineplot(table = health_data, meta = variables, variable = health_variable(),
-  #                diffvar1 = diffvar3(), diffvar2 = diffvar4(), diffcount = diffcount(),
-  #                start = 1984, end = 2019, ci = FALSE)
-  # })
-  # 
-  # output$att_lineplot <- renderPlotly({
-  #   get_lineplot(table = att_data, meta = variables, variable = att_variable(),
-  #                diffvar1 = diffvar5(), diffvar2 = diffvar6(), diffcount = diffcount(),
-  #                start = 1984, end = 2019, ci = FALSE)
-  # })
-  # 
-  # output$home_lineplot <- renderPlotly({
-  #   get_lineplot(table = home_data, meta = variables, variable = home_variable(),
-  #                diffvar1 = diffvar7(), diffvar2 = diffvar8(), diffcount = diffcount(),
-  #                start = 1984, end = 2019, ci = FALSE)
-  # })
-  # 
-  # output$time_lineplot <- renderPlotly({
-  #   get_lineplot(table = time_data, meta = variables, variable = time_variable(),
-  #                diffvar1 = diffvar9(), diffvar2 = diffvar10(), diffcount = diffcount(),
-  #                start = 1984, end = 2019, ci = FALSE)
-  # })
-  # 
-  # output$emp_lineplot <- renderPlotly({
-  #   get_lineplot(table = emp_data, meta = variables, variable = emp_variable(),
-  #                diffvar1 = diffvar11(), diffvar2 = diffvar12(), diffcount = diffcount(),
-  #                start = 1984, end = 2019, ci = FALSE)
-  # })
 
-  
 #################
   # Downloads
 ################
