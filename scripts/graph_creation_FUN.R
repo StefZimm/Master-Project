@@ -260,18 +260,18 @@ get_boxplot <- function(table, meta, variable, diffvar2, diffvar3){
       rangeslider()
   }
   else{  plot <- plot_ly(data = groupdata, 
-            color = ~combined_group,
-            x = as.factor(groupdata$year),
-            colors = color.palette) %>% 
-      add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
-                q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
-      layout(boxmode = "group", title = title,
-             xaxis = list(tickangle=90),
-             yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
-      rangeslider()
+                         color = ~combined_group,
+                         x = as.factor(groupdata$year),
+                         colors = color.palette) %>% 
+    add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
+              q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
+    layout(boxmode = "group", title = title,
+           xaxis = list(tickangle=90),
+           yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
+    rangeslider()
   }
-    
- return(plot)
+  
+  return(plot)
 }
 
 ################################################################################
@@ -287,24 +287,24 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
       mutate(sd = mean - lowerci_mean)
     
     if (ci == TRUE) {
-    
-    plot <- plot_ly(
-      data = data,
-      x = ~year, 
-      y = ~mean,
-      colors = color.palette,
-      type = "scatter",
-      mode = "lines+markers",
-      line = list(width = 4, dash = "dot"),
-      error_y = ~list(array = sd)) %>% 
-      layout(title = title, 
-             xaxis = list(title = 'year', range = list(start,end), 
-                          tickvals = as.list(seq(1984,2019)),
-                          tickangle=90, tickfont = list(family='Rockwell', 
-                                                        size=14)),
-             hovermode = "x unified") %>%
-      rangeslider(start, end)
-    
+      
+      plot <- plot_ly(
+        data = data,
+        x = ~year, 
+        y = ~mean,
+        colors = color.palette,
+        type = "scatter",
+        mode = "lines+markers",
+        line = list(width = 4, dash = "dot"),
+        error_y = ~list(array = sd)) %>% 
+        layout(title = title, 
+               xaxis = list(title = 'year', range = list(start,end), 
+                            tickvals = as.list(seq(1984,2019)),
+                            tickangle=90, tickfont = list(family='Rockwell', 
+                                                          size=14)),
+               hovermode = "x unified") %>%
+        rangeslider(start, end)
+      
     } 
     
     if (ci == FALSE) {
@@ -324,7 +324,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
                                                           size=14)),
                hovermode = "x unified") %>%
         rangeslider(start, end)
-   }  
+    }  
   }
   
   if (diffcount == 2) {  
@@ -374,112 +374,6 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
       mutate(ref = paste0(combined_group, ifelse(key == 'sd', '_sd', ''))) %>%
       select(-combined_group, -key) %>%
       spread(ref, value)
-  
-    # set layout
-    plot <- plot_ly(data2, type = 'scatter', 
-                  mode = "lines+markers") %>%
-      layout(title = title, 
-             xaxis = list(title = 'year', range = list(start,end), 
-                          tickvals = as.list(seq(1984,2019)),
-                          tickangle=90, tickfont = list(family='Rockwell', 
-                                                        size=14)),
-             hovermode = "x unified") %>%
-      rangeslider(start, end)
-    
-    # create plot
-    for (g in unique(data$combined_group)) {
-      print(g)
-      print(is.na(data2[[g]]))
-      
-      if (is.na(data2[[g]]) == FALSE) {
-        plot <- add_trace(plot, x = data2[['year']], 
-                        y = data2[[g]], 
-                        name = g, 
-                        error_y = list(array = data2[[paste0(g, '_sd')]]))
-      }
-      
-      print(head(data2))
-      if (is.na(data2[[g]]) == TRUE) {
-        data2 <- data2 %>%
-          filter(is.na(data2[[g]])!=1) 
-        
-        plot <- add_trace(plot, x = data2[['year']], 
-                        y = data2[[g]], 
-                        name = g, 
-                        error_y = list(array = data2[[paste0(g, '_sd')]]))
-      }
-    }
-    
-  }  
-  return(plot)
-}
-
-################################################################################
-
-get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
-                                 start, end, ci){
-  
-  title <- meta$label_de[meta$variable==variable]
-  
-  if (diffcount == 1) {  
-    
-    data <- data %>%
-      mutate(sd = percent - lower_confidence)
-    colnames(data)[which(names(data) == variable)] <- "combined_group"
-    
-  } 
-  
-  if (diffcount == 2) {  
-    
-    data <- data %>%
-      unite(combined_group, variable, diffvar1, sep="; ") %>%
-      mutate(sd = percent - lower_confidence) %>%
-      filter(is.na(sd)!=1) 
-    
-  } 
-  
-  if (diffcount == 3) {  
-    
-    data <- data %>%
-      unite(combined_group, variable, diffvar1, diffvar2, sep=", ") %>%
-      mutate(sd = percent - lower_confidence) %>%
-      filter(is.na(sd)!=1) 
-    
-  } 
-  
-  if (ci == FALSE) {  
-    
-    plot <-  plot_ly(
-      data = data,
-      x = ~year, 
-      y = ~percent,
-      color = ~combined_group,
-      colors = color.palette,
-      type = "scatter",
-      mode = "lines+markers",
-      line = list(width = 4, dash = "dot")) %>% 
-      layout(title = title, 
-             xaxis = list(title = 'year', range = list(start,end), 
-                          tickvals = as.list(seq(1984,2019)),
-                          tickangle=90, tickfont = list(family='Rockwell', 
-                                                        size=14)),
-             hovermode = "x unified") %>%
-      rangeslider(start, end)
-    
-  }
-  
-  if (ci == TRUE) {  
-    
-    data$sd[is.na(data$sd)] <- 0
-    data %>%
-      group_by(year, combined_group) %>%
-      ungroup()
-    
-    data2 <- data[c("year", "combined_group", "percent", "sd")] %>%
-      gather(key, value, -c(year, combined_group)) %>%
-      mutate(ref = paste0(combined_group, ifelse(key == 'sd', '_sd', ''))) %>%
-      dplyr::select(-combined_group, -key) %>%
-      spread(ref, value)
     
     # set layout
     plot <- plot_ly(data2, type = 'scatter', 
@@ -504,6 +398,7 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
                           error_y = list(array = data2[[paste0(g, '_sd')]]))
       }
       
+      print(head(data2))
       if (is.na(data2[[g]]) == TRUE) {
         data2 <- data2 %>%
           filter(is.na(data2[[g]])!=1) 
@@ -512,6 +407,117 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
                           y = data2[[g]], 
                           name = g, 
                           error_y = list(array = data2[[paste0(g, '_sd')]]))
+      }
+    }
+    
+  }  
+  return(plot)
+}
+
+################################################################################
+get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
+                                 start, end, ci){
+  
+  title <- meta$label_de[meta$variable==variable]
+  
+  if (diffcount == 1) {  
+    
+    data <- data %>%
+      mutate(percent = percent * 100) %>%
+      mutate(sd = percent - (lower_confidence * 100))
+    colnames(data)[which(names(data) == variable)] <- "combined_group"
+    
+  } 
+  
+  if (diffcount == 2) {  
+    
+    data <- data %>%
+      unite(combined_group, variable, diffvar1, sep="; ") %>%
+      mutate(percent = percent * 100) %>%
+      mutate(sd = percent - (lower_confidence * 100)) %>%
+      filter(is.na(sd)!=1) 
+    
+  } 
+  
+  if (diffcount == 3) {  
+    
+    data <- data %>%
+      unite(combined_group, variable, diffvar1, diffvar2, sep=", ") %>%
+      mutate(percent = percent * 100) %>%
+      mutate(sd = percent - (lower_confidence * 100)) %>%
+      filter(is.na(sd)!=1) 
+    
+  } 
+  
+  if (ci == FALSE) {  
+    
+    plot <-  plot_ly(
+      data = data,
+      x = ~year, 
+      y = ~percent,
+      color = ~combined_group,
+      colors = color.palette,
+      type = "scatter",
+      mode = "lines+markers",
+      line = list(width = 4, dash = "dot")) %>% 
+      layout(title = title, 
+             yaxis = list(ticksuffix = "%",  range = c(0, 100), title = 'percent'),
+             xaxis = list(title = 'year', range = list(start,end), 
+                          tickvals = as.list(seq(1984,2019)),
+                          tickangle=90, tickfont = list(family='Rockwell', 
+                                                        size=14)),
+             hovermode = "x unified") %>%
+      rangeslider(start, end)
+    
+  }
+  
+  if (ci == TRUE) {  
+    
+    data$sd[is.na(data$sd)] <- 0
+    data %>%
+      group_by(year, combined_group) %>%
+      ungroup()
+    
+    data2 <- data[c("year", "combined_group", "percent", "sd")] %>%
+      gather(key, value, -c(year, combined_group)) %>%
+      mutate(ref = paste0(combined_group, ifelse(key == 'sd', '_sd', ''))) %>%
+      dplyr::select(-combined_group, -key) %>%
+      spread(ref, value)
+    
+    # set layout
+    plot <- plot_ly(data2, type = 'scatter', 
+                    mode = "lines+markers", colors = color.palette) %>%
+      layout(title = title, 
+             yaxis = list(ticksuffix = "%",  range = c(0, 100), title = 'percent'),
+             xaxis = list(title = 'year', range = list(start,end), 
+                          tickvals = as.list(seq(1984,2019)),
+                          tickangle=90, tickfont = list(family='Rockwell', 
+                                                        size=14)),
+             hovermode = "x unified") %>%
+      rangeslider(start, end)
+    
+    # create plot
+    for (g in unique(data$combined_group)) {
+      print(g)
+      print(is.na(data2[[g]]))
+      
+      if (is.na(data2[[g]]) == FALSE) {
+        plot <- add_trace(plot, x = data2[['year']], 
+                          y = data2[[g]], 
+                          name = g, 
+                          error_y = list(array = data2[[paste0(g, '_sd')]]))
+        
+      }
+      
+      if (is.na(data2[[g]]) == TRUE) {
+        data2 <- data2 %>%
+          filter(is.na(data2[[g]])!=1) 
+        
+        plot <- add_trace(plot, x = data2[['year']], 
+                          y = data2[[g]], 
+                          name = g, 
+                          error_y = list(array = data2[[paste0(g, '_sd')]]))
+        
       }
     }
   }
@@ -539,6 +545,7 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
   return(table_csv)
 }
+
 
 get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
                         start, end){
@@ -568,7 +575,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     groupdata2 <- data %>% 
       mutate(combined_group2 = variable)
   }
-
+  
   groupdata <- groupdata %>%
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     mutate(percent = round(percent*100, digits = 2)) %>%
@@ -579,9 +586,9 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   groupdata2 <- groupdata2 %>%
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     filter(is.na(sd)!=1) 
-
+  
   data <- cbind(groupdata, groupdata2[c(variable, "combined_group2")])
-
+  
   if (plottype == "dodge") { 
     # dodged barplot
     plot <- plot_ly(data, 
@@ -646,6 +653,9 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   
   if (plottype == "stack") { 
     
+    data <- data %>%
+      filter(year >= start & year <=end)
+    
     if (diffvar1 == "" & diffvar2 == "") { 
       # stacked barplot
       plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
@@ -655,6 +665,8 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
                                             '<br>Variable:',eval(parse(text = variable))))) + 
         geom_bar(position="fill", stat="identity")+
         scale_y_continuous(labels=scales::percent) +
+        scale_fill_manual(values = color.palette,
+                          limits = names(color.palette)) +
         theme(legend.title=element_blank()) +
         theme(strip.background = element_blank(), axis.title.x=element_blank(),
               axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
@@ -665,24 +677,36 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     }
     
     # stacked barplot
-   else { 
-     plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
-                             y=percent, x=as.character(year),
-                             text = paste('Year: ', year,
-                                          '<br>Percent:', percent, 
-                                          '<br>Variable', eval(parse(text = variable))))) + 
-      geom_bar(position="fill", stat="identity")+
-      facet_wrap(~combined_group2) + 
-      scale_y_continuous(labels=scales::percent) +
-      theme(legend.title=element_blank()) +
-      theme(strip.background = element_blank(), axis.title.x=element_blank(),
-            axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
-      labs(title = title, 
-           caption = "Data: SOEP-Core v.36")+
-       guides(fill=guide_legend(title=""))
-   }
+    else { 
+      plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+                               y=percent, x=as.character(year),
+                               text = paste('Year: ', year,
+                                            '<br>Percent:', percent, 
+                                            '<br>Variable', eval(parse(text = variable))))) + 
+        geom_bar(position="fill", stat="identity")+
+        facet_wrap(~combined_group2) + 
+        scale_y_continuous(labels=scales::percent) +
+        scale_fill_manual(values = color.palette,
+                          limits = names(color.palette)) +
+        theme(legend.title=element_blank()) +
+        theme(strip.background = element_blank(), axis.title.x=element_blank(),
+              axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
+        labs(title = title, 
+             caption = "Data: SOEP-Core v.36")+
+        guides(fill=guide_legend(title=""))
+    }
     
-    plot <-  ggplotly(plot, tooltip = "text" )
+    min <- min(data$year)
+    max <- max(data$year)
+    years <- min:max
+    sequence <- seq(min:max)
+    
+    begin  <- sequence[years == start]
+    finish <- sequence[years == end]
+    
+    plot <-  ggplotly(plot, tooltip = "text" ) %>% 
+      rangeslider(begin, finish)
+    
   }
   return(plot)
 }

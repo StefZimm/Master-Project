@@ -557,7 +557,6 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
 }
 
 ################################################################################
-
 get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                                  start, end, ci){
   
@@ -566,7 +565,8 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
   if (diffcount == 1) {  
     
     data <- data %>%
-      mutate(sd = percent - lower_confidence)
+      mutate(percent = percent * 100) %>%
+      mutate(sd = percent - (lower_confidence * 100))
     colnames(data)[which(names(data) == variable)] <- "combined_group"
     
   } 
@@ -575,7 +575,8 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
     
     data <- data %>%
       unite(combined_group, variable, diffvar1, sep="; ") %>%
-      mutate(sd = percent - lower_confidence) %>%
+      mutate(percent = percent * 100) %>%
+      mutate(sd = percent - (lower_confidence * 100)) %>%
       filter(is.na(sd)!=1) 
     
   } 
@@ -584,7 +585,8 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
     
     data <- data %>%
       unite(combined_group, variable, diffvar1, diffvar2, sep=", ") %>%
-      mutate(sd = percent - lower_confidence) %>%
+      mutate(percent = percent * 100) %>%
+      mutate(sd = percent - (lower_confidence * 100)) %>%
       filter(is.na(sd)!=1) 
     
   } 
@@ -601,6 +603,7 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
       mode = "lines+markers",
       line = list(width = 4, dash = "dot")) %>% 
       layout(title = title, 
+             yaxis = list(ticksuffix = "%",  range = c(0, 100), title = 'percent'),
              xaxis = list(title = 'year', range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
                           tickangle=90, tickfont = list(family='Rockwell', 
@@ -625,8 +628,9 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
     
     # set layout
     plot <- plot_ly(data2, type = 'scatter', 
-                    mode = "lines+markers") %>%
+                    mode = "lines+markers", colors = color.palette) %>%
       layout(title = title, 
+             yaxis = list(ticksuffix = "%",  range = c(0, 100), title = 'percent'),
              xaxis = list(title = 'year', range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
                           tickangle=90, tickfont = list(family='Rockwell', 
@@ -644,6 +648,7 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
                           y = data2[[g]], 
                           name = g, 
                           error_y = list(array = data2[[paste0(g, '_sd')]]))
+        
       }
       
       if (is.na(data2[[g]]) == TRUE) {
@@ -654,6 +659,7 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
                           y = data2[[g]], 
                           name = g, 
                           error_y = list(array = data2[[paste0(g, '_sd')]]))
+        
       }
     }
   }
@@ -681,6 +687,7 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
   return(table_csv)
 }
+
 
 get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
                         start, end){
@@ -788,6 +795,9 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   
   if (plottype == "stack") { 
     
+    data <- data %>%
+      filter(year >= start & year <=end)
+    
     if (diffvar1 == "" & diffvar2 == "") { 
       # stacked barplot
       plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
@@ -797,6 +807,8 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
                                             '<br>Variable:',eval(parse(text = variable))))) + 
         geom_bar(position="fill", stat="identity")+
         scale_y_continuous(labels=scales::percent) +
+        scale_fill_manual(values = color.palette,
+                          limits = names(color.palette)) +
         theme(legend.title=element_blank()) +
         theme(strip.background = element_blank(), axis.title.x=element_blank(),
               axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
@@ -816,6 +828,8 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
         geom_bar(position="fill", stat="identity")+
         facet_wrap(~combined_group2) + 
         scale_y_continuous(labels=scales::percent) +
+        scale_fill_manual(values = color.palette,
+                          limits = names(color.palette)) +
         theme(legend.title=element_blank()) +
         theme(strip.background = element_blank(), axis.title.x=element_blank(),
               axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
@@ -824,7 +838,17 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
         guides(fill=guide_legend(title=""))
     }
     
-    plot <-  ggplotly(plot, tooltip = "text" )
+    min <- min(data$year)
+    max <- max(data$year)
+    years <- min:max
+    sequence <- seq(min:max)
+    
+    begin  <- sequence[years == start]
+    finish <- sequence[years == end]
+    
+    plot <-  ggplotly(plot, tooltip = "text" ) %>% 
+      rangeslider(begin, finish)
+    
   }
   return(plot)
 }
