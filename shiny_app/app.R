@@ -730,17 +730,17 @@ server <- function(input, output, session) {
     if (input$plot_select == 'Box Plot') {
     if(!isTruthy(input$group1)){
          get_boxplot(table = inc_data(), meta = variables, variable = inc_variable(),
-                     diffvar2 = "", diffvar3 = "")
+                     diffvar2 = "", diffvar3 = "", start = min(), end = max())
       }
 
     else if (isTruthy(input$group1) & (!isTruthy(input$group2))){
       get_boxplot(table = inc_data(), meta = variables, variable = inc_variable(),
-                  diffvar2 = diffvar1(), diffvar3 = "")
+                  diffvar2 = diffvar1(), diffvar3 = "", start = min(), end = max())
       }
 
     else if (isTruthy(input$group2) & (isTruthy(input$group2))){
         get_boxplot(table = inc_data(), meta = variables, variable = inc_variable(),
-                    diffvar2 = diffvar1(), diffvar3 = diffvar2())
+                    diffvar2 = diffvar1(), diffvar3 = diffvar2(), start = min(), end = max())
       }
     }
 
@@ -1056,17 +1056,17 @@ server <- function(input, output, session) {
       if (input$plot_select_health == 'Box Plot') {
         if(!isTruthy(input$group3)){
           get_boxplot(table = health_data(), meta = variables, variable = health_variable(),
-                      diffvar2 = "", diffvar3 = "")
+                      diffvar2 = "", diffvar3 = "", start = health_min(), end = health_max())
         }
         
         else if (isTruthy(input$group3) & (!isTruthy(input$group4))){
           get_boxplot(table = health_data(), meta = variables, variable = health_variable(),
-                      diffvar2 = diffvar3(), diffvar3 = "")
+                      diffvar2 = diffvar3(), diffvar3 = "", start = health_min(), end = health_max())
         }
         
         else if (isTruthy(input$group4) & (isTruthy(input$group4))){
           get_boxplot(table = health_data(), meta = variables, variable = health_variable(),
-                      diffvar2 = diffvar3(), diffvar3 = diffvar4())
+                      diffvar2 = diffvar3(), diffvar3 = diffvar4(), start = health_min(), end = health_max())
         }
       }
       
@@ -1327,17 +1327,17 @@ server <- function(input, output, session) {
       if (input$plot_select_att == 'Box Plot') {
         if(!isTruthy(input$group5)){
           get_boxplot(table = att_data(), meta = variables, variable = att_variable(),
-                      diffvar2 = "", diffvar3 = "")
+                      diffvar2 = "", diffvar3 = "", start = att_min(), end = att_max())
         }
         
         else if (isTruthy(input$group5) & (!isTruthy(input$group6))){
           get_boxplot(table = att_data(), meta = variables, variable = att_variable(),
-                      diffvar2 = diffvar5(), diffvar3 = "")
+                      diffvar2 = diffvar5(), diffvar3 = "", start = att_min(), end = att_max())
         }
         
         else if (isTruthy(input$group6) & (isTruthy(input$group6))){
           get_boxplot(table = att_data(), meta = variables, variable = att_variable(),
-                      diffvar2 = diffvar5(), diffvar3 = diffvar6())
+                      diffvar2 = diffvar5(), diffvar3 = diffvar6(), start = att_min(), end = att_max())
         }
       }
       
@@ -1599,17 +1599,17 @@ server <- function(input, output, session) {
       if (input$plot_select_home == 'Box Plot') {
         if(!isTruthy(input$group7)){
           get_boxplot(table = home_data(), meta = variables, variable = home_variable(),
-                      diffvar2 = "", diffvar3 = "")
+                      diffvar2 = "", diffvar3 = "", start = home_min(), end = home_max())
         }
         
         else if (isTruthy(input$group7) & (!isTruthy(input$group8))){
           get_boxplot(table = home_data(), meta = variables, variable = home_variable(),
-                      diffvar2 = diffvar7(), diffvar3 = "")
+                      diffvar2 = diffvar7(), diffvar3 = "", start = home_min(), end = home_max())
         }
         
         else if (isTruthy(input$group8) & (isTruthy(input$group8))){
           get_boxplot(table = home_data(), meta = variables, variable = home_variable(),
-                      diffvar2 = diffvar7(), diffvar3 = diffvar8())
+                      diffvar2 = diffvar7(), diffvar3 = diffvar8(), start = home_min(), end = home_max())
         }
       }
       
@@ -1871,17 +1871,17 @@ server <- function(input, output, session) {
       if (input$plot_select_time == 'Box Plot') {
         if(!isTruthy(input$group9)){
           get_boxplot(table = time_data(), meta = variables, variable = time_variable(),
-                      diffvar2 = "", diffvar3 = "")
+                      diffvar2 = "", diffvar3 = "", start = time_min(), end = time_max())
         }
         
         else if (isTruthy(input$group9) & (!isTruthy(input$group10))){
           get_boxplot(table = time_data(), meta = variables, variable = time_variable(),
-                      diffvar2 = diffvar9(), diffvar3 = "")
+                      diffvar2 = diffvar9(), diffvar3 = "", start = time_min(), end = time_max())
         }
         
         else if (isTruthy(input$group10) & (isTruthy(input$group10))){
           get_boxplot(table = time_data(), meta = variables, variable = time_variable(),
-                      diffvar2 = diffvar9(), diffvar3 = diffvar10())
+                      diffvar2 = diffvar9(), diffvar3 = diffvar10(), start = time_min(), end = time_max())
         }
       }
       
@@ -2146,17 +2146,17 @@ server <- function(input, output, session) {
       if (input$plot_select_emp == 'Box Plot') {
         if(!isTruthy(input$group11)){
           get_boxplot(table = emp_data(), meta = variables, variable = emp_variable(),
-                      diffvar2 = "", diffvar3 = "")
+                      diffvar2 = "", diffvar3 = "", start = emp_min(), end = emp_max())
         }
         
         else if (isTruthy(input$group11) & (!isTruthy(input$group12))){
           get_boxplot(table = emp_data(), meta = variables, variable = emp_variable(),
-                      diffvar2 = diffvar11(), diffvar3 = "")
+                      diffvar2 = diffvar11(), diffvar3 = "", start = emp_min(), end = emp_max())
         }
         
         else if (isTruthy(input$group12) & (isTruthy(input$group12))){
           get_boxplot(table = emp_data(), meta = variables, variable = emp_variable(),
-                      diffvar2 = diffvar11(), diffvar3 = diffvar12())
+                      diffvar2 = diffvar11(), diffvar3 = diffvar12(), start = emp_min(), end = emp_max())
         }
       }
       

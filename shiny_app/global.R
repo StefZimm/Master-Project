@@ -374,22 +374,33 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 #'                   diffvar2 = "alter_gr",
 #'                   diffvar3 = "")
 
-get_boxplot <- function(table, meta, variable, diffvar2, diffvar3){
+get_boxplot <- function(table, meta, variable, diffvar2, diffvar3, start, end){
   
   title <- meta$label_de[meta$variable==variable]
   
   if (diffvar2 != "" & diffvar3 != "") { 
     groupdata <- table %>%
-      unite(combined_group, diffvar2,  diffvar3, sep=", ")
+      unite(combined_group, diffvar2,  diffvar3, sep=", ") %>%
+      filter(year >= start & year <=end)
   }
   
   if (diffvar2 != "" & diffvar3 == "") { 
     groupdata <- table %>%
-      unite(combined_group, diffvar2, sep=", ")
+      unite(combined_group, diffvar2, sep=", ") %>%
+      filter(year >= start & year <=end)
   }
   
   if (diffvar2 == "" & diffvar3 == "") { 
-    groupdata <- table 
+    groupdata <- table %>%
+      filter(year >= start & year <=end)
+    
+    min <- min(groupdata$year)
+    max <- max(groupdata$year)
+    years <- min:max
+    sequence <- seq(min:max)
+    
+    begin  <- sequence[years == start]-1
+    finish <- sequence[years == end]
     
     plot <- plot_ly(data = groupdata,
                     x = as.factor(groupdata$year),
@@ -398,19 +409,29 @@ get_boxplot <- function(table, meta, variable, diffvar2, diffvar3){
                 q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
       layout(boxmode = "group", title = title,
              xaxis = list(tickangle=90),
-             yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
-      rangeslider()
+             yaxis = list(range = list(0,max(groupdata$ptile99))))  %>%
+      rangeslider(begin, finish)
   }
-  else{  plot <- plot_ly(data = groupdata, 
-                         color = ~combined_group,
-                         x = as.factor(groupdata$year),
-                         colors = color.palette) %>% 
-    add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
-              q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
-    layout(boxmode = "group", title = title,
-           xaxis = list(tickangle=90),
-           yaxis = list(range = list(0,max(groupdata$ptile99)))) %>%
-    rangeslider()
+  else{  
+    
+    min <- min(groupdata$year)
+    max <- max(groupdata$year)
+    years <- min:max
+    sequence <- seq(min:max)
+    
+    begin  <- sequence[years == start]-1
+    finish <- sequence[years == end]
+    
+    plot <- plot_ly(data = groupdata, 
+                    color = ~combined_group,
+                    x = as.factor(groupdata$year),
+                    colors = color.palette) %>% 
+      add_trace(lowerfence = ~min, q1 = ~ptile25 , median = ~median, 
+                q3 = ~ptile75, upperfence = ~ptile99, type = "box") %>% 
+      layout(boxmode = "group", title = title,
+             xaxis = list(tickangle=90),
+             yaxis = list(range = list(0,max(groupdata$ptile99))))  %>%
+      rangeslider(begin, finish)
   }
   
   return(plot)
