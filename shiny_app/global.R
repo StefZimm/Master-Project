@@ -709,7 +709,6 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   return(table_csv)
 }
 
-
 get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
                         start, end){
   
@@ -867,8 +866,14 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     begin  <- sequence[years == start]
     finish <- sequence[years == end]
     
-    plot <-  ggplotly(plot, tooltip = "text" ) %>% 
-      rangeslider(begin, finish)
+    if (diffvar1 == "" & diffvar2 == "") { 
+      plot <-  ggplotly(plot, tooltip = "text" ) %>% 
+        rangeslider(begin, finish)
+    }
+    
+    else { 
+      plot <-  ggplotly(plot, tooltip = "text" ) 
+    }
     
   }
   return(plot)

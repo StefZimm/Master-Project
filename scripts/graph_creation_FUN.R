@@ -725,8 +725,14 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     begin  <- sequence[years == start]
     finish <- sequence[years == end]
     
-    plot <-  ggplotly(plot, tooltip = "text" ) %>% 
-      rangeslider(begin, finish)
+    if (diffvar1 == "" & diffvar2 == "") { 
+      plot <-  ggplotly(plot, tooltip = "text" ) %>% 
+        rangeslider(begin, finish)
+    }
+    
+    else { 
+      plot <-  ggplotly(plot, tooltip = "text" ) 
+    }
     
   }
   return(plot)
