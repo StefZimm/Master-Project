@@ -69,12 +69,11 @@ ui <-
     navbarPage(id = "intabset", #needed for landing page
                title = div(tags$a(img(src="soep_icon.png", height=40), href= "https://www.diw.de/en/diw_01.c.678568.en/research_data_center_soep.html"),
                            style = "position: relative; top: -5px;"), # Navigation bar
-               windowTitle = "ScotPHO profiles", #title for browser tab
+               windowTitle = "SOEP data tool", #title for browser tab
                theme = shinytheme("lumen"), #Theme of the app (blue navbar)
                collapsible = TRUE, #tab panels collapse into menu in small screens
                header = tags$head(includeCSS("www/styles.css"),
                                   HTML("<html lang='en'>"),
-                                  tags$link(rel="shortcut icon", href="favicon_scotpho.ico"),
                                   HTML("<base target= '_blank'>")),
                
                
@@ -104,7 +103,7 @@ ui <-
                                     introBox( # tour of the tool
                                       lp_main_box(image_name= "landing_button_data",
                                                   button_name = 'jump_to_table', 
-                                                  title_box = "Report",
+                                                  title_box = "Heatmap",
                                                   description = 'Generate a report with aggregated data and visualization from the tool.'),
                                       data.position = "bottom-right-aligned"))),
                            fluidRow(
@@ -214,8 +213,7 @@ ui <-
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select",
                                                       label = "Select the plot you want to see",
-                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", 
-                                                                  "Heatmap", "Box Plot"),
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"),
                                                       selected = "Line",
                                                       status = "danger"
                                                             )),
@@ -544,13 +542,13 @@ ui <-
                         
 ######## report panel ##################
 
-tabPanel("Report", icon = icon("table"), value = "report",
+tabPanel("Heatmap", icon = icon("table"), value = "report",
           #Sidepanel for filtering data
           mainPanel(
             width = 12, style="margin-left:0.5%; margin-right:0.5%",
              
             fluidRow(
-              p("Generate your report from the tool", 
+              p("View Heatmap", 
                 style = "font-weight: bold; color: black;")))
          ),
 
@@ -965,10 +963,18 @@ server <- function(input, output, session) {
                  trigger = "hold", placement = "right")
     }
   })
-  
+  ######## income render datatable ##################
   # load data
-  output$inc_table <- renderDataTable(
-    inc_data(), options = list(searching = FALSE))
+  output$inc_table <- DT::renderDataTable(
+    inc_data(), server = FALSE,
+    extensions = c('Buttons', 'Scroller'),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender = TRUE,
+      scrollY = 400,
+      scroller = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   
 
   
@@ -2343,27 +2349,27 @@ server <- function(input, output, session) {
   
   income_csv <- reactive({ format_csv(inc_data())})
   output$download_income_data <- downloadHandler(filename = 'income_data.csv',
-                                            content = function(file) {write.csv(income_csv(), file, row.names = TRUE)})
+                                            content = function(file) {write.csv(inc_data(), file, row.names = TRUE)})
   
   health_csv <- reactive({ format_csv(health_data())})
   output$download_health_data <- downloadHandler(filename = 'health_data.csv',
-                                            content = function(file) {write.csv(health_csv(), file, row.names = TRUE)})
+                                            content = function(file) {write.csv(health_data(), file, row.names = TRUE)})
   
   att_csv <- reactive({ format_csv(att_data())})
   output$download_att_data <- downloadHandler(filename = 'attitudes_data.csv',
-                                            content = function(file) {write.csv(att_csv(), file, row.names = TRUE)})
+                                            content = function(file) {write.csv(att_data(), file, row.names = TRUE)})
   
   home_csv <- reactive({ format_csv(home_data())})
-  output$download_home_data <- downloadHandler(filename = 'home_data.csv',
-                                            content = function(file) {write.csv(home_csv(), file, row.names = TRUE)})
+  output$download_home_data <- downloadHandler(filename = 'household_data.csv',
+                                            content = function(file) {write.csv(home_data(), file, row.names = TRUE)})
   
   time_csv <- reactive({ format_csv(time_data())})
-  output$download_time_data <- downloadHandler(filename = 'timee_data.csv',
-                                            content = function(file) {write.csv(time_csv(), file, row.names = TRUE)})
+  output$download_time_data <- downloadHandler(filename = 'time_data.csv',
+                                            content = function(file) {write.csv(time_data(), file, row.names = TRUE)})
   
   emp_csv <- reactive({ format_csv(emp_data())})
   output$download_emp_data <- downloadHandler(filename = 'emp_data.csv',
-                                            content = function(file) {write.csv(emp_csv(), file, row.names = TRUE)})
+                                            content = function(file) {write.csv(emp_data(), file, row.names = TRUE)})
   
 }
 
