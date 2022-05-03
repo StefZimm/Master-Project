@@ -85,27 +85,19 @@ ui <-
                  mainPanel(width = 11, style="margin-left:4%; margin-right:4%",
                            introBox(
                              fluidRow(column(7,(h3("Welcome to the SOEP data tool", style="margin-top:0px;"))),
-                                      (column(4,actionButton("btn_landing",label="Help: How to use this tool",icon=icon('question-circle'))))),
+                                      (column(4,actionButton("btn_landing",label="Help: How to use this tool",icon=icon('question-circle'), class = "down")))),
+                             data.step = 1,
+                             data.intro = (p(h4("Welcome to the SOEP data tool"),
+                                             h5("Here is where we can put some instructions for using the tool"),
+                                             br(),
+                                             h5("and some  more instructions and a screenshot for help"),
+                                             img(src = 'panel.PNG', width = 300),
+                                             br(),
+                                             h5("more help here"),
+                                             style = "color:0E3E5D; font-size:20px")),
 
                              data.position = "left"),
-                           fluidRow( #summary box
-                             column(6, class="landing-page-column",
-                                    br(), #spacing
-                                    introBox(
-                                      lp_main_box(image_name= "landing_button_summary",
-                                                  button_name = 'jump_to_summary', 
-                                                  title_box = "Summary",
-                                                  description = 'Information about SOEP survey data'),
-                                      data.position = "bottom-right-aligned")),
-                             #table box
-                             column(6, class="landing-page-column",
-                                    br(), #spacing
-                                    introBox( # tour of the tool
-                                      lp_main_box(image_name= "landing_button_data",
-                                                  button_name = 'jump_to_table', 
-                                                  title_box = "Heatmap",
-                                                  description = 'Generate a report with aggregated data and visualization from the tool.'),
-                                      data.position = "bottom-right-aligned"))),
+
                            fluidRow(
                              br(), #spacing
                              column(8, style = "padding-left: 0px; padding-right: 0px;",
@@ -137,7 +129,7 @@ ui <-
                                       
                                       column(6, class="landing-page-column",
                                              lp_main_box(image_name= "landing_button_home",
-                                                         button_name = 'jump_to_home', 
+                                                         button_name = 'jump_to_household', 
                                                          title_box = "Home, Amenities, and Contributions to Private HH",
                                                          description = 'Explore how home structure and tenure has changed over time')),
                                       column(6, class="landing-page-column",
@@ -155,6 +147,24 @@ ui <-
                                                   description = 'Explore how time use changes over time'))
                              ) #introBox 7 close
                            ), # fluid row close
+                           fluidRow( #summary box
+                             # column(6, class="landing-page-column",
+                             #        br(), #spacing
+                             #        introBox(
+                             #          lp_main_box(image_name= "landing_button_summary",
+                             #                      button_name = 'jump_to_summary', 
+                             #                      title_box = "Summary",
+                             #                      description = 'Information about SOEP survey data'),
+                             #          data.position = "bottom-right-aligned")),
+                             #table box
+                             column(4, class="landing-page-column",
+                                    br(), #spacing
+                                    introBox( # tour of the tool
+                                      lp_main_box(image_name= "landing_button_data",
+                                                  button_name = 'jump_to_table', 
+                                                  title_box = "Heatmap",
+                                                  description = 'Generate a report with aggregated data and visualization from the tool.'),
+                                      data.position = "bottom-right-aligned"))),
 
                            
                          ) #main panel bracket
@@ -220,7 +230,6 @@ ui <-
                                      div(title="Include explanation of CI here?",
                                            p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
                                          awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_income_data', 'Download Income Data', class = "down"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -281,19 +290,19 @@ ui <-
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select_health",
                                                       label = "Select the plot you want to see",
-                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"),
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"),
                                                       selected = "Line",
                                                       status = "danger"
                                          )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_health_data', 'Download Health Data', class = "down"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
                                                      button_name = 'jump_to_home_page2', 
                                                      title_box = "Go to home page",
-                                                     description = 'You are currently on the Health page. Go back to the home page'))),
+                                                     description = 'You are currently on the Health page. Go back to the home page'))
+                                     ),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
                                  column(9,
@@ -342,14 +351,17 @@ ui <-
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select_att",
                                                       label = "Select the plot you want to see",
-                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_att_data', 'Download Attitudes Data', class = "down"),
                                      br(),
-                                     br()
+                                     br(),
+                                     div(lp_main_box(image_name= 'back_arrow',
+                                                     button_name = 'jump_to_home_page3', 
+                                                     title_box = "Go to home page",
+                                                     description = 'You are currently on the Attitudes page. Go back to the home page'))
                                      ),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
@@ -367,7 +379,7 @@ ui <-
                
 ######## household panel ##################
 
-               tabPanel("Household", icon = icon("door-open"), value = "home",
+               tabPanel("Household", icon = icon("door-open"), value = "household",
                         sidebarPanel(width = 2,
                                      h2("Variable Selection"),
                                      div(style = "margin-top: 30px",
@@ -401,14 +413,17 @@ ui <-
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select_home",
                                                       label = "Select the plot you want to see",
-                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_home_data', 'Download Home Data', class = "down"),
                                      br(),
                                      br(),
+                                     div(lp_main_box(image_name= 'back_arrow',
+                                                     button_name = 'jump_to_home_page4', 
+                                                     title_box = "Go to home page",
+                                                     description = 'You are currently on the Household page. Go back to the home page'))
                                      ),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
@@ -460,15 +475,18 @@ ui <-
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select_time",
                                                         label = "Select the plot you want to see",
-                                                        choices = c("Line", "Stacked Bar", "Heatmap", "Box Plot"),
+                                                        choices = c("Line", "Stacked Bar", "Box Plot"),
                                                         selected = "Line",
                                                         status = "danger"
                                          )),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_time_data', 'Download Time Data', class = "down"),
                                      br(),
                                      br(),
+                                     div(lp_main_box(image_name= 'back_arrow',
+                                                     button_name = 'jump_to_home_page5', 
+                                                     title_box = "Go to home page",
+                                                     description = 'You are currently on the Time page. Go back to the home page'))
                                      ),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
@@ -483,6 +501,8 @@ ui <-
                           
                           
                         )), #tabpanel close
+
+
 
 ######## employment panel ##################
 
@@ -518,14 +538,18 @@ ui <-
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select_emp",
                                                       label = "Select the plot you want to see",
-                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Heatmap", "Box Plot"), 
+                                                      choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
                                      div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
                                          awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger")),
-                                     downloadButton('download_emp_data', 'Download Employment Data', class = "down"),
                                      br(),
-                                     br()),
+                                     br(),
+                                     div(lp_main_box(image_name= 'back_arrow',
+                                                     button_name = 'jump_to_home_page6', 
+                                                     title_box = "Go to home page",
+                                                     description = 'You are currently on the Employment page. Go back to the home page'))
+                                     ),
                         fluidRow(
                           column(9, style = "padding-left: 0px; padding-right: 0px;",
                                  column(9,
@@ -571,7 +595,17 @@ navbarMenu("Info", icon = icon("info-circle"),
                     value = "metadata",
                     fluidRow(style = "width:60%; margin-left: 2%; min-width: 350px",
                              h4("Some metadata information", style = "color:black;"),
-                             h5(style = "color:black", "text, text, text")))
+                             h5(style = "color:black", "text, text, text"))),
+           br(),
+           tabPanel("How to use this tool", value = "info_page",
+                    sidebarPanel(width = 1),
+                    mainPanel(width = 10,
+                              fluidRow(p(h4("Welcome to the SOEP data tool"),
+                                         h5("Here are some instructions on how to use this tool", style = "color:balck;"),
+                                         h5("Here are more instructionson how to use this tool", style = "color:black;"),
+                                         img(src = 'panel.PNG', width = 300),
+                                         br(),
+                                         h5("here are the next steps", style = "color:black;")))))
            ) #navbarmenu break
 ) #navbarpage break
 
@@ -590,6 +624,22 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$jump_to_home_page2, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
+  
+  observeEvent(input$jump_to_home_page3, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
+  
+  observeEvent(input$jump_to_home_page4, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
+  
+  observeEvent(input$jump_to_home_page5, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
+  
+  observeEvent(input$jump_to_home_page6, {
     updateTabsetPanel(session, "intabset", selected = "home_page")
   })
 
@@ -613,7 +663,7 @@ server <- function(input, output, session) {
     updateTabsetPanel(session, "intabset", selected = "att")
   })
   
-  observeEvent(input$jump_to_home, {
+  observeEvent(input$jump_to_household, {
     updateTabsetPanel(session, "intabset", selected = "household")
   })
   
@@ -624,6 +674,10 @@ server <- function(input, output, session) {
   
   observeEvent(input$jump_to_employment, {
     updateTabsetPanel(session, "intabset", selected = "emp")
+  })
+  
+  observeEvent(input$btn_landing, {
+    updateTabsetPanel(session, "intabset", selected = "info_page")
   })
   
   ######## reset buttons ##################
@@ -967,7 +1021,7 @@ server <- function(input, output, session) {
   # load data
   output$inc_table <- DT::renderDataTable(
     inc_data(), server = FALSE,
-    extensions = c('Buttons', 'Scroller'),
+    extensions = c('Buttons', 'Scroller', 'Responsive'),
     options = list(
       dom = 'Bfrtip',
       deferRender = TRUE,
@@ -1247,9 +1301,18 @@ server <- function(input, output, session) {
     }
   })
   
+  ######## health render datatable ##################
   # load data
   output$health_table <- renderDataTable(
-    health_data(), options = list(searching = FALSE))
+    health_data(), server = FALSE,
+    extensions = c('Buttons', 'Scroller', 'Responsive'),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender = TRUE,
+      scrollY = 400,
+      scroller = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   
 
   ## attitudes panel #####
@@ -1517,11 +1580,21 @@ server <- function(input, output, session) {
     }
   })
   
+  ######## attitudes render datatable ##################
+  
   # load data
   
   
   output$att_table <- renderDataTable(
-    att_data(), options = list(searching = FALSE))
+    att_data(), server = FALSE,
+    extensions = c('Buttons', 'Scroller', 'Responsive'),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender = TRUE,
+      scrollY = 400,
+      scroller = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
   
 
   ### home panel ####
@@ -1792,8 +1865,18 @@ server <- function(input, output, session) {
     }
   })
   
+  ######## home render datatable ##################
+  
   output$home_table <- renderDataTable(
-    home_data(), options = list(searching = FALSE)) 
+    home_data(), server = FALSE,
+    extensions = c('Buttons', 'Scroller', 'Responsive'),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender = TRUE,
+      scrollY = 400,
+      scroller = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )) 
   
 
   ### Time ####
@@ -2065,8 +2148,19 @@ server <- function(input, output, session) {
     }
   })
   
+  ######## time render datatable ##################
+  
+  
   output$time_table <- renderDataTable(
-    time_data(), options = list(searching = FALSE)) 
+    time_data(), server = FALSE,
+    extensions = c('Buttons', 'Scroller', 'Responsive'),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender = TRUE,
+      scrollY = 400,
+      scroller = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )) 
   
   
 
@@ -2319,6 +2413,7 @@ server <- function(input, output, session) {
       }
     })
   
+  ######## employment render plotly ##################
   
   
   output$emp_plot <- renderPlotly({
@@ -2339,9 +2434,19 @@ server <- function(input, output, session) {
       dodgebarplot_emp()
     }
   })
+  ######## employment render datatable ##################
+  
   
   output$emp_table <- renderDataTable(
-    emp_data(), options = list(searching = FALSE)) 
+    emp_data(), server = FALSE,
+    extensions = c('Buttons', 'Scroller', 'Responsive'),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender = TRUE,
+      scrollY = 400,
+      scroller = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    )) 
 
 #################
   # Downloads
