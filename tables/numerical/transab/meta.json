@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "",
+  "description_de": "The variable describes transfer dependency (as percentage) of the household. The transfer dependency is calculated by dividing Household Pre-Government Income by Household Post-Government Income. (0 = 0 percent; 1 = 26-50 percent, 3 = 51-75 percent, 4 = 76 - 99 percent, 5 = 100 percent)",
   "start_year": 1984,
   "end_year": 2019,
   "types": [

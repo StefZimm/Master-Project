@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 1990, question not asked for all samples.",
+  "description_de": "The variable describes the respondent's evaluation of whether the current cost of the apartment matches the cost of comparable housing. For 1990, question not asked for all samples.",
   "start_year": 1984,
   "end_year": 2014,
   "types": "categorical"

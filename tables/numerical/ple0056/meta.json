@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2013-2019, question not asked for all samples",
+  "description_de": "Variable describes how many nights the respondent had to spend in a hospital in the last year. (How many nights total did you spend in the hospital last year?) For 2013, 2015-2019, question not asked for all samples",
   "start_year": 1984,
   "end_year": 2019,
   "types": [

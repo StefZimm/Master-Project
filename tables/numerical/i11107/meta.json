@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2016-2019, question not asked for all samples.",
+  "description_de": "This variable represents the combined public transfers of all individuals in the house- hold 16 years of age and older. Public Transfers are the sum of individual public transfers -- student grants, maternity benefits, unemployment benefits, unemployment assistance, subsistence allowance and transition pay -- over all individuals in the household, plus household benefits -- hous- ing allowances, child benefits, nursing care insurance, direct housing subsidy, subsist- ence assistance, support for special circumstances, social assistance for elderly and un- employment benefit II. In 1984 the amount of child benefits is not asked. Child benefits for this year were imputed using information on the number of children in the household and the num- ber of months the benefits were received. In 1992 through 1994 the amounts of subsistence assistance and special circumstances benefits are not asked. These values have been filled in with imputed values for total social welfare income. In 1995 through 2000 amounts of subsistence assistance and special circumstances benefits are imputed using an algorithm developed by Peter Krause (DIW) based on the benefits received in the present survey month. Since 1996 nursing care insurance benefits are included in the sum. In 1996 German law established direct housing subsidy payments. Starting in the 2000 survey a sepa- rate question was asked about income from this source. Direct housing subsidy pay- ments for respondents who bought homes between 1996 and 1999 were imputed us- ing information about the year of construction, acquisition of ownership and number of children in the household. In 2005 social assistance for elderly was asked the first time. In 2006 unemployment benefit II was asked the first time and replaced unem- ployment assistance. Since 2009 additional child benefit was asked the first time. For survey year 2010 HH-public transfers does also include 2500 Euro car scrappage scheme for households which acquired a new car in the previous year. Since 2014 child care subsidy was asked the first time in SOEP. In 2017 benefits from the educa- tional package and asylum seekers benefits were also included.. For 2016-2019, question not asked for all samples.",
   "start_year": 1984,
   "end_year": 2019,
   "types": [

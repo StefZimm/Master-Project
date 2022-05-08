@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2017-2019, question not asked for all samples.",
+  "description_de": "Indicates how often person plays sports, exercises or walks or swims. In several years the question related to this topic were not asked.. For 2017-2019, question not asked for all samples. ",
   "start_year": 1984,
   "end_year": 2019,
   "types": "categorical"

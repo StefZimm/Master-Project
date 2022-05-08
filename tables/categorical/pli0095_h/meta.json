@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 1990, 2017, question not asked for all samples.",
+  "description_de": "The collection of variables describes typical leisure activities of the respondent. (Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?) For 1990, 2017, question not asked for all samples.",
   "start_year": 1985,
   "end_year": 2017,
   "types": "categorical"

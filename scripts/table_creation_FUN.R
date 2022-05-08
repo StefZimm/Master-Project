@@ -358,7 +358,7 @@ create_table_lables <- function(table) {
       gsub("5", "North Rhine-Westphalia", .) %>%
       gsub("6", "Hesse", .) %>%
       gsub("7", "Rhineland-Palatinate,Saarland", .) %>% 
-      gsub("8", "Baden-W?rttemberg", .) %>% 
+      gsub("8", "Baden-Württemberg", .) %>% 
       gsub("9", "Bavaria", .)
   }
   
@@ -641,7 +641,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "bula_h"],
                "values" = list("Schleswig-Holstei", "Hamburg",
                                "Lower Saxony", "Bremen", "North Rhine-Westphalia",
-                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-W?rttemberg", 
+                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-Württemberg", 
                                "Bavaria", "Berlin", "Brandenburg", "Mecklenburg-Western Pomerania", "Saxony",
                                "Saxony-Anhalt", "Thuringia")),
           list("variable" = meta$variable[meta$variable == "education"], 
@@ -723,7 +723,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "bula_h"],
                "values" = list("Schleswig-Holstei", "Hamburg",
                                "Lower Saxony", "Bremen", "North Rhine-Westphalia",
-                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-W?rttemberg", 
+                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-Württemberg", 
                                "Bavaria", "Berlin", "Brandenburg", "Mecklenburg-Western Pomerania", "Saxony",
                                "Saxony-Anhalt", "Thuringia")),
           list("variable" = meta$variable[meta$variable == "education"], 
@@ -807,7 +807,7 @@ json_create_lite <- function(variable, varlabel, startyear, endyear, tabletype, 
                "label" = meta$label_de[meta$variable == "bula_h"],
                "values" = list("Schleswig-Holstei", "Hamburg",
                                "Lower Saxony", "Bremen", "North Rhine-Westphalia",
-                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-W?rttemberg", 
+                               "Hesse", "Rhineland-Palatinate,Saarland", "Baden-Württemberg", 
                                "Bavaria", "Berlin", "Brandenburg", "Mecklenburg-Western Pomerania", "Saxony",
                                "Saxony-Anhalt", "Thuringia")),
           list("variable" = meta$variable[meta$variable == "education"], 

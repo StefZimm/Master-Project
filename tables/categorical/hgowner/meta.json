@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2016, 2017, question not asked for all samples.",
+  "description_de": "Up to Wave H, the information for this variable was collected in separate questionnaires for â€œoldâ€ and first-time respondents, respectively (â€œblueâ€ and â€œgreenâ€ questionnaires). In all waves and for each household with the original value of -1 (\"no answerâ€), codes are set to =1 and =4 if at least one owner- or tenant-specific item is given. Code 4 is also used if a change in ownership (from owner to tenant) has taken place but no original information for this variable was given. Code 5 (â€˜resident of a home or institutional living facilityâ€™) has only been assigned by interviewers during fieldwork since Wave P.",
   "start_year": 1984,
   "end_year": 2019,
   "types": "categorical"

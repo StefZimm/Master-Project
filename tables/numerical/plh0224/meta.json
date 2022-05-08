@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2012-2013, 2017, 2019, question not asked for all samples.",
+  "description_de": "The Big Five personality traits is a suggested taxonomy, or grouping, for personality traits, developed from the 1980s onward in psychological trait theory. This variable is one item to descirbe a big five dimension. For 2012-2013, 2017, 2019, question not asked for all samples.",
   "start_year": 2005,
   "end_year": 2019,
   "types": [

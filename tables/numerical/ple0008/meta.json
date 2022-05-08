@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "",
+  "description_de": "Variable describes the evaluation of the own health. (How would you describe your current health?)",
   "start_year": 1992,
   "end_year": 2019,
   "types": [

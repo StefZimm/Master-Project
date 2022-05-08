@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "Question not asked for all samples.",
+  "description_de": "The collection of variables describes what concerns the respondent has. Question not asked for all samples.",
   "start_year": 2009,
   "end_year": 2019,
   "types": "categorical"

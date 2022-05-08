@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "",
+  "description_de": "Equivalence income is the income that would allow each member of a household, if he or she were an adult and living alone, to have the same (equivalent) standard of living as he or she has within the household community. For this purpose, the income of the entire household is added up and then weighted on the basis of an equivalence scale. The weighting depends on the number and age of the persons in the household community. In most cases, it is calculated as net equivalent income. Equivalence income is per person income. ",
   "start_year": 1984,
   "end_year": 2019,
   "types": [

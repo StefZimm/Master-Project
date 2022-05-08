@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2011, questionnaire version with changed filter management. For 2011, 2016, 2019, question not asked for all samples.",
+  "description_de": "The variable describes whether there is a works council in the respondent's company. Does an employee's council exist at your place of work? For 2011, questionnaire version with changed filter management. For 2011, 2016, 2019, question not asked for all samples.",
   "start_year": 2001,
   "end_year": 2019,
   "types": "categorical"

@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2016-2019, question not asked for all samples.",
+  "description_de": "This variable represents the combined income after taxes and government transfers in the previous year of all individuals in the household.. This variable is the sum of total family income from labor earnings, asset flows, private retirement income, private transfers, public transfers, and social security pensions mi- nus total family taxes. Labor earnings include wages and salary from all employment including training, self-employment income, bonuses, overtime, and profit-sharing. As- set flows include income from interest, dividends, and rent. Private transfers include payments from individuals outside of the household including alimony and child sup- port payments. Public transfers include housing allowances, child benefits, subsistence assistance from the Social Welfare Authority, special circumstances benefits from the Social Welfare Authority, government student assistance, maternity benefits, unem- ployment benefits, unemployment assistance, and unemployment subsistence allow- ance. Social security pensions include payments from old age, disability, and widow- hood pension schemes. The tax burdens provided here are based upon updated and modified tax calculation routines developed by Schwarze. The tax burden includes in- come taxes and payroll taxes (health, unemployment, retirement insurance and nursing home insurance taxes). These routines are described in Schwarze (1995).. For 2016-2019, question not asked for all samples.",
   "start_year": 1984,
   "end_year": 2019,
   "types": [

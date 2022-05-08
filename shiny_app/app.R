@@ -564,17 +564,65 @@ ui <-
                           
                         )), #tabpanel close
                         
-######## report panel ##################
+######## heatmap panel ##################
 
 tabPanel("Heatmap", icon = icon("table"), value = "report",
-          #Sidepanel for filtering data
-          mainPanel(
-            width = 12, style="margin-left:0.5%; margin-right:0.5%",
-             
-            fluidRow(
-              p("View Heatmap", 
-                style = "font-weight: bold; color: black;")))
+
+         sidebarPanel(width = 2,
+                      h2("Variable Selection"),
+                      div(title = "Select from the list of grouping variables.",
+                          style = "margin-top: 30px",
+                          selectizeInput("groupheat1", "Grouping variable",
+                                         choices = top_demo$label_de,
+                                         multiple = TRUE,
+                                         options = list(maxItems = 1, placeholder = 'Select a grouping variable')
+                          )),
+                      div(style = "margin-top: 30px",
+                          selectInput("heatmap_variable", label = "Select an variable",
+                                      choices = list(`Numerical Variable` = as.list(top_heat_num$label_de)))),
+                      br(),
+                      div(title="Select a statistical indicator",
+                          style = "margin-top: 10px; margin-bottom: 20px;",
+                          awesomeRadio("statistic_select_heatmap",
+                                       label = "Select the statistical indicator you want to see",
+                                       choices = c("mean", "median"),
+                                       selected = "mean",
+                                       status = "danger"
+                          )),
+                      p("Use the slider to select years", style = "font-weight: bold; color: black;"),
+                      sliderInput(
+                        inputId = "yearInput_heatmap",
+                        label = "Year",
+                        value = 2019,
+                        min = 1984,
+                        max = 2019,
+                        step = 1L,
+                        sep = ""
+
+                      ),
+                      br(),
+                      br(),
+                      div(lp_main_box(image_name= 'back_arrow',
+                                      button_name = 'jump_to_home_page',
+                                      title_box = "Go to home page",
+                                      description = 'You are currently on the Income page. Go back to the home page'))
          ),
+         fluidRow(
+           column(9, style = "padding-left: 0px; padding-right: 0px;",
+                  column(9,
+                         div(style = "margin-top: 30px",
+                             h2("Plots"),
+                             bsButton("info_heatmap", label = "", icon = icon("info-circle"), style = "", size = "extra-small"),
+                             plotlyOutput("heat_plot", width = "100%")),
+                         div(style = "margin-top: 30px",
+                             h2("Data"),
+                             DT::dataTableOutput("heatmap_table"))
+                  ))
+
+
+         )), #tabpanel close
+
+
 
 ######## navbar ##################
 
@@ -1013,6 +1061,20 @@ server <- function(input, output, session) {
                              a("Dataset Codebook ", 
                                href = variables$documentation_paper[variables$label_de==input$inc_variable],
                                target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$inc_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$inc_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$inc_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$inc_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$inc_variable],
+                               target="_blank"), "  <br>"
                  )),
                  trigger = "hold", placement = "right")
     }
@@ -2447,7 +2509,169 @@ server <- function(input, output, session) {
       scroller = TRUE,
       buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
     )) 
+  
+  ## Heatmap Panel ###########
+  
+  # Variable
+  heatmap_variable <- reactive({
+    variables$variable[variables$label_de==input$heatmap_variable]
+  })
 
+  # grouping1
+  diffvar_heatmap <- reactive({
+    variables$variable[variables$label_de==input$groupheat1]
+  })
+
+  statistic_heatmap <-  reactive({
+    input$statistic_select_heatmap
+  })
+
+  # Select Table Name
+  heatmap_table <- reactive({
+    get_user_table(meta = variables, variable = heatmap_variable(),
+                   diffvar1 = diffvar_heatmap(), diffvar2 = "",
+                   heatmap = TRUE)
+  })
+
+  # Load selected Variable
+  heatmap_data <- reactive({
+
+    if (variables$meantable[variables$label_de==input$heatmap_variable] == "Yes") {
+      type <- "numerical"}
+
+    if (variables$meantable[variables$label_de==input$heatmap_variable] == "No") {
+      type <- "categorical"}
+
+    tbl <- read.csv(paste0("../tables/", type, "/" , heatmap_variable(), "/", heatmap_table()),
+                    encoding = "UTF-8")
+    return(tbl)
+  })
+
+
+# load year
+year_heatmap <-  reactive({
+  input$yearInput_heatmap
+})
+
+######## heatmap map plot ##################
+
+# load graphic
+# 1.1 heatmap
+heatmap <-
+  reactive({
+    req(input$statistic_select_heatmap)
+    req(input$heatmap_variable)
+    req(heatmap_data())
+    req(year_heatmap())
+
+    # heatmap
+    if(!isTruthy(input$groupheat1)){
+
+      get_map_plot(table = heatmap_data(),
+                   syear = year_heatmap(),
+                   variable = heatmap_variable(),
+                   statistic = statistic_heatmap(),
+                   diffvar = "")
+
+    }
+
+    else {
+
+      get_map_plot(table = heatmap_data(),
+                   syear = year_heatmap(),
+                   variable = heatmap_variable(),
+                   statistic = statistic_heatmap(),
+                   diffvar = diffvar_heatmap())
+    }
+  })
+
+
+
+######## heatmap render plotly ##################
+output$heat_plot <- renderPlotly({
+  heatmap()
+})
+
+# Var Information Button
+observeEvent(input$heatmap_variable, {
+
+  removePopover(session, "info_heatmap")
+  Sys.sleep(0.2)
+
+  if(variables$description[variables$label_de==input$heatmap_variable] != "" &
+     variables$documentation_link[variables$label_de==input$heatmap_variable] != "" &
+     variables$documentation_paper[variables$label_de==input$heatmap_variable] != ""){
+
+    addPopover(session, "info_heatmap", title=HTML("<b> Variable description: </b>"),
+               HTML(paste0(variables$description[variables$label_de==input$heatmap_variable],
+                           "  <br>",
+                           a("Additional Variable Information",
+                             href = variables$documentation_link[variables$label_de==input$heatmap_variable],
+                             target="_blank"), "  <br>",
+                           a("Dataset Codebook ",
+                             href = variables$documentation_paper[variables$label_de==input$heatmap_variable],
+                             target="_blank")
+               )),
+               trigger = "hold", placement = "right")
+  }
+
+  else if(variables$description[variables$label_de==input$heatmap_variable] != "" &
+          variables$documentation_link[variables$label_de==input$heatmap_variable] == "" &
+          variables$documentation_paper[variables$label_de==input$heatmap_variable] == ""){
+
+    addPopover(session, "info_heatmap", title=HTML("<b> Variable description: </b>"),
+               HTML(paste0(variables$description[variables$label_de==input$heatmap_variable],
+                           "  <br>"
+               )),
+               trigger = "hold", placement = "right")
+  }
+  
+  
+
+  else if(variables$description[variables$label_de==input$heatmap_variable] == "" &
+          variables$documentation_link[variables$label_de==input$heatmap_variable] != "" &
+          variables$documentation_paper[variables$label_de==input$heatmap_variable] != ""){
+
+    addPopover(session, "info_heatmap", title=HTML("<b> Variable description: </b>"),
+               HTML(paste0(a("Additional Variable Information",
+                             href = variables$documentation_link[variables$label_de==input$heatmap_variable],
+                             target="_blank"), "  <br>",
+                           a("Dataset Codebook ",
+                             href = variables$documentation_paper[variables$label_de==input$heatmap_variable],
+                             target="_blank")
+               )),
+               trigger = "hold", placement = "right")
+  }
+  
+  else if(variables$description[variables$label_de==input$heatmap_variable] != "" &
+          variables$documentation_link[variables$label_de==input$heatmap_variable] != "" &
+          variables$documentation_paper[variables$label_de==input$heatmap_variable] == ""){
+    
+    
+    addPopover(session, "info_heatmap", title=HTML("<b> Variable description: </b>"),
+               HTML(paste0(variables$description[variables$label_de==input$heatmap_variable],
+                           "  <br>",
+                           a("Additional Variable Information",
+                             href = variables$documentation_link[variables$label_de==input$heatmap_variable],
+                             target="_blank"), "  <br>"
+               )),
+               trigger = "hold", placement = "right")
+  }
+})
+
+######## heatmap render datatable ##################
+# load data
+output$heatmap_table <- DT::renderDataTable(
+  heatmap_data(), server = FALSE,
+  extensions = c('Buttons', 'Scroller', 'Responsive'),
+  options = list(
+    dom = 'Bfrtip',
+    deferRender = TRUE,
+    scrollY = 400,
+    scroller = TRUE,
+    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+  ))
+  
 #################
   # Downloads
 ################

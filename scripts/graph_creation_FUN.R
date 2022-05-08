@@ -33,12 +33,13 @@ color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"),
 #'                          diffvar = diffvar)
 
 
+
 get_map_plot <- function(table, syear, variable, statistic, diffvar){
   
   
-  title <- paste0(meta$label_de[meta$variable==variable], " in federal states", " in ", syear)
+  title <- paste0(variables$label_de[variables$variable==variable], " in federal states", " in ", syear)
   
-  dataset <- data  %>%
+  dataset <- table  %>%
     filter(year == syear)
   
   state_level_map <- raster::getData("GADM", country = "Germany", level = 1) %>%

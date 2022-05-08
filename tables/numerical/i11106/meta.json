@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2016-2019, question not asked for all samples.",
+  "description_de": "This variable represents the combined private transfers of all individuals in the house- hold 16 years of age and older. Private transfers consists of income received from persons outside of the interviewed household. Starting in wave R an additional question identifies alimony separately (var- iable $p2o03 in SOEP file $PKAL: $ = R, S, ... ) and since 2010 advance child mainte- nance payment (IACHM$$) is asked separately. The bulk of transfer is likely to consist of alimony and child support payments. For 2016-2019, question not asked for all samples.",
   "start_year": 1984,
   "end_year": 2019,
   "types": [

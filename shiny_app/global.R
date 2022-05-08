@@ -98,7 +98,8 @@ top_emp_num <- variables %>% filter(topic == "Work and Employment" & meantable =
 top_demo <- variables %>%
   filter(meantable == "demo") 
 
- 
+top_heat_cat <- variables %>% filter(meantable == "No")  %>% select(label_de)
+top_heat_num <- variables %>% filter(meantable == "Yes") %>% select(label_de) 
 
 ################################################################################
 # Functions #
@@ -175,12 +176,13 @@ color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"),
 #'                          diffvar = diffvar)
 
 
+
 get_map_plot <- function(table, syear, variable, statistic, diffvar){
   
   
-  title <- paste0(meta$label_de[meta$variable==variable], " in federal states", " in ", syear)
+  title <- paste0(variables$label_de[variables$variable==variable], " in federal states", " in ", syear)
   
-  dataset <- data  %>%
+  dataset <- table  %>%
     filter(year == syear)
   
   state_level_map <- raster::getData("GADM", country = "Germany", level = 1) %>%

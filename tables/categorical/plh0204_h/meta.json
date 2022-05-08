@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2011, 2013, question not asked for all samples.",
+  "description_de": "The variable describes the respondent's willingness to take risks. (How do you rate yourself personally? In general, are you someone who is willing to take risks or do you try to avoid risks?) For 2011, 2013, question not asked for all samples.",
   "start_year": 2004,
   "end_year": 2019,
   "types": "categorical"

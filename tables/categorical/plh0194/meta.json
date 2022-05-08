@@ -31,7 +31,7 @@
         "North Rhine-Westphalia",
         "Hesse",
         "Rhineland-Palatinate,Saarland",
-        "Baden-W?rttemberg",
+        "Baden-Württemberg",
         "Bavaria",
         "Berlin",
         "Brandenburg",
@@ -138,7 +138,7 @@
       ]
     }
   ],
-  "description_de": "For 2013, 2018, question not asked for all samples.",
+  "description_de": "This collection of variables includes several questions about trust, trustworthiness and fairness. For 2013, 2018, question not asked for all samples.",
   "start_year": 2003,
   "end_year": 2018,
   "types": "categorical"
