@@ -86,15 +86,7 @@ ui <-
                            introBox(
                              fluidRow(column(7,(h3("Welcome to the SOEP data tool", style="margin-top:0px;"))),
                                       (column(4,actionButton("btn_landing",label="Help: How to use this tool",icon=icon('question-circle'), class = "down")))),
-                             data.step = 1,
-                             data.intro = (p(h4("Welcome to the SOEP data tool"),
-                                             h5("Here is where we can put some instructions for using the tool"),
-                                             br(),
-                                             h5("and some  more instructions and a screenshot for help"),
-                                             img(src = 'panel.PNG', width = 300),
-                                             br(),
-                                             h5("more help here"),
-                                             style = "color:0E3E5D; font-size:20px")),
+                             
 
                              data.position = "left"),
 
@@ -218,11 +210,11 @@ ui <-
                                        sep = ""
                                       
                                      ),
-                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a side by side bar plot or box plot if you selected a numerical variables.",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a line plot, side by side bar plot, or box plot if you selected a numerical variables.",
                                          p(tags$b("Select the plot you want to see.")),
                                          style = "margin-top: 10px; margin-bottom: 20px;",
                                          awesomeRadio("plot_select",
-                                                      label = "Select the plot you want to see",
+                                                      label = "",
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"),
                                                       selected = "Line",
                                                       status = "danger"
@@ -286,10 +278,10 @@ ui <-
                                        sep = ""
                                        
                                      ),
-                                     div(title="Select what plot you want to see.",
-                                         style = "margin-top: 10px; margin-bottom: 20px;",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a line plot, side by side bar plot, or box plot if you selected a numerical variables.",
+                                         p(tags$b("Select the plot you want to see.")),
                                          awesomeRadio("plot_select_health",
-                                                      label = "Select the plot you want to see",
+                                                      label = "",
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"),
                                                       selected = "Line",
                                                       status = "danger"
@@ -347,10 +339,10 @@ ui <-
                                        step = 1L,
                                        sep = ""
                                      ),
-                                     div(title="Select what plot you want to see.",
-                                         style = "margin-top: 10px; margin-bottom: 20px;",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a side by side bar plot or box plot if you selected a numerical variables.",
+                                         p(tags$b("Select the plot you want to see.")),
                                          awesomeRadio("plot_select_att",
-                                                      label = "Select the plot you want to see",
+                                                      label = "",
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
@@ -409,10 +401,10 @@ ui <-
                                        step = 1L,
                                        sep = ""
                                      ),
-                                     div(title="Select what plot you want to see.",
-                                         style = "margin-top: 10px; margin-bottom: 20px;",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a line plot, side by side bar, plot or box plot if you selected a numerical variables.",
+                                         p(tags$b("Select the plot you want to see.")),
                                          awesomeRadio("plot_select_home",
-                                                      label = "Select the plot you want to see",
+                                                      label = "",
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
@@ -471,10 +463,10 @@ ui <-
                                        step = 1L,
                                        sep = ""
                                      ),
-                                     div(title="Select what plot you want to see.",
-                                         style = "margin-top: 10px; margin-bottom: 20px;",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a line plot, side by side bar plot, or box plot if you selected a numerical variables.",
+                                         p(tags$b("Select the plot you want to see.")),
                                          awesomeRadio("plot_select_time",
-                                                        label = "Select the plot you want to see",
+                                                        label = "",
                                                         choices = c("Line", "Stacked Bar", "Box Plot"),
                                                         selected = "Line",
                                                         status = "danger"
@@ -534,10 +526,10 @@ ui <-
                                        step = 1L,
                                        sep = ""
                                      ),
-                                     div(title="Select a plot you want to see.",
-                                         style = "margin-top: 10px; margin-bottom: 20px;",
+                                     div(title="Select a line plot or stacked bar plot if you selected a categorical variable. Select a line plot, side by side bar plot, or box plot if you selected a numerical variables.",
+                                         p(tags$b("Select the plot you want to see.")),
                                          awesomeRadio("plot_select_emp",
-                                                      label = "Select the plot you want to see",
+                                                      label = "",
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
@@ -648,12 +640,58 @@ navbarMenu("Info", icon = icon("info-circle"),
            tabPanel("How to use this tool", value = "info_page",
                     sidebarPanel(width = 1),
                     mainPanel(width = 10,
-                              fluidRow(p(h4("Welcome to the SOEP data tool"),
-                                         h5("Here are some instructions on how to use this tool", style = "color:balck;"),
-                                         h5("Here are more instructionson how to use this tool", style = "color:black;"),
-                                         img(src = 'panel.PNG', width = 300),
+                              fluidRow(p(h1("Welcome to the SOEP data tool"),
+                                         h4("This interactive dashboard allows you to explore nearly 4 decades of aggregated SOEP survey data.", style = "color:balck;"),
+                                         h4("All of the survey questions available in this dashboard fall into a certain topic. These topics can be 
+                                         explored in two ways.  One way is to click on the topic at the top of the page (tab).", style = "color:black;"),
                                          br(),
-                                         h5("here are the next steps", style = "color:black;")))))
+                                         img(src = 'tabs.PNG', height = 50, width = 1000),
+                                         br(),
+                                         h4("The other way to explore is to click on the appropriate panel on the main page.", style = "color:black;"),
+                                         br(),
+                                         img(src = 'panel.PNG', height = 500, width = 1000),
+                                         br(),
+                                         br(),
+                                         h4("When you  you click on a topic, such as'Health and Care', you will be taken to a page that contains the variables (questions)
+                                         for that topic. The page will be loaded with the first selectable variable for that topic. The default graph and data table contains the overall
+                                          statistics for that variable. This is useful for seeing the overall change of this variable for the entire population", style = "color:black;"),
+                                         br(),
+                                         img(src = 'page.png', height = 600, width = 1000),
+                                         br(),
+                                         br(),
+                                         h4("On the left side of the page are tools you need to explore the data further. To explore the change in time by a certain demographic, select a
+                                            grouping variable from the first drop down menu.", style = "color:black;"),
+                                         br(),
+                                         img(src = 'var1.png', height = 300, width = 280),
+                                         br(),
+                                         br(),
+                                         h4("You have the option to select a second grouping variable from the second drop down menu, if you wish. Note, grouping variables with many levels, such as
+                                            Federal States, will take time to load into the graph, and the graph may be more difficult to understand."),
+                                         img(src = 'var2.png', height = 340, width = 240),
+                                         br(),
+                                         br(),
+                                         h4("When the graph has loaded, you have the ability to hover over the graph to view the statistics for a particular year.  You can also double-click on a 
+                                            certain level in the graph legend to view only that level. Each additional click on other levels with bring them into view."),
+                                         br(),
+                                         img(src = 'plot1.png', height = 400, width = 900),
+                                         br(),
+                                         br(),
+                                         h4("To narrow the number of years in the graph down, you can use the slider bar in the side panel, or the tabs under the graph."),
+                                         br(),
+                                         br(),
+                                         img(src = 'sliders.png', height = 130, width = 400),
+                                         br(),
+                                         br(),
+                                         br(),
+                                         img(src = 'sliders2.png', height = 100, width = 500),
+                                         br(),
+                                         br(),
+                                         h4("You can select a different type of graph from the side panel. Note: graph type depends on the variable type.Select a line plot or stacked bar plot 
+                                            if you selected a categorical variable. Select a line plot, side by side bar plot, or box plot if you selected a numerical variables. "),
+                                         br(),
+                                         br(),
+                                         img(src = 'plot2.png', height = 1000, width = 2200)
+                                         ))))
            ) #navbarmenu break
 ) #navbarpage break
 
