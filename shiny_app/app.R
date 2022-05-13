@@ -624,11 +624,105 @@ navbarMenu("Info", icon = icon("info-circle"),
            tabPanel("About SOEP data", 
                     value = "about",
                     sidebarPanel(width=1),
-                    mainPanel(width=8,
-                              h4("About", style = "color:black;"),
-                              p("enter some info here about SOEP, here is a link to ", 
-                                tags$a(href="https://paneldata.org/soep-core/", "SOEP page.",
-                                       class = "externallink")))
+                    mainPanel(width=10,
+                              h1("About SOEP data", style = "color:black;"),
+                              h2("The German Socio-Economic Panel Study (SOEP)", style = "color:black;"),
+                              
+                              h4("The German Socio-Economic Panel Study (SOEP) is a 
+                              household panel study like the PSID [Panel study of Income Dynamics in the US] and the BHPS [British Household Panel Study]
+                              and serves a global research community by providing representative longitudinal data of private households in Germany.
+                              But the SOEP is not only a data source, it is also an infrastructure unit and a research institution within the German Institute 
+                              for Economic Research (DIW). Therefore, data and research are both provided and conducted at the same time at this institute."),
+                              
+                              h2("Basic Introduction to the SOEP", style = "color:black;"),
+                              h4("The SOEP-Core data edition is the centerpiece of the Socio-Economic Panel and is used for this dashboard. 
+                              All provided data output can be calculated with the soep.core.v36eu data release (Doi 10.5684/soep.core.v36eu) from the German Socio-Economic Panel (SOEP)"),
+                              
+                              fluidPage(
+                                HTML('<p style=”text-align:center;”> <iframe width="560" height="315" src="https://www.youtube.com/embed/XBMtaA9vOf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p> ')
+                              ),
+                              
+                              h2("Goal, Panel Composition and Sample Development", style = "color:black;"),
+                              h4("With the launch of the SOEP in 1984, the intention was to develop a household survey that would provide information on German households. 
+                              So the basic idea was that all members of the first-wave survey households and all their offspring 
+                              (including those not yet born) should be part of the sample for the purposes of long-term (including intergenerational) 
+                              analysis, and that they should be followed as long as possible over time and space. The SOEP defines the target population as 
+                              all resident Germans within households. SOEP started with two initial samples. Sample A covers private households with a household 
+                              head, who does not belong to one of the main foreigner groups of “guestworkers (i.e. Turkish, Greek, Yugoslavian, Spanish or Italian households) 
+                              and the population of Sample B is oversampled and covers private households with a Turkish, Greek, Yugoslavian, Spanish or Italian household head.
+                              Due to the unique structure of the SOEP, a previously taken sample such as Sample A or B can still increase, for example, when SOEP households 
+                              split (i.e., individuals move out and form their own households), when people move into SOEP households, and when an original sample member 
+                              gives birth to a new sample member. Over the decades since it was launched, German society has been changing continuously. and the 
+                              SOEP has also reacted to this changes To trace these changes and to describe them in a way that is representative of the entire population, 
+                              the study has regularly added new samples of respondents from specific population groups. 
+                              One important extension of the study took place just after the fall of the Wall, when “Living in Germany” was expanded to cover the territory of the (former) GDR. 
+                              From 2010 to 2013 low-income families (FID) were oversampled and in 2013, the study added a sample of new respondents from migrant populations to Germany. 
+                              In 2016, a sample of refugees. And in 2019, a sample of high-wealth individuals and LGBT persons was added. 
+                              So SOEP has continuously evolved its efforts in the area of survey methodology."), 
+                              
+                              fluidPage(
+                                HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/6V6NtoJYKTA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                              ),
+                              
+                              h2("SOEP Questionnaires", style = "color:black;"),
+                              h4("The interview methodology of the SOEP is based on a set of pre-tested questionnaires for households and individuals. 
+                              Interviewers try to obtain face-to-face interviews with all members of a given survey household aged 16 and over. 
+                              Thus, there are no proxy interviews for adult household members. Additionally, one person (the “head of household”) 
+                              is asked to answer a household-related questionnaire covering information on housing, housing costs, and different sources 
+                              of income (e.g., social transfers such as social assistance or housing allowances). 
+                              This questionnaire also includes questions on children up to the age of 16 in the household, 
+                              mainly concerning daycare, kindergarten, and school attendance. The questions in the SOEP are largely identical for 
+                              all participants of the survey to ensure comparability across the participants within a given year, but of course there are differences across years. 
+                              There are a few exceptions to this rule, which are due to different requirements in the target population. Up to 1996, 
+                              the questionnaires for the sample of foreigners (B) and the immigrant sample (D) covered additional measures of integration or 
+                              information on re-migration behavior. Between 1990 and 1992, i.e., during the first years of the German reunification process, 
+                              the questionnaire for the East German sample (C) also contained some additional specific variables. From 1996 to 2012, 
+                              all questionnaires were uniform and completely integrated for all of the main SOEP samples. For the IAB-SOEP Migration Sample,
+                              which was launched in 2013, specific questions were added to the SOEP questionnaires. The same is true of the IAB-BAMF-SOEP Survey of Refugees, 
+                              which was launched in 2016. Another special questionnaire is used for first-time respondents since some 
+                              questions do not have to be repeated every year. Each respondent is asked to fill out a biographical questionnaire covering 
+                              information on the life course up to the first SOEP interview (e.g., marital history, social background, and employment biography). 
+                              Additional information not provided directly by the respondent can be obtained from the “address logs”. Every address log is filled 
+                              in by the interviewer even in the case of non-response, thus providing very valuable information, e.g. 
+                              for attrition analysis. For researchers interested in methodological issues, these data also contain information on the 
+                              fieldwork process such as the number of contacts, reasons for drop-outs, and interview mode. 
+                              For households that were contacted successfully, the address logs cover the size of the household, some regional information, 
+                              survey status, etc. The individual data for all household members include the relationship to the household head, survey status 
+                              of the individual, and some demographic information."), 
+                              
+                              fluidPage(
+                                HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/9jvk6UkmHYo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                              ),
+                              
+                              h2("Respondents of the SOEP study “Living in Germany", style = "color:black;"),
+                              h4("Several thousand people in Germany are surveyed every year as part of the SOEP study “Living in Germany” —the same people every year. 
+                                  Currently, there are 32,000 people in 22,000 households participating. 
+                                  The aim is to survey these respondents regularly over a long period of time. The long time span enables researchers to study how society changes over time.
+                                  “Living in Germany” collects data on many areas of life, including employment, income, housing, education, and health. 
+                                  It also covers satisfaction with life and political attitudes and opinions. 
+                                  It also deals with events such as the COVID-19 pandemic and the changes it has brought about in our everyday lives.With its broad range of topics, such as employment, education or income, the different questionnaires for each stage of life, the 
+                                  household context, the duration of the panel, and the many special sample groups (migrants, refugees, high income households, East Germans), 
+                                  comparisons over time can be done with great accuracy using SOEP data."), 
+
+                              fluidPage(
+                                HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/NdgJ4ckoqW4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                              ),
+                              
+                              h2("Topics of the SOEP Dashboard", style = "color:black;"),
+                              h4("The topics of the SOEP questionnaires and the various modules they contain can be grouped into 11 areas 
+                                  (Demography and Population; Work and Employment; Income, Taxes, and Social Security; Family and Social Networks
+                                  Health and Care; Home, Amenities, and Contributions of Private HH; Education and Qualification; Attitudes, Values, and Personality;
+                                  Time Use and Environmental Behavior; Integration, Migration, Transnationalization; and Survey Methodology). 
+                                  Some of the modules deal with aspects of life that tend to change from one year to the next, 
+                                  and are therefore repeated annually, while other modules are repeated at intervals of several years. 
+                                  Some SOEP modules are also adapted in different ways to the different questionnaires. 
+                                  The questions in the “Big Five” personality traits module, for instance, are formulated differently 
+                                  in the mother-child questionnaires than they are in the individual questionnaire. 
+                                 The SOEP dashboard currently includes a selection of variables on the six topics, viewable on the starting page and in the navigation "),
+                              fluidPage(
+                                HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/vm-YZ0R17hQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                              )
+                              ),
                     ),
            br(),
            tabPanel("Metadata", 
