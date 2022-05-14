@@ -1,0 +1,189 @@
+variable,question,label_de,topic,var_link
+aequiv_income,,Equivalent household income per year,"Income, Taxes, and Social Security",
+age_gr,,Age Group,Demography,
+agre,,Big Five Traits: Agreeableness Value,"Attitudes, Values, and Personality",
+bmi,,Body Mass Index,Health and Care,
+bula_h,,Federal States,Demography,
+conc,,Big Five Traits: Conscientiousness Value,"Attitudes, Values, and Personality",
+corigin,,Country Born In,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/corigin</a>
+d11101,,Age of Individual,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/d11101</a>
+d11109,,Number of Years of Education,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/d11109</a>
+e11102,,Employment Status of Individual,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/e11102</a>
+e11103,,Employment Level of Individual,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/e11103</a>
+education,,Education Level,Demography,
+erwst,,Employment status,Work and Employment,
+extr,,Big Five Traits: Extraversion Value,"Attitudes, Values, and Personality",
+gebjahr,,Birth Year,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/gebjahr</a>
+germborn,,German Born,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/germborn</a>
+hghinc,,Monthly household net income (EUR),"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/hgen/hghinc</a>
+hgowner,,Tenant or Owner of Dwelling,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hgen/hgowner</a>
+hgtyp1hh,,Household typology (1-digit),Demography,<a href='url'>https://paneldata.org/soep-core/data/hgen/hgtyp1hh</a>
+hid,,Household ID,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/hid</a>
+hinceq,,Equivalent household income monthly,"Income, Taxes, and Social Security",
+hlf0001_h,,"Main Tenant, Sub-Tenant, Owner","Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0001_h</a>
+hlf0019_h,,Total living space in sqm,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0019_h</a>
+hlf0021_h,,Number of rooms in Apartment,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0021_h</a>
+hlf0071_h,,Assessment of dwelling size,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0071_h</a>
+hlf0094,,Houseing Costs vs Comparable Dwellings,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0094</a>
+i11101,,HH Pre-Government Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11101</a>
+i11102,,HH Post-Government Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11102</a>
+i11103,,HH Labor Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11103</a>
+i11106,,HH Private Transfers,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11106</a>
+i11107,,HH Public Transfers,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11107</a>
+m11104,,Frequency of Sport or Exercise,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11104</a>
+m11124,,Disability Status of Individual,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11124</a>
+m11125,,Satisfaction with Health,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11125</a>
+m11126,,Current Self-Rated Health Status,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11126</a>
+migback,,Migration background,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/migback</a>
+neur,,Big Five Traits: Neuroticism Value,"Attitudes, Values, and Personality",
+open,,Big Five Traits: Openness Value,"Attitudes, Values, and Personality",
+party,,Party affiliation,"Attitudes, Values, and Personality",
+pgcasmin,,CASMIN-Klassifikation,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgcasmin</a>
+pgfamstd,,Marital Status in Survey Year,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/pgen/pgfamstd</a>
+pgisced97,,ISCED-1997-Classification,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgisced97</a>
+pglabgro,,Current Gross Labor Income in Euro,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pgen/pglabgro</a>
+pglabnet,,Current Net Labor Income in Euro,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pgen/pglabnet</a>
+pgnation,,Nationality,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgnation</a>
+pgoeffd,,Civil Service,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgoeffd</a>
+pgtatzeit,,Actual Work Time Per Week,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgtatzeit</a>
+pgvebzeit,,Agreed Upon Work Time Per Week,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgvebzeit</a>
+phrf,,Weighting factor,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/phrf</a>
+pid,,Individual ID,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/pid</a>
+plb0037_h,Do you have a fixed-term or permanent employment contract?,Employment relationship Limited/Unlimited,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0037_h</a>
+plb0050,Does an employee's council exist at your place of work?,"Works council, staff council in company (""Betriebsrat"")",Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0050</a>
+plb0158,How far do you travel to work on a normal workday?,Distance from home to work in km,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0158</a>
+plb0195_h,"If you do work overtime, is the work paid, compensated with time off, or not compensated at all?",Compensate overtime,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0195_h</a>
+plb0196_h,Did you work overtime last month?,Overtime last month,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0196_h</a>
+plb0197,"Have you worked overtime in the last month? If so, how many hours?",Overtime last month number,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0197</a>
+plb0218,"Do you have to work weekends? If so, how often?",Work on Saturday,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0218</a>
+plb0219,"Do you have to work weekends? If so, how often?",Work on Sunday,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0219</a>
+pld0043,How often do you ...,Hfk. pers. Lend things to friends,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/pld0043</a>
+pld0044,How often do you ...,Hfk. Lend money to friends,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/pld0044</a>
+pld0045,How often do you ...,Hfk. Door unlocked,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/pld0045</a>
+pld0047,What would you say: How many close friends do you have and how many of them are co-workers?,Number of close friends,Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pld0047</a>
+ple0004,"If you have to climb stairs, i.e. walk up several floors: Does your state of health restrict you a lot, a little or not at all?",Health condition impaired Climbing stairs,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0004</a>
+ple0005,"And what about other strenuous activities in everyday life, e.g. when you have to lift something heavy or need to be mobile: Does your state of health restrict you a lot, a little or not at all?",Health condition impair. exert. Activities,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0005</a>
+ple0006,How tall are you? In cm,Body height in cm,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0006</a>
+ple0007,How many kilograms do you currently weigh? In kg,Body weight in kg,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0007</a>
+ple0008,How would you describe your current health?,Current state of health,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0008</a>
+ple0009,Are you restricted in normal everyday activities by a health problem ?,Restriction in everyday life due to health problems,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0009</a>
+ple0011,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Sleep disorder,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0011</a>
+ple0012,Has a doctor ever diagnosed you to have one or more of the following illnesses?,diabetes,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0012</a>
+ple0013,Has a doctor ever diagnosed you to have one or more of the following illnesses?,asthma,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0013</a>
+ple0014,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Heart disease,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0014</a>
+ple0015,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Cancer,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0015</a>
+ple0016,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Stroke,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0016</a>
+ple0017,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Migraine,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0017</a>
+ple0018,Has a doctor ever diagnosed you to have one or more of the following illnesses?,High blood pressure,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0018</a>
+ple0019,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Depressive illness,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0019</a>
+ple0020,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Dementia,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0020</a>
+ple0021,Has a doctor ever diagnosed you to have one or more of the following illnesses?,"Joint diseases (also arthrosis, rheumatism)",Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0021</a>
+ple0022,Has a doctor ever diagnosed you to have one or more of the following illnesses?,Chronic back problems,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0022</a>
+ple0024,Has a doctor ever diagnosed you to have one or more of the following illnesses?,No disease detected,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0024</a>
+ple0040,Have you been officially assessed as being severely disabled (Schwerbehindert) or partially incapable of work (Erwerbsgemindert) for medical reasons?,"Disability, severe disability",Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0040</a>
+ple0041,What is the degree of your reduced capability to work (Erwerbsminderung) or disabilty (Schwerbehinderung)?,Degree of disability in percent,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0041</a>
+ple0044_h,How many days were you unable to work in 2016 due to illness?,Didn't Work Last Year Due to Illness,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0044_h</a>
+ple0053,,Hospitalization previous year,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0053</a>
+ple0055,,Hospitalization previous year Number,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0055</a>
+ple0056,,Hospitalization previous year Nights,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0056</a>
+ple0081_h,"Do you currently smoke, whether cigarettes, a pipe, or cigars?",Smoking,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0081_h</a>
+ple0097,What kind of health insurance do you have: statutory health insurance or are you exclusively privately insured?,Type of health insurance,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0097</a>
+ple0098_v5,Do you have supplementary private health insurance?,Private supplementary health insurance (yes/no),Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0098_v5</a>
+ple0128_h,What do you pay for that per month?,Contribution for private supplementary health insurance,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0128_h</a>
+ple0160,,Change of insurance company in previous year,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0160</a>
+ple0162,Have you had this impairment for longer than six months?,Health problems longer than half a year,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/ple0162</a>
+plh0032,How concerned are you about the following issues?,Worries: Economic development,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0032</a>
+plh0033,How concerned are you about the following issues?,Worries: Finances,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0033</a>
+plh0034,How concerned are you about the following issues?,Worries: Stability of financial markets,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0034</a>
+plh0035,How concerned are you about the following issues?,Worries: Own health,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0035</a>
+plh0036,How concerned are you about the following issues?,Worries: Environment,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0036</a>
+plh0037,How concerned are you about the following issues?,Worries: Consequences from climate change,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0037</a>
+plh0038,How concerned are you about the following issues?,Worries: Peace,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0038</a>
+plh0039,How concerned are you about the following issues?,Worries: Global terrorism,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0039</a>
+plh0040,How concerned are you about the following issues?,Worries: Crime in Germany,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0040</a>
+plh0042,How concerned are you about the following issues?,Worries: Job Security,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0042</a>
+plh0105,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?",Importance: To be there for others,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0105</a>
+plh0106,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?",Importance: to realize oneself,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0106</a>
+plh0107,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?",Importance: To be successful in business,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0107</a>
+plh0108,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?",Importance: To have own house,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0108</a>
+plh0109,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?","Importance: To have a happy marriage, partnership","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0109</a>
+plh0110,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?",Importance: To have children,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0110</a>
+plh0111,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?","Importance: To be politically, socially active","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0111</a>
+plh0112,"Different things are important to different people, How important are the following things to you? Very important, important, less important or quite unimportant?","Importance: See the world, travel a lot","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0112</a>
+plh0162,How satisfied are you today with the following areas of your life?,Satisfaction: Standard of Living,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0162</a>
+plh0164,How satisfied are you today with the following areas of you life?,Satisfaction: School Education and Vocational Retraining,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0164</a>
+plh0171,How satisfied are you today with the following areas of you life?,Satisfaction: Health,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0171</a>
+plh0172,How satisfied are you today with the following areas of you life?,Satisfaction: Sleep,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0172</a>
+plh0173,How satisfied are you today with the following areas of you life?,Satisfaction: Work,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0173</a>
+plh0174,How satisfied are you today with the following areas of you life?,Satisfaction: Housework,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0174</a>
+plh0175,How satisfied are you today with the following areas of you life?,Satisfaction: Household Income,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0175</a>
+plh0176,How satisfied are you today with the following areas of you life?,Satisfaction: Personal Income,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0176</a>
+plh0177,How satisfied are you today with the following areas of you life?,Satisfaction: Dwelling,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0177</a>
+plh0178,How satisfied are you today with the following areas of you life?,Satisfaction: Amount Of Leisure Time,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0178</a>
+plh0179,How satisfied are you today with the following areas of you life?,Satisfaction: Child Care,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0179</a>
+plh0180,How satisfied are you today with the following areas of you life?,Satisfaction: Family Life,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0180</a>
+plh0182,"In conclusion, we would like to ask you about your satisfaction with your life in general. How satisfied are you with your life, all things considered?",Satisfaction: Current Life,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0182</a>
+plh0183,"In conclusion, we would like to ask you about your satisfaction with your life in general. How satisfied are you with your life, all things considered?",Satisfaction: Life in Five Years,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0183</a>
+plh0184,"I will now read off a number of feelings. For each one, please state how often you experienced this feeling in the last four weeks. How often have you felt …",Frequency angry last 4 weeks,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plh0184</a>
+plh0185,"I will now read off a number of feelings. For each one, please state how often you experienced this feeling in the last four weeks. How often have you felt …",Frequency anxious last 4 weeks,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plh0185</a>
+plh0186,"I will now read off a number of feelings. For each one, please state how often you experienced this feeling in the last four weeks. How often have you felt …",Frequency happy last 4 weeks,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plh0186</a>
+plh0187,"I will now read off a number of feelings. For each one, please state how often you experienced this feeling in the last four weeks. How often have you felt …",Frequency sad last 4 weeks,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plh0187</a>
+plh0188,To what extent do you agree with the following statements?,See future confidently,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0188</a>
+plh0189,To what extent do you agree with the following statements?,Often feel lonely,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plh0189</a>
+plh0190,To what extent do you agree with the following statements?,No joy at work,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plh0190</a>
+plh0191,To what extent do you agree with the following statements?,Conditions so complicated today,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0191</a>
+plh0192,People can generally be trusted,General trust,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0192</a>
+plh0193,What is your opinion on the following three statements?,No reliance on anyone today,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0193</a>
+plh0194,What is your opinion on the following three statements?,Caution towards strangers,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0194</a>
+plh0195,Do you believe that most people ...,"People take advantage, are fair","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0195</a>
+plh0196,Would you say that people usually ...,"People helpful, self-interest","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0196</a>
+plh0204_h,"How do you rate yourself personally? In general, are you someone who is willing to take risks or do you try to avoid risks?",Risk-taking,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0204_h</a>
+plh0206i01,"If someone does me a favour, I am willing to reciprocate it.",Reciprocity: Willingness to return favors,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0206i01</a>
+plh0206i02,"If someone does me a serious wrong, I will get my own back at any price at the next opportunity.",Reciprocity: Revenge in case of grave injustice,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0206i02</a>
+plh0206i03,"If somebody puts me in a difficult position, I will do the same to them.",Reciprocity: Paying back: putting someone in a difficult position,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0206i03</a>
+plh0206i04,I make particular effort to help someone who has previously helped me.,Reciprocity: Special effort to return help,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0206i04</a>
+plh0206i05,"If someone insults me, I will insult them.",Reciprocity: Offensive behavior in case of insults,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0206i05</a>
+plh0206i06,I am prepared to incur costs myself to help someone who has previously helped me.,Reciprocity: Willingness to incur costs to return help,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0206i06</a>
+plh0212,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Conscientiousness): Work diligently,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0212</a>
+plh0213,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Extraversion): I am communicative,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0213</a>
+plh0214,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Agreeableness): I am sometimes too rough with others,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0214</a>
+plh0215,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Openness): I am original,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0215</a>
+plh0216,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Neuroticism): Often worry about things,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0216</a>
+plh0217,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Agreeableness): Can forgive,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0217</a>
+plh0218,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Conscientiousness): I am rather lazy,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0218</a>
+plh0219,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Extraversion): I am sociable,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0219</a>
+plh0220,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Openness): Appreciate artistic experience,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0220</a>
+plh0221,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Neuroticism): I am easily nervous,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0221</a>
+plh0222,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,"Big Five Traits (Conscientiousness): Perform tasks effectively, efficiently","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0222</a>
+plh0223,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Extraversion): I am reserved,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0223</a>
+plh0224,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Agreeableness): Be friendly with others,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0224</a>
+plh0225,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Openness): Have vivid imagination,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0225</a>
+plh0226,People can have many different qualities - some are listed below. You will probably find that some of these descriptions fit you completely and that some do not fit you at all. Others may fit to a certain extent. I am:,Big Five Traits (Neuroticism): Handle stress well,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plh0226</a>
+pli0059,How many hours do you sleep on average on a normal day during the working week?,"Hours of sleep, normal working day",Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0059</a>
+pli0080,"Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?","Visits neighbors,friends",Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0080</a>
+pli0081,"Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?","Visits family,relatives",Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0081</a>
+pli0082,"Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?","Trips, short trips",Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0082</a>
+pli0083,"Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?","Television, video",Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0083</a>
+pli0089,"Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?",Visits to sporting events,Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0089</a>
+pli0091_h,"Now some questions about your leisure time. Please indicate how often you take part in each activity: daily, at least once per week, at least once per month, seldom or never?","Visits to cinema,pop,jazz concerts,disco",Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0091_h</a>
+pli0092_h,Now some questions about your leisure time. Please indicate how often you take part in each activity.,Sport activity,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0092_h</a>
+pli0093_h,Now some questions about your leisure time. Please indicate how often you take part in each activity.,Artistic and musical activities,Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0093_h</a>
+pli0095_h,Which of the following activities do you take part in during your free time? Please check off how often you do each activity.,Helping Friends and Relatives,Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0095_h</a>
+pli0096_h,Which of the following activities do you take part in during your free time? Please check off how often you do each activity.,Voluntary work,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0096_h</a>
+pli0097_h,Which of the following activities do you take part in during your free time? Please check off how often you do each activity.,"Involved. Parties, local politics, citizens' initiative","Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/pli0097_h</a>
+pli0098_h,Now some questions about your leisure time. Please indicate how often you take parte in each activity.,"Going to church, attending religious events",Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0098_h</a>
+pli0165,Using online social networks (such as Facebook / Google+ / Xing),Use of online social networks,Time Use and Environmental Behavior,<a href='url'>https://paneldata.org/soep-core/data/pl/pli0165</a>
+plj0014_v3,Do you have German citizenship?,German Citizenship,Demography,<a href='url'>https://paneldata.org/soep-core/data/pl/plj0014_v3</a>
+plj0046,How concerned are you about the following issues?,Worries: Job Security Immigration To Germany,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plj0046</a>
+plj0047,How concerned are you about the following issues?,Worries: Job Security Hostility To Foreigners,"Attitudes, Values, and Personality",<a href='url'>https://paneldata.org/soep-core/data/pl/plj0047</a>
+plj0587,How often do you feel that you miss the company of others?,Loneliness: Lacking the company of others,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plj0587</a>
+plj0588,How often do you feel like an outsider?,Loneliness: Feeling of being left out,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plj0588</a>
+plj0589,How often do you feel socially isolated?,Loneliness: Feeling of being socially isolated,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pl/plj0589</a>
+sampreg,,Sample Region,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/sampreg</a>
+sex,,Gender,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/sex</a>
+syear,,Survey Year,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/syear</a>
+transab,,Transfer dependency,"Income, Taxes, and Social Security",
+transab_cat,,Transfer dependency grouped 1,"Income, Taxes, and Social Security",
+transab_cat2,,Transfer dependency grouped 2,"Income, Taxes, and Social Security",
+years_injob,,Employed by current employer in years,Work and Employment,
+regtyp,,Region type according to BBSR,Demography,<a href='url'>https://paneldata.org/soep-core/data/hbrutto/regtyp</a>
