@@ -51,6 +51,9 @@ data.file.fac <- data.file.fac %>%
 meta <- read.csv(paste0(metapath, "variables.csv") , header = TRUE,
                  colClasses = "character")
 
+meta_varcat <- read.csv(paste0(metapath, "variable_categories.csv") , header = TRUE,
+                        colClasses = "character")
+
 ################################################################################
 ################################################################################
 ### Code to create the aggregated tables in variables.csv
@@ -167,6 +170,12 @@ for (var in 1:length(meta$variable)){
                                         diffvar2 = diffvar2, diffvar3 = diffvar3,
                                         diffcount = diffcount, tabletype = "prop")
         
+        # var_cat <- subset(meta_varcat, variable==meta$variable[var] , select = c("value", "label_de"))
+        # protected.table <- merge(protected.table, var_cat, by.x = "usedvariable", by.y = "label_de")
+        # protected.table$value <- as.numeric(protected.table$value)
+        
+        # protected.table <- protected.table[with(protected.table, order(year)), ]
+        
         data.csv <- get_table_export(table = protected.table, variable = variable, 
                                      metadatapath = paste0(metapath, "variables.csv"),
                                      exportpath = exportpath, diffcount = diffcount,
@@ -190,11 +199,11 @@ for (var in 1:length(meta$variable)){
 # test center #
 # numerical variables: pglabnet pgtatzeit bmi ple0007
 # categorical variables: plh0182 plj0587
-# 
-# # for numeric variables
+
+# for numeric variables
 # mean_data <- get_data(datasetnum =  data.file.num,
 #                       datasetfac = data.file.fac,
-#                       variable = "ple0007",
+#                       variable = "plh0171",
 #                       year = "syear",
 #                       weight = "phrf",
 #                       diffcount = 1,
@@ -216,15 +225,15 @@ for (var in 1:length(meta$variable)){
 # 
 # mean_data <-  create_table_lables(table = mean_data)
 # 
-# data.csv <- get_table_export(table = mean_data, variable = "ple0007",
+# data.csv <- get_table_export(table = mean_data, variable = "mean_data",
 #                              metadatapath = paste0(metapath, "variables.csv"),
 #                              exportpath = exportpath, diffcount = 2,
 #                              tabletype = "mean")
 # 
-# json_create_lite(variable = "ple0007", 
+# json_create_lite(variable = "ple0007",
 #                  varlabel = meta$label_de[meta$variable=="ple0007"],
-#                  startyear = as.numeric(unique(data.csv$year)[1]), 
-#                  endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]), 
+#                  startyear = as.numeric(unique(data.csv$year)[1]),
+#                  endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]),
 #                  tabletype = "mean",
 #                  exportpath = paste0(exportpath, "/numerical/", "ple0007", "/meta.json"))
 # 
@@ -233,34 +242,40 @@ for (var in 1:length(meta$variable)){
 # # for categorical variables
 # prop_data <- get_data(datasetnum =  data.file.num,
 #                       datasetfac = data.file.fac,
-#                       variable = "plj0587",
+#                       variable = "erwst",
 #                       year = "syear",
 #                       weight = "phrf",
-#                       diffcount = 2,
-#                       diffvars = c("sampreg", "sex"),
+#                       diffcount = 0,
+#                       diffvars = "",
 #                       vallabel = TRUE)
 # 
 # prop_data <- get_prop_values(dataset = prop_data,
-#                              groupvars = c("usedvariable", "year", "sampreg", "sex"),
+#                              groupvars = c("usedvariable", "year"),
 #                              alpha = 0.05)
 # 
 # prop_data <-  get_protected_values(dataset = prop_data, cell.size = 30)
 # 
 # 
-# prop_data <- expand_table(table = prop_data, diffvar1 = "sampreg",
-#                           diffvar2 = "sex", diffcount = 2, tabletype = "prop")
+# prop_data <- expand_table(table = prop_data, diffvar1 ="",
+#                           diffvar2 = "", diffcount = 0, tabletype = "prop")
+# 
+# var_cat <- subset(meta_varcat, variable=="erwst" , select = c("value", "label_de"))
+# prop_data <- merge(prop_data, var_cat, by.x = "usedvariable", by.y = "label_de")
+# prop_data$value <- as.numeric(prop_data$value)
+# 
+# prop_data <- prop_data[with(prop_data, order(year, value)), ]
 # 
 # 
-# data.csv <- get_table_export(table = prop_data, variable = "plj0587",
+# data.csv <- get_table_export(table = prop_data, variable = "erwst",
 #                              metadatapath = paste0(metapath, "variables.csv"),
-#                              exportpath = exportpath, diffcount = 2,
+#                              exportpath = exportpath, diffcount = 0,
 #                              tabletype = "prop")
 # 
-# json_create_lite(variable = "plj0587",
-#                  varlabel = meta$label_de[meta$variable=="plj0587"],
+# json_create_lite(variable = "hgowner",
+#                  varlabel = meta$label_de[meta$variable=="hgowner"],
 #                  startyear = as.numeric(unique(data.csv$year)[1]),
 #                  endyear = as.numeric(unique(data.csv$year)[length(unique(data.csv$year))]),
 #                  tabletype = "prop",
-#                  exportpath = paste0(exportpath, "/categorical/", "plj0587", "/meta.json"))
+#                  exportpath = paste0(exportpath, "/categorical/", "hgowner", "/meta.json"))
 
 #####################################################################################################

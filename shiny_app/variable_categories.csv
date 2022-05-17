@@ -98,10 +98,6 @@ soep-core,p_data,v36,pgcasmin,6,(2c_gen) general maturity certificate,(2c_gen) g
 soep-core,p_data,v36,pgcasmin,7,(2c_voc) vocational maturity certificate,(2c_voc) vocational maturity certificate
 soep-core,p_data,v36,pgcasmin,8,(3a) lower tertiary education,(3a) lower tertiary education
 soep-core,p_data,v36,pgcasmin,9,(3b) higher tertiary education,(3b) higher tertiary education
-soep-core,p_data,v36,pgfamstd,1,Married,Married
-soep-core,p_data,v36,pgfamstd,2,"Married, but separated","Married, but separated"
-soep-core,p_data,v36,pgfamstd,3,Single,Single
-soep-core,p_data,v36,pgfamstd,4,Divorced,Divorced
 soep-core,p_data,v36,pgisced97,0,in school,in school
 soep-core,p_data,v36,pgisced97,1,inadequately,inadequately
 soep-core,p_data,v36,pgisced97,2,general elemantary,general elemantary
@@ -188,7 +184,8 @@ soep-core,p_data,v36,ple0024,1,Yes,Yes
 soep-core,p_data,v36,ple0024,2,No,No
 soep-core,p_data,v36,ple0040,1,Yes,Yes
 soep-core,p_data,v36,ple0040,2,No,No
-soep-core,p_data,v36,ple0044_h,1,Not a day,Not a day
+soep-core,p_data,v36,ple0044_h,1,Yes,Yes
+soep-core,p_data,v36,ple0044_h,2,No,No
 soep-core,p_data,v36,ple0053,1,Yes,Yes
 soep-core,p_data,v36,ple0053,2,No,No
 soep-core,p_data,v36,ple0081_h,1,Yes,Yes
@@ -732,3 +729,13 @@ soep-core,p_data,v36,transab_cat2,2,High transfer dependency,High transfer depen
 soep-core,p_data,v36,transab_cat2,3,Very high transfer dependency,Very high transfer dependency
 soep-core,p_data,v36,regtyp,1,Urban Area,Urban Area
 soep-core,p_data,v36,regtyp,2,Rural Area,Rural Area
+soep-core,p_data,v36,hgowner,1,Owner,Owner
+soep-core,p_data,v36,hgowner,2,Main tenant,Main tenant
+soep-core,p_data,v36,hgowner,3,Subtenant,Subtenant
+soep-core,p_data,v36,hgowner,4,Tenant,Tenant
+soep-core,p_data,v36,hgowner,5,Resident or shared accommodation,Resident or shared accommodation
+soep-core,p_data,v36,pgfamstd,1,Married,Married
+soep-core,p_data,v36,pgfamstd,2,"Married, but separated","Married, but separated"
+soep-core,p_data,v36,pgfamstd,3,Single,Single
+soep-core,p_data,v36,pgfamstd,4,Divorced,Divorced
+soep-core,p_data,v36,pgfamstd,5,Widowed,Widowed

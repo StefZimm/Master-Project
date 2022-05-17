@@ -69,7 +69,11 @@ drop if netto>19
 drop if phrf==0
 
 * recode health variables
-recode ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 ple0021 ple0022 ple0024 (-2 = 2)
+recode ple0011 ple0012 ple0013 ple0014 ple0015 ple0016 ple0017 ple0018 ple0019 ple0020 ple0021 ple0022 ple0024 ple0044_h  (-2 = 2)
+recode plb0196_h (2 = .) if inlist(syear, 1984, 2001)
+
+recode pgfamstd (6 8= 2) (7 = 1)
+
 
 *Missings to systemmissings NA
 mvdecode _all, mv(-1/-8)

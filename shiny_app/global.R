@@ -63,16 +63,15 @@ library(shinycssloaders)
 
 variables <- read.csv("../metadata/p_data/variables.csv")
 var_cat <- read.csv("../metadata/p_data/variable_categories.csv")
-var_q_table <- read.csv("metadata/p_data/var_question.csv")
 
-# var_links <- variables %>%
-#   select(label_de, topic, variable, var_link, paper_link) %>%
-#   arrange((topic), label_de) %>%
-#   rename(Variable_Label = label_de,
-#          Study_Topic = topic,
-#          Variable_Name = variable,
-#          Variable_Information = var_link,
-#          Variable_Paper = paper_link)
+var_links <- variables %>%
+  select(label_de, topic, variable, var_link, paper_link) %>%
+  arrange((topic), label_de) %>%
+  rename(Variable_Label = label_de,
+         Study_Topic = topic,
+         Variable_Name = variable,
+         Variable_Information = var_link,
+         Variable_Paper = paper_link)
 
 # path for tables, not sure how to load in only certain tables or if it can even be done this way. It seems like all tables will need to be loaded
 tables <- "tables/"
@@ -100,7 +99,7 @@ top_demo <- variables %>%
   filter(meantable == "demo") 
 
 top_heat_cat <- variables %>% filter(meantable == "No")  %>% select(label_de)
-top_heat_num <- variables %>% filter(meantable == "Yes") %>% select(label_de) 
+top_heat_num <- variables %>% filter(meantable == "Yes") %>% select(label_de)
 
 ################################################################################
 # Functions #
@@ -464,6 +463,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
         line = list(width = 4, dash = "dot"),
         error_y = ~list(array = sd)) %>% 
         layout(title = title, 
+               yaxis = list(range = list(0,~max(mean))),
                xaxis = list(title = 'year', range = list(start,end), 
                             tickvals = as.list(seq(1984,2019)),
                             tickangle=90, tickfont = list(family='Rockwell', 
@@ -484,6 +484,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
         mode = "lines+markers",
         line = list(width = 4, dash = "dot")) %>% 
         layout(title = title, 
+               yaxis = list(range = list(0,~max(mean))),
                xaxis = list(title = 'year', range = list(start,end), 
                             tickvals = as.list(seq(1984,2019)),
                             tickangle=90, tickfont = list(family='Rockwell', 
@@ -519,6 +520,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
       mode = "lines+markers",
       line = list(width = 4, dash = "dot")) %>% 
       layout(title = title, 
+             yaxis = list(range = list(0,~max(mean))),
              xaxis = list(title = 'year', range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
                           tickangle=90, tickfont = list(family='Rockwell', 
@@ -593,6 +595,9 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
       mutate(sd = percent - (lower_confidence * 100))
     colnames(data)[which(names(data) == variable)] <- "combined_group"
     
+    data <- data[with(data, order(year, value, combined_group)), ]
+    data$combined_group <- factor(data$combined_group, levels = unique(data$combined_group), ordered = TRUE)
+    
   } 
   
   if (diffcount == 2) {  
@@ -600,9 +605,11 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
     data <- data %>%
       unite(combined_group, variable, diffvar1, sep="; ") %>%
       mutate(percent = percent * 100) %>%
-      mutate(sd = percent - (lower_confidence * 100)) %>%
-      filter(is.na(sd)!=1) 
-    
+      mutate(sd = percent - (lower_confidence * 100)) 
+ 
+    data <- data[with(data, order(year, value, combined_group)), ]
+    data$combined_group <- factor(data$combined_group, levels = unique(data$combined_group), ordered = TRUE)
+
   } 
   
   if (diffcount == 3) {  
@@ -610,9 +617,11 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
     data <- data %>%
       unite(combined_group, variable, diffvar1, diffvar2, sep=", ") %>%
       mutate(percent = percent * 100) %>%
-      mutate(sd = percent - (lower_confidence * 100)) %>%
-      filter(is.na(sd)!=1) 
+      mutate(sd = percent - (lower_confidence * 100)) 
     
+    data <- data[with(data, order(year, value, combined_group)), ]
+    data$combined_group <- factor(data$combined_group, levels = unique(data$combined_group), ordered = TRUE)
+
   } 
   
   if (ci == FALSE) {  
@@ -626,7 +635,8 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
       type = "scatter",
       mode = "lines+markers",
       line = list(width = 4, dash = "dot")) %>% 
-      layout(title = title, 
+      layout(title = title,
+             legend = list(traceorder = "reversed"),
              yaxis = list(ticksuffix = "%",  range = c(0, 100), title = 'percent'),
              xaxis = list(title = 'year', range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
@@ -745,14 +755,16 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
     mutate(percent = round(percent*100, digits = 2)) %>%
     mutate(lower_confidence = round(percent-sd, digits = 2)) %>%
-    mutate(upper_confidence = round(percent+sd, digits = 2)) %>%
-    filter(is.na(sd)!=1) 
+    mutate(upper_confidence = round(percent+sd, digits = 2))
   
   groupdata2 <- groupdata2 %>%
-    mutate(sd = round((percent - lower_confidence)*100, digits = 2)) %>%
-    filter(is.na(sd)!=1) 
+    mutate(sd = round((percent - lower_confidence)*100, digits = 2))
   
   data <- cbind(groupdata, groupdata2[c(variable, "combined_group2")])
+  
+  data <- data[with(data, order(year, value, combined_group)), ]
+  data$combined_group <- factor(data$combined_group,
+                                levels = unique(data$combined_group), ordered = TRUE)
   
   if (plottype == "dodge") { 
     # dodged barplot
@@ -763,7 +775,9 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
                     colors = color.palette,
                     type = 'bar') %>% 
       layout(title = title, 
-             xaxis = list(title = 'year', range = list(start,end), 
+             legend = list(traceorder = "reversed"),
+             xaxis = list(title = 'year', 
+                          range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
                           tickangle=90, tickfont = list(family='Rockwell', 
                                                         size=14)),
@@ -786,7 +800,9 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
       plot <- plot_ly(data2, type = 'bar',
                       colors = color.palette) %>%
         layout(title = title, 
-               xaxis = list(title = 'year', range = list(start,end), 
+               legend = list(traceorder = "normal"),
+               xaxis = list(title = 'year',
+                            range = list(start,end), 
                             tickvals = as.list(seq(1984,2019)),
                             tickangle=90, tickfont = list(family='Rockwell', 
                                                           size=14)),
@@ -821,9 +837,16 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     data <- data %>%
       filter(year >= start & year <=end)
     
+    data <- data[with(data, order(year, value, combined_group2)), ]
+    
+    data$fct_variable <- factor(data[,variable],
+                                levels = unique(data[,variable]), ordered = TRUE)
+    
     if (diffvar1 == "" & diffvar2 == "") { 
+      
+
       # stacked barplot
-      plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+      plot <- ggplot(data, aes(fill=fct_variable, 
                                y=percent, x=as.character(year),
                                text = paste('Year: ', year,
                                             '<br>Percent:', percent, 
@@ -843,7 +866,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
     
     # stacked barplot
     else { 
-      plot <- ggplot(data, aes(fill=eval(parse(text = variable)), 
+      plot <- ggplot(data, aes(fill=fct_variable, 
                                y=percent, x=as.character(year),
                                text = paste('Year: ', year,
                                             '<br>Percent:', percent, 
