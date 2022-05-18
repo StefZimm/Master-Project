@@ -64,14 +64,14 @@ library(shinycssloaders)
 variables <- read.csv("../metadata/p_data/variables.csv")
 var_cat <- read.csv("../metadata/p_data/variable_categories.csv")
 
-var_links <- variables %>%
-  select(label_de, topic, variable, var_link, paper_link) %>%
-  arrange((topic), label_de) %>%
-  rename(Variable_Label = label_de,
-         Study_Topic = topic,
-         Variable_Name = variable,
-         Variable_Information = var_link,
-         Variable_Paper = paper_link)
+# var_links <- variables %>%
+#   select(label_de, topic, variable, var_link, paper_link) %>%
+#   arrange((topic), label_de) %>%
+#   rename(Variable_Label = label_de,
+#          Study_Topic = topic,
+#          Variable_Name = variable,
+#          Variable_Information = var_link,
+#          Variable_Paper = paper_link)
 
 # path for tables, not sure how to load in only certain tables or if it can even be done this way. It seems like all tables will need to be loaded
 tables <- "tables/"
@@ -451,6 +451,18 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
     data <- data %>%
       mutate(sd = mean - lowerci_mean)
     
+    if (max(data$max) <= 10 & max(data$max) >7) {
+      max_range <- 10
+    }
+    
+    else if (max(data$max) <=7) {
+      max_range <- 7
+    }
+    
+    else if (max(data$max) > 10) {
+      max_range <- (max(data$mean)*2)
+    }
+
     if (ci == TRUE) {
       
       plot <- plot_ly(
@@ -463,7 +475,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
         line = list(width = 4, dash = "dot"),
         error_y = ~list(array = sd)) %>% 
         layout(title = title, 
-               yaxis = list(range = list(0,~max(mean))),
+               yaxis = list(range = list(0,max_range)),
                xaxis = list(title = 'year', range = list(start,end), 
                             tickvals = as.list(seq(1984,2019)),
                             tickangle=90, tickfont = list(family='Rockwell', 
@@ -484,7 +496,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
         mode = "lines+markers",
         line = list(width = 4, dash = "dot")) %>% 
         layout(title = title, 
-               yaxis = list(range = list(0,~max(mean))),
+               yaxis = list(range = list(0,max_range)),
                xaxis = list(title = 'year', range = list(start,end), 
                             tickvals = as.list(seq(1984,2019)),
                             tickangle=90, tickfont = list(family='Rockwell', 
@@ -520,7 +532,7 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
       mode = "lines+markers",
       line = list(width = 4, dash = "dot")) %>% 
       layout(title = title, 
-             yaxis = list(range = list(0,~max(mean))),
+             yaxis = list(range = list(0,max_range)),
              xaxis = list(title = 'year', range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
                           tickangle=90, tickfont = list(family='Rockwell', 
@@ -547,7 +559,9 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
     plot <- plot_ly(data2, type = 'scatter', 
                     mode = "lines+markers") %>%
       layout(title = title, 
-             xaxis = list(title = 'year', range = list(start,end), 
+             yaxis = list(range = list(0,max_range)),
+             xaxis = list(title = 'year', 
+                          range = list(start,end), 
                           tickvals = as.list(seq(1984,2019)),
                           tickangle=90, tickfont = list(family='Rockwell', 
                                                         size=14)),

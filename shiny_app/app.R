@@ -80,7 +80,7 @@ ui <-
 ######## landing page ##################
                
                tabPanel(
-                 setSliderColor(c("red", "red", "red", "red", "red", "red"), c(1,2,3,4,5,6)),
+                 setSliderColor(c("red", "red", "red", "red", "red", "red", "red"), c(1,2,3,4,5,6,7)),
                  title = " Home", icon = icon("home"), value = 'home_page',
                  mainPanel(width = 11, style="margin-left:4%; margin-right:4%",
                            introBox(
@@ -163,16 +163,6 @@ ui <-
                ), #tab panel bracket
                
 ######## topic panels ##################
-
-######## summary panel ##################
-
-               tabPanel("Summary", icon = icon("list-ul"), value = "summary",
-                        sidebarPanel(width = 12,
-                                     h2("Data"),
-                                     div(style = "margin-top: 30px",
-                                         DT::dataTableOutput("var_link_table")))
-                                     ), #tabpanel close
-               
 ######## income panel ##################
 
                tabPanel("Income", icon = icon("euro-sign"), value = "income",
@@ -234,8 +224,8 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                          h2("Plots"),
-                                         bsButton("info_income", label = "", icon = icon("info-circle"), style = "", size = "extra-small"),
-                                         plotlyOutput("inc_plot", width = "100%")),
+                                         bsButton("info_income",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                                         shinycssloaders::withSpinner(plotlyOutput("inc_plot", width = "100%"))),
                                      div(style = "margin-top: 30px",
                                          h2("Data"),
                                          DT::dataTableOutput("inc_table"))
@@ -300,7 +290,8 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                             h2("Plots"),
-                                            plotlyOutput("health_plot", width = "100%")),
+                                            bsButton("info_health",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                                            shinycssloaders::withSpinner(plotlyOutput("health_plot", width = "100%"))),
                                         div(style = "margin-top: 30px",
                                             h2("Data"),
                                             DT::dataTableOutput("health_table"))
@@ -360,7 +351,8 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                             h2("Plots"),
-                                            plotlyOutput("att_plot", width = "100%")),
+                                            bsButton("info_att",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                                            shinycssloaders::withSpinner(plotlyOutput("att_plot", width = "100%"))),
                                         div(style = "margin-top: 30px",
                                             h2("Data"),
                                             DT::dataTableOutput("att_table"))
@@ -422,7 +414,8 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                             h2("Plots"),
-                                            plotlyOutput("home_plot", width = "100%")),
+                                            bsButton("info_home",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                                            shinycssloaders::withSpinner(plotlyOutput("home_plot", width = "100%"))),
                                         div(style = "margin-top: 30px",
                                             h2("Data"),
                                             DT::dataTableOutput("home_table"))
@@ -467,7 +460,7 @@ ui <-
                                          p(tags$b("Select the plot you want to see.")),
                                          awesomeRadio("plot_select_time",
                                                         label = "",
-                                                        choices = c("Line", "Stacked Bar", "Box Plot"),
+                                                        choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"),
                                                         selected = "Line",
                                                         status = "danger"
                                          )),
@@ -485,7 +478,8 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                             h2("Plots"),
-                                            plotlyOutput("time_plot", width = "100%")),
+                                            bsButton("info_time",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                                            shinycssloaders::withSpinner(plotlyOutput("time_plot", width = "100%"))),
                                         div(style = "margin-top: 30px",
                                             h2("Data"),
                                             DT::dataTableOutput("time_table"))
@@ -547,7 +541,8 @@ ui <-
                                  column(9,
                                         div(style = "margin-top: 30px",
                                             h2("Plots"),
-                                            plotlyOutput("emp_plot", width = "100%")),
+                                            bsButton("info_emp",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                                            shinycssloaders::withSpinner(plotlyOutput("emp_plot", width = "100%"))),
                                         div(style = "margin-top: 30px",
                                             h2("Data"),
                                             DT::dataTableOutput("emp_table"))
@@ -725,11 +720,13 @@ navbarMenu("Info", icon = icon("info-circle"),
                               ),
                     ),
            br(),
-           tabPanel("Metadata", 
+           tabPanel("Metadata", icon = icon("list-ul"), 
                     value = "metadata",
-                    fluidRow(style = "width:60%; margin-left: 2%; min-width: 350px",
-                             h4("Some metadata information", style = "color:black;"),
-                             h5(style = "color:black", "text, text, text"))),
+                    sidebarPanel(width = 12,
+                                 h2("Search a variable name to see the question"),
+                                 div(style = "margin-top: 30px",
+                                     DT::dataTableOutput("var_q_table")))
+           ), #tabpanel close
            br(),
            tabPanel("How to use this tool", value = "info_page",
                     sidebarPanel(width = 1),
@@ -784,7 +781,12 @@ navbarMenu("Info", icon = icon("info-circle"),
                                             if you selected a categorical variable. Select a line plot, side by side bar plot, or box plot if you selected a numerical variables. "),
                                          br(),
                                          br(),
-                                         img(src = 'plot2.png', height = 1000, width = 2200)
+                                         img(src = 'plot2.png', height = 500, width = 1200),
+                                         h4("You can download the data within a topic in CSV, Excel, or PDF format, or copy or print the data by selecting the appropriate button 
+                                            above the data table.  If you are interested in viewing the data for a specific year, you can enter that year in the search bar."),
+                                         br(),
+                                         br(),
+                                         img(src = 'data.png', height = 500, width = 950)
                                          ))))
            ) #navbarmenu break
 ) #navbarpage break
@@ -869,12 +871,8 @@ server <- function(input, output, session) {
   observeEvent(input$reset_time_var, {reset("group10")})
   observeEvent(input$reset_emp_var, {reset("group12")})
   
-  ######## Attention: New Code from Stefan ##################
-
-  ######## summary panel ##################
-  
-  output$var_link_table <- DT::renderDataTable({
-    DT::datatable(var_links, escape = 4, options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25), filter = "top")
+  output$var_q_table <- DT::renderDataTable({
+    DT::datatable(var_q_table, escape = FALSE, options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25), filter = "top")
   })
  
   ## Income Panel ###########
@@ -1153,7 +1151,7 @@ server <- function(input, output, session) {
     }
   })
   
-  # Var Information Button   
+  #### income Var Information Button   ####  
   observeEvent(input$inc_variable, {
     
     removePopover(session, "info_income")
@@ -1505,6 +1503,71 @@ server <- function(input, output, session) {
     }
   })
   
+  #### health Var Information Button   ####
+  observeEvent(input$health_variable, {
+    
+    removePopover(session, "info_health")
+    Sys.sleep(0.2)
+    
+    if(variables$description[variables$label_de==input$health_variable] != "" & 
+       variables$documentation_link[variables$label_de==input$health_variable] != "" & 
+       variables$documentation_paper[variables$label_de==input$health_variable] != ""){
+      
+      addPopover(session, "info_health", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$health_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$health_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$health_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$health_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$health_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$health_variable] == ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$health_variable],
+                             "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$health_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$health_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$health_variable] != ""){
+      
+      addPopover(session, "info_health", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$health_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$health_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$health_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$health_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$health_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$health_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$health_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+  })
+  
+  
   ######## health render datatable ##################
   # load data
   output$health_table <- renderDataTable(
@@ -1786,6 +1849,70 @@ server <- function(input, output, session) {
     
     else if (input$plot_select_att == 'Side by Side Bar') {
       dodgebarplot_att()
+    }
+  })
+  
+  #### attitudes Var Information Button   ####
+  observeEvent(input$att_variable, {
+    
+    removePopover(session, "info_att")
+    Sys.sleep(0.2)
+    
+    if(variables$description[variables$label_de==input$att_variable] != "" & 
+       variables$documentation_link[variables$label_de==input$att_variable] != "" & 
+       variables$documentation_paper[variables$label_de==input$att_variable] != ""){
+      
+      addPopover(session, "info_att", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$att_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$att_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$att_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$att_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$att_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$att_variable] == ""){
+      
+      addPopover(session, "info_att", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$att_variable],
+                             "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$att_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$att_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$att_variable] != ""){
+      
+      addPopover(session, "info_att", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$att_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$att_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$att_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$att_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$att_variable] != ""){
+      
+      addPopover(session, "info_att", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$att_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$att_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
     }
   })
   
@@ -2079,6 +2206,70 @@ server <- function(input, output, session) {
     }
   })
   
+  #### household Var Information Button   ####
+  observeEvent(input$home_variable, {
+    
+    removePopover(session, "info_home")
+    Sys.sleep(0.2)
+    
+    if(variables$description[variables$label_de==input$home_variable] != "" & 
+       variables$documentation_link[variables$label_de==input$home_variable] != "" & 
+       variables$documentation_paper[variables$label_de==input$home_variable] != ""){
+      
+      addPopover(session, "info_home", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$home_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$home_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$home_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$home_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$home_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$home_variable] == ""){
+      
+      addPopover(session, "info_home", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$home_variable],
+                             "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$home_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$home_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$home_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$home_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$home_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$home_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$home_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$home_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$home_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$home_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+  })
+  
   ######## home render datatable ##################
   
   output$home_table <- renderDataTable(
@@ -2364,6 +2555,70 @@ server <- function(input, output, session) {
     
     else if (input$plot_select_time == 'Side by Side Bar') {
       dodgebarplot_time()
+    }
+  })
+  
+  #### time Var Information Button   ####
+  observeEvent(input$time_variable, {
+    
+    removePopover(session, "info_time")
+    Sys.sleep(0.2)
+    
+    if(variables$description[variables$label_de==input$time_variable] != "" & 
+       variables$documentation_link[variables$label_de==input$time_variable] != "" & 
+       variables$documentation_paper[variables$label_de==input$time_variable] != ""){
+      
+      addPopover(session, "info_time", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$time_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$time_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$time_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$time_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$time_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$time_variable] == ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$time_variable],
+                             "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$time_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$time_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$time_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$time_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$time_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$time_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$time_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$time_variable] != ""){
+      
+      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$time_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$time_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
     }
   })
   
@@ -2658,6 +2913,73 @@ server <- function(input, output, session) {
       dodgebarplot_emp()
     }
   })
+  
+  #### employment Var Information Button   ####
+  
+  observeEvent(input$emp_variable, {
+    
+    removePopover(session, "info_emp")
+    Sys.sleep(0.2)
+    
+    if(variables$description[variables$label_de==input$emp_variable] != "" & 
+       variables$documentation_link[variables$label_de==input$emp_variable] != "" & 
+       variables$documentation_paper[variables$label_de==input$emp_variable] != ""){
+      
+      addPopover(session, "info_emp", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$emp_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$emp_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$emp_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$emp_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$emp_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$emp_variable] == ""){
+      
+      addPopover(session, "info_emp", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$emp_variable],
+                             "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$emp_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$emp_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$emp_variable] != ""){
+      
+      addPopover(session, "info_emp", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$emp_variable],
+                               target="_blank"), "  <br>", 
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$emp_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$emp_variable] == "" & 
+            variables$documentation_link[variables$label_de==input$emp_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$emp_variable] != ""){
+      
+      addPopover(session, "info_emp", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$emp_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$emp_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+  })
+  
+  
   ######## employment render datatable ##################
   
   
