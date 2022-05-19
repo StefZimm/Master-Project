@@ -185,8 +185,19 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
   dataset <- table  %>%
     filter(year == syear)
   
-  state_level_map <- raster::getData("GADM", country = "Germany", level = 1) %>%
-    st_as_sf()
+  state_level_map <- readRDS("gadm36_DEU_1_sp.rds")
+  
+  federal_states <- data.frame(as.vector(state_level_map$NAME_1), 
+                               as.vector(state_level_map$HASC_1))
+  
+  names(federal_states) <- c("NAME_1", "HASC_1")
+  state_level_map <- gSimplify(state_level_map, tol=0.01, topologyPreserve=TRUE)
+  state_level_map <- st_as_sf(state_level_map)
+  
+  state_level_map_centroid <- st_coordinates(st_centroid(state_level_map))
+  state_level_map <- cbind(federal_states, state_level_map_centroid, 
+                           state_level_map)
+  state_level_map <- st_as_sf(state_level_map)
   
   if("NAME_1" %in% colnames(state_level_map)){
     state_level_map$NAME_1 <-state_level_map$NAME_1 %>%
@@ -211,12 +222,11 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
   state_level_map$HASC_1 <- str_replace(state_level_map$HASC_1, "DE.", "")
   
   germanydata <- left_join(state_level_map, dataset, by = "NAME_1") 
-  germanydata <- cbind(germanydata, st_coordinates(st_centroid(germanydata)))
   germanydata$Y[germanydata$HASC_1=="BR"] <- germanydata$Y[germanydata$HASC_1=="BR"] + 0.4
   germanydata$X[germanydata$HASC_1=="BR"] <- germanydata$X[germanydata$HASC_1=="BR"] + 0.4
   
   germanydata <- germanydata %>%
-    filter(NAME_1 != "Saarland") 
+    filter(NAME_1 != "Saarland")  
   
   if (statistic == "mean") {
     if (diffvar == "") {
