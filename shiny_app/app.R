@@ -1530,7 +1530,7 @@ server <- function(input, output, session) {
             variables$documentation_link[variables$label_de==input$health_variable] == "" & 
             variables$documentation_paper[variables$label_de==input$health_variable] == ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_health", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(variables$description[variables$label_de==input$health_variable],
                              "  <br>"
                  )),
@@ -1552,16 +1552,30 @@ server <- function(input, output, session) {
                  trigger = "hold", placement = "right")
     }
     
-    else if(variables$description[variables$label_de==input$health_variable] == "" & 
+    else if(variables$description[variables$label_de==input$health_variable] != "" & 
             variables$documentation_link[variables$label_de==input$health_variable] != "" & 
-            variables$documentation_paper[variables$label_de==input$health_variable] != ""){
+            variables$documentation_paper[variables$label_de==input$health_variable] == ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_health", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(variables$description[variables$label_de==input$health_variable],
                              "  <br>", 
                              a("Additional Variable Information", 
                                href = variables$documentation_link[variables$label_de==input$health_variable],
                                target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$health_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$health_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$health_variable] != ""){
+      
+      addPopover(session, "info_health", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$health_variable],
+                             "  <br>",
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$health_variable],
+                               target="_blank")
                  )),
                  trigger = "hold", placement = "right")
     }
@@ -1914,6 +1928,33 @@ server <- function(input, output, session) {
                  )),
                  trigger = "hold", placement = "right")
     }
+    else if(variables$description[variables$label_de==input$att_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$att_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$att_variable] == ""){
+      
+      addPopover(session, "info_att", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$att_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$health_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$att_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$att_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$att_variable] != ""){
+      
+      addPopover(session, "info_att", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$att_variable],
+                             "  <br>",
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$att_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
   })
   
   ######## attitudes render datatable ##################
@@ -2244,7 +2285,7 @@ server <- function(input, output, session) {
             variables$documentation_link[variables$label_de==input$home_variable] != "" & 
             variables$documentation_paper[variables$label_de==input$home_variable] != ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_home", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(a("Additional Variable Information", 
                                href = variables$documentation_link[variables$label_de==input$home_variable],
                                target="_blank"), "  <br>", 
@@ -2259,12 +2300,39 @@ server <- function(input, output, session) {
             variables$documentation_link[variables$label_de==input$home_variable] != "" & 
             variables$documentation_paper[variables$label_de==input$home_variable] != ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_home", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(variables$description[variables$label_de==input$home_variable],
                              "  <br>", 
                              a("Additional Variable Information", 
                                href = variables$documentation_link[variables$label_de==input$home_variable],
                                target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    else if(variables$description[variables$label_de==input$home_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$home_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$home_variable] == ""){
+      
+      addPopover(session, "info_home", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$home_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$home_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$home_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$home_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$home_variable] != ""){
+      
+      addPopover(session, "info_home", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$home_variable],
+                             "  <br>",
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$home_variable],
+                               target="_blank")
                  )),
                  trigger = "hold", placement = "right")
     }
@@ -2585,7 +2653,7 @@ server <- function(input, output, session) {
             variables$documentation_link[variables$label_de==input$time_variable] == "" & 
             variables$documentation_paper[variables$label_de==input$time_variable] == ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_time", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(variables$description[variables$label_de==input$time_variable],
                              "  <br>"
                  )),
@@ -2596,7 +2664,7 @@ server <- function(input, output, session) {
             variables$documentation_link[variables$label_de==input$time_variable] != "" & 
             variables$documentation_paper[variables$label_de==input$time_variable] != ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_time", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(a("Additional Variable Information", 
                                href = variables$documentation_link[variables$label_de==input$time_variable],
                                target="_blank"), "  <br>", 
@@ -2611,12 +2679,39 @@ server <- function(input, output, session) {
             variables$documentation_link[variables$label_de==input$time_variable] != "" & 
             variables$documentation_paper[variables$label_de==input$time_variable] != ""){
       
-      addPopover(session, "info_income", title=HTML("<b> Variable description: </b>"), 
+      addPopover(session, "info_time", title=HTML("<b> Variable description: </b>"), 
                  HTML(paste0(variables$description[variables$label_de==input$time_variable],
                              "  <br>", 
                              a("Additional Variable Information", 
                                href = variables$documentation_link[variables$label_de==input$time_variable],
                                target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    else if(variables$description[variables$label_de==input$time_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$time_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$time_variable] == ""){
+      
+      addPopover(session, "info_time", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$time_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$time_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$time_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$time_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$time_variable] != ""){
+      
+      addPopover(session, "info_time", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$time_variable],
+                             "  <br>",
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$time_variable],
+                               target="_blank")
                  )),
                  trigger = "hold", placement = "right")
     }
@@ -2977,6 +3072,33 @@ server <- function(input, output, session) {
                  )),
                  trigger = "hold", placement = "right")
     }
+    else if(variables$description[variables$label_de==input$emp_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$emp_variable] != "" & 
+            variables$documentation_paper[variables$label_de==input$emp_variable] == ""){
+      
+      addPopover(session, "info_emp", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$emp_variable],
+                             "  <br>", 
+                             a("Additional Variable Information", 
+                               href = variables$documentation_link[variables$label_de==input$emp_variable],
+                               target="_blank"), "  <br>"
+                 )),
+                 trigger = "hold", placement = "right")
+    }
+    
+    else if(variables$description[variables$label_de==input$emp_variable] != "" & 
+            variables$documentation_link[variables$label_de==input$emp_variable] == "" & 
+            variables$documentation_paper[variables$label_de==input$emp_variable] != ""){
+      
+      addPopover(session, "info_emp", title=HTML("<b> Variable description: </b>"), 
+                 HTML(paste0(variables$description[variables$label_de==input$emp_variable],
+                             "  <br>",
+                             a("Dataset Codebook ", 
+                               href = variables$documentation_paper[variables$label_de==input$emp_variable],
+                               target="_blank")
+                 )),
+                 trigger = "hold", placement = "right")
+    }
   })
   
   
@@ -3138,6 +3260,33 @@ observeEvent(input$heatmap_variable, {
                            a("Additional Variable Information",
                              href = variables$documentation_link[variables$label_de==input$heatmap_variable],
                              target="_blank"), "  <br>"
+               )),
+               trigger = "hold", placement = "right")
+  }
+  else if(variables$description[variables$label_de==input$heatmap_variable] != "" & 
+          variables$documentation_link[variables$label_de==input$heatmap_variable] != "" & 
+          variables$documentation_paper[variables$label_de==input$heatmap_variable] == ""){
+    
+    addPopover(session, "info_heatmap", title=HTML("<b> Variable description: </b>"), 
+               HTML(paste0(variables$description[variables$label_de==input$heatmap_variable],
+                           "  <br>", 
+                           a("Additional Variable Information", 
+                             href = variables$documentation_link[variables$label_de==input$heatmap_variable],
+                             target="_blank"), "  <br>"
+               )),
+               trigger = "hold", placement = "right")
+  }
+  
+  else if(variables$description[variables$label_de==input$heatmap_variable] != "" & 
+          variables$documentation_link[variables$label_de==input$heatmap_variable] == "" & 
+          variables$documentation_paper[variables$label_de==input$heatmap_variable] != ""){
+    
+    addPopover(session, "info_heatmap", title=HTML("<b> Variable description: </b>"), 
+               HTML(paste0(variables$description[variables$label_de==input$heatmap_variable],
+                           "  <br>",
+                           a("Dataset Codebook ", 
+                             href = variables$documentation_paper[variables$label_de==input$heatmap_variable],
+                             target="_blank")
                )),
                trigger = "hold", placement = "right")
   }

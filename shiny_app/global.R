@@ -446,23 +446,23 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
   
   title <- meta$label_de[meta$variable==variable]
   
+  if (max(data$max, na.rm = TRUE) > 10) {
+    max_range <- (max(data$mean)*2)
+  }
+  
+  if (max(data$max, na.rm = TRUE) <= 10 & max(data$max, na.rm = TRUE) >7) {
+    max_range <- 10
+  }
+  
+  if (max(data$max, na.rm = TRUE) <= 7) {
+    max_range <- 7
+  }
+  
   if (diffcount == 1) {  
     
     data <- data %>%
       mutate(sd = mean - lowerci_mean)
     
-    if (max(data$max) <= 10 & max(data$max) >7) {
-      max_range <- 10
-    }
-    
-    else if (max(data$max) <=7) {
-      max_range <- 7
-    }
-    
-    else if (max(data$max) > 10) {
-      max_range <- (max(data$mean)*2)
-    }
-
     if (ci == TRUE) {
       
       plot <- plot_ly(
@@ -749,7 +749,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
       unite(combined_group2, diffvar1,  diffvar2, sep=", ")
   }
   
-  if (diffvar1 != "" & diffvar2 == "") { 
+  if (diffvar1 != "" & diffvar2 == "") {
     groupdata <- data %>%
       unite(combined_group, variable, diffvar1, sep=", ")
     
