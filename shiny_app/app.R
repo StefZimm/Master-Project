@@ -599,8 +599,8 @@ tabPanel("Heatmap", icon = icon("table"), value = "report",
                   column(9,
                          div(style = "margin-top: 30px",
                              h2("Plots"),
-                             bsButton("info_heatmap", label = "", icon = icon("info-circle"), style = "", size = "extra-small"),
-                             plotlyOutput("heat_plot", width = "100%")),
+                             bsButton("info_heatmap", label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
+                             shinycssloaders::withSpinner(plotlyOutput("heat_plot", width = "100%"))),
                          div(style = "margin-top: 30px",
                              h2("Data"),
                              DT::dataTableOutput("heatmap_table"))
@@ -871,6 +871,7 @@ server <- function(input, output, session) {
   observeEvent(input$reset_time_var, {reset("group10")})
   observeEvent(input$reset_emp_var, {reset("group12")})
   
+  ##### metadata #####
   output$var_q_table <- DT::renderDataTable({
     DT::datatable(var_q_table, escape = FALSE, options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25), filter = "top")
   })
@@ -3332,6 +3333,10 @@ output$heatmap_table <- DT::renderDataTable(
   emp_csv <- reactive({ format_csv(emp_data())})
   output$download_emp_data <- downloadHandler(filename = 'emp_data.csv',
                                             content = function(file) {write.csv(emp_data(), file, row.names = TRUE)})
+  
+  session$onSessionEnded(function() {
+    stopApp()
+  })
   
 }
 
