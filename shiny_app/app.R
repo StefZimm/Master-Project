@@ -1220,7 +1220,9 @@ server <- function(input, output, session) {
   output$inc_table <- DT::renderDataTable(
     inc_data(), server = FALSE,
     extensions = c('Buttons', 'Scroller', 'Responsive'),
+    rownames = FALSE,
     options = list(
+      #columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -1588,6 +1590,7 @@ server <- function(input, output, session) {
   output$health_table <- renderDataTable(
     health_data(), server = FALSE,
     extensions = c('Buttons', 'Scroller', 'Responsive'),
+    rownames = FALSE,
     options = list(
       dom = 'Bfrtip',
       deferRender = TRUE,
@@ -1966,6 +1969,7 @@ server <- function(input, output, session) {
   output$att_table <- renderDataTable(
     att_data(), server = FALSE,
     extensions = c('Buttons', 'Scroller', 'Responsive'),
+    rownames = FALSE,
     options = list(
       dom = 'Bfrtip',
       deferRender = TRUE,
@@ -2344,6 +2348,7 @@ server <- function(input, output, session) {
   output$home_table <- renderDataTable(
     home_data(), server = FALSE,
     extensions = c('Buttons', 'Scroller', 'Responsive'),
+    rownames = FALSE,
     options = list(
       dom = 'Bfrtip',
       deferRender = TRUE,
@@ -2724,6 +2729,7 @@ server <- function(input, output, session) {
   output$time_table <- renderDataTable(
     time_data(), server = FALSE,
     extensions = c('Buttons', 'Scroller', 'Responsive'),
+    rownames = FALSE,
     options = list(
       dom = 'Bfrtip',
       deferRender = TRUE,
@@ -3109,6 +3115,7 @@ server <- function(input, output, session) {
   output$emp_table <- renderDataTable(
     emp_data(), server = FALSE,
     extensions = c('Buttons', 'Scroller', 'Responsive'),
+    rownames = FALSE,
     options = list(
       dom = 'Bfrtip',
       deferRender = TRUE,

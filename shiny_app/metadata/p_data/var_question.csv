@@ -1,52 +1,49 @@
 variable,question,label_de,topic,var_link
-aequiv_income,,Equivalent household income per year,"Income, Taxes, and Social Security",
-age_gr,,Age Group,Demography,
-agre,,Big Five Traits: Agreeableness Value,"Attitudes, Values, and Personality",
-bmi,,Body Mass Index,Health and Care,
+aequiv_income,Not a question. Weighted equivalent income of a household. This is per person. https://de.wikipedia.org/wiki/OECD-Skala,Equivalent household income per year,"Income, Taxes, and Social Security",
+age_gr,Not a question. Age is calculated by subtracting from survey year. Ages 16 and under have been removed.,Age Group,Demography,
+agre,"Value taken from mean of three traits: ""Am sometimes too course with others,"" ""Able to forgive,"" and ""Friendly with others.""",Big Five Traits: Agreeableness Value,"Attitudes, Values, and Personality",
+bmi,Not a question. BMI is calculated from height and weight of respondent. ,Body Mass Index,Health and Care,
 bula_h,,Federal States,Demography,
-conc,,Big Five Traits: Conscientiousness Value,"Attitudes, Values, and Personality",
+conc,"Value taken from mean of three traits: ""Carry out tasks efficiently,"" ""Thorough worker,"" and ""Tend to be lazy.""",Big Five Traits: Conscientiousness Value,"Attitudes, Values, and Personality",
 corigin,,Country Born In,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/corigin</a>
-d11101,,Age of Individual,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/d11101</a>
-d11109,,Number of Years of Education,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/d11109</a>
 e11102,,Employment Status of Individual,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/e11102</a>
 e11103,,Employment Level of Individual,Demography,<a href='url'>https://paneldata.org/soep-core/data/pequiv/e11103</a>
-education,,Education Level,Demography,
-erwst,,Employment status,Work and Employment,
-extr,,Big Five Traits: Extraversion Value,"Attitudes, Values, and Personality",
+erwst,"This variable is generated from the annual question on current employment status, which has a central filter function in the questionnaire to separate employed people from non-employed people for further questions",Employment status,Work and Employment,
+extr,"Value taken from mean of three traits: ""Reserved,"" ""Am communicative,"" ""Am social.""",Big Five Traits: Extraversion Value,"Attitudes, Values, and Personality",
 gebjahr,,Birth Year,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/gebjahr</a>
 germborn,,German Born,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/germborn</a>
 hghinc,,Monthly household net income (EUR),"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/hgen/hghinc</a>
 hgowner,,Tenant or Owner of Dwelling,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hgen/hgowner</a>
-hgtyp1hh,,Household typology (1-digit),Demography,<a href='url'>https://paneldata.org/soep-core/data/hgen/hgtyp1hh</a>
+hgtyp1hh,Generated variable created by combining the relationships of all persons living in the household to the head of household at the time of the survey.,Household typology (1-digit),Demography,<a href='url'>https://paneldata.org/soep-core/data/hgen/hgtyp1hh</a>
 hid,,Household ID,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/hid</a>
 hinceq,,Equivalent household income monthly,"Income, Taxes, and Social Security",
-hlf0001_h,,"Main Tenant, Sub-Tenant, Owner","Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0001_h</a>
-hlf0019_h,,Total living space in sqm,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0019_h</a>
-hlf0021_h,,Number of rooms in Apartment,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0021_h</a>
-hlf0071_h,,Assessment of dwelling size,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0071_h</a>
-hlf0094,,Houseing Costs vs Comparable Dwellings,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0094</a>
-i11101,,HH Pre-Government Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11101</a>
-i11102,,HH Post-Government Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11102</a>
-i11103,,HH Labor Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11103</a>
-i11106,,HH Private Transfers,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11106</a>
-i11107,,HH Public Transfers,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11107</a>
-m11104,,Frequency of Sport or Exercise,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11104</a>
-m11124,,Disability Status of Individual,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11124</a>
-m11125,,Satisfaction with Health,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11125</a>
-m11126,,Current Self-Rated Health Status,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11126</a>
-migback,,Migration background,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/migback</a>
-neur,,Big Five Traits: Neuroticism Value,"Attitudes, Values, and Personality",
-open,,Big Five Traits: Openness Value,"Attitudes, Values, and Personality",
+hlf0001_h,"The next questions deal with the costs of living in your dwelling. First the question: Are you the main tenant, subletter, or owner?","Main Tenant, Sub-Tenant, Owner","Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0001_h</a>
+hlf0019_h,How large is the total living space in this flat?,Total living space in sqm,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0019_h</a>
+hlf0021_h,And how many rooms are in the apartment?,Number of rooms in Apartment,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0021_h</a>
+hlf0071_h,"What do you think about the total size of your dwelling? For the size of your household, is it …",Assessment of dwelling size,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0071_h</a>
+hlf0094,The variable describes the respondent's evaluation of whether the current cost of the apartment matches the cost of comparable housing.,Houseing Costs vs Comparable Dwellings,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/hl/hlf0094</a>
+i11101,"This variable is the sum of total family income from labor earnings, asset flows, private retirement income and private transfers.",HH Pre-Government Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11101</a>
+i11102,"This variable is the sum of total family income from labor earnings, asset flows, private retirement income, private transfers, public transfers, and social security pensions minus total family taxes",HH Post-Government Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11102</a>
+i11103,This variable represents the combined labor income of all individuals in the household 16 years of age and older.,HH Labor Income,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11103</a>
+i11106,This variable represents the combined private transfers of all individuals in the household 16 years of age and older. ,HH Private Transfers,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11106</a>
+i11107,This variable represents the combined public transfers of all individuals in the household 16 years of age and older.,HH Public Transfers,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pequiv/i11107</a>
+m11104,"Indicates how often person plays sports, exercises or walks or swims. In several years the question related to this topic were not asked",Frequency of Sport or Exercise,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11104</a>
+m11124,This variable indicates disability status at the time of the survey for all individuals in the household 16 years of age and older.,Disability Status of Individual,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11124</a>
+m11125,This variable indicates satisfaction with health at the time of the survey for all individuals in the household 16 years of age and older.,Satisfaction with Health,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11125</a>
+m11126,This variable indicates each person’s self-rated health status.,Current Self-Rated Health Status,Health and Care,<a href='url'>https://paneldata.org/soep-core/data/pequiv/m11126</a>
+migback,MIGBACK contains information on respondents' migration background for all persons who have ever been a part of a SOEP household. Respondents were assigned to the MIGBACK categories based on country of birth.,Migration background,Demography,<a href='url'>https://paneldata.org/soep-core/data/ppathl/migback</a>
+neur,"Value taken from mean of three traits: ""Deal well with stress,"" ""Somewhat nervous,"" and ""Worry a lot.""",Big Five Traits: Neuroticism Value,"Attitudes, Values, and Personality",
+open,"Value taken from mean of three traits: ""Have lively imagination,"" ""Value artistic experiences,"" and ""Am original.""",Big Five Traits: Openness Value,"Attitudes, Values, and Personality",
 party,,Party affiliation,"Attitudes, Values, and Personality",
-pgcasmin,,CASMIN-Klassifikation,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgcasmin</a>
-pgfamstd,,Marital Status in Survey Year,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/pgen/pgfamstd</a>
-pgisced97,,ISCED-1997-Classification,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgisced97</a>
-pglabgro,,Current Gross Labor Income in Euro,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pgen/pglabgro</a>
-pglabnet,,Current Net Labor Income in Euro,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pgen/pglabnet</a>
+pgcasmin,An internationally comparable educational variable  where educational degrees/diplomas are classified according to the scheme “Comparative Analysis of Social Mobility in Industrial Nations (CASMIN)”.,CASMIN-Klassifikation,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgcasmin</a>
+pgfamstd,Marital status is describing the institutional status of marriage at the time of the person interview.,Marital Status in Survey Year,"Home, Amenities, and Contributions of Private HH",<a href='url'>https://paneldata.org/soep-core/data/pgen/pgfamstd</a>
+pgisced97,This educational variable classifies all correspondents' educational degrees according to the “International Standard Classification of Education (ISCED)” of 1997 in order to make degrees internationally comparable.,ISCED-1997-Classification,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgisced97</a>
+pglabgro,This variable  represents the imputed gross labor income in the previous month generated for all SOEP respondents who are employed in a main job in each respective wave.,Current Gross Labor Income in Euro,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pgen/pglabgro</a>
+pglabnet,This variable  represents the imputed net labor income in the previous month in a main job of all persons in SOEP working in the respective wave.,Current Net Labor Income in Euro,"Income, Taxes, and Social Security",<a href='url'>https://paneldata.org/soep-core/data/pgen/pglabnet</a>
 pgnation,,Nationality,Demography,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgnation</a>
-pgoeffd,,Civil Service,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgoeffd</a>
-pgtatzeit,,Actual Work Time Per Week,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgtatzeit</a>
-pgvebzeit,,Agreed Upon Work Time Per Week,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgvebzeit</a>
+pgoeffd,This variable is designed to provide annual data on employment in the civil service for all employed persons.,Civil Service,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgoeffd</a>
+pgtatzeit,This variable provides data on actual weekly working hours (including overtime) for all persons employed at the time of the survey (including the self-employed). The data are obtained by asking respondents how many hours they work on average per week.,Actual Work Time Per Week,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgtatzeit</a>
+pgvebzeit,This variable provides data on agreed weekly working hours. The variable takes into account only those persons who were in dependent employment (not self-employed) at the time of the survey.,Agreed Upon Work Time Per Week,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pgen/pgvebzeit</a>
 phrf,,Weighting factor,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/phrf</a>
 pid,,Individual ID,,<a href='url'>https://paneldata.org/soep-core/data/ppathl/pid</a>
 plb0037_h,Do you have a fixed-term or permanent employment contract?,Employment relationship Limited/Unlimited,Work and Employment,<a href='url'>https://paneldata.org/soep-core/data/pl/plb0037_h</a>
