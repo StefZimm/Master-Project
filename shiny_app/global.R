@@ -61,9 +61,9 @@ library(shinycssloaders)
 # labels should be read as var name
 # variables should fall into topic categories
 
-variables <- read.csv("../metadata/p_data/variables.csv")
-var_cat <- read.csv("../metadata/p_data/variable_categories.csv")
-var_q_table <- read.csv("metadata/p_data/var_question.csv")
+variables <- read.csv("./metadata/p_data/variables.csv")
+var_cat <- read.csv("./metadata/p_data/variable_categories.csv")
+var_q_table <- read.csv("./metadata/p_data/var_question.csv")
 
 # var_links <- variables %>%
 #   select(label_de, topic, variable, var_link, paper_link) %>%
