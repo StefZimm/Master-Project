@@ -209,9 +209,8 @@ ui <-
                                                       selected = "Line",
                                                       status = "danger"
                                                             )),
-                                     div(title="Include explanation of CI here?",
                                            p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
-                                         awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                         awesomeCheckbox("ci_income", label = "95% confidence intervals", value = FALSE, status="danger"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -225,7 +224,9 @@ ui <-
                                         div(style = "margin-top: 30px",
                                          h2("Plots"),
                                          bsButton("info_income",  label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
-                                         shinycssloaders::withSpinner(plotlyOutput("inc_plot", width = "100%"))),
+                                         shinycssloaders::withSpinner(plotlyOutput("inc_plot", width = "100%")),
+                                         textOutput("text2")),
+                                        
                                      div(style = "margin-top: 30px",
                                          h2("Data"),
                                          DT::dataTableOutput("inc_table"))
@@ -276,8 +277,8 @@ ui <-
                                                       selected = "Line",
                                                       status = "danger"
                                          )),
-                                     div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
+                                         awesomeCheckbox("ci_health", label = "95% confidence intervals", value = FALSE, status="danger"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -321,6 +322,8 @@ ui <-
                                          selectInput("att_variable", label = "Select a variable",
                                                      choices = list(`Categorical Variable` = as.list(top_att_cat$label_de),
                                                                     `Numerical Variable` = as.list(top_att_num$label_de)))),
+                                     br(),
+                                     p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
                                        inputId = "yearInput_att",
                                        label = "Year",
@@ -337,8 +340,8 @@ ui <-
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
-                                     div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
+                                         awesomeCheckbox("ci_att", label = "95% confidence intervals", value = FALSE, status="danger"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -400,8 +403,8 @@ ui <-
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
-                                     div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
+                                         awesomeCheckbox("ci_home", label = "95% confidence intervals", value = FALSE, status="danger"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -443,8 +446,8 @@ ui <-
                                                   style=" border-color: #2e6da4"), #dig up some better colors
                                      div(style = "margin-top: 30px",
                                          selectInput("time_variable", label = "Select a time variable",
-                                                     choices = list(`Categorical Variable` = as.list(top_health_cat$label_de),
-                                                                    `Numerical Variable` = as.list(top_health_num$label_de)))),
+                                                     choices = list(`Categorical Variable` = as.list(top_time_cat$label_de),
+                                                                    `Numerical Variable` = as.list(top_time_num$label_de)))),
                                      br(),
                                      p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
@@ -464,8 +467,8 @@ ui <-
                                                         selected = "Line",
                                                         status = "danger"
                                          )),
-                                     div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
+                                         awesomeCheckbox("ci_time", label = "95% confidence intervals", value = FALSE, status="danger"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -511,6 +514,8 @@ ui <-
                                          selectInput("emp_variable", label = "Select an employment variable",
                                                      choices = list(`Categorical Variable` = as.list(top_emp_cat$label_de),
                                                                     `Numerical Variable` = as.list(top_emp_num$label_de)))),
+                                     br(),
+                                     p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
                                        inputId = "yearInput",
                                        label = "Year",
@@ -527,8 +532,8 @@ ui <-
                                                       choices = c("Line", "Stacked Bar", "Side by Side Bar", "Box Plot"), 
                                                       selected = "Line",
                                                       status = "danger")),
-                                     div(title="Show or hide the 95% confidence intervals for the data selected.", # tooltip
-                                         awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger")),
+                                     p(tags$b("Show or hide the 95% confidence intervals for the data selected.")), # tooltip
+                                         awesomeCheckbox("ci_emp", label = "95% confidence intervals", value = FALSE, status="danger"),
                                      br(),
                                      br(),
                                      div(lp_main_box(image_name= 'back_arrow',
@@ -600,7 +605,8 @@ tabPanel("Heatmap", icon = icon("table"), value = "report",
                          div(style = "margin-top: 30px",
                              h2("Plots"),
                              bsButton("info_heatmap", label = "Variable Information", icon = icon("info-circle"), style = "", size = "small"),
-                             shinycssloaders::withSpinner(plotlyOutput("heat_plot", width = "100%"))),
+                             shinycssloaders::withSpinner(plotlyOutput("heat_plot", width = "100%")),
+                             textOutput("text")),
                          div(style = "margin-top: 30px",
                              h2("Data"),
                              DT::dataTableOutput("heatmap_table"))
@@ -1133,6 +1139,7 @@ server <- function(input, output, session) {
   
   
   ######## income render plotly ##################
+  t3 <- Sys.time()
   output$inc_plot <- renderPlotly({
     
     if (input$plot_select == 'Box Plot') {
@@ -1151,6 +1158,9 @@ server <- function(input, output, session) {
       dodgebarplot()
     }
   })
+  Sys.sleep(2)
+  t4 <- Sys.time()
+  output$text2 <- renderText({paste("The income plot took", round(t4-t3, 2), "seconds to load")})
   
   #### income Var Information Button   ####  
   observeEvent(input$inc_variable, {
@@ -2363,12 +2373,12 @@ server <- function(input, output, session) {
   time_variable <- reactive({ 
     variables$variable[variables$label_de==input$time_variable]
   })
-  # grouping3
+  # grouping9
   diffvar9 <- reactive({ 
     variables$variable[variables$label_de==input$group9]
   })
   
-  # grouping4
+  # grouping10
   diffvar10 <- reactive({ 
     variables$variable[variables$label_de==input$group10]
   })
@@ -3125,7 +3135,7 @@ server <- function(input, output, session) {
     )) 
   
   ## Heatmap Panel ###########
-  
+  t1 <- Sys.time()
   # Variable
   heatmap_variable <- reactive({
     variables$variable[variables$label_de==input$heatmap_variable]
@@ -3168,6 +3178,7 @@ year_heatmap <-  reactive({
 })
 
 ######## heatmap map plot ##################
+
 
 # load graphic
 # 1.1 heatmap
@@ -3312,7 +3323,9 @@ output$heatmap_table <- DT::renderDataTable(
     scroller = TRUE,
     buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
   ))
-  
+Sys.sleep(2)
+t2 <- Sys.time()
+output$text <- renderText({paste("The heatmap took", round(t2-t1, 2), "seconds to load")})
 #################
   # Downloads
 ################
