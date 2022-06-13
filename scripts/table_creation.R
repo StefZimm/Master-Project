@@ -170,11 +170,11 @@ for (var in 1:length(meta$variable)){
                                         diffvar2 = diffvar2, diffvar3 = diffvar3,
                                         diffcount = diffcount, tabletype = "prop")
         
-        # var_cat <- subset(meta_varcat, variable==meta$variable[var] , select = c("value", "label_de"))
-        # protected.table <- merge(protected.table, var_cat, by.x = "usedvariable", by.y = "label_de")
-        # protected.table$value <- as.numeric(protected.table$value)
-        
-        # protected.table <- protected.table[with(protected.table, order(year)), ]
+        var_cat <- subset(meta_varcat, variable==meta$variable[var] , select = c("value", "label_de"))
+        protected.table <- merge(protected.table, var_cat, by.x = "usedvariable", by.y = "label_de")
+        protected.table$value <- as.numeric(protected.table$value)
+         
+        protected.table <- protected.table[with(protected.table, order(year)), ]
         
         data.csv <- get_table_export(table = protected.table, variable = variable, 
                                      metadatapath = paste0(metapath, "variables.csv"),
