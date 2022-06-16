@@ -527,7 +527,7 @@ ui <-
                                      br(),
                                      p("Use the slider to select years", style = "font-weight: bold; color: black;"),
                                      sliderInput(
-                                       inputId = "yearInput",
+                                       inputId = "yearInput_emp",
                                        label = "Year",
                                        value = c(min(1984, na.rm = TRUE), max(2019, na.rm = TRUE)),
                                        min = 1984, 
