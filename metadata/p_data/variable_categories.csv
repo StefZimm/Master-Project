@@ -79,13 +79,12 @@ soep-core,p_data,v36,m11126,5,Bad ,Bad
 soep-core,p_data,v36,migback,1,no migration background,no migration background
 soep-core,p_data,v36,migback,2,direct migration background,direct migration background
 soep-core,p_data,v36,migback,3,indirect migration background,indirect migration background
-soep-core,p_data,v36,party,0,no party,no party
-soep-core,p_data,v36,party,1,CDU/CSU,CDU/CSU
-soep-core,p_data,v36,party,2,SPD,SPD
+soep-core,p_data,v36,party,1,SPD,SPD
+soep-core,p_data,v36,party,2,CDU/CSU,CDU/CSU
 soep-core,p_data,v36,party,3,FDP,FDP
 soep-core,p_data,v36,party,4,Grüne,Grüne
 soep-core,p_data,v36,party,5,PDS/Linke,PDS/Linke
-soep-core,p_data,v36,party,6,NPD Combination,NPD Combination
+soep-core,p_data,v36,party,6,NPD,NPD
 soep-core,p_data,v36,party,7,AfD,AfD
 soep-core,p_data,v36,party,8,Other,Other
 soep-core,p_data,v36,pgcasmin,0,(0) in school,(0) in school

@@ -5,9 +5,9 @@
 ### What needs to be defined:
 # Paths
 if (Sys.info()[["user"]] == "stefz") {
-  datapath <- "C:/datasets/platform_data/"
-  metapath <- "C:/git/Master-Project/metadata/p_data/"
-  exportpath <- "C:/git/Master-Project/tables/"
+  datapath <- "H:/dataset/master/"
+  metapath <- "H:/Clone/Master-Project/metadata/p_data/"
+  exportpath <- "H:/Clone/Master-Project/tables/"
 }
 
 ### What needs to be defined:

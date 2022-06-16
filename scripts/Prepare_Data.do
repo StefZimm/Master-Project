@@ -12,11 +12,11 @@ net install soeptools, from(http://ddionrails.github.io/soeptools/)
 * Stefans Paths
 if c(username)=="stefz" & c(os) == "Windows"{ // Stefan DIW-PC
 	* Data path to soepdata
-	 global data "C:\datasets\soepdata\v36\" 
+	 global data "\\hume\rdc-prod\distribution\soep-core\soep.v36\Stata\" 
 	 * meta path to variables.csv and variable_categories.csv
-	 global meta "C:\git\Master-Project\metadata\p_data\"
+	 global meta "H:\Clone\Master-Project\shiny_app\metadata\p_data\"
 	  * output path for dataset
-	 global output "C:\datasets\platform_data\"
+	 global output "H:\dataset\master\"
 } 
 
 * Deliverance Paths
@@ -101,7 +101,7 @@ recode ple0160 (3=.)
 
 * Party affiliation
 gen party=plh0012_h
-recode party (-5 -4 -1=.) (-2=0) (1 10=2) (2/3 13=1) (4 11 14 22 23=3) (5 9 15=4) (6 16 17 20 24=5) (7 12 18 19 21 25=6) (27 30 31=7) (8 26=8)
+recode party (-5 -4 -2 -1 9 10 11 12 14 15 16 17 18 19 20 21 22 23 24 25 26 30 31=.) (1 = 1) (2/3 13=2) (4=3) (5=4) (6=5) (7=6) (27=7) (8=8)
 
 * Employment status
 gen erwst=pgemplst
