@@ -1966,7 +1966,7 @@ server <- function(input, output, session) {
                  HTML(paste0(variables$description[variables$label_de==input$att_variable],
                              "  <br>", 
                              a("Additional Variable Information", 
-                               href = variables$documentation_link[variables$label_de==input$health_variable],
+                               href = variables$documentation_link[variables$label_de==input$att_variable],
                                target="_blank"), "  <br>"
                  )),
                  trigger = "hold", placement = "right")
