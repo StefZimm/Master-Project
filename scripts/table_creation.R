@@ -49,10 +49,10 @@ data.file.fac <- data.file.fac %>%
 
 # read metainformation
 meta <- read.csv(paste0(metapath, "variables.csv") , header = TRUE,
-                 colClasses = "character")
+                 colClasses = "character", encoding  = "UTF-8")
 
 meta_varcat <- read.csv(paste0(metapath, "variable_categories.csv") , header = TRUE,
-                        colClasses = "character")
+                        colClasses = "character", encoding  = "UTF-8")
 
 ################################################################################
 ################################################################################
