@@ -767,7 +767,10 @@ navbarMenu("Info", icon = icon("info-circle"),
                                          br(),
                                          br(),
                                          h4("On the left side of the page are tools you need to explore the data further. To explore the change in time by a certain demographic, select a
-                                            grouping variable from the first drop down menu.", style = "color:black;"),
+                                            grouping variable from the first drop down menu.
+                                            Multiple variables are available to group by location or location type. These include Federal State (states), Sample Region (East Germany and 
+                                            West Germany), and Region Type (urban or rural). These may be of interest when considering how changes may differ in relation to locality.", 
+                                            style = "color:black;"),
                                          br(),
                                          img(src = 'var1.png', height = 300, width = 280),
                                          br(),
@@ -808,7 +811,19 @@ navbarMenu("Info", icon = icon("info-circle"),
                                             above the data table.  If you are interested in viewing the data for a specific year, you can enter that year in the search bar."),
                                          br(),
                                          br(),
-                                         img(src = 'data.png', height = 500, width = 950)
+                                         img(src = 'data.png', height = 500, width = 950),
+                                         br(),
+                                         br(),
+                                         h4("If you are unsure where to begin your exploration or under what topic your question may fall, click on the info tab, then select metadata.
+                                            On this page you will see all variables, the question, if applicable, the label used to describe the question/variable, and the topic for 
+                                            that question. At the top of each column you are able to search for a key word that will help you find a question related to your interest 
+                                            and the topic page where you will find that variable."),
+                                         br(),
+                                         br(),
+                                         img(src = 'meta_tab.png', height = 180, width = 225),
+                                         br(),
+                                         br(),
+                                         img(src = 'meta_search.png', height = 275, width = 1500)
                                          ))))
            ) #navbarmenu break
 ) #navbarpage break
@@ -895,7 +910,9 @@ server <- function(input, output, session) {
   
   ##### metadata #####
   output$var_q_table <- DT::renderDataTable({
-    DT::datatable(var_q_table, escape = FALSE, options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25), filter = "top")
+    DT::datatable(var_q_table, escape = FALSE, 
+                  options = list(lengthMenu = c(25, 100, 150, 200), pageLength = 25, 
+                  columnDefs = list(list(visible = FALSE, targets = 5))))
   })
  
   ## Income Panel ###########
@@ -1253,7 +1270,7 @@ server <- function(input, output, session) {
       deferRender = TRUE,
       scrollY = 400,
       scroller = TRUE,
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = c('copy', 'csv', 'excel', 'pdf')
     ))
   
 
@@ -1622,7 +1639,7 @@ server <- function(input, output, session) {
       deferRender = TRUE,
       scrollY = 400,
       scroller = TRUE,
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = c('copy', 'csv', 'excel', 'pdf')
     ))
   
 
@@ -2001,7 +2018,7 @@ server <- function(input, output, session) {
       deferRender = TRUE,
       scrollY = 400,
       scroller = TRUE,
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = c('copy', 'csv', 'excel', 'pdf')
     ))
   
 
@@ -2380,7 +2397,7 @@ server <- function(input, output, session) {
       deferRender = TRUE,
       scrollY = 400,
       scroller = TRUE,
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = c('copy', 'csv', 'excel', 'pdf')
     )) 
   
 
@@ -2761,7 +2778,7 @@ server <- function(input, output, session) {
       deferRender = TRUE,
       scrollY = 400,
       scroller = TRUE,
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = c('copy', 'csv', 'excel', 'pdf')
     )) 
   
   
@@ -3147,7 +3164,7 @@ server <- function(input, output, session) {
       deferRender = TRUE,
       scrollY = 400,
       scroller = TRUE,
-      buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+      buttons = c('copy', 'csv', 'excel', 'pdf')
     )) 
   
   ## Heatmap Panel ###########
@@ -3337,7 +3354,7 @@ output$heatmap_table <- DT::renderDataTable(
     deferRender = TRUE,
     scrollY = 400,
     scroller = TRUE,
-    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    buttons = c('copy', 'csv', 'excel', 'pdf')
   ))
 Sys.sleep(2)
 t2 <- Sys.time()
