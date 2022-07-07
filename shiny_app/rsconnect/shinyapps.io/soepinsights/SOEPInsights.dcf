@@ -1,0 +1,13 @@
+name: SOEPInsights
+title: SOEPInsights
+username:
+account: soepinsights
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6601713
+bundleId: 6078276
+url: https://soepinsights.shinyapps.io/SOEPInsights/
+when: 1657201418.89079
+lastSyncTime: 1657201418.89079
+asMultiple: FALSE
+asStatic: FALSE
