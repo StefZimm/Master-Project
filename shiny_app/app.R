@@ -1496,9 +1496,9 @@ tabPanel("Heatmap", icon = icon("table"), value = "report",
                       br(),
                       br(),
                       div(lp_main_box(image_name= 'back_arrow',
-                                      button_name = 'jump_to_home_page',
+                                      button_name = 'jump_to_home_page7',
                                       title_box = "Go to home page",
-                                      description = 'You are currently on the Income page. Go back to the home page'))
+                                      description = 'You are currently on the Heatmap page. Go back to the home page'))
          ),
          fluidRow(
            column(9, style = "padding-left: 0px; padding-right: 0px;",
@@ -1750,6 +1750,10 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$jump_to_home_page6, {
+    updateTabsetPanel(session, "intabset", selected = "home_page")
+  })
+  
+  observeEvent(input$jump_to_home_page7, {
     updateTabsetPanel(session, "intabset", selected = "home_page")
   })
 
@@ -2156,7 +2160,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      #columnDefs = list(list(visible=FALSE, targets = "value")),
+      columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -2526,6 +2530,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
+      columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -2905,6 +2910,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
+      columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -3284,6 +3290,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
+      columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -3665,6 +3672,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
+      columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -4051,6 +4059,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
+      columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
