@@ -1,15 +1,20 @@
 
-##############################################################
-# just commenting this out for now so I know where it goes if the global.R file doesn't work as I would like it to. 
-# this can be uncommented if we do not use the global.R file
-##############################################################
-
 # This code includes dependencies, functions, and data sets that will be used for the app
 
-###########################
-## Install dependencies
-###########################
+
+####  Install dependencies  ####
+required_packages <- c(
+  "checkpoint"
+)
+
 # install missing packages
+new.packages <- required_packages[!(required_packages %in% installed.packages()[,"Package"])]
+
+if (length(new.packages)) {
+  install.packages(new.packages)
+}
+
+rm(new.packages)
 
 library(checkpoint)
 library(wesanderson)
@@ -40,37 +45,17 @@ library(shinycssloaders)
 #library(shinyLP) #use if customizing theme with HTML
 #library(bslib) #use if customizing theme
 
-####################################
-##I am commenting this out for now, but if we chose to use a separate file to source dependencies, we can use this
-
-#source('scripts/dependencies.R')
-#load packages
-#lapply(required_packages, require, character.only=TRUE)
-####################################
-
-
-# will need this for variable button
-# all variables with meantable yes/no must be selectable
-# labels should be read as var name
-# variables should fall into topic categories
+####  establish url to tables variable information  ####
 mainurl <- "https://raw.githubusercontent.com/StefZimm/Master-Project/main/tables/"
 variables <- read.csv("./metadata/p_data/variables.csv")
 var_cat <- read.csv("./metadata/p_data/variable_categories.csv")
 var_q_table <- read.csv("./metadata/p_data/var_question.csv")
 
-# var_links <- variables %>%
-#   select(label_de, topic, variable, var_link, paper_link) %>%
-#   arrange((topic), label_de) %>%
-#   rename(Variable_Label = label_de,
-#          Study_Topic = topic,
-#          Variable_Name = variable,
-#          Variable_Information = var_link,
-#          Variable_Paper = paper_link)
 
-# path for tables, not sure how to load in only certain tables or if it can even be done this way. It seems like all tables will need to be loaded
+# path for tables
 tables <- "tables/"
 
-#topics
+####  create topic objects  ####
 top_inc     <- variables %>% filter(topic == "Income, Taxes, and Social Security") %>% select(label_de)
 top_inc_cat <- variables %>% filter(topic == "Income, Taxes, and Social Security" & meantable == "No") %>% select(label_de)
 top_inc_num <- variables %>% filter(topic == "Income, Taxes, and Social Security" & meantable == "Yes") %>% select(label_de)
@@ -95,11 +80,10 @@ top_demo <- variables %>%
 top_heat_cat <- variables %>% filter(meantable == "No")  %>% select(label_de)
 top_heat_num <- variables %>% filter(meantable == "Yes") %>% select(label_de)
 
-################################################################################
-# Functions #
-################################################################################
 
-# pages
+#### functions ####
+
+#### main page  ####
 
 # this function creates the boxes for the main page, these will be used for topics
 
@@ -113,38 +97,19 @@ lp_main_box <- function(title_box, image_name, button_name, description) {
   )
 }
 
-# this function creates smaller boxes on the landing page, these will be optional if we want to include more info on the landing page
-
-lp_about_box <- function(title_box, image_name, button_name, description) {
-  
-  div(class="landing-page-box-about",
-      div(title_box, class = "landing-page-box-title"),
-      div(class = "landing-page-about-icon", style= paste0("background-image: url(", image_name, ".png);
-          background-size: auto 80%; background-position: center; background-repeat: no-repeat; ")),
-      (actionButton(button_name, NULL,
-                    class="landing-page-button",
-                    icon = icon("arrow-circle-right", "icon-lp"),title=description)))
-}
 
 ## graphs
 
-# Color Definition
+####  Color Definition  ####
 color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"), 
                           wes_palette("Moonrise1"), wes_palette("Moonrise2"),
                           wes_palette("GrandBudapest2"), wes_palette("Cavalcanti1"), 
                           wes_palette("Royal1"), wes_palette("Royal2"),
                           # 2000 random colors
                           distinctColorPalette(1999)))
-################################################################################
-# Functions #
-################################################################################
-# Color Definition
-color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"), 
-                          wes_palette("Moonrise1"), wes_palette("Moonrise2"),
-                          wes_palette("GrandBudapest2"), wes_palette("Cavalcanti1"), 
-                          wes_palette("Royal1"), wes_palette("Royal2"),
-                          # 2000 random colors
-                          distinctColorPalette(1999)))
+
+#### Functions ####
+
 
 #' @title get_map_plot creates median or mean maps of germany and federal states
 #'
@@ -169,7 +134,7 @@ color.palette <- unique(c(wes_palette("Zissou1"), wes_palette("GrandBudapest1"),
 #'                          statistic = "mean",
 #'                          diffvar = diffvar)
 
-
+####  map plot function  ####
 
 get_map_plot <- function(table, syear, variable, statistic, diffvar){
   
@@ -276,87 +241,7 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 }
 
 #' ################################################################################
-#' 
-#' #' @title get_boxplot creates boxplot
-#' #' 
-#' #' @description get_boxplot creates boxplot with a maximum of three grouping 
-#' #'              variables
-#' #'
-#' #' @param table aggregated table name (e.g. "pglabnet_year_bula_h.csv") as character
-#' #' @param variable variable for output as character
-#' #' @param diffcount number of grouping variables as numeric
-#' #' @param diffvar2 group variable (e.g. "bula_h")
-#' #' @param diffvar3 group variable (e.g. "sex")
-#' #' 
-#' #' @return plot = boxplot with grouping
-#' #'
-#' #' @author Stefan Zimmermann, \email{szimmermann@diw.de}
-#' #' @keywords get_boxplot
-#' #'  
-#' #' @examples
-#' #'       get_boxplot(table = data, 
-#' #'                   variable = "year", 
-#' #'                   diffcount = 2,
-#' #'                   diffvar2 = "alter_gr",
-#' #'                   diffvar3 = "")
-#' 
-#' get_boxplot <- function(table, variable, diffcount, diffvar2, diffvar3){
-#'   
-#'   title <- meta$label_de[meta$variable==variable]
-#'   
-#'   if (diffcount == 1) {
-#'     data <- subset(table, select=c(year, min, max, median, 
-#'                                    ptile10, ptile25, ptile75, ptile90, ptile99))
-#'     
-#'     plot <- ggplot(data, aes(factor(year))) +  
-#'       geom_boxplot(data = data,
-#'                    aes(ymin = min, lower = ptile25 , 
-#'                        middle = median, upper = ptile90, ymax = ptile99),
-#'                    stat = "identity") +
-#'       theme(strip.background = element_blank(), axis.title.x=element_blank(),
-#'             axis.text.x = element_text(angle = 90), axis.title.y=element_blank())+
-#'       labs(title = title, 
-#'            caption = "Data: SOEP-Core v.36")
-#'   }
-#'   
-#'   if (diffcount == 2) {
-#'     data <- subset(table, select=c(year, eval(parse(text = diffvar2)), min, max, median, 
-#'                                    ptile10, ptile25, ptile75, ptile90, ptile99)) 
-#'     
-#'     plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
-#'       geom_boxplot(data = data,
-#'                    aes(ymin = min, lower = ptile25 , 
-#'                        middle = median, upper = ptile90, ymax = ptile99),
-#'                    stat = "identity") + 
-#'       theme(strip.background = element_blank(), axis.title.x=element_blank(),
-#'             axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
-#'             legend.title=element_blank())+
-#'       labs(title = title, 
-#'            caption = "Data: SOEP-Core v.36")
-#'   }
-#'   
-#'   if (diffcount == 3) {
-#'     data <- subset(table, select=c(year, eval(parse(text = diffvar2)), 
-#'                                    eval(parse(text = diffvar3)), min, max, median, 
-#'                                    ptile10, ptile25, ptile75, ptile90, ptile99)) 
-#'     
-#'     plot <- ggplot(data, aes(factor(year), fill = eval(parse(text = diffvar2)))) +  
-#'       geom_boxplot(data = data,
-#'                    aes(ymin = min, lower = ptile25 , 
-#'                        middle = median, upper = ptile90, ymax = ptile99),
-#'                    stat = "identity") +
-#'       theme(strip.background = element_blank(), axis.title.x=element_blank(),
-#'             axis.text.x = element_text(angle = 90), axis.title.y=element_blank(),
-#'             legend.title=element_blank())+
-#'       labs(title = title, 
-#'            caption = "Data: SOEP-Core v.36")+
-#'       facet_wrap(~eval(parse(text = diffvar3)))
-#'   }
-#'   plot <- plot + coord_flip()
-#'   return(plot)
-#' }
 
-################################################################################
 
 #' @title get_boxplot creates boxplot
 #' 
@@ -380,6 +265,7 @@ get_map_plot <- function(table, syear, variable, statistic, diffvar){
 #'                   diffvar2 = "alter_gr",
 #'                   diffvar3 = "")
 
+#### boxplot function  ####
 get_boxplot <- function(table, meta, variable, diffvar2, diffvar3, start, end){
   
   title <- meta$label_de[meta$variable==variable]
@@ -443,7 +329,7 @@ get_boxplot <- function(table, meta, variable, diffvar2, diffvar3, start, end){
   return(plot)
 }
 
-################################################################################
+####  lineplot function  ####
 
 get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                          start, end, ci){
@@ -600,7 +486,9 @@ get_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount,
   return(plot)
 }
 
-################################################################################
+
+####  percent lineplot function  ####
+
 get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffcount, 
                                  start, end, ci){
   
@@ -718,6 +606,7 @@ get_percent_lineplot <- function(data, meta, variable, diffvar1, diffvar2, diffc
   return(plot)
 }  
 
+####  user table function  ####
 
 get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
@@ -739,7 +628,7 @@ get_user_table <- function(meta, variable, diffvar1, diffvar2, heatmap){
   
   return(table_csv)
 }
-
+ ####  bar plot function  ####
 get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci, 
                         start, end){
   
@@ -783,7 +672,8 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   data <- data[with(data, order(year, value, combined_group)), ]
   data$combined_group <- factor(data$combined_group,
                                 levels = unique(data$combined_group), ordered = TRUE)
-  
+####  plot type selection  ####
+  ####  side by side bar plot  ####
   if (plottype == "dodge") { 
     # dodged barplot
     plot <- plot_ly(data, 
@@ -801,7 +691,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
                                                         size=14)),
              hovermode = "x unified") %>%
       rangeslider(start, end)
-    
+    # ci selected
     if (ci == TRUE) { 
       data$sd[is.na(data$sd)] <- 0
       data %>%
@@ -820,14 +710,14 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
         layout(title = title, 
                legend = list(traceorder = "normal"),
                xaxis = list(title = 'year',
-                            range = list(start,end), 
-                            tickvals = as.list(seq(1984,2019)),
+                            range = list(start,end), # range
+                            tickvals = as.list(seq(1984,2019)),  # year selection
                             tickangle=90, tickfont = list(family='Rockwell', 
                                                           size=14)),
                hovermode = "x unified") %>%
         rangeslider(start, end)
       
-      
+      # grouping
       for (g in unique(data$combined_group)) {
         
         if (is.na(data2[[g]]) == FALSE) {
@@ -849,7 +739,7 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
       }
     }
   }  
-  
+  ####  stacked bar plot  ####
   if (plottype == "stack") { 
     
     data <- data %>%
@@ -923,35 +813,8 @@ get_barplot <- function(data, meta, variable, diffvar1, diffvar2, plottype, ci,
   return(plot)
 }
 
-
-# this function creates the boxes for the main page
-
-# lp_main_box <- function(title_box, image_name, button_name, description) {
-#   div(class="landing-page-box",
-#       div(title_box, class = "landing-page-box-title"),
-#       div(description, class = "landing-page-box-description"),
-#       div(class = "landing-page-icon", style= ("background-image: url();
-#           background-size: auto 80%; background-position: center; background-repeat: no-repeat; ")),
-#       actionButton(button_name, NULL, class="landing-page-button")
-#   )
-# }
-# 
-# lp_about_box <- function(title_box, image_name, button_name, description) {
-#   
-#   div(class="landing-page-box-about",
-#       div(title_box, class = "landing-page-box-title"),
-#       div(class = "landing-page-about-icon", style= paste0("background-image: url(", image_name, ".png);
-#           background-size: auto 80%; background-position: center; background-repeat: no-repeat; ")),
-#       (actionButton(button_name, NULL,
-#                     class="landing-page-button",
-#                     icon = icon("arrow-circle-right", "icon-lp"),title=description)))
-# }
-
-
 # Define UI for application 
 ######## start ##################
-
-
 
 ui <- 
   tagList( #needed for shinyjs
@@ -971,12 +834,12 @@ ui <-
 ######## landing page ##################
                
                tabPanel(
-                 setSliderColor(c("red", "red", "red", "red", "red", "red", "red"), c(1,2,3,4,5,6,7)),
+                 setSliderColor(c("red", "red", "red", "red", "red", "red", "red"), c(1,2,3,4,5,6,7)), # color for slider on all pages
                  title = " Home", icon = icon("home"), value = 'home_page',
                  mainPanel(width = 11, style="margin-left:4%; margin-right:4%",
                            introBox(
                              fluidRow(column(7,(h3("Welcome to SOEPInsights", style="margin-top:0px;"))),
-                                      (column(4,actionButton("btn_landing",label="Help: How to use this tool",icon=icon('question-circle'), class = "down")))),
+                                      (column(4,actionButton("btn_landing",label="Help: How to use this tool",icon=icon('question-circle'), class = "down")))),  # help button
                              
 
                              data.position = "left"),
@@ -1031,15 +894,6 @@ ui <-
                              ) #introBox 7 close
                            ), # fluid row close
                            fluidRow( #summary box
-                             # column(6, class="landing-page-column",
-                             #        br(), #spacing
-                             #        introBox(
-                             #          lp_main_box(image_name= "landing_button_summary",
-                             #                      button_name = 'jump_to_summary', 
-                             #                      title_box = "Summary",
-                             #                      description = 'Information about SOEP survey data'),
-                             #          data.position = "bottom-right-aligned")),
-                             #table box
                              column(4, class="landing-page-column",
                                     br(), #spacing
                                     introBox( # tour of the tool
@@ -1054,7 +908,8 @@ ui <-
                ), #tab panel bracket
                
 ######## topic panels ##################
-######## income panel ##################
+
+  ##### income panel ##################
 
                tabPanel("Income", icon = icon("euro-sign"), value = "income",
 
@@ -1518,7 +1373,7 @@ tabPanel("Heatmap", icon = icon("table"), value = "report",
 
 
 
-######## navbar ##################
+#### navbar ##################
 
 navbarMenu("Info", icon = icon("info-circle"),
            
@@ -1727,7 +1582,7 @@ navbarMenu("Info", icon = icon("info-circle"),
 # Define server logic 
 server <- function(input, output, session) {
   
-  ######## jump to tabs ##################
+##### jump to tabs ########
   
   observeEvent(input$jump_to_home_page, {
     updateTabsetPanel(session, "intabset", selected = "home_page")
@@ -1810,9 +1665,9 @@ server <- function(input, output, session) {
                   columnDefs = list(list(visible = FALSE, targets = 5))))
   })
  
-  ## Income Panel ###########
+##### Income Panel ###########
   
-   # Variable
+###### income variable/grouping inputs  ####
   inc_variable <- reactive({ 
     variables$variable[variables$label_de==input$inc_variable]
   })
@@ -2067,7 +1922,8 @@ server <- function(input, output, session) {
   
   
   ######## income render plotly ##################
-  t3 <- Sys.time()
+  # uncomment with lines below to test time to load plot
+  # t3 <- Sys.time()
   output$inc_plot <- renderPlotly({
     
     if (input$plot_select == 'Box Plot') {
@@ -2086,11 +1942,12 @@ server <- function(input, output, session) {
       dodgebarplot()
     }
   })
-  Sys.sleep(2)
-  t4 <- Sys.time()
-  output$text2 <- renderText({paste("The income plot took", round(t4-t3, 2), "seconds to load")})
+  # uncomment with lines above to test time to load plot
+  # Sys.sleep(2)
+  # t4 <- Sys.time()
+  # output$text2 <- renderText({paste("The income plot took", round(t4-t3, 2), "seconds to load")})
   
-  #### income Var Information Button   ####  
+###### income Var Information Button   ####  
   observeEvent(input$inc_variable, {
     
     removePopover(session, "info_income")
@@ -2160,7 +2017,8 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      columnDefs = list(list(visible=FALSE, targets = "value")),
+      #columnDefs = list(list(visible=FALSE, targets = "value")), #this was an attempt to remove the value column, but this caused the 
+      #numerical table to disappear because there is no value column, requires more time to fix
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -2172,7 +2030,7 @@ server <- function(input, output, session) {
   
  #### health panel ##############
 
-  # Variable
+  ###### health variable/grouping information ####
   health_variable <- reactive({ 
     variables$variable[variables$label_de==input$health_variable]
   })
@@ -2444,7 +2302,7 @@ server <- function(input, output, session) {
     }
   })
   
-  #### health Var Information Button   ####
+  ###### health var Information Button   ####
   observeEvent(input$health_variable, {
     
     removePopover(session, "info_health")
@@ -2530,7 +2388,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      columnDefs = list(list(visible=FALSE, targets = "value")),
+      #columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -2541,7 +2399,7 @@ server <- function(input, output, session) {
 
   ## attitudes panel #####
 
-    # variable
+    ###### attitudes variable/grouping information  ####
   att_variable <- reactive({ 
     variables$variable[variables$label_de==input$att_variable]
   })
@@ -2809,7 +2667,7 @@ server <- function(input, output, session) {
     }
   })
   
-  #### attitudes Var Information Button   ####
+  ###### attitudes var Information Button   ####
   observeEvent(input$att_variable, {
     
     removePopover(session, "info_att")
@@ -2910,7 +2768,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      columnDefs = list(list(visible=FALSE, targets = "value")),
+      #columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -2921,7 +2779,7 @@ server <- function(input, output, session) {
 
   ### home panel ####
 
-  
+  ######  home variable/grouping information  ####
   home_variable <- reactive({ 
     variables$variable[variables$label_de==input$home_variable]
   })
@@ -3192,7 +3050,7 @@ server <- function(input, output, session) {
     }
   })
   
-  #### household Var Information Button   ####
+  ###### household Var Information Button   ####
   observeEvent(input$home_variable, {
     
     removePopover(session, "info_home")
@@ -3290,7 +3148,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      columnDefs = list(list(visible=FALSE, targets = "value")),
+      #columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -3299,8 +3157,9 @@ server <- function(input, output, session) {
     )) 
   
 
-  ### Time ####
+  ### time panel ####
   
+  ###### time variable/grouping information  ####
   time_variable <- reactive({ 
     variables$variable[variables$label_de==input$time_variable]
   })
@@ -3573,7 +3432,7 @@ server <- function(input, output, session) {
     }
   })
   
-  #### time Var Information Button   ####
+  ###### time Var Information Button   ####
   observeEvent(input$time_variable, {
     
     removePopover(session, "info_time")
@@ -3672,7 +3531,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      columnDefs = list(list(visible=FALSE, targets = "value")),
+      #columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -3682,9 +3541,9 @@ server <- function(input, output, session) {
   
   
 
-  ######## employment panel ##################
+  ##### employment panel ##################
   
-  
+  ######  employment variable/grouping information  ####
   emp_variable <- reactive({ 
     variables$variable[variables$label_de==input$emp_variable]
   })
@@ -3958,7 +3817,7 @@ server <- function(input, output, session) {
     }
   })
   
-  #### employment Var Information Button   ####
+  ###### employment Var Information Button   ####
   
   observeEvent(input$emp_variable, {
     
@@ -4059,7 +3918,7 @@ server <- function(input, output, session) {
     extensions = c('Buttons', 'Scroller', 'Responsive'),
     rownames = FALSE,
     options = list(
-      columnDefs = list(list(visible=FALSE, targets = "value")),
+      #columnDefs = list(list(visible=FALSE, targets = "value")),
       dom = 'Bfrtip',
       deferRender = TRUE,
       scrollY = 400,
@@ -4067,8 +3926,10 @@ server <- function(input, output, session) {
       buttons = c('copy', 'csv', 'excel', 'pdf')
     )) 
   
-  ## Heatmap Panel ###########
-  t1 <- Sys.time()
+  ## heatmap panel ###########
+  # uncomment with lines below to test time to load heatmap
+  # t1 <- Sys.time()
+  
   # Variable
   heatmap_variable <- reactive({
     variables$variable[variables$label_de==input$heatmap_variable]
@@ -4110,7 +3971,7 @@ year_heatmap <-  reactive({
   input$yearInput_heatmap
 })
 
-######## heatmap map plot ##################
+###### heatmap map plot #########
 
 
 # load graphic
@@ -4256,12 +4117,14 @@ output$heatmap_table <- DT::renderDataTable(
     scroller = TRUE,
     buttons = c('copy', 'csv', 'excel', 'pdf')
   ))
-Sys.sleep(2)
-t2 <- Sys.time()
-output$text <- renderText({paste("The heatmap took", round(t2-t1, 2), "seconds to load")})
-#################
-  # Downloads
-################
+
+# uncomment with lines above to test time to load heatmap 
+# Sys.sleep(2)
+# t2 <- Sys.time()
+# output$text <- renderText({paste("The heatmap took", round(t2-t1, 2), "seconds to load")})
+
+  #### download data  ####
+
   
   income_csv <- reactive({ format_csv(inc_data())})
   output$download_income_data <- downloadHandler(filename = 'income_data.csv',
