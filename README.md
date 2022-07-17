@@ -1,4 +1,8 @@
-**Master Project: Development of a data visualization platform for non-scientists with SOEP Data**
+**Title: Master Project Development of a data visualization platform for non-scientists with SOEP Data**
+
+**Authors: Deliverance Bougie, Stefan Zimmermann**
+
+**[Raw Data](https://www.diw.de/en/diw_01.c.601584.en/data_access.html) from [10.5684/soep.core.v36eu](https://www.diw.de/en/diw_01.c.814095.en/edition/soep-core_v36eu__data_1984-2019__eu_edition.html)**
 
 In order to make the SOEP Data inventory of social science data and research results as widely accessible as possible 
 and to establish a new culture of using scientific results in other areas of society as well, our master project aims to create 
@@ -130,4 +134,41 @@ The project goals and the folder structure is explained in the readme document. 
       - Problems and challenges
       - Summary
 
+##################################################################################################
 
+```
+sessionInfo()
+R version 4.1.1 (2021-08-10)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19043)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=German_Germany.1252  LC_CTYPE=German_Germany.1252    LC_MONETARY=German_Germany.1252 LC_NUMERIC=C                   
+[5] LC_TIME=German_Germany.1252    
+
+attached base packages:
+[1] tools     stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] forcats_0.5.1       purrr_0.3.4         readr_2.0.2         tidyr_1.1.4         tibble_3.1.4        tidyverse_1.3.1    
+ [7] randomcoloR_1.1.0.1 wesanderson_0.3.6   plotly_4.10.0       stringr_1.4.0       dplyr_1.0.7         rgeos_0.5-8        
+[13] sf_1.0-3            raster_3.5-11       sp_1.4-5            checkpoint_1.0.2    ggplot2_3.3.5      
+
+loaded via a namespace (and not attached):
+ [1] Rtsne_0.15         colorspace_2.0-2   ggsignif_0.6.3     ellipsis_0.3.2     class_7.3-19       rio_0.5.27         rsconnect_0.8.25  
+ [8] fs_1.5.0           rstudioapi_0.13    proxy_0.4-26       farver_2.1.0       ggpubr_0.4.0       fansi_0.5.0        lubridate_1.7.10  
+[15] xml2_1.3.2         codetools_0.2-18   cachem_1.0.6       jsonlite_1.7.2     broom_0.7.9        cluster_2.1.2      dbplyr_2.1.1      
+[22] shiny_1.7.1        compiler_4.1.1     httr_1.4.2         backports_1.2.1    assertthat_0.2.1   fastmap_1.1.0      lazyeval_0.2.2    
+[29] cli_3.0.1          s2_1.0.7           later_1.3.0        htmltools_0.5.2    gtable_0.3.0       glue_1.4.2         wk_0.5.0          
+[36] V8_4.1.0           Rcpp_1.0.7         carData_3.0-4      cellranger_1.1.0   jquerylib_0.1.4    vctrs_0.3.8        crosstalk_1.1.1   
+[43] openxlsx_4.2.4     rvest_1.0.1        mime_0.12          lifecycle_1.0.1    rstatix_0.7.0      terra_1.4-22       scales_1.1.1      
+[50] hms_1.1.1          promises_1.2.0.1   yaml_2.2.1         curl_4.3.2         sass_0.4.0         stringi_1.7.4      e1071_1.7-9       
+[57] zip_2.2.0          rlang_0.4.11       pkgconfig_2.0.3    lattice_0.20-44    fontawesome_0.2.2  labeling_0.4.2     htmlwidgets_1.5.4 
+[64] tidyselect_1.1.1   magrittr_2.0.1     R6_2.5.1           generics_0.1.0     DBI_1.1.1          pillar_1.7.0       haven_2.4.3       
+[71] foreign_0.8-81     withr_2.5.0        units_0.7-2        abind_1.4-5        modelr_0.1.8       crayon_1.5.1       car_3.0-11        
+[78] KernSmooth_2.23-20 utf8_1.2.2         tzdb_0.1.2         grid_4.1.1         readxl_1.3.1       data.table_1.14.2  reprex_2.0.1      
+[85] digest_0.6.28      classInt_0.4-3     xtable_1.8-4       httpuv_1.6.3       openssl_2.0.0      munsell_0.5.0      viridisLite_0.4.0 
+[92] bslib_0.3.1        askpass_1.1  
+```
