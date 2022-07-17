@@ -1,4 +1,8 @@
-**Master Project: Development of a data visualization platform for non-scientists with SOEP Data**
+**Title: Master Project Development of a data visualization platform for non-scientists with SOEP Data**
+
+**Authors: Deliverance Bougie, Stefan Zimmermann**
+
+**[Raw Data](https://www.diw.de/en/diw_01.c.601584.en/data_access.html) from [10.5684/soep.core.v36eu](https://www.diw.de/en/diw_01.c.814095.en/edition/soep-core_v36eu__data_1984-2019__eu_edition.html)**
 
 In order to make the SOEP Data inventory of social science data and research results as widely accessible as possible 
 and to establish a new culture of using scientific results in other areas of society as well, our master project aims to create 
